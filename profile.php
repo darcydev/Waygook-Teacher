@@ -1,6 +1,6 @@
+<?php include("includes/header.php") ?>
+
 <?php
-include("includes/config.php");
-include("includes/classes/User.php");
 
 // ISSUE: how to get userID on page?
 if(isset($_GET['userID'])) {
@@ -14,29 +14,27 @@ else {
 $user = new User($con, $userID);
 ?>
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-    <meta charset="utf-8">
-    <title>Profile</title>
-</head>
-<body>
-    <!-- IDEA: include header.php -->
     <div id="profile-container">
         <div id="profile-heading">
             <h2>Profile</h2>
         </div>
-        <div id="profile-content">
-            <div id="profile-name">
+        <div id="profile-content-container">
+            <div id="profile-photo" class="profile-content">
+                <p>INCLDUE PHOTO</p>
+            </div>
+            <div id="profile-name" class="profile-content">
                 <p>Name: <?php echo $user->getFirstName(); ?> <?php echo $user->getLastName(); ?></p>
             </div>
-            <div id="profile-username">
+            <div id="profile-username" class="profile-content">
                 <p>Username: <?php echo $user->getUsername(); ?></p>
             </div>
-            <div id="profile-email">
+            <div id="profile-email" class="profile-content">
                 <p>Email: <?php echo $user->getEmail(); ?></p>
+            </div>
+            <div id="profile-description" class="profile-content">
+                <p>INCLUDE DESCRIPTION</p>
             </div>
         </div>
     </div>
-</body>
-</html>
+
+<?php include("includes/footer.php") ?>
