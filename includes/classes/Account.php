@@ -115,5 +115,11 @@ class Account {
 
 	}
 
+	private function updateDescription($description) {
+		// update User.description in db
+		$result = mysqli_query($this->con, "UPDATE Users SET description = '$description' WHERE username = 'john_lennon'");
+		return;
+	}
+
 }
 ?>

@@ -2,16 +2,18 @@
 
 <?php
 
-// ISSUE: how to get userID on page?
-if(isset($_GET['userID'])) {
-	$userID = $_GET['userID'];
+if(isset($_SESSION['userLoggedIn'])) {
+    $userLoggedIn = $_SESSION['userLoggedIn'];
 }
 else {
-  // IDEA: include 'User couldn't be found' page
-	header("Location: index.php");
+	header("Location: register.php");
 }
 
 $user = new User($con, $userID);
+
+$userQuery = mysqli_query($con, "SELECT * FROM Users WHERE username='$userLoggedIn'");
+$row = mysqli_fetch_array($userQuery);
+$userID = $row['userID'];
 ?>
 
     <div id="profile-container">
@@ -34,6 +36,9 @@ $user = new User($con, $userID);
             <div id="profile-description" class="profile-content">
                 <p>INCLUDE DESCRIPTION</p>
             </div>
+        </div>
+        <div id="edit-profile-link">
+            <a href="edit-profile.php?userID=<?php echo $userID; ?>">EDIT PROFILE</a>
         </div>
     </div>
 

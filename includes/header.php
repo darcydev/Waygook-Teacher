@@ -1,7 +1,13 @@
 <?php
 
 include("includes/config.php");
+include("includes/classes/Account.php");
+include("includes/classes/Constants.php");
 include("includes/classes/User.php");
+
+include("includes/handlers/edit-profile-handler.php");
+include("includes/handlers/register-handler.php");
+include("includes/handlers/login-handler.php");
 
 if(isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = $_SESSION['userLoggedIn'];
@@ -11,6 +17,7 @@ else {
 }
 
 $user = new User($con, $userID);
+$account = new Account($con);
 
 $userQuery = mysqli_query($con, "SELECT * FROM Users WHERE username='$userLoggedIn'");
 $row = mysqli_fetch_array($userQuery);
