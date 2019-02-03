@@ -27,12 +27,12 @@ $userID = $row['userID'];
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
-    <div class="nav-bar">
-    	<div class="nav-bar-header">
+    <div id="nav-bar">
+    	<div id="nav-bar-header">
     		<a href="index.php">WaygookTeacher</a>
     	</div>
-        <ul>
-            <li><a href="profile.php?userID=<?php echo $userID; ?>">Profile</a></li>
+        <ul id="nav-bar-links">
+            <li><a href="profile.php?userID=<?php echo $userID; ?>">Profile: <?php echo $userLoggedIn; ?></a></li>
             <li><a href="search.php">Search</a></li>
             <li><a href="message.php">Message</a></li>
             <li><a href="register.php">Login/Register</a></li>
@@ -40,11 +40,22 @@ $userID = $row['userID'];
         </ul>
     </div>
     <div id="main-content-container">
-        <h1>Welcome to Waygook Teacher!</h1>
-        <h2>platform for you to connect Korean students with English teachers</h2>
+        <div class="introduction-text">
+            <div class="introduction-heading">
+                <h1>Welcome to Waygook Teacher</h1>
+                <h2>The platform to connect Korean students with English teachers</h2>
+            </div>
+            <div class="introduction-content">
+                <ul>
+                    <li>Learn from experienced English teachers</li>
+                    <li>Study at your own convience</li>
+                    <li>Personalized lesson plan to suit your English goals</li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="footer-container">
-        <ul class="footer-list">
+    <div id="footer-container">
+        <ul id="footer-list">
         	<li>WaygookTeacher - made by Darcy Price</li>
         </ul>
     </div>

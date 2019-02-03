@@ -28,13 +28,13 @@ $user = new User($con, $userID);
         </div>
         <div id="profile-content">
             <div id="profile-name">
-                <p>Name: <?php echo $user->getName(); ?></p>
+                <p>Name: <?php echo $user->getFirstName(); ?> <?php echo $user->getLastName(); ?></p>
             </div>
             <div id="profile-username">
-                <p>Username: </p>
+                <p>Username: <?php echo $user->getUsername(); ?></p>
             </div>
             <div id="profile-email">
-                <p>Email: </p>
+                <p>Email: <?php echo $user->getEmail(); ?></p>
             </div>
         </div>
     </div>

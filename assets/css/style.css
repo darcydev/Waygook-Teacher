@@ -1,4 +1,56 @@
+* {
+	font-size: 1em;
+	color: #000000;
+
+}
+
 body {
 	font-size: 0.8em;
 	font-family: arial, sans-serif;
+}
+
+#nav-bar,
+#footer-container {
+	background: #dcf3fd;
+	padding: 10px 0;
+}
+
+#nav-bar a {
+	text-decoration: none;
+}
+
+#nav-bar #nav-bar-header {
+	font-size: 2em;
+	margin: 5px;
+}
+
+#nav-bar #nav-bar-links {
+	display: flex;
+	list-style: none;
+}
+
+#nav-bar #nav-bar-links li {
+	padding: 0 15px;
+}
+
+.introduction-text .introduction-heading h1 {
+	text-align: center;
+	padding: 15px;
+	font-size: 2em;
+}
+
+.introduction-text .introduction-heading h2 {
+	text-align: center;
+	font-size: 1.2em;
+}
+
+.introduction-text .introduction-content ul {
+	text-align: left;
+	list-style: none;
+	padding: 20px 10px;
+}
+
+.introduction-text .introduction-content li {
+	padding: 10px;
+	margin: 0px 100px;
 }
