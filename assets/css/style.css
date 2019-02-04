@@ -54,3 +54,48 @@ body {
 	padding: 10px;
 	margin: 0px 100px;
 }
+
+#profile-container #profile-content-container {
+	display: flex;
+}
+
+#profile-container #profile-content-container #profile-photo {
+	padding: 30px;
+}
+
+#profile-container #profile-content-container #profile-photo img {
+	height: 225px;
+	width: 225px;
+}
+
+#profile-container #profile-content-container #profile-text-content {
+	padding: 30px;
+}
+
+#profile-container #profile-content-container #profile-text-content #profile-name {
+	font-size: 1.8em;
+    font-weight: 700;
+}
+
+#profile-container #profile-content-container #profile-text-content #profile-username,
+																	#profile-email {
+	font-size: 1.3em;
+    padding-left: 20px;
+}
+
+#profile-container #profile-content-container #profile-text-content #profile-description {
+	border: 2px solid black;
+	padding: 15px
+}
+
+#profile-container #edit-profile-link {
+	text-align: center;
+	padding: 15px 0;
+	font-size: 1.2em;
+}
+
+#profile-container #edit-profile-link a {
+	border: 1.5px solid black;
+	padding: 10px;
+	text-decoration: none;
+}
