@@ -1,27 +1,5 @@
 <?php
 include("includes/header.php");
-
-/*
-$userID_array = $user->getUserIDs();
-$c = 1;
-foreach($userID_array as $userID) {
-    $userFirstName = $user->getFirstName();
-
-    echo "<li class='search-list-row'>
-            <div class='user-photo'>
-                <img src= " . $user->getPhoto() . " alt='user-photo'>
-            </div>
-            <div class='result-user-info'>
-                <div class='result-user-name'>
-                </div>
-                <div class='result-user-email'>
-                </div>
-            </div>
-        </li>";
-    // increment counter
-    $c = $c + 1;
-}
-*/
 ?>
 
 <?php
@@ -42,7 +20,7 @@ $userID = $row['userID'];
 
 <div id="search-container">
     <div id="search-bar">
-        <p>Hello</p>
+        <p>INSERT SEARCH BAR</p>
     </div>
     <div id="search-results-container">
         <ul class="search-result-list">
@@ -55,14 +33,22 @@ $userID = $row['userID'];
                 // create html div each time loops through $query
                 echo "<div id='search-view-item'>
                         <span id='search-result'>
-                            <div class='user-photo'>
-        						<img src='" . $row['profile_pic'] . "'>
-                            </div>
-                            <div class='result-user-name'>
-                                " . $row['first_name'] . "
-                            </div>
-                            <div class='result-user-email'>
-                            </div>
+                            <a href='profile.php?userID=" . $row['userID'] . "'>
+                                <div class='search-result-info photo'>
+            						<img src='" . $row['profile_pic'] . "'>
+                                </div>
+                                <div class='search-result-info'>
+                                    <div class='info-name'>
+                                        " . $row['first_name'] . "
+                                    </div>
+                                    <div class='info-country'>
+                                    </div>
+                                    <div class='info-rate'>
+                                    </div>
+                                    <div class='info-reviews'>
+                                    </div>
+                                </div>
+                            </a>
                         </span>
                     </div>";
             }
