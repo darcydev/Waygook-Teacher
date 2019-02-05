@@ -93,11 +93,11 @@ class User {
         return $rows_affected;
     }
 
-    public function updateProfilePic($pic_path) {
-        $sql = "UPDATE Users SET profile_pic='{$pic_path}' WHERE userID='{$this->userID}'";
+    public function updateProfilePic($db_uploadPath) {
+        $sql = "UPDATE Users SET profile_pic='{$db_uploadPath}' WHERE userID='{$this->userID}'";
         $result = mysqli_query($this->con, $sql)
             or die (mysqli_error($this->con));
-        $rows_affected = mysql_affected_rows($this->con);
+        $rows_affected = mysqli_affected_rows($this->con);
         return $rows_affected;
     }
 

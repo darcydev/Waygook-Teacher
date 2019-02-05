@@ -4,7 +4,7 @@ if(isset($_POST['confirm-profile-pic-button'])) {
 
     $currentDir = getcwd();
     // target upload directory
-    $targetDir = "/assets/images/profile-pics/";
+    $targetDir = "assets/images/profile-pics/";
     // store all errors
     $errors = [];
     // allowed file extensions
@@ -16,7 +16,7 @@ if(isset($_POST['confirm-profile-pic-button'])) {
     $fileType = $_FILES["upload-profile-pic"]["type"];
     $fileExtension = strtolower(end(explode('.', $fileName)));
 
-    $uploadPath = $currentDir . $targetDir . basename($fileName);
+    $uploadPath = $currentDir . "/" . $targetDir . basename($fileName);
     // POTENTIAL BUG: may have to remove "/" in "/assets"
     $db_uploadPath = $targetDir . basename($fileName);
 
@@ -32,16 +32,17 @@ if(isset($_POST['confirm-profile-pic-button'])) {
         $errors[] = "File already exists. Please rename your file.";
     }
 
-    echo $db_uploadPath;
-
     if(empty($errors)) {
         $successUpload = move_uploaded_file($fileTmpName, $uploadPath);
         if($successUpload) {
-            echo "The file " . basename($fileName) . " has been uploaded";
-
-            // $rows_affected = $user->updateProfilePic($pic_path);
+            // echo "The file " . basename($fileName) . " has been uploaded";
+            $rows_affected = $user->updateProfilePic($db_uploadPath);
+            // FORM BUG: not directing User back to profile.php
+            if($rows_affected < 1) {
+                echo "DB UPLOAD ERROR";
+            }
         } else {
-            echo "An error occurred somewhere. Try again or contact the admin";
+            echo "move_uploaded_file ERROR";
         }
     } else {
         foreach($errors as $error) {
