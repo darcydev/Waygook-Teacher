@@ -1,12 +1,111 @@
 * {
-	font-size: 1em;
 	color: #000000;
-
+	font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	letter-spacing: 0.5px;
 }
 
 body {
 	font-size: 0.8em;
 	font-family: arial, sans-serif;
+}
+
+#background {
+	background-color: #000;
+    background-image: url(../images/background-image.jpg);
+    background-position: center;
+    background-size: cover;
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+#login-container #input-container {
+	width: 400px;
+    padding: 45px;
+    float: left;
+    border-right: 1px solid #999;
+}
+
+#login-container * {
+	color: #fff;
+	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	font-weight: normal;
+	line-height: 1em;
+	box-sizing: border-box;
+}
+
+#login-container #input-container .register-form {
+	display: block;
+}
+
+#login-container #input-container .register-form h2 {
+	text-align: center;
+}
+
+#login-container #input-container .register-form label {
+	color: #a0a0a0;
+	font-size: 13px;
+	display: block;
+	margin-top: 15px;
+}
+
+#login-container #input-container .register-form input {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR…rvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: 16px 18px;
+    background-position: 98% 50%;
+    cursor: auto;
+	width: 100%;
+    display: block;
+    background-color: transparent;
+    border-width: 0px 0px 1px;
+    border-top-style: initial;
+    border-right-style: initial;
+    border-left-style: initial;
+    border-top-color: initial;
+    border-right-color: initial;
+    border-left-color: initial;
+    border-image: initial;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(255, 255, 255);
+    height: 27px;
+    line-height: 27px;
+}
+
+#login-container #input-container .register-form button {
+	background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 250px;
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin: 20px auto;
+    height: 41px;
+    width: 100%;
+}
+
+#login-container #login-text {
+	padding: 45px;
+	display: table-cell;
+}
+
+#login-container #login-text h1 {
+	color: #ece61e;
+	font-size: 60px;
+	font-weight: 700;
+}
+
+#login-container #login-text h2 {
+	margin: 35px 0;
+}
+
+#login-container #login-text li {
+	font-size: 20px;
+	list-style-type: none;
+	padding: 5px 30px;
+	background: url(../images/icons/checkmark.png) no-repeat;
 }
 
 #nav-bar,
@@ -77,8 +176,8 @@ body {
     font-weight: 700;
 }
 
-#profile-container #profile-content-container #profile-text-content #profile-username,
-																	#profile-email {
+#profile-container #profile-content-container #profile-text-content
+#profile-username, #profile-email {
 	font-size: 1.3em;
     padding-left: 20px;
 }
@@ -98,4 +197,27 @@ body {
 	border: 1.5px solid black;
 	padding: 10px;
 	text-decoration: none;
+}
+
+#search-container #search-results-container #search-view-item {
+	display: inline-block;
+    margin: right;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 29%;
+    max-width: 200px;
+    min-width: 150px;
+}
+
+#search-container #search-results-container #search-view-item .search-result-info.photo img {
+	width: 100%;
+}
+
+#search-container #search-results-container #search-view-item .search-result-info .info-name {
+	font-weight: 700;
+	text-align: center;
+	padding: 5px 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
