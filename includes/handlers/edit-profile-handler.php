@@ -1,25 +1,67 @@
 <?php
-/// include("includes/config.php");
+
+if(isset($_POST['confirm-profile-pic-button'])) {
+
+    $currentDir = getcwd();
+    // target upload directory
+    $targetDir = "/assets/images/profile-pics/";
+    // store all errors
+    $errors = [];
+    // allowed file extensions
+    $fileExtensions = ['jpeg', 'jpg', 'png'];
+
+    $fileName = $_FILES["upload-profile-pic"]["name"];
+    $fileSize = $_FILES["upload-profile-pic"]["size"];
+    $fileTmpName = $_FILES["upload-profile-pic"]["tmp_name"];
+    $fileType = $_FILES["upload-profile-pic"]["type"];
+    $fileExtension = strtolower(end(explode('.', $fileName)));
+
+    $uploadPath = $currentDir . $targetDir . basename($fileName);
+    // POTENTIAL BUG: may have to remove "/" in "/assets"
+    $db_uploadPath = $targetDir . basename($fileName);
+
+    if(! in_array($fileExtension, $fileExtensions)) {
+        $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
+    }
+
+    if($fileSize > 2000000) {
+        $errors[] = "This file is more than 2MB. Sorry, it has to be less than or equal to 2MB";
+    }
+
+    if(file_exists($uploadPath)) {
+        $errors[] = "File already exists. Please rename your file.";
+    }
+
+    echo $db_uploadPath;
+
+    if(empty($errors)) {
+        $successUpload = move_uploaded_file($fileTmpName, $uploadPath);
+        if($successUpload) {
+            echo "The file " . basename($fileName) . " has been uploaded";
+
+            // $rows_affected = $user->updateProfilePic($pic_path);
+        } else {
+            echo "An error occurred somewhere. Try again or contact the admin";
+        }
+    } else {
+        foreach($errors as $error) {
+            echo $error . "These are the errors" . "\n";
+        }
+    }
+}
 
 if(isset($_POST['edit-profile-button'])) {
-    // $profilePic = $_POST['edit-profile-pic'];
     $desc_update = $_POST['edit-description'];
 
-    // if(isset($profilePic)) {}
-
     if(isset($desc_update)) {
-        $result = $user->updateDescription($desc_update);
-        echo '<script>console.log("B.3")</script>';
+        $rows_affected = $user->updateDescription($desc_update);
     }
-
-    if($success > 0) {
-        echo '<script>console.log("$success > 0")</script>';
-        header("Location: profile.php");
+    // if db successfully updated, direct to user's profile page
+    if($rows_affected > 0) {
+        header("Location: profile.php?userID=" . $user->getID());
     }
     else {
-        echo '<script>console.log("$success = 0")</script>';
+        echo "Sorry, there has been an error updating your profile.";
     }
-
-    echo '<script>console.log("end of file")</script>';
 }
 ?>
