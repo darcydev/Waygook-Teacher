@@ -3,7 +3,6 @@ include("includes/header.php")
 ?>
 
 <?php
-
 // if this one necessary? $userLoggedIn = username
 if(isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = $_SESSION['userLoggedIn'];
@@ -24,6 +23,29 @@ $sql = "SELECT * FROM Users WHERE userID='$userID'";
 $userQuery = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($userQuery);
 ?>
+
+<?php
+// CHECK IF USER IS VIEWING OWN PROFILE
+// IF YES, SHOW 'EDIT-PROFILE' link
+// IF NO, SHOW 'SEND-MESSAGE' link
+if($row['username'] == $userLoggedIn) {
+    echo "Edit profile";
+    echo '<script>
+            $(document).ready(function() {
+                $("#edit-profile-link").show();
+                $("#send-message-link").hide();
+            });
+        </script>';
+} else {
+    echo "Send Message";
+    echo '<script>
+            $(document).ready(function() {
+                $("#edit-profile-link").hide();
+                $("#send-message-link").show();
+            });
+        </script>';
+}
+ ?>
 
 <div id="profile-container">
     <div id="profile-heading">
@@ -47,9 +69,17 @@ $row = mysqli_fetch_array($userQuery);
             </div>
         </div>
     </div>
-    <div id="edit-profile-link">
-        <a href="edit-profile.php?userID=<?php echo $userID; ?>">EDIT PROFILE</a>
+    <div id="options-bar">
+        <!-- only viewable if the User is viewing their own profile-->
+        <div id="edit-profile-link" class="option-link">
+            <a href="edit-profile.php?userID=<?php echo $userID; ?>">EDIT PROFILE</a>
+        </div>
+        <!-- only viewable if the User is not viewing their own profile-->
+        <div id="send-message-link" class="option-link">
+            <a href="send-message.php?userID=<?php echo $userID; ?>">SEND MESSAGE</a>
+        </div>
     </div>
+
 </div>
 
 <?php include("includes/footer.php") ?>

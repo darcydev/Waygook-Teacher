@@ -9,6 +9,10 @@ body {
 	font-family: arial, sans-serif;
 }
 
+a {
+	text-decoration: none;
+}
+
 #background {
 	background-color: #000;
     background-image: url(../images/background-image.jpg);
@@ -187,19 +191,20 @@ body {
 	padding: 15px
 }
 
-#profile-container #edit-profile-link {
+#profile-container .option-link {
 	text-align: center;
 	padding: 15px 0;
 	font-size: 1.2em;
 }
 
-#profile-container #edit-profile-link a {
+#profile-container .option-link a {
 	border: 1.5px solid black;
 	padding: 10px;
 	text-decoration: none;
 }
 
 #search-container #search-results-container #search-view-item {
+	padding: 5px 20px;
 	display: inline-block;
     margin: right;
     margin-right: 20px;
@@ -211,9 +216,12 @@ body {
 
 #search-container #search-results-container #search-view-item .search-result-info.photo img {
 	width: 100%;
+	height: 225px;
+	width: 225px;
 }
 
 #search-container #search-results-container #search-view-item .search-result-info .info-name {
+	font-size: 1.4em;
 	font-weight: 700;
 	text-align: center;
 	padding: 5px 0;
