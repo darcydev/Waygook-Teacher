@@ -19,16 +19,16 @@ function getInputValue($name) {
     <head>
         <title>Waygook Teacher</title>
 
-        <link rel="stylesheet" type="text/css" href="assets/css/register.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
-        <div class="background">
-            <div class="login-container">
-                <div class="input-container">
-                    <form id="login-form" action="register.php" method="post">
-                        <h2>Login to your account</h2>
+        <div id="background">
+            <div id="login-container">
+                <div id="input-container">
+                    <form id="login-form" class="register-form" action="register.php" method="post">
+                        <h2>Login</h2>
                         <p>
                             <?php echo $account->getError(Constants::$loginFailed); ?>
                             <label for="login-username">Username</label>
@@ -40,8 +40,8 @@ function getInputValue($name) {
                         </p>
                         <button type="submit" name="login-button">LOG IN</button>
                     </form>
-                    <form id="register-form" action="register.php" method="post">
-                        <h2>Create account</h2>
+                    <form id="register-form" class="register-form" action="register.php" method="post">
+                        <h2>Register</h2>
                         <p>
                             <?php echo $account->getError(Constants::$usernameCharacters); ?>
                             <?php echo $account->getError(Constants::$usernameTaken); ?>
@@ -77,6 +77,15 @@ function getInputValue($name) {
                         </p>
                         <button type="submit" name="register-button">SIGN UP</button>
                     </form>
+                </div>
+                <div id="login-text">
+                    <h1>Study English, right now</h1>
+                    <h2>Connect with and learn from native English speakers</h2>
+                    <ul>
+                        <li>Study vocabulary and grammar for exams</li>
+                        <li>Improve pronounciation with native speaker</li>
+                        <li>Prepare for interviews</li>
+                    </ul>
                 </div>
             </div>
         </div>
