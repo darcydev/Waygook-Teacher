@@ -29,7 +29,6 @@ $row = mysqli_fetch_array($userQuery);
 // IF YES, SHOW 'EDIT-PROFILE' link
 // IF NO, SHOW 'SEND-MESSAGE' link
 if($row['username'] == $userLoggedIn) {
-    echo "Edit profile";
     echo '<script>
             $(document).ready(function() {
                 $("#edit-profile-link").show();
@@ -37,7 +36,6 @@ if($row['username'] == $userLoggedIn) {
             });
         </script>';
 } else {
-    echo "Send Message";
     echo '<script>
             $(document).ready(function() {
                 $("#edit-profile-link").hide();
@@ -57,9 +55,6 @@ if($row['username'] == $userLoggedIn) {
         <div id="profile-text-content">
             <div id="profile-name" class="profile-content">
                 <p><?php echo $row['first_name']; ?> <?php echo $row['last_name']; ?></p>
-            </div>
-            <div id="profile-username" class="profile-content">
-                <p><?php echo $row['username']; ?></p>
             </div>
             <div id="profile-email" class="profile-content">
                 <p><?php echo $row['email']; ?></p>

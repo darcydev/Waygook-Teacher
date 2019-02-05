@@ -42,7 +42,7 @@ include("includes/handlers/login-handler.php");
     		<a href="index.php">WaygookTeacher</a>
     	</div>
         <ul id="nav-bar-links">
-            <li><a href="profile.php?userID=<?php echo $userID; ?>">Profile: <?php echo $userLoggedIn; ?></a></li>
+            <li><a href="profile.php?userID=<?php echo $userID; ?>"><?php echo $row['first_name']; ?> <?php echo $row['last_name']; ?></a></li>
             <li><a href="search.php">Search</a></li>
             <li><a href="message.php">Message</a></li>
             <li><a href="register.php">Login/Register</a></li>
