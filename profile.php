@@ -1,7 +1,10 @@
-<?php include("includes/header.php") ?>
+<?php
+include("includes/header.php")
+?>
 
 <?php
 
+// if this one necessary? $userLoggedIn = username
 if(isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = $_SESSION['userLoggedIn'];
 }
@@ -9,37 +12,44 @@ else {
 	header("Location: register.php");
 }
 
-$user = new User($con, $userID);
+if(isset($_GET['userID'])) {
+	$userID = $_GET['userID'];
+}
+else {
+	header("Location: register.php");
+}
 
-$userQuery = mysqli_query($con, "SELECT * FROM Users WHERE username='$userLoggedIn'");
+$user = new User($con, $userID);
+$sql = "SELECT * FROM Users WHERE userID='$userID'";
+$userQuery = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($userQuery);
-$userID = $row['userID'];
 ?>
 
-    <div id="profile-container">
-        <div id="profile-heading">
-            <h2>Profile</h2>
+<div id="profile-container">
+    <div id="profile-heading">
+    </div>
+    <div id="profile-content-container">
+        <div id="profile-photo" class="profile-photo-content">
+            <img src=<?php echo $row['profile_pic']; ?>>
         </div>
-        <div id="profile-content-container">
-            <div id="profile-photo" class="profile-content">
-                <p>INCLDUE PHOTO</p>
-            </div>
+        <div id="profile-text-content">
             <div id="profile-name" class="profile-content">
-                <p>Name: <?php echo $user->getFirstName(); ?> <?php echo $user->getLastName(); ?></p>
+                <p><?php echo $row['first_name']; ?> <?php echo $row['last_name']; ?></p>
             </div>
             <div id="profile-username" class="profile-content">
-                <p>Username: <?php echo $user->getUsername(); ?></p>
+                <p><?php echo $row['username']; ?></p>
             </div>
             <div id="profile-email" class="profile-content">
-                <p>Email: <?php echo $user->getEmail(); ?></p>
+                <p><?php echo $row['email']; ?></p>
             </div>
             <div id="profile-description" class="profile-content">
-                <p>INCLUDE DESCRIPTION</p>
+                <p>DESCRIPTION: <p><?php echo $row['description']; ?></p></p>
             </div>
         </div>
-        <div id="edit-profile-link">
-            <a href="edit-profile.php?userID=<?php echo $userID; ?>">EDIT PROFILE</a>
-        </div>
     </div>
+    <div id="edit-profile-link">
+        <a href="edit-profile.php?userID=<?php echo $userID; ?>">EDIT PROFILE</a>
+    </div>
+</div>
 
 <?php include("includes/footer.php") ?>
