@@ -5,10 +5,6 @@ include("includes/classes/Account.php");
 include("includes/classes/Constants.php");
 include("includes/classes/User.php");
 
-include("includes/handlers/edit-profile-handler.php");
-include("includes/handlers/register-handler.php");
-include("includes/handlers/login-handler.php");
-
 if(isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = $_SESSION['userLoggedIn'];
 }
@@ -16,12 +12,17 @@ else {
 	header("Location: register.php");
 }
 
-$user = new User($con, $userID);
-$account = new Account($con);
-
+/// $sql = "SELECT * FROM Users WHERE username='$userLoggedIn'";
 $userQuery = mysqli_query($con, "SELECT * FROM Users WHERE username='$userLoggedIn'");
 $row = mysqli_fetch_array($userQuery);
 $userID = $row['userID'];
+
+$user = new User($con, $userID);
+$account = new Account($con);
+
+include("includes/handlers/edit-profile-handler.php");
+include("includes/handlers/register-handler.php");
+include("includes/handlers/login-handler.php");
 
 ?>
 
@@ -31,6 +32,8 @@ $userID = $row['userID'];
 	<title>Waygook Teacher</title>
 
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="nav-bar">
@@ -45,3 +48,4 @@ $userID = $row['userID'];
             <li><a href="#">Logout</a></li>
         </ul>
     </div>
+    <div id="main-content">

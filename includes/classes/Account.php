@@ -49,7 +49,8 @@ class Account {
 
 	private function insertUserDetails($un, $fn, $ln, $em, $pw) {
 		$encryptedPw = md5($pw);
-		$result = mysqli_query($this->con, "INSERT INTO users VALUES (userID, '$fn', '$ln', '$un', '$em', '$encryptedPw')");
+		$sql = "INSERT INTO users VALUES (userID, '$fn', '$ln', '$un', '$em', '$encryptedPw', '', '')";
+		$result = mysqli_query($this->con, $sql);
 		return $result;
 	}
 
@@ -113,12 +114,6 @@ class Account {
 			return;
 		}
 
-	}
-
-	private function updateDescription($description) {
-		// update User.description in db
-		$result = mysqli_query($this->con, "UPDATE Users SET description = '$description' WHERE username = 'john_lennon'");
-		return;
 	}
 
 }
