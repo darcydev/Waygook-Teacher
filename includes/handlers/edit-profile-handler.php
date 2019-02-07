@@ -9,7 +9,7 @@ if(isset($_POST['confirm-profile-pic-button'])) {
     $errors = [];
     // allowed file extensions
     $fileExtensions = ['jpeg', 'jpg', 'png'];
-
+  	// SECURITY BUG (???)
     $fileName = $_FILES["upload-profile-pic"]["name"];
     $fileSize = $_FILES["upload-profile-pic"]["size"];
     $fileTmpName = $_FILES["upload-profile-pic"]["tmp_name"];
@@ -52,6 +52,7 @@ if(isset($_POST['confirm-profile-pic-button'])) {
 }
 
 if(isset($_POST['edit-profile-button'])) {
+  	// SECURITY BUG
     $desc_update = $_POST['edit-description'];
 
     if(isset($desc_update)) {

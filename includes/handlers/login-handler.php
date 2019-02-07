@@ -1,6 +1,7 @@
 <?php
 if(isset($_POST['login-button'])) {
 	//Login button was pressed
+	// SECURITY BUG
 	$username = $_POST['login-username'];
 	$password = $_POST['login-password'];
 

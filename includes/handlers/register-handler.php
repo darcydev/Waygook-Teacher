@@ -19,6 +19,7 @@ function sanitizeFormString($inputText) {
 
 // if register btn was pressed
 if(isset($_POST['register-button'])) {
+	// SECURITY BUG
 	$username = sanitizeFormUsername($_POST['username']);
 	$firstName = sanitizeFormString($_POST['first-name']);
 	$lastName = sanitizeFormString($_POST['last-name']);
