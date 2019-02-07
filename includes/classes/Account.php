@@ -11,7 +11,9 @@ class Account {
 
 	public function login($un, $pw) {
 		$pw = md5($pw);
-		$query = mysqli_query($this->con, "SELECT * FROM Users WHERE username='$un' AND password='$pw'");
+		// SECURITY BUG
+		$sql = "SELECT * FROM Users WHERE username='$un' AND password='$pw'";
+		$query = mysqli_query($this->con, $sql);
 
         if(mysqli_num_rows($query) == 1) {
             return true;
@@ -49,6 +51,7 @@ class Account {
 
 	private function insertUserDetails($un, $fn, $ln, $em, $pw) {
 		$encryptedPw = md5($pw);
+		// SECURITY BUG
 		$sql = "INSERT INTO users VALUES (userID, '$fn', '$ln', '$un', '$em', '$encryptedPw', '', '')";
 		$result = mysqli_query($this->con, $sql);
 		return $result;
@@ -61,7 +64,9 @@ class Account {
 			return;
 		}
 
-		$checkUsernameQuery = mysqli_query($this->con, "SELECT username FROM users WHERE username='$un'");
+		// SECURITY BUG
+		$sql = "SELECT username FROM users WHERE username='$un'";
+		$checkUsernameQuery = mysqli_query($this->con, $sql);
 		if(mysqli_num_rows($checkUsernameQuery) != 0) {
 			array_push($this->errorArray, Constants::$usernameTaken);
 			return;
@@ -89,7 +94,9 @@ class Account {
 			return;
 		}
 
-		$checkEmailQuery = mysqli_query($this->con, "SELECT email FROM users WHERE email='$em'");
+		// SECURITY BUG
+		$sql = "SELECT email FROM users WHERE email='$em'";
+		$checkEmailQuery = mysqli_query($this->con, $sql);
 		if(mysqli_num_rows($checkEmailQuery) != 0) {
 			array_push($this->errorArray, Constants::$emailTaken);
 			return;

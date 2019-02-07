@@ -7,6 +7,7 @@ session_start();
 $timezone = date_default_timezone_set("Asia/Seoul");
 
 // host = "locahost", user = "root", password = "root", mysql db name = "Waygook-Teacher"
+// SECURITY BUG
 $con = mysqli_connect("localhost", "root", "root", "Waygook-Teacher");
 
 // if error connecting to db, print error msg

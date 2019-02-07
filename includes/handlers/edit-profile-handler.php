@@ -9,7 +9,7 @@ if(isset($_POST['confirm-profile-pic-button'])) {
     $errors = [];
     // allowed file extensions
     $fileExtensions = ['jpeg', 'jpg', 'png'];
-  	// SECURITY BUG (???)
+  	// SECURITY BUG
     $fileName = $_FILES["upload-profile-pic"]["name"];
     $fileSize = $_FILES["upload-profile-pic"]["size"];
     $fileTmpName = $_FILES["upload-profile-pic"]["tmp_name"];
