@@ -11,20 +11,14 @@ class Account {
     }
 
 	public function loginAccount($un, $pw) {
-		/*
-		$pw = md5($pw);
-		// SECURITY BUG
-		$sql = "SELECT * FROM Users WHERE username='$un' AND password='$pw'";
-		$query = mysqli_query($this->con, $sql);
-
-        if(mysqli_num_rows($query) == 1) {
-            return true;
-        }
-        else {
-            array_push($this->errorArray, Constants::$loginFailed);
+		$sql = "SELECT username, password FROM Users WHERE username = ? AND password = ?";
+		$query = $this->db->run($sql, [$un, $pw]);
+		if ($query->rowCount() == 1) {
+			return true;
+		} else {
+			array_push($this->errorArray, Constants::$loginFailed);
             return false;
-        }
-		*/
+		}
 	}
 
 	public function registerAccount($fn, $ln, $username, $em, $password, $password2) {
@@ -90,17 +84,14 @@ class Account {
 			array_push($this->errorArray, Constants::$emailInvalid);
 			return;
 		}
-
-		/*
-		// SECURITY BUG
-		$sql = "SELECT email FROM users WHERE email='$em'";
-		$checkEmailQuery = mysqli_query($this->con, $sql);
-		if(mysqli_num_rows($checkEmailQuery) != 0) {
-			array_push($this->errorArray, Constants::$emailTaken);
+		// check email unique
+		$sql = "SELECT email FROM Users WHERE email = ?";
+		$stmt = $this->db->run($sql, [$em]);
+		$rowsAffected = $stmt->rowCount();
+		if ($rowsAffected != 0) {
+			array_push($this->errorArray, Constants::$usernameTaken);
 			return;
 		}
-		*/
-
 	}
 
 	private function validatePasswords($password, $password2) {
