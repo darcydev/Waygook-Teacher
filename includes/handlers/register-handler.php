@@ -1,4 +1,7 @@
 <?php
+// REFACTOR: include these as part of Account, and call them using
+// Account::sanitizeFormString, etc.
+// in accordance with "DRY" principle
 function sanitizeFormPassword($inputText) {
 	$inputText = strip_tags($inputText);
 	return $inputText;
@@ -25,15 +28,20 @@ if(isset($_POST['register-button'])) {
 	$lastName = sanitizeFormString($_POST['last-name']);
 	$email = sanitizeFormString($_POST['email']);
 	$password = sanitizeFormPassword(md5($_POST['password']));
-	$password = sanitizeFormPassword(md5($_POST['password']));
+	$password2 = sanitizeFormPassword(md5($_POST['password']));
 
 	// register() will return true is there have been no errors, and false if otherwise.
-	$wasSuccessful = $account->register($firstName, $lastName, $username, $email, $password, $password2);
+	$rowsAffected = $account->registerAccount($firstName, $lastName, $username, $email, $password, $password2);
 
-    if($wasSuccessful == 1) {
+    if($rowsAffected == 1) {
+		echo "<script>console.log('r-handler 1');</script>";
         // create session variable (value = "username")
+		// BUG: this isn't working!
 		$_SESSION['userLoggedIn'] = $username;
 		header("Location: index.php");
+		echo "<script>console.log('r-handler 2');</script>";
+	} else {
+		echo "<script>console.log('r-handler 3');</script>";
 	}
 }
 ?>

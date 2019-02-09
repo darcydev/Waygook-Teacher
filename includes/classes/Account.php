@@ -10,7 +10,8 @@ class Account {
         $this->errorArray = array();
     }
 
-	public function login($un, $pw) {
+	public function loginAccount($un, $pw) {
+		/*
 		$pw = md5($pw);
 		// SECURITY BUG
 		$sql = "SELECT * FROM Users WHERE username='$un' AND password='$pw'";
@@ -23,23 +24,24 @@ class Account {
             array_push($this->errorArray, Constants::$loginFailed);
             return false;
         }
-
+		*/
 	}
 
-	public function register($fn, $ln, $un, $em, $pw, $pw2) {
-		$this->validateUsername($un);
+	public function registerAccount($fn, $ln, $username, $em, $password, $password2) {
+		$this->validateUsername($username);
 		$this->validateFirstName($fn);
 		$this->validateLastName($ln);
 		$this->validateEmail($em);
-		$this->validatePasswords($pw, $pw2);
+		$this->validatePasswords($password, $password2);
 
 		if(empty($this->errorArray) == true) {
             // insert into db
-            $sql = "INSERT INTO Users VALUES (userID, ?, ?)";
-            $stmt = $this->db->run($sql, [$username, $password]);
+			$sql = "INSERT INTO Users VALUES (userID, ?, ?, ?, ?, ?, NULL, NULL)";
+            $stmt = $this->db->run($sql, [$fn, $ln, $username, $em, $password]);
             $rowsAffected = $stmt->rowCount();
             return $rowsAffected;
         } else {
+			echo "<script>console.log('Account 7');</script>";
             $rowsAffected = 0;
             return $rowsAffected;
         }
@@ -52,7 +54,7 @@ class Account {
         return "<span class='errorMessage'>$error</span>";
     }
 
-	private function validateUsername($un) {
+	private function validateUsername($username) {
 		// check username length
         if (strlen($username) > 50 || strlen($username) < 5) {
             array_push($this->errorArray, Constants::$usernameCharacters);
@@ -101,24 +103,22 @@ class Account {
 
 	}
 
-	private function validatePasswords($pw, $pw2) {
+	private function validatePasswords($password, $password2) {
 		// check passwords match
-		if($pw != $pw2) {
+		if($password != $password2) {
 			array_push($this->errorArray, Constants::$passwordsDoNoMatch);
 			return;
 		}
 		// check password alphanumberic
-		if(preg_match('/[^A-Za-z0-9]/', $pw)) {
+		if(preg_match('/[^A-Za-z0-9]/', $password)) {
 			array_push($this->errorArray, Constants::$passwordNotAlphanumeric);
 			return;
 		}
 		// check password length
-		if(strlen($pw) > 30 || strlen($pw) < 5) {
+		if(strlen($password) > 50 || strlen($password) < 5) {
 			array_push($this->errorArray, Constants::$passwordCharacters);
 			return;
 		}
-
 	}
-
 }
 ?>

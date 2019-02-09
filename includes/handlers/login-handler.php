@@ -5,7 +5,7 @@ if(isset($_POST['login-button'])) {
 	$username = $_POST['login-username'];
 	$password = $_POST['login-password'];
 
-	$result = $account->login($username, $password);
+	$result = $account->loginAccount($username, $password);
 
 	if($result == true) {
 		$_SESSION['userLoggedIn'] = $username;
