@@ -1,13 +1,14 @@
 <?php
 class Account {
 
-	private $con;
-	private $errorArray;
+	protected $db;
+    protected $data;
+    private $errorArray;
 
-	public function __construct($con) {
-		$this->con = $con;
-		$this->errorArray = array();
-	}
+	public function __construct() {
+        $this->db = MyPDO::instance();
+        $this->errorArray = array();
+    }
 
 	public function login($un, $pw) {
 		$pw = md5($pw);
@@ -34,43 +35,37 @@ class Account {
 
 		if(empty($this->errorArray) == true) {
             // insert into db
-			return $this->insertUserDetails($un, $fn, $ln, $em, $pw);
-		}
-		else {
-			return false;
-		}
-
-	}
+            $sql = "INSERT INTO Users VALUES (userID, ?, ?)";
+            $stmt = $this->db->run($sql, [$username, $password]);
+            $rowsAffected = $stmt->rowCount();
+            return $rowsAffected;
+        } else {
+            $rowsAffected = 0;
+            return $rowsAffected;
+        }
+    }
 
 	public function getError($error) {
-		if(!in_array($error, $this->errorArray)) {
-			$error = "";
-		}
-		return "<span class='errorMessage'>$error</span>";
-	}
-
-	private function insertUserDetails($un, $fn, $ln, $em, $pw) {
-		$encryptedPw = md5($pw);
-		// SECURITY BUG
-		$sql = "INSERT INTO users VALUES (userID, '$fn', '$ln', '$un', '$em', '$encryptedPw', '', '')";
-		$result = mysqli_query($this->con, $sql);
-		return $result;
-	}
+        if(!in_array($error, $this->errorArray)) {
+            $error = "";
+        }
+        return "<span class='errorMessage'>$error</span>";
+    }
 
 	private function validateUsername($un) {
-
-		if(strlen($un) > 25 || strlen($un) < 5) {
-			array_push($this->errorArray, Constants::$usernameCharacters);
-			return;
-		}
-
-		// SECURITY BUG
-		$sql = "SELECT username FROM users WHERE username='$un'";
-		$checkUsernameQuery = mysqli_query($this->con, $sql);
-		if(mysqli_num_rows($checkUsernameQuery) != 0) {
-			array_push($this->errorArray, Constants::$usernameTaken);
-			return;
-		}
+		// check username length
+        if (strlen($username) > 50 || strlen($username) < 5) {
+            array_push($this->errorArray, Constants::$usernameCharacters);
+            return;
+        }
+		// check username unique
+        $sql = "SELECT username FROM Users WHERE username = ?";
+        $stmt = $this->db->run($sql, [$username]);
+        $rowsAffected = $stmt->rowCount();
+        if ($rowsAffected != 0) {
+            array_push($this->errorArray, Constants::$usernameTaken);
+            return;
+        }
 
 	}
 
@@ -94,6 +89,7 @@ class Account {
 			return;
 		}
 
+		/*
 		// SECURITY BUG
 		$sql = "SELECT email FROM users WHERE email='$em'";
 		$checkEmailQuery = mysqli_query($this->con, $sql);
@@ -101,21 +97,22 @@ class Account {
 			array_push($this->errorArray, Constants::$emailTaken);
 			return;
 		}
+		*/
 
 	}
 
 	private function validatePasswords($pw, $pw2) {
-
+		// check passwords match
 		if($pw != $pw2) {
 			array_push($this->errorArray, Constants::$passwordsDoNoMatch);
 			return;
 		}
-
+		// check password alphanumberic
 		if(preg_match('/[^A-Za-z0-9]/', $pw)) {
 			array_push($this->errorArray, Constants::$passwordNotAlphanumeric);
 			return;
 		}
-
+		// check password length
 		if(strlen($pw) > 30 || strlen($pw) < 5) {
 			array_push($this->errorArray, Constants::$passwordCharacters);
 			return;

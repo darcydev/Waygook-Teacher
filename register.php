@@ -1,9 +1,11 @@
 <?php
 include("includes/config.php");
+include("includes/classes/MyPDO.php");
 include("includes/classes/Account.php");
 include("includes/classes/Constants.php");
 
-$account = new Account($con);
+/// $account = new Account($con);
+$account = new Account();
 
 include("includes/handlers/register-handler.php");
 include("includes/handlers/login-handler.php");
