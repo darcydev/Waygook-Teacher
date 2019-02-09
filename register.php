@@ -17,7 +17,7 @@ function getInputValue($name) {
 
 <html>
     <head>
-        <title>Waygook Teacher</title>
+        <title>Waygook Teacher: add PDO</title>
 
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
