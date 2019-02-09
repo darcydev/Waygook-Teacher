@@ -2,7 +2,11 @@
 
 class User {
 
-    private $con;
+    protected $db;
+    protected $data;
+    private $errorArray;
+    private $userLoggedIn;
+
     private $userID;
     private $first_name;
     private $last_name;
@@ -11,20 +15,39 @@ class User {
     private $profile_pic;
     private $description;
 
-    public function __construct($con, $userID) {
-        $this->con = $con;
-        $this->userID = $userID;
+    public function __construct($userLoggedIn) {
+        echo "<script>console.log('user 1');</script>";
+        $this->db = MyPDO::instance();
+        echo "<script>console.log('user 2');</script>";
+        // REFACTOR: do I have to pass '$userLoggedIn' in here, or can I
+        // simply use $_SESSION['userLogggedIn'] here?
+        $this->userLoggedIn = $userLoggedIn;
+        echo "<script>console.log('user 3');</script>";
 
+        $sql = "SELECT * FROM Users WHERE username = ?";
+        echo "<script>console.log('user 4');</script>";
+        $stmt = $this->db->run($sql, [$userLoggedIn]);
+        echo "<script>console.log('user 5');</script>";
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        echo "<script>console.log('user 6');</script>";
+        $this->userID = $row['userID'];
+        echo "<script>console.log('user 7');</script>";
+        echo $this->userID;
+
+
+        /*
         $sql = "SELECT * FROM Users WHERE userID='$this->userID'";
         $query = mysqli_query($this->con, $sql);
         $user = mysqli_fetch_array($query);
-
+        */
+        /*
         $this->first_name = $user['first_name'];
         $this->last_name = $user['last_name'];
         $this->username = $user['username'];
         $this->email = $user['email'];
         $this->profile_pic = $user['profile_pic'];
         $this->description = $user['description'];
+        */
     }
 
     public function getID() {

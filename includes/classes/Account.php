@@ -13,6 +13,7 @@ class Account {
 	public function loginAccount($un, $pw) {
 		$sql = "SELECT username, password FROM Users WHERE username = ? AND password = ?";
 		$query = $this->db->run($sql, [$un, $pw]);
+		// BUG: "rowCount()" is not for a SELECT query (https://stackoverflow.com/questions/40355262/pdo-rowcount-only-returning-one)
 		if ($query->rowCount() == 1) {
 			return true;
 		} else {

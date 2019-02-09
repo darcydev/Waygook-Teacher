@@ -1,16 +1,26 @@
 <?php
 include("includes/config.php");
+include("includes/classes/MyPDO.php");
 include("includes/classes/Account.php");
 include("includes/classes/Constants.php");
 include("includes/classes/User.php");
 
+echo "<script>console.log('header 1');</script>";
 if(isset($_SESSION['userLoggedIn'])) {
+    echo "<script>console.log('header 2');</script>";
     $userLoggedIn = $_SESSION['userLoggedIn'];
 }
 else {
+    echo "<script>console.log('header 3');</script>";
 	header("Location: register.php");
 }
+echo "<script>console.log('header 4');</script>";
+$user = new User($userLoggedIn);
+echo "<script>console.log('header 5');</script>";
+// $db = new Account();
 
+
+/*
 /// $sql = "SELECT * FROM Users WHERE username='$userLoggedIn'";
 $userQuery = mysqli_query($con, "SELECT * FROM Users WHERE username='$userLoggedIn'");
 $row = mysqli_fetch_array($userQuery);
@@ -18,6 +28,7 @@ $userID = $row['userID'];
 
 $user = new User($con, $userID);
 $account = new Account($con);
+*/
 
 include("includes/handlers/edit-profile-handler.php");
 include("includes/handlers/register-handler.php");

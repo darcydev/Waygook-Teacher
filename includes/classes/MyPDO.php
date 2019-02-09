@@ -45,11 +45,16 @@ class MyPDO {
 
     // a helper function to run prepared statements smoothly
     public function run($sql, $args = []) {
+        echo "<script>console.log('mypdo 4');</script>";
         if (!$args) {
+            echo "<script>console.log('mypdo 5');</script>";
             return $this->query($sql);
         }
+        echo "<script>console.log('mypdo 6');</script>";
         $stmt = $this->pdo->prepare($sql);
+        echo "<script>console.log('mypdo 7');</script>";
         $stmt->execute($args);
+        echo "<script>console.log('mypdo 8');</script>";
         return $stmt;
     }
 }
