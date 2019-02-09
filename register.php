@@ -4,7 +4,6 @@ include("includes/classes/MyPDO.php");
 include("includes/classes/Account.php");
 include("includes/classes/Constants.php");
 
-/// $account = new Account($con);
 $account = new Account();
 
 include("includes/handlers/register-handler.php");
@@ -20,9 +19,7 @@ function getInputValue($name) {
 <html>
 <head>
     <title>Waygook Teacher: add PDO</title>
-
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
