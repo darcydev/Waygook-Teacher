@@ -1,5 +1,4 @@
 <?php
-
 if(isset($_POST['confirm-profile-pic-button'])) {
 
     $currentDir = getcwd();
@@ -52,7 +51,7 @@ if(isset($_POST['confirm-profile-pic-button'])) {
 }
 
 if(isset($_POST['edit-profile-button'])) {
-  	// SECURITY BUG
+    // BUG: sanitize this input
     $desc_update = $_POST['edit-description'];
 
     if(isset($desc_update)) {

@@ -87,13 +87,10 @@ class User {
     }
 
     public function updateDescription($desc_update) {
-        // BUG: if $desc_update includes ' or ", it doesn't update
-        // $this->userID = that of currently loggedIn user.
-        $sql = "UPDATE Users SET description='{$desc_update}' WHERE userID='{$this->userID}'";
-        $result = mysqli_query($this->con, $sql)
-            or die (mysqli_error($this->con));
-        $rows_affected = mysqli_affected_rows($this->con);
-        return $rows_affected;
+        $sql = "UPDATE Users SET description = ? WHERE userID = ?";
+        $stmt = $this->db->run($sql, [$desc_update, $this->userID]);
+        $rowsAffected = $stmt->rowCount();
+        return $rowsAffected;
     }
 
     public function updateProfilePic($db_uploadPath) {

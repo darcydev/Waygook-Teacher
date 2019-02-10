@@ -1,4 +1,6 @@
-<?php include("includes/header.php") ?>
+<?php
+include("includes/header.php")
+?>
 
 <div id="edit-profile-container">
     <div id="edit-profile-content">

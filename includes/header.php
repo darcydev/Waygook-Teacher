@@ -20,6 +20,7 @@ else {
         -- For the purposes of profile.php, etc.
         -- necessary to get details of user on whose page we're on
 */
+$user = new User($userLoggedIn);
 $db = MyPDO::instance();
 
 // 1) Fetch db details of userLoggedIn
