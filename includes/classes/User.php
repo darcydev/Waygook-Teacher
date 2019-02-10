@@ -94,11 +94,17 @@ class User {
     }
 
     public function updateProfilePic($db_uploadPath) {
+        $sql = "UPDATE Users SET profile_pic = ? WHERE userID = ?";
+        $stmt = $this->db->run($sql, [$db_uploadPath, $this->userID]);
+        $rowsAffected = $stmt->rowCount();
+        return $rowsAffected;
+        /*
         $sql = "UPDATE Users SET profile_pic='{$db_uploadPath}' WHERE userID='{$this->userID}'";
         $result = mysqli_query($this->con, $sql)
             or die (mysqli_error($this->con));
         $rows_affected = mysqli_affected_rows($this->con);
         return $rows_affected;
+        */
     }
 
 }

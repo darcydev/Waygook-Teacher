@@ -35,9 +35,10 @@ if(isset($_POST['confirm-profile-pic-button'])) {
         $successUpload = move_uploaded_file($fileTmpName, $uploadPath);
         if($successUpload) {
             // echo "The file " . basename($fileName) . " has been uploaded";
-            $rows_affected = $user->updateProfilePic($db_uploadPath);
-            // FORM BUG: not directing User back to profile.php
-            if($rows_affected < 1) {
+            $rowsAffected = $user->updateProfilePic($db_uploadPath);
+            if ($rowsAffected = 1) {
+                header("Location: profile.php?userID=" . $user->getID());
+            } else {
                 echo "DB UPLOAD ERROR";
             }
         } else {
@@ -55,10 +56,10 @@ if(isset($_POST['edit-profile-button'])) {
     $desc_update = $_POST['edit-description'];
 
     if(isset($desc_update)) {
-        $rows_affected = $user->updateDescription($desc_update);
+        $rowsAffected = $user->updateDescription($desc_update);
     }
     // if db successfully updated, direct to user's profile page
-    if($rows_affected > 0) {
+    if($rowsAffected > 0) {
         header("Location: profile.php?userID=" . $user->getID());
     }
     else {
