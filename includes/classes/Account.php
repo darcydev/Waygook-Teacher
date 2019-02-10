@@ -1,76 +1,68 @@
 <?php
 class Account {
 
-	private $con;
-	private $errorArray;
+	protected $db;
+    protected $data;
+    private $errorArray;
 
-	public function __construct($con) {
-		$this->con = $con;
-		$this->errorArray = array();
-	}
+	public function __construct() {
+        $this->db = MyPDO::instance();
+        $this->errorArray = array();
+    }
 
-	public function login($un, $pw) {
-		$pw = md5($pw);
-		// SECURITY BUG
-		$sql = "SELECT * FROM Users WHERE username='$un' AND password='$pw'";
-		$query = mysqli_query($this->con, $sql);
-
-        if(mysqli_num_rows($query) == 1) {
-            return true;
-        }
-        else {
-            array_push($this->errorArray, Constants::$loginFailed);
+	public function loginAccount($un, $pw) {
+		$sql = "SELECT username, password FROM Users WHERE username = ? AND password = ?";
+		$query = $this->db->run($sql, [$un, $pw]);
+		// BUG: "rowCount()" is not for a SELECT query (https://stackoverflow.com/questions/40355262/pdo-rowcount-only-returning-one)
+		if ($query->rowCount() == 1) {
+			return true;
+		} else {
+			array_push($this->errorArray, Constants::$loginFailed);
             return false;
-        }
-
+		}
 	}
 
-	public function register($fn, $ln, $un, $em, $pw, $pw2) {
-		$this->validateUsername($un);
+	public function registerAccount($fn, $ln, $username, $em, $password, $password2) {
+		$this->validateUsername($username);
 		$this->validateFirstName($fn);
 		$this->validateLastName($ln);
 		$this->validateEmail($em);
-		$this->validatePasswords($pw, $pw2);
+		$this->validatePasswords($password, $password2);
 
 		if(empty($this->errorArray) == true) {
             // insert into db
-			return $this->insertUserDetails($un, $fn, $ln, $em, $pw);
-		}
-		else {
-			return false;
-		}
-
-	}
+			$sql = "INSERT INTO Users VALUES (userID, ?, ?, ?, ?, ?, NULL, NULL)";
+            $stmt = $this->db->run($sql, [$fn, $ln, $username, $em, $password]);
+            $rowsAffected = $stmt->rowCount();
+            return $rowsAffected;
+        } else {
+			echo "<script>console.log('Account 7');</script>";
+            $rowsAffected = 0;
+            return $rowsAffected;
+        }
+    }
 
 	public function getError($error) {
-		if(!in_array($error, $this->errorArray)) {
-			$error = "";
-		}
-		return "<span class='errorMessage'>$error</span>";
-	}
+        if(!in_array($error, $this->errorArray)) {
+            $error = "";
+        }
+        return "<span class='errorMessage'>$error</span>";
+    }
 
-	private function insertUserDetails($un, $fn, $ln, $em, $pw) {
-		$encryptedPw = md5($pw);
-		// SECURITY BUG
-		$sql = "INSERT INTO users VALUES (userID, '$fn', '$ln', '$un', '$em', '$encryptedPw', '', '')";
-		$result = mysqli_query($this->con, $sql);
-		return $result;
-	}
-
-	private function validateUsername($un) {
-
-		if(strlen($un) > 25 || strlen($un) < 5) {
-			array_push($this->errorArray, Constants::$usernameCharacters);
-			return;
-		}
-
-		// SECURITY BUG
-		$sql = "SELECT username FROM users WHERE username='$un'";
-		$checkUsernameQuery = mysqli_query($this->con, $sql);
-		if(mysqli_num_rows($checkUsernameQuery) != 0) {
-			array_push($this->errorArray, Constants::$usernameTaken);
-			return;
-		}
+	private function validateUsername($username) {
+		// check username length
+        if (strlen($username) > 50 || strlen($username) < 5) {
+            array_push($this->errorArray, Constants::$usernameCharacters);
+            return;
+        }
+		// check username unique
+        $sql = "SELECT username FROM Users WHERE username = ?";
+        $stmt = $this->db->run($sql, [$username]);
+        $rowsAffected = $stmt->rowCount();
+        if ($rowsAffected != 0) {
+            array_push($this->errorArray, Constants::$usernameTaken);
+            return;
+        }
 
 	}
 
@@ -93,35 +85,32 @@ class Account {
 			array_push($this->errorArray, Constants::$emailInvalid);
 			return;
 		}
-
-		// SECURITY BUG
-		$sql = "SELECT email FROM users WHERE email='$em'";
-		$checkEmailQuery = mysqli_query($this->con, $sql);
-		if(mysqli_num_rows($checkEmailQuery) != 0) {
-			array_push($this->errorArray, Constants::$emailTaken);
+		// check email unique
+		$sql = "SELECT email FROM Users WHERE email = ?";
+		$stmt = $this->db->run($sql, [$em]);
+		$rowsAffected = $stmt->rowCount();
+		if ($rowsAffected != 0) {
+			array_push($this->errorArray, Constants::$usernameTaken);
 			return;
 		}
-
 	}
 
-	private function validatePasswords($pw, $pw2) {
-
-		if($pw != $pw2) {
+	private function validatePasswords($password, $password2) {
+		// check passwords match
+		if($password != $password2) {
 			array_push($this->errorArray, Constants::$passwordsDoNoMatch);
 			return;
 		}
-
-		if(preg_match('/[^A-Za-z0-9]/', $pw)) {
+		// check password alphanumberic
+		if(preg_match('/[^A-Za-z0-9]/', $password)) {
 			array_push($this->errorArray, Constants::$passwordNotAlphanumeric);
 			return;
 		}
-
-		if(strlen($pw) > 30 || strlen($pw) < 5) {
+		// check password length
+		if(strlen($password) > 50 || strlen($password) < 5) {
 			array_push($this->errorArray, Constants::$passwordCharacters);
 			return;
 		}
-
 	}
-
 }
 ?>

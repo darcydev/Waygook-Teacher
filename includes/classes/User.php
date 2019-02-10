@@ -2,7 +2,11 @@
 
 class User {
 
-    private $con;
+    protected $db;
+    protected $data;
+    private $errorArray;
+    private $userLoggedIn;
+
     private $userID;
     private $first_name;
     private $last_name;
@@ -11,20 +15,23 @@ class User {
     private $profile_pic;
     private $description;
 
-    public function __construct($con, $userID) {
-        $this->con = $con;
-        $this->userID = $userID;
+    public function __construct($userLoggedIn) {
+        $this->db = MyPDO::instance();
+        // REFACTOR: do I have to pass '$userLoggedIn' in here, or can I
+        // simply use $_SESSION['userLogggedIn'] here?
+        $this->userLoggedIn = $userLoggedIn;
 
-        $sql = "SELECT * FROM Users WHERE userID='$this->userID'";
-        $query = mysqli_query($this->con, $sql);
-        $user = mysqli_fetch_array($query);
+        $sql = "SELECT * FROM Users WHERE username = ?";
+        $stmt = $this->db->run($sql, [$userLoggedIn]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $this->first_name = $user['first_name'];
-        $this->last_name = $user['last_name'];
-        $this->username = $user['username'];
-        $this->email = $user['email'];
-        $this->profile_pic = $user['profile_pic'];
-        $this->description = $user['description'];
+        $this->userID = $row['userID'];
+        $this->first_name = $row['first_name'];
+        $this->last_name = $row['last_name'];
+        $this->username = $row['username'];
+        $this->email = $row['email'];
+        $this->profile_pic = $row['profile_pic'];
+        $this->description = $row['description'];
     }
 
     public function getID() {
@@ -32,50 +39,46 @@ class User {
     }
 
     public function getUserIDs() {
+        // create an array that holds all userIDs
+        // $array = array();
+        $sql = "SELECT userID FROM Users";
+        $stmt = $this->db->run($sql);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+
+
+        /*
         // select all userIDs
         $sql = "SELECT userID FROM Users";
         $query = mysqli_query($this->con, $sql);
         // create array to hold userIDs
         $array = array();
+        */
+        /*
         while($row = mysqli_fetch_array($query)) {
             array_push($array, $row['userID']);
         }
         return $array;
+        */
     }
 
     public function getFirstName() {
-        /// $query = mysqli_query($this->con, "SELECT first_name FROM Users WHERE userID='$this->userID'");
-        /// $user = mysqli_fetch_array($query);
-        /// return $user['first_name'];
         return $this->first_name;
     }
 
     public function getLastName() {
-        /// $query = mysqli_query($this->con, "SELECT last_name FROM Users WHERE userID='$this->userID'");
-        /// $user = mysqli_fetch_array($query);
-        /// return $user['last_name'];
         return $this->last_name;
     }
 
     public function getUsername() {
-        /// $query = mysqli_query($this->con, "SELECT username FROM Users WHERE userID='$this->userID'");
-        /// $user = mysqli_fetch_array($query);
-        /// return $user['username'];
         return $this->username;
     }
 
     public function getEmail() {
-        /// $query = mysqli_query($this->con, "SELECT email FROM Users WHERE userID='$this->userID'");
-        /// $user = mysqli_fetch_array($query);
-        /// return $user['email'];
         return $this->email;
     }
 
     public function getPhoto() {
-        /// $sql = "SELECT profile_pic FROM Users WHERE userID='$this->userID'";
-        /// $query = mysqli_query($this->con, $sql);
-        /// $user = mysqli_fetch_array($query);
-        /// return $user['profile_pic'];
         return $this->profile_pic;
     }
 
@@ -84,21 +87,24 @@ class User {
     }
 
     public function updateDescription($desc_update) {
-        // BUG: if $desc_update includes ' or ", it doesn't update
-        // $this->userID = that of currently loggedIn user.
-        $sql = "UPDATE Users SET description='{$desc_update}' WHERE userID='{$this->userID}'";
-        $result = mysqli_query($this->con, $sql)
-            or die (mysqli_error($this->con));
-        $rows_affected = mysqli_affected_rows($this->con);
-        return $rows_affected;
+        $sql = "UPDATE Users SET description = ? WHERE userID = ?";
+        $stmt = $this->db->run($sql, [$desc_update, $this->userID]);
+        $rowsAffected = $stmt->rowCount();
+        return $rowsAffected;
     }
 
     public function updateProfilePic($db_uploadPath) {
+        $sql = "UPDATE Users SET profile_pic = ? WHERE userID = ?";
+        $stmt = $this->db->run($sql, [$db_uploadPath, $this->userID]);
+        $rowsAffected = $stmt->rowCount();
+        return $rowsAffected;
+        /*
         $sql = "UPDATE Users SET profile_pic='{$db_uploadPath}' WHERE userID='{$this->userID}'";
         $result = mysqli_query($this->con, $sql)
             or die (mysqli_error($this->con));
         $rows_affected = mysqli_affected_rows($this->con);
         return $rows_affected;
+        */
     }
 
 }

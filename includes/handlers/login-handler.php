@@ -1,11 +1,11 @@
 <?php
 if(isset($_POST['login-button'])) {
 	//Login button was pressed
-	// SECURITY BUG
+	// BUG: do I need to sanitize these ?
 	$username = $_POST['login-username'];
-	$password = $_POST['login-password'];
+	$password = md5($_POST['login-password']);
 
-	$result = $account->login($username, $password);
+	$result = $account->loginAccount($username, $password);
 
 	if($result == true) {
 		$_SESSION['userLoggedIn'] = $username;
