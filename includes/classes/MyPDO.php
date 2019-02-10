@@ -19,6 +19,7 @@ class MyPDO {
         $dsn = 'mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset='.$DB_CHAR;
 
         try {
+            // BUG: I suspect that this is making a new connection every time the page loads
             $this->pdo = new PDO($dsn, $DB_USER, $DB_PASS, $opt);
             echo "<script>console.log('mypdo 0');</script>";
         } catch (\PDOException $e) {

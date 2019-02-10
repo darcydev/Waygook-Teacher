@@ -4,17 +4,21 @@ include("includes/header.php")
 
 <?php
 // if this one necessary? $userLoggedIn = username
+/*
+I THINK THAT THIS IS DUPLICATION - BECAUSE IT'S ALREADY INCLUDED IN HEADER.PHP
 if(isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = $_SESSION['userLoggedIn'];
 }
 else {
 	header("Location: register.php");
 }
+*/
 
 if(isset($_GET['userID'])) {
 	$userID = $_GET['userID'];
 }
 else {
+    // BUG: that shouldn't send back to register, but instead to index.php
 	header("Location: register.php");
 }
 

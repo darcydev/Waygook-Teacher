@@ -5,35 +5,83 @@ include("includes/classes/Account.php");
 include("includes/classes/Constants.php");
 include("includes/classes/User.php");
 
-echo "<script>console.log('header 1');</script>";
 if(isset($_SESSION['userLoggedIn'])) {
-    echo "<script>console.log('header 2');</script>";
     $userLoggedIn = $_SESSION['userLoggedIn'];
 }
 else {
-    echo "<script>console.log('header 3');</script>";
 	header("Location: register.php");
 }
-echo "<script>console.log('header 4');</script>";
-$user = new User($userLoggedIn);
-echo "<script>console.log('header 5');</script>";
-// $db = new Account();
+
+/* AIM -- don't delete
+    1) Fetch db details of userLoggedIn
+        -- For the purposes of populating page with User info
+        -- necessary to get details of user whose logged in
+    2) Fetch db details of $_GET['userID'] (from the url)
+        -- For the purposes of profile.php, etc.
+        -- necessary to get details of user on whose page we're on
+*/
+
+$db = MyPDO::instance();
+
+// 1) Fetch db details of userLoggedIn
+$sql = "SELECT * FROM Users WHERE username = ?";
+$stmt = $db->run($sql, [$userLoggedIn]);
+$userLoggedInRow = $stmt->fetch(PDO::FETCH_ASSOC);
+$userLoggedInID = $userLoggedInRow['userID'];
+
+// 2) (if avalible) Fetch db details of userURL
+if(isset($_GET['userID'])) {
+	$userID = $_GET['userID'];
+    $sql = "SELECT * FROM Users WHERE userID = ?";
+    $stmt = $db->run($sql, [$userID]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+} else {
+    echo "$ GET['userID'] is not set";
+}
+
+
+
+
 
 
 /*
-/// $sql = "SELECT * FROM Users WHERE username='$userLoggedIn'";
-$userQuery = mysqli_query($con, "SELECT * FROM Users WHERE username='$userLoggedIn'");
-$row = mysqli_fetch_array($userQuery);
+$pdo = MyPDO::instance();
+$sql = "SELECT * FROM Users WHERE username = ?";
+$stmt = $pdo->prepare($sql, [$userLoggedIn]);
+$stmt->execute();
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
 $userID = $row['userID'];
-
-$user = new User($con, $userID);
-$account = new Account($con);
 */
+
+
+
+// $db = new MyPDO();
+
+// $userID = db::getID();
+
+// $userID = $_SESSION['id'];
+// echo $userID;
+
+// $db = MyPDO::instance();
+// echo $db->userID;
+// echo $_SESSION['user'];
+
+// $sql = "SELECT * FROM Users WHERE username = ?";
+// $query = $db->prepare($sql, [$userLoggedIn]);
+//$query->execute();
+//$row = $query->fetch(PDO::FETCH_ASSOC);
+//$userID = $row['userID'];
+
+// $userID = User::getID();
+// echo $_SESSION['userId'];
+// echo $user->userID;
+// $row = User::getID();
 
 include("includes/handlers/edit-profile-handler.php");
 include("includes/handlers/register-handler.php");
 include("includes/handlers/login-handler.php");
 
+echo $username;
 ?>
 
 
@@ -52,7 +100,8 @@ include("includes/handlers/login-handler.php");
     		<a href="index.php">WaygookTeacher</a>
     	</div>
         <ul id="nav-bar-links">
-            <li><a href="profile.php?userID=<?php echo $userID; ?>"><?php echo $row['first_name']; ?> <?php echo $row['last_name']; ?></a></li>
+            <!-- BUG: userID = echo $userID; isn't working -->
+            <li><a href="profile.php?userID=<?php echo $userID; ?>"><?php echo $userLoggedIn; ?></a></li>
             <li><a href="search.php">Search</a></li>
             <li><a href="message.php">Message</a></li>
             <li><a href="register.php">Login/Register</a></li>

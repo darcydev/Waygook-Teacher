@@ -34,14 +34,12 @@ if(isset($_POST['register-button'])) {
 	$rowsAffected = $account->registerAccount($firstName, $lastName, $username, $email, $password, $password2);
 
     if($rowsAffected == 1) {
-		echo "<script>console.log('r-handler 1');</script>";
         // create session variable (value = "username")
 		// BUG: this isn't working! How do you set $_SESSION using PDO?
 		$_SESSION['userLoggedIn'] = $username;
 		header("Location: index.php");
-		echo "<script>console.log('r-handler 2');</script>";
 	} else {
-		echo "<script>console.log('r-handler 3');</script>";
+		// BUG: insert code... (?? what code?)
 	}
 }
 ?>

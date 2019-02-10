@@ -3,7 +3,6 @@ include("includes/header.php");
 ?>
 
 <?php
-
 if(isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = $_SESSION['userLoggedIn'];
 }
@@ -11,11 +10,13 @@ else {
 	header("Location: register.php");
 }
 
+/*
 $user = new User($con, $userID);
 
 $userQuery = mysqli_query($con, "SELECT * FROM Users WHERE username='$userLoggedIn'");
 $row = mysqli_fetch_array($userQuery);
 $userID = $row['userID'];
+*/
 ?>
 
 <div id="search-container">
@@ -25,9 +26,13 @@ $userID = $row['userID'];
     <div id="search-results-container">
         <ul class="search-result-list">
             <?php
+            /*
             // select random users
             $sql = "SELECT * FROM Users ORDER BY RAND() LIMIT 10";
             $query = mysqli_query($con, $sql);
+            */
+            // $result = User::getUserIDs();
+            // echo $result;
 
             while($row = mysqli_fetch_array($query)) {
                 // create html div each time loops through $query
