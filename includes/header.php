@@ -34,8 +34,6 @@ if(isset($_GET['userID'])) {
     $sql = "SELECT * FROM Users WHERE userID = ?";
     $stmt = $db->run($sql, [$userID]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-} else {
-    echo "$ GET['userID'] is not set";
 }
 
 include("includes/handlers/edit-profile-handler.php");

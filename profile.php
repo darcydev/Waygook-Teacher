@@ -1,29 +1,8 @@
 <?php
-include("includes/header.php")
-?>
+include("includes/header.php");
 
-<?php
-/*
-if(isset($_GET['userID'])) {
-	$userID = $_GET['userID'];
-	echo $userID;
-}
-else {
-    // BUG: that shouldn't send back to register, but instead to index.php
-	header("Location: register.php");
-}
-
-$user = new User($con, $userID);
-$sql = "SELECT * FROM Users WHERE userID='$userID'";
-$userQuery = mysqli_query($con, $sql);
-$row = mysqli_fetch_array($userQuery);
-*/
-?>
-
-<?php
-// CHECK IF USER IS VIEWING OWN PROFILE
-// IF YES, SHOW 'EDIT-PROFILE' link
-// IF NO, SHOW 'SEND-MESSAGE' link
+// if User is viewing own profile, show 'edit-profile' button
+// else, show 'send-message' button
 if($row['username'] == $userLoggedIn) {
     echo '<script>
             $(document).ready(function() {
