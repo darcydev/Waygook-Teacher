@@ -10,6 +10,13 @@ class Account {
         $this->errorArray = array();
     }
 
+	public function getError($error) {
+		if(!in_array($error, $this->errorArray)) {
+			$error = "";
+		}
+		return "<span class='errorMessage'>$error</span>";
+	}
+
 	public function loginAccount($un, $pw) {
 		$sql = "SELECT username, password FROM Users WHERE username = ? AND password = ?";
 		$query = $this->db->run($sql, [$un, $pw]);
@@ -40,13 +47,6 @@ class Account {
             $rowsAffected = 0;
             return $rowsAffected;
         }
-    }
-
-	public function getError($error) {
-        if(!in_array($error, $this->errorArray)) {
-            $error = "";
-        }
-        return "<span class='errorMessage'>$error</span>";
     }
 
 	private function validateUsername($username) {

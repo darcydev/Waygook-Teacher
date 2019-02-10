@@ -20,6 +20,7 @@ else {
         -- For the purposes of profile.php, etc.
         -- necessary to get details of user on whose page we're on
 */
+// $account = new Account();
 $user = new User($userLoggedIn);
 $db = MyPDO::instance();
 
@@ -61,8 +62,7 @@ include("includes/handlers/login-handler.php");
             <li><a href="profile.php?userID=<?php echo $userLoggedInID; ?>"><?php echo $userLoggedIn; ?></a></li>
             <li><a href="search.php">Search</a></li>
             <li><a href="message.php">Message</a></li>
-            <li><a href="register.php">Login/Register</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="logout.php">Logout</a></li>
         </ul>
     </div>
     <div id="main-content">

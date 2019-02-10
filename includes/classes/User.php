@@ -17,6 +17,7 @@ class User {
 
     public function __construct($userLoggedIn) {
         $this->db = MyPDO::instance();
+        $this->errorArray = array();
         // REFACTOR: do I have to pass '$userLoggedIn' in here, or can I
         // simply use $_SESSION['userLogggedIn'] here?
         $this->userLoggedIn = $userLoggedIn;
@@ -34,6 +35,13 @@ class User {
         $this->description = $row['description'];
     }
 
+    public function getError($error) {
+        if(!in_array($error, $this->errorArray)) {
+            $error = "";
+        }
+        return "<span class='errorMessage'>$error</span>";
+    }
+
     public function getID() {
         return $this->userID;
     }
@@ -45,21 +53,6 @@ class User {
         $stmt = $this->db->run($sql);
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $results;
-
-
-        /*
-        // select all userIDs
-        $sql = "SELECT userID FROM Users";
-        $query = mysqli_query($this->con, $sql);
-        // create array to hold userIDs
-        $array = array();
-        */
-        /*
-        while($row = mysqli_fetch_array($query)) {
-            array_push($array, $row['userID']);
-        }
-        return $array;
-        */
     }
 
     public function getFirstName() {
@@ -86,27 +79,52 @@ class User {
         return $this->description;
     }
 
-    public function updateDescription($desc_update) {
-        $sql = "UPDATE Users SET description = ? WHERE userID = ?";
-        $stmt = $this->db->run($sql, [$desc_update, $this->userID]);
-        $rowsAffected = $stmt->rowCount();
-        return $rowsAffected;
+    public function updateDescription($desc) {
+		$this->validateDescription($desc);
+
+        if (empty($this->errorArray) == true) {
+            $sql = "UPDATE Users SET description = ? WHERE userID = ?";
+            $stmt = $this->db->run($sql, [$desc, $this->userID]);
+            $rowsAffected = $stmt->rowCount();
+            return $rowsAffected;
+        }
     }
 
-    public function updateProfilePic($db_uploadPath) {
-        $sql = "UPDATE Users SET profile_pic = ? WHERE userID = ?";
-        $stmt = $this->db->run($sql, [$db_uploadPath, $this->userID]);
-        $rowsAffected = $stmt->rowCount();
-        return $rowsAffected;
-        /*
-        $sql = "UPDATE Users SET profile_pic='{$db_uploadPath}' WHERE userID='{$this->userID}'";
-        $result = mysqli_query($this->con, $sql)
-            or die (mysqli_error($this->con));
-        $rows_affected = mysqli_affected_rows($this->con);
-        return $rows_affected;
-        */
+    private function validateDescription($desc) {
+		// check description length
+		if (strlen($desc) > 5000) {
+			array_push($this->errorArray, Constants::$descriptionCharacters);
+            return;
+        }
+	}
+
+    public function updateProfilePic($db_uploadPath, $fileExtension, $fileSize, $uploadPath) {
+        $this->validateProfilePic($fileExtension, $fileSize, $uploadPath);
+
+        if (empty($this->errorArray) == true) {
+            $sql = "UPDATE Users SET profile_pic = ? WHERE userID = ?";
+            $stmt = $this->db->run($sql, [$db_uploadPath, $this->userID]);
+            $rowsAffected = $stmt->rowCount();
+            return $rowsAffected;
+        }
     }
 
+    private function validateProfilePic($fileExtension, $fileSize, $uploadPath) {
+        // check file extension
+        if (! in_array($fileExtension, ['jpeg', 'jpg', 'png'])) {
+            array_push($this->errorArray, Constants::$invalidFileExtension);
+            return;
+        }
+        // check file size
+        if ($fileSize > 2000000) {
+            array_push($this->errorArray, Constants::$invalidFileSize);
+            return;
+        }
+        // check file name
+        if (file_exists($uploadPath)) {
+            array_push($this->errorArray, Constants::$invalidFileName);
+        }
+    }
 }
 
 ?>

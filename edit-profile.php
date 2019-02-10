@@ -5,9 +5,11 @@ include("includes/header.php")
 <div id="edit-profile-container">
     <div id="edit-profile-content">
         <form action="edit-profile.php" method="post" enctype="multipart/form-data">
+            <?php echo $user->getError(Constants::$invalidFileExtension); ?>
+            <?php echo $user->getError(Constants::$invalidFileSize); ?>
+            <?php echo $user->getError(Constants::$invalidFileName); ?>
             <label for="upload-profile-pic">Profile Picture</label>
             <input id="upload-profile-pic" type="file" name="upload-profile-pic">
-                <!-- <input id="submit-profile-pic" type="submit" name="submit-profile-pic"> -->
             <button type="submit" name="confirm-profile-pic-button">Confirm Photo Changes</button>
         </form>
         <form action="edit-profile.php" method="post">

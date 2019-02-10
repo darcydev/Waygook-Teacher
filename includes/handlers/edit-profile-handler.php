@@ -1,68 +1,38 @@
 <?php
-if(isset($_POST['confirm-profile-pic-button'])) {
-
+if (isset($_POST['confirm-profile-pic-button']) && isset($_FILES["upload-profile-pic"])) {
     $currentDir = getcwd();
-    // target upload directory
     $targetDir = "assets/images/profile-pics/";
-    // store all errors
-    $errors = [];
-    // allowed file extensions
-    $fileExtensions = ['jpeg', 'jpg', 'png'];
-  	// SECURITY BUG
     $fileName = $_FILES["upload-profile-pic"]["name"];
     $fileSize = $_FILES["upload-profile-pic"]["size"];
     $fileTmpName = $_FILES["upload-profile-pic"]["tmp_name"];
+    // BUG: I THINK i can remove $fileType (unused)
     $fileType = $_FILES["upload-profile-pic"]["type"];
     $fileExtension = strtolower(end(explode('.', $fileName)));
-
     $uploadPath = $currentDir . "/" . $targetDir . basename($fileName);
     // POTENTIAL BUG: may have to remove "/" in "/assets"
     $db_uploadPath = $targetDir . basename($fileName);
 
-    if(! in_array($fileExtension, $fileExtensions)) {
-        $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
-    }
+    $rowsAffected = $user->updateProfilePic($db_uploadPath, $fileExtension, $fileSize, $uploadPath);
 
-    if($fileSize > 2000000) {
-        $errors[] = "This file is more than 2MB. Sorry, it has to be less than or equal to 2MB";
-    }
-
-    if(file_exists($uploadPath)) {
-        $errors[] = "File already exists. Please rename your file.";
-    }
-
-    if(empty($errors)) {
+    if($rowsAffected > 0) {
         $successUpload = move_uploaded_file($fileTmpName, $uploadPath);
-        if($successUpload) {
-            // echo "The file " . basename($fileName) . " has been uploaded";
-            $rowsAffected = $user->updateProfilePic($db_uploadPath);
-            if ($rowsAffected = 1) {
-                header("Location: profile.php?userID=" . $user->getID());
-            } else {
-                echo "DB UPLOAD ERROR";
-            }
+        if ($successUpload) {
+            echo "Picture successfully updated";
         } else {
-            echo "move_uploaded_file ERROR";
-        }
-    } else {
-        foreach($errors as $error) {
-            echo $error . "These are the errors" . "\n";
+            echo "Sorry, there has been an error uploading the photo";
         }
     }
 }
 
-if(isset($_POST['edit-profile-button'])) {
-    // BUG: sanitize this input
-    $desc_update = $_POST['edit-description'];
+if(isset($_POST['edit-profile-button']) && isset($_POST['edit-description'])) {
+    // BUG: sanitize this input (???)
+    $desc = $_POST['edit-description'];
 
-    if(isset($desc_update)) {
-        $rowsAffected = $user->updateDescription($desc_update);
-    }
-    // if db successfully updated, direct to user's profile page
+    $rowsAffected = $user->updateDescription($desc);
+
     if($rowsAffected > 0) {
-        header("Location: profile.php?userID=" . $user->getID());
-    }
-    else {
+        echo "Description successfully updated";
+    } else {
         echo "Sorry, there has been an error updating your profile.";
     }
 }
