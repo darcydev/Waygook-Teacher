@@ -29,10 +29,19 @@ if($row['username'] == $userLoggedIn) {
         </div>
         <div id="profile-text-content">
             <div id="profile-name" class="profile-content">
-                <p><?php echo $row['first_name']; ?> <?php echo $row['last_name']; ?></p>
+                <p><?php echo $row['first_name']; ?></p>
             </div>
-            <div id="profile-email" class="profile-content">
-                <p><?php echo $row['email']; ?></p>
+            <div id="profile-flag" class="profile-content">
+                <p>INSERT NATIONALITY FLAG</pa>
+            </div>
+            <div id="profile-age" class="profile-content">
+                <p><?php echo $row['DOB']; ?></p>
+            </div>
+            <div id="profile-education-level" class="profile-content">
+                <p><?php echo $row['education_level']; ?></p>
+            </div>
+            <div id="profile-education-major" class="profile-content">
+                <p><?php echo $row['education_major']; ?></p>
             </div>
             <div id="profile-description" class="profile-content">
                 <p>DESCRIPTION: <p><?php echo $row['description']; ?></p></p>

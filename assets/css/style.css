@@ -200,12 +200,7 @@ a {
 #profile-container #profile-content-container #profile-text-content #profile-name {
 	font-size: 1.8em;
     font-weight: 700;
-}
-
-#profile-container #profile-content-container #profile-text-content
-#profile-username, #profile-email {
-	font-size: 1.3em;
-    padding-left: 20px;
+	text-align: center;
 }
 
 #profile-container #profile-content-container #profile-text-content #profile-description {
