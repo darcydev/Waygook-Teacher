@@ -16,6 +16,19 @@ function getInputValue($name) {
 }
 ?>
 
+<script>
+// if User selects 'role=Teacher', show the aspects of the register-form
+// that are relevant only to the teacher
+function roleCheck(that) {
+    if (that.value == "teacher") {
+        alert("check");
+        document.getElementById("teacher-register-form").style.display = "block";
+    } else {
+        document.getElementById("teacher-register-form").style.display = "none";
+    }
+}
+</script>
+
 <html>
 <head>
     <title>Waygook Teacher: add PDO</title>
@@ -41,6 +54,12 @@ function getInputValue($name) {
                 </form>
                 <form id="register-form" class="register-form" action="register.php" method="post">
                     <h2>Register</h2>
+                    <p>
+                        <label for="role">Role</label>
+                        <select id="role" name="role" type="text" onchange="roleCheck(this);" required>
+                            <option value="teacher">Teacher</option>
+                            <option value="student">Student</option>
+                    </p>
                     <p>
                         <?php echo $account->getError(Constants::$usernameCharacters); ?>
                         <?php echo $account->getError(Constants::$usernameTaken); ?>
@@ -74,6 +93,49 @@ function getInputValue($name) {
                         <label for="password2">Confirm password</label>
                         <input id="password2" name="password2" type="password" required>
                     </p>
+                    <div id="teacher-register-form" class="register-form">
+                        <p>
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" type="text" required>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="nationality">Nationality</label>
+                            <select id="nationality" name="nationality" type="text" required>
+                                <option value="american">American</option>
+                                <option value="australian">Australian</option>
+                                <option value="british">British</option>
+                                <option value="canadian">Canadian</option>
+                                <option value="southAfrica">South African</option>
+                                <option value="filipino">Filipino</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="educationLevel">Education Level</label>
+                            <select id="educationLevel" name="educationLevel" type="text" required>
+                                <option value="teritary">Teritary</option>
+                                <option value="bachelor">Bachelor</option>
+                                <option value="masters">Masters</option>
+                                <option value="doctorate">Doctorate</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="educationMajor">Education Major</label>
+                            <select id="educationMajor" name="educationMajor" type="text" required>
+                                <option value="none">None</option>
+                                <option value="education">Education</option>
+                                <option value="english">English</option>
+                                <option value="business">Business</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="dob">Date of Birth</label>
+                            <input id="dob" name="dob" type="date" required>
+                        </p>
+                    </div>
                     <button type="submit" name="register-button">SIGN UP</button>
                 </form>
             </div>

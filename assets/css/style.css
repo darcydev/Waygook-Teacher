@@ -77,6 +77,19 @@ a {
     line-height: 27px;
 }
 
+#login-container #input-container #teacher-register-form label {
+	padding-bottom: 5px;
+}
+
+#login-container #input-container .register-form select {
+	background-color: transparent;
+	width: 100%;
+	display: block;
+	border-width: 1px;
+	height: 27px;
+	line-height: 27px;
+}
+
 #login-container #input-container .register-form button {
 	background-color: transparent;
     border: 2px solid #fff;
