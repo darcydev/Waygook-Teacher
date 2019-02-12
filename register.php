@@ -59,6 +59,7 @@ function roleCheck(that) {
                         <select id="role" name="role" type="text" onchange="roleCheck(this);" required>
                             <option value="teacher">Teacher</option>
                             <option value="student">Student</option>
+                        </select>
                     </p>
                     <p>
                         <?php echo $account->getError(Constants::$usernameCharacters); ?>
@@ -96,14 +97,14 @@ function roleCheck(that) {
                     <div id="teacher-register-form" class="register-form">
                         <p>
                             <label for="gender">Gender</label>
-                            <select id="gender" name="gender" type="text" required>
+                            <select id="gender" name="gender" type="text">
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
                         </p>
                         <p>
                             <label for="nationality">Nationality</label>
-                            <select id="nationality" name="nationality" type="text" required>
+                            <select id="nationality" name="nationality" type="text">
                                 <option value="american">American</option>
                                 <option value="australian">Australian</option>
                                 <option value="british">British</option>
@@ -114,8 +115,9 @@ function roleCheck(that) {
                         </p>
                         <p>
                             <label for="educationLevel">Education Level</label>
-                            <select id="educationLevel" name="educationLevel" type="text" required>
+                            <select id="educationLevel" name="educationLevel" type="text">
                                 <option value="teritary">Teritary</option>
+                                <option value="diploma">Diploma</option>
                                 <option value="bachelor">Bachelor</option>
                                 <option value="masters">Masters</option>
                                 <option value="doctorate">Doctorate</option>
@@ -123,7 +125,7 @@ function roleCheck(that) {
                         </p>
                         <p>
                             <label for="educationMajor">Education Major</label>
-                            <select id="educationMajor" name="educationMajor" type="text" required>
+                            <select id="educationMajor" name="educationMajor" type="text">
                                 <option value="none">None</option>
                                 <option value="education">Education</option>
                                 <option value="english">English</option>
@@ -133,7 +135,7 @@ function roleCheck(that) {
                         </p>
                         <p>
                             <label for="dob">Date of Birth</label>
-                            <input id="dob" name="dob" type="date" required>
+                            <input id="dob" name="dob" type="date">
                         </p>
                     </div>
                     <button type="submit" name="register-button">SIGN UP</button>
