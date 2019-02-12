@@ -59,10 +59,15 @@ include("includes/handlers/login-handler.php");
     		<a href="index.php">WaygookTeacher</a>
     	</div>
         <ul id="nav-bar-links">
-            <li><a href="profile.php?userID=<?php echo $userLoggedInID; ?>"><?php echo $userLoggedIn; ?></a></li>
+            <li><a href="profile.php?userID=<?php echo $userLoggedInID; ?>">Profile</a></li>
             <li><a href="search.php">Search</a></li>
-            <li><a href="message.php">Message</a></li>
+            <li><a href="conversation-list.php">Messages</a></li>
+            <li><a href="settings.php">Settings</a></li>
             <li><a href="logout.php">Logout</a></li>
+            <select id="select-language" name="select-language" type="text" onchange="changeLanguage(this);" required>
+                <option value="english">English</option>
+                <option value="korean">한국</option>
+            </select>
         </ul>
     </div>
     <div id="main-content">
