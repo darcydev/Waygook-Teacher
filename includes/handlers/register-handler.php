@@ -49,15 +49,17 @@ if (isset($_POST['register-button'])) {
 	$rowsAffected = $account->registerAccount($role, $firstName, $lastName, $username, $email, $password, $password2, $gender, $nationality, $educationLevel, $educationMajor, $dob);
 
     if($rowsAffected == 1) {
+		// create a session variable (value = "username")
 		$_SESSION['userLoggedIn'] = $username;
-		// if User is a teacher, direct to index-teacher. Else, index-student
+		// if User is a teacher, direct to index-teacher. Else, to index-student
 		if ($role = 'teacher') {
 			header("Location: index-teacher.php");
 		} elseif ($role = 'student') {
 			header("Location: index-student.php");
 		} else {
-			// BUG: create 404.php (error page)
+			// TODO: create 404.php (error page)
 			header("Location: 404.php");
 		}
+	}
 }
 ?>

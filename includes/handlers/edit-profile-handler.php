@@ -2,11 +2,14 @@
 if (isset($_POST['confirm-profile-pic-button']) && isset($_FILES["upload-profile-pic"])) {
     $currentDir = getcwd();
     $targetDir = "assets/images/profile-pics/";
-    $fileName = $_FILES["upload-profile-pic"]["name"];
+    // save the file as a random number ahead of fileName (fe "283572893572875johnlennon.png")
+    // to (largely) avoid issue of duplicate file names in server
+    // BUG: rand() is not secure (is predictable), consider using random_bytes()
+    $randomNumber = rand();
+    // add $randomNumber to beginning of fileName
+    $fileName = $randomNumber . $_FILES["upload-profile-pic"]["name"];
     $fileSize = $_FILES["upload-profile-pic"]["size"];
     $fileTmpName = $_FILES["upload-profile-pic"]["tmp_name"];
-    // BUG: I THINK i can remove $fileType (unused)
-    $fileType = $_FILES["upload-profile-pic"]["type"];
     $fileExtension = strtolower(end(explode('.', $fileName)));
     $uploadPath = $currentDir . "/" . $targetDir . basename($fileName);
     // POTENTIAL BUG: may have to remove "/" in "/assets"
