@@ -27,6 +27,7 @@ $randomTeachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         " . $row['first_name'] . "
                                     </div>
                                     <div class='info-country'>
+                                        " . $row['nationality'] . "
                                     </div>
                                     <div class='info-rate'>
                                     </div>

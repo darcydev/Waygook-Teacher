@@ -20,7 +20,7 @@ if($row['username'] == $userLoggedIn) {
 }
  ?>
 
-<div id="profile-container">
+<div id="profile-container" class="profile-info-container">
     <div id="profile-heading">
     </div>
     <div id="profile-content-container">
@@ -55,7 +55,7 @@ if($row['username'] == $userLoggedIn) {
         </div>
         <!-- only viewable if the User is not viewing their own profile-->
         <div id="send-message-link" class="option-link">
-            <a href="send-message.php?userID=<?php echo $userID; ?>">SEND MESSAGE</a>
+            <a href="conversation.php?userID=<?php echo $userID; ?>">SEND MESSAGE</a>
         </div>
     </div>
 
