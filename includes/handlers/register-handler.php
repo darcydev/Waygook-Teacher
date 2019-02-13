@@ -49,12 +49,15 @@ if (isset($_POST['register-button'])) {
 	$rowsAffected = $account->registerAccount($role, $firstName, $lastName, $username, $email, $password, $password2, $gender, $nationality, $educationLevel, $educationMajor, $dob);
 
     if($rowsAffected == 1) {
-        // create session variable (value = "username")
-		// BUG: this isn't working! How do you set $_SESSION using PDO? (??? not sure what I mean here - seems to be working!?)
 		$_SESSION['userLoggedIn'] = $username;
-		header("Location: index.php");
-	} else {
-		// BUG: insert code... (?? what code?)
-	}
+		// if User is a teacher, direct to index-teacher. Else, index-student
+		if ($role = 'teacher') {
+			header("Location: index-teacher.php");
+		} elseif ($role = 'student') {
+			header("Location: index-student.php");
+		} else {
+			// BUG: create 404.php (error page)
+			header("Location: 404.php");
+		}
 }
 ?>
