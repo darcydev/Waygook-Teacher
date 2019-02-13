@@ -3,9 +3,6 @@ Waygook Teacher
 
 Waygook Teacher is a platform to connect Korean students with English teachers.
 
-## Motivation
-
-
 ## Features
 
 * The website is translated into both English and Korean
