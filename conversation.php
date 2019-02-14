@@ -1,5 +1,16 @@
 <?php
 include("includes/header.php");
+
+// select all messages sent between userLoggedIn and ?userID=x
+// that is, between the User is currently logged in and the User whose page their viewing
+// for example, if I'm logged into Facebook and want to check the messages between me and my friend
+// by clicking on my friend's profile
+// TODO: in accordance with "DRY", move this in User.php
+$sql = "SELECT * FROM Messages
+        WHERE (to_user_id = ? AND from_user_id = ?)
+        OR (to_user_id = ? AND from_user_id = ?)";
+$stmt = $db->run($sql, [$_GET['userID'], $userLoggedInID, $userLoggedInID, $_GET['userID']]);
+$userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!--
@@ -44,7 +55,27 @@ The two Users in question are: a) userLoggedIn and b) ?userID=x (from the url)
         <h2>Messages</h2>
     </div>
     <div id="conversation-list-messages">
-
+        <?php
+        foreach ($userMessages as $row) {
+            // create html div each time loops through $query
+            echo "<div id='message-item'>
+                    <span id='message-result'>
+                        <div id='from-user-photo'>
+                            <img src='' alt='from-user-photo'>
+                        </div>
+                        <div id='from-user-name'>
+                            " . $row['from_user_id'] . "
+                        </div>
+                        <div id='from-user-date'>
+                            " . $row['date'] . "
+                        </div>
+                        <div id='from-user-message'>
+                            " . $row['message_content'] . "
+                        </div>
+                    </span>
+                </div>";
+        }
+        ?>
     </div>
     </div>
     <div id="send-message-form-container">
