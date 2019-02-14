@@ -41,6 +41,7 @@ if(isset($_GET['userID'])) {
 include("includes/handlers/edit-profile-handler.php");
 include("includes/handlers/register-handler.php");
 include("includes/handlers/login-handler.php");
+include("includes/handlers/send-message-handler.php");
 ?>
 
 
