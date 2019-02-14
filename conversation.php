@@ -80,8 +80,8 @@ The two Users in question are: a) userLoggedIn and b) ?userID=x (from the url)
     </div>
     <div id="send-message-form-container">
         <form id="send-message-form" class="edit-db-form" method="post">
-            <input id="message" type="text" name="send-message">
-            <button type="submit" name="send-message-button">SEND MESSAGE</button>
+            <textarea name="send-message" rows="10" cols="30"></textarea>
+            <button type="submit" name="send-message-button">SEND</button>
         </form>
     </div>
 </div>
