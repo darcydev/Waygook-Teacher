@@ -212,7 +212,8 @@ a {
 	padding-left: 50px;
 }
 
-#conversation-list-messages #message-item {
+#conversation-list-messages #message-item,
+#conversation-list-messages #conversation-item {
 	padding-bottom: 50px;
 }
 
