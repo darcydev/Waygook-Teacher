@@ -330,6 +330,26 @@ a {
 	white-space: nowrap;
 }
 
+#edit-profile-content #edit-profile-form p {
+	padding: 20px 50px;
+}
+
+#edit-profile-content #edit-profile-form label {
+	font-weight: 700;
+	font-size: 1.1em;
+	display: grid;
+	padding-bottom: 15px;
+}
+
+#edit-profile-content #edit-profile-form textarea {
+	width: 400px;
+	height: 250px;
+}
+
+#edit-profile-content #edit-profile-form button {
+	margin-left: 50px;
+}
+
 #footer-container {
 	bottom: 0;
 	width: 100%;

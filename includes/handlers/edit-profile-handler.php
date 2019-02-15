@@ -1,6 +1,8 @@
 <?php
 if (isset($_POST['edit-profile-button'])) {
 
+    $success = False;
+
     // If the User has uploaded a profile pic in the form
     if (isset($_FILES['upload-profile-pic'])) {
         $currentDir = getcwd();
@@ -23,7 +25,7 @@ if (isset($_POST['edit-profile-button'])) {
         if($rowsAffected > 0) {
             $successUpload = move_uploaded_file($fileTmpName, $uploadPath);
             if ($successUpload) {
-                echo "Picture successfully updated";
+                $success = True;
             } else {
                 echo "Sorry, there has been an error uploading the photo";
             }
@@ -38,10 +40,14 @@ if (isset($_POST['edit-profile-button'])) {
         $rowsAffected = $user->updateDescription($desc);
 
         if($rowsAffected > 0) {
-            echo "Description successfully updated";
+            $success = True;
         } else {
             echo "Sorry, there has been an error updating your profile.";
         }
+    }
+
+    if ($success = True) {
+        header("Location: profile.php?userID=" . $userLoggedInID);
     }
 }
 ?>
