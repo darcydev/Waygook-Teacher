@@ -4,21 +4,6 @@ This file (conversation.php) shows the indiviudal conversation between two Users
 conversation-list.php shows the list of all conversation for userLoggedIn
 -->
 
-<?php
-include("includes/header.php");
-
-// select all messages sent between userLoggedIn and ?userID=x
-// that is, between the User is currently logged in and the User whose page their viewing
-// for example, if I'm logged into Facebook and want to check the messages between me and my friend
-// by clicking on my friend's profile
-// TODO: in accordance with "DRY", move this in User.php
-$sql = "SELECT * FROM Messages
-        WHERE (to_user_id = ? AND from_user_id = ?)
-        OR (to_user_id = ? AND from_user_id = ?)";
-$stmt = $db->run($sql, [$_GET['userID'], $userLoggedInID, $userLoggedInID, $_GET['userID']]);
-$userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
-
 <!--
 On this page, we display:
 * the messages between two Users
@@ -31,7 +16,22 @@ The two Users in question are: a) userLoggedIn and b) ?userID=x (from the url)
 3) Display 'send-message' box that sends a message to ?userID=x
 -->
 
-<div id="main-conversation-container">
+<?php
+include("includes/header.php");
+
+// select all messages sent between userLoggedIn and ?userID=x
+// that is, between the User is currently logged in and the User whose page their viewing
+// for example, if I'm logged into Facebook and want to check the messages between me and my friend
+// by clicking on my friend's profile
+// TODO: in accordance with "DRY", move this in User.php (???)
+$sql = "SELECT * FROM Messages
+        WHERE (to_user_id = ? AND from_user_id = ?)
+        OR (to_user_id = ? AND from_user_id = ?)";
+$stmt = $db->run($sql, [$_GET['userID'], $userLoggedInID, $userLoggedInID, $_GET['userID']]);
+$userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+<div id="main-conversation-container" class="conversation-container">
     <div class="profile-info-container">
         <div id="profile-photo" class="profile-photo-content">
             <img src=<?php echo $row['profile_pic']; ?>>
