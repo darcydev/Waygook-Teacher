@@ -61,7 +61,7 @@ $conversationMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div id='conversation-item'>
                         <span id='conversation-result'>
                             <div id='from-user-photo'>
-                                <img src=" . $other_user_row['profile_pic'] . "alt='from-user-photo'>
+                                <img src=" . $other_user_row['profile_pic'] . " alt='from-user-photo'>
                             </div>
                             <div id='from-user-name'>
                                 " . $other_user_row['first_name'] . "
