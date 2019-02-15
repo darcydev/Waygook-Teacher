@@ -1,3 +1,9 @@
+<!--
+This file (conversation.php) shows the indiviudal conversation between two Users
+
+conversation-list.php shows the list of all conversation for userLoggedIn
+-->
+
 <?php
 include("includes/header.php");
 
@@ -57,6 +63,13 @@ The two Users in question are: a) userLoggedIn and b) ?userID=x (from the url)
     <div id="conversation-list-messages">
         <?php
         foreach ($userMessages as $row) {
+            // fetch the first_name, last_name of the User who sent each message
+            // collected from $row['from_user_id'] which has FK relation with User.userID
+            $sql = "SELECT first_name, last_name FROM Users WHERE userID = ?";
+            $stmt = $db->run($sql, [$row['from_user_id']]);
+            $from_user_row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $from_user_first_name = $from_user_row['first_name'];
+            $from_user_last_name = $from_user_row['last_name'];
             // create html div each time loops through $query
             echo "<div id='message-item'>
                     <span id='message-result'>
@@ -64,7 +77,7 @@ The two Users in question are: a) userLoggedIn and b) ?userID=x (from the url)
                             <img src='' alt='from-user-photo'>
                         </div>
                         <div id='from-user-name'>
-                            " . $row['from_user_id'] . "
+                            " . $from_user_first_name . " " . $from_user_last_name . "
                         </div>
                         <div id='from-user-date'>
                             " . $row['date'] . "
