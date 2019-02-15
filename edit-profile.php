@@ -15,7 +15,7 @@ include("includes/header.php")
         <form id="edit-description-form" class="edit-profile-form" method="post">
             <?php echo $user->getError(Constants::$descriptionCharacters); ?>
             <label for="edit-description">Profile Description</label>
-            <input id="edit-description" type="text" name="edit-description">
+            <textarea id="edit-description" type="text" name="edit-description"></textarea>
             <button type="submit" name="edit-profile-button">Confirm Description Changes</button>
         </form>
     </div>
