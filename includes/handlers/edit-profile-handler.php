@@ -4,7 +4,8 @@ if (isset($_POST['edit-profile-button'])) {
     $success = False;
 
     // If the User has uploaded a profile pic in the form
-    if (isset($_FILES['upload-profile-pic'])) {
+    if (!empty($_FILES['upload-profile-pic']['name'])) {
+        echo "<script>console.log('eph0')</script>";
         $currentDir = getcwd();
         $targetDir = "assets/images/profile-pics/";
         // save the file as a random number ahead of fileName (fe "283572893572875johnlennon.png")
@@ -38,7 +39,7 @@ if (isset($_POST['edit-profile-button'])) {
         $desc = $_POST['edit-description'];
 
         $rowsAffected = $user->updateDescription($desc);
-
+        echo "<script>console.log('EPH0')</script>";
         if($rowsAffected > 0) {
             $success = True;
         } else {

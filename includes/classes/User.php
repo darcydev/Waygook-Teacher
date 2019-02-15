@@ -110,6 +110,7 @@ class User {
     }
 
     private function validateProfilePic($fileExtension, $fileSize, $uploadPath) {
+        echo "<script>console.log('vPP 1')</script";
         // check file extension
         if (! in_array($fileExtension, ['jpeg', 'jpg', 'png'])) {
             array_push($this->errorArray, Constants::$invalidFileExtension);

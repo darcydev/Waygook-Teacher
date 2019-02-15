@@ -204,6 +204,17 @@ a {
 #profile-container #profile-content-container #profile-text-content,
 #main-conversation-container .profile-info-container #profile-text-content {
 	padding: 30px;
+	height: 225px;
+	width: 33%;
+}
+
+#profile-container #profile-content-container #profile-stats-content,
+#main-conversation-container .profile-info-container #profile-stats-content {
+	margin-top: 90px;
+    border: 2px solid grey;
+    padding: 10px;
+    width: 30%;
+	display: inline-table;
 }
 
 #profile-container #profile-content-container #profile-text-content #profile-name,
@@ -211,6 +222,19 @@ a {
 	font-size: 1.8em;
     font-weight: 700;
 	text-align: center;
+}
+
+#profile-container #profile-description {
+	padding: 30px 180px;
+}
+
+#profile-container #profile-description h3 {
+	font-size: 1.3em;
+	border-bottom: 1px solid grey;
+}
+
+#profile-container #profile-description p {
+	padding-top: 10px;
 }
 
 #conversation-list-messages {
