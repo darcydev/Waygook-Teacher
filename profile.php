@@ -34,6 +34,16 @@ if($row['username'] == $userLoggedIn) {
             <div id="profile-flag" class="profile-content">
                 <img src=<?php echo $row['flag']; ?>>
             </div>
+            <div id="options-bar">
+                <!-- only viewable if the User is viewing their own profile-->
+                <div id="edit-profile-link" class="option-link">
+                    <a href="edit-profile.php?userID=<?php echo $userID; ?>">EDIT PROFILE</a>
+                </div>
+                <!-- only viewable if the User is not viewing their own profile-->
+                <div id="send-message-link" class="option-link">
+                    <a href="conversation.php?userID=<?php echo $userID; ?>">SEND MESSAGE</a>
+                </div>
+            </div>
         </div>
         <div id="profile-stats-content" class="profile-content">
             <!-- SHOULD I REALLY CONSIDER THIS? -->
@@ -61,17 +71,6 @@ if($row['username'] == $userLoggedIn) {
                     <?php echo nl2br($row['description']); ?>
                 </p>
     </div>
-    <div id="options-bar">
-        <!-- only viewable if the User is viewing their own profile-->
-        <div id="edit-profile-link" class="option-link">
-            <a href="edit-profile.php?userID=<?php echo $userID; ?>">EDIT PROFILE</a>
-        </div>
-        <!-- only viewable if the User is not viewing their own profile-->
-        <div id="send-message-link" class="option-link">
-            <a href="conversation.php?userID=<?php echo $userID; ?>">SEND MESSAGE</a>
-        </div>
-    </div>
-
 </div>
 
 <?php include("includes/footer.php") ?>

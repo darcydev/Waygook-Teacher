@@ -224,6 +224,16 @@ a {
 	text-align: center;
 }
 
+#profile-content-container #profile-text-content #profile-flag,
+#main-conversation-container .profile-info-container #profile-text-content #profile-flag {
+	text-align: center;
+}
+
+#profile-flag img {
+	width: 35px;
+	height: 35px;
+}
+
 #profile-container #profile-description {
 	padding: 30px 180px;
 }
@@ -309,6 +319,10 @@ a {
 #profile-container #profile-content-container #profile-text-content #profile-description {
 	border: 2px solid black;
 	padding: 15px
+}
+
+#profile-container #options-bar {
+	padding-top: 15px;
 }
 
 #profile-container .option-link {
