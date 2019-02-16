@@ -22,9 +22,9 @@ function sanitizeFormString($inputText) {
 
 // if register btn was pressed
 if (isset($_POST['register-button'])) {
-	$username = sanitizeFormUsername($_POST['username']);
-	$firstName = sanitizeFormString($_POST['first-name']);
-	$lastName = sanitizeFormString($_POST['last-name']);
+	$un = sanitizeFormUsername($_POST['username']);
+	$fn = sanitizeFormString($_POST['first-name']);
+	$ln = sanitizeFormString($_POST['last-name']);
 	$email = strtolower(sanitizeFormString($_POST['email']));
 	$password = sanitizeFormPassword(md5($_POST['password']));
 	$password2 = sanitizeFormPassword(md5($_POST['password']));
@@ -33,6 +33,7 @@ if (isset($_POST['register-button'])) {
 	if (isset($_POST['gender'])) {
 		$gender = $_POST['gender'];
 		$nationality = $_POST['nationality'];
+		$flag = "assets/images/icons/icons8_" . $nationality . "_flag.png";
 		$educationLevel = $_POST['educationLevel'];
 		$educationMajor = $_POST['educationMajor'];
 		$DOB = $_POST['dob'];
@@ -46,17 +47,22 @@ if (isset($_POST['register-button'])) {
 	}
 
 	// register() will return true is there have been no errors, and false if otherwise.
-	$rowsAffected = $account->registerAccount($role, $firstName, $lastName, $username, $email, $password, $password2, $gender, $nationality, $educationLevel, $educationMajor, $dob);
+	$rowsAffected = $account->registerAccount($role, $fn, $ln, $un, $email, $password, $password2, $gender, $nationality, $flag, $educationLevel, $educationMajor, $dob);
 
     if($rowsAffected == 1) {
+		// BUG: it's not directing to any page (although User is being added to DB)
+		echo "<script>console.log('RH 1');</script>";
 		// create a session variable (value = "username")
 		$_SESSION['userLoggedIn'] = $username;
 		// if User is a teacher, direct to index-teacher. Else, to index-student
-		if ($role = 'teacher') {
+		if ($role == 'teacher') {
+			echo "<script>console.log('RH 2');</script>";
 			header("Location: index-teacher.php");
-		} elseif ($role = 'student') {
+		} elseif ($role == 'student') {
+			echo "<script>console.log('RH 3');</script>";
 			header("Location: index-student.php");
 		} else {
+			echo "<script>console.log('RH 4');</script>";
 			// TODO: create 404.php (error page)
 			header("Location: 404.php");
 		}

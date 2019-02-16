@@ -83,7 +83,7 @@ $userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             " . $row['date'] . "
                         </div>
                         <div id='from-user-message'>
-                            " . $row['message_content'] . "
+                            " . nl2br($row['message_content']) . "
                         </div>
                     </span>
                 </div>";

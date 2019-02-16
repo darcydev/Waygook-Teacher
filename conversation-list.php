@@ -70,7 +70,9 @@ $conversationMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 " . $row['date'] . "
                             </div>
                             <div id='from-user-message'>
-                                " . $row['message_content'] . "
+                                " .
+                                /* print first 200 characters of each message */
+                                substr($row['message_content'], 0, 200) . "
                             </div>
                         </span>
                     </div>

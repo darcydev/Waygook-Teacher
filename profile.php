@@ -18,7 +18,7 @@ if($row['username'] == $userLoggedIn) {
             });
         </script>';
 }
- ?>
+?>
 
 <div id="profile-container" class="profile-info-container">
     <div id="profile-heading">
@@ -32,7 +32,7 @@ if($row['username'] == $userLoggedIn) {
                 <p><?php echo $row['first_name']; ?></p>
             </div>
             <div id="profile-flag" class="profile-content">
-                <p>INSERT NATIONALITY FLAG</pa>
+                <img src=<?php echo $row['flag']; ?>>
             </div>
         </div>
         <div id="profile-stats-content" class="profile-content">
@@ -57,7 +57,8 @@ if($row['username'] == $userLoggedIn) {
     <div id="profile-description" class="profile-content">
                 <h3>About this Teacher</h3>
                 <p>
-                    <?php echo $row['description']; ?>
+                    <!-- nl2br ensures that the line breaks are printed -->
+                    <?php echo nl2br($row['description']); ?>
                 </p>
     </div>
     <div id="options-bar">

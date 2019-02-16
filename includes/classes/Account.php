@@ -29,7 +29,7 @@ class Account {
 		}
 	}
 
-	public function registerAccount($role, $fn, $ln, $un, $em, $pw, $pw2, $gender, $nationality, $educationLevel, $educationMajor, $dob) {
+	public function registerAccount($role, $fn, $ln, $un, $em, $pw, $pw2, $gender, $nationality, $flag, $educationLevel, $educationMajor, $dob) {
 		$this->validateUsername($un);
 		$this->validateFirstName($fn);
 		$this->validateLastName($ln);
@@ -38,8 +38,8 @@ class Account {
 
 		if(empty($this->errorArray) == true) {
             // insert into db
-			$sql = "INSERT INTO Users VALUES (userID, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?, ?, ?)";
-            $stmt = $this->db->run($sql, [$fn, $ln, $un, $em, $pw, $role, $gender, $nationality, $educationLevel, $educationMajor, $dob]);
+			$sql = "INSERT INTO Users VALUES (userID, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $this->db->run($sql, [$fn, $ln, $un, $em, $pw, $role, $gender, $nationality, $flag, $educationLevel, $educationMajor, $dob]);
             $rowsAffected = $stmt->rowCount();
             return $rowsAffected;
         } else {
