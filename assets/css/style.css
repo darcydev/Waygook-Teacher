@@ -342,6 +342,32 @@ a {
 	font-size: 2.7em;
 }
 
+#search-container #search-bar {
+	padding-top: 20px;
+}
+
+#search-container #search-bar form {
+	padding-left: 60px;
+	display: grid;
+}
+
+#search-container #search-bar tbody {
+	text-align: center;
+}
+
+#search-container #search-bar label {
+	padding-right: 5px;
+}
+
+#search-container #search-bar button {
+	background: #5a96f1;
+	font-size: 1.3em;
+	border-radius: 15px;
+	margin: 0 500px;
+}
+
+
+
 #search-container #search-results-container #search-view-item {
 	padding: 5px 20px;
 	display: inline-block;
