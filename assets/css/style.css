@@ -301,25 +301,25 @@ input {
 	display: flex;
 }
 
-#profile-content-container #profile-photo,
+#profile-photo,
 #main-conversation-container .profile-info-container #profile-photo {
 	padding: 30px;
 }
 
-#profile-content-container #profile-photo img,
+#profile-photo img,
 #main-conversation-container .profile-info-container #profile-photo img {
 	height: 225px;
 	width: 225px;
 }
 
-#profile-content-container #profile-text-content,
+#profile-text-content,
 #main-conversation-container .profile-info-container #profile-text-content {
 	padding: 30px;
 	height: 225px;
 	width: 33%;
 }
 
-#profile-content-container #profile-stats-content,
+#profile-stats-content,
 #main-conversation-container .profile-info-container #profile-stats-content {
 	margin-top: 90px;
     border: 2px solid grey;
@@ -328,14 +328,14 @@ input {
 	display: inline-table;
 }
 
-#profile-content-container #profile-text-content #profile-name,
+#profile-text-content #profile-name,
 #main-conversation-container .profile-info-container #profile-text-content #profile-name {
 	font-size: 1.8em;
     font-weight: 700;
 	text-align: center;
 }
 
-#profile-text-content #profile-flag,
+#profile-flag,
 #main-conversation-container .profile-info-container #profile-text-content #profile-flag {
 	text-align: center;
 }
