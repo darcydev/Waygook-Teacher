@@ -102,12 +102,16 @@ $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <div class='info-name'>
                                         " . $row['first_name'] . "
                                     </div>
-                                    <div class='info-country'>
-                                        <img src='" . $row['flag'] . "'>
-                                    </div>
-                                    <div class='info-rate'>
-                                    </div>
-                                    <div class='info-reviews'>
+                                    <div class='info-details'>
+                                        <span class='info-country'>
+                                            <img src='" . $row['flag'] . "'>
+                                        </span>
+                                        <span class='info-rate'>
+                                            " . "$18" . "
+                                        </span>
+                                        <span class='info-reviews'>
+                                                " . "3.5 stars" . "
+                                        </span>
                                     </div>
                                 </div>
                             </a>

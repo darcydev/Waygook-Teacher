@@ -57,10 +57,10 @@ if($row['username'] == $userLoggedIn) {
                 <p>X Years' of Experience</p>
             </div>
             <div id="profile-education-level" class="profile-content">
-                <p>Education Level:<b> <?php echo $row['education_level']; ?></b></p>
+                <p>Education Level:<b> <?php echo ucfirst($row['education_level ']); ?></b></p>
             </div>
             <div id="profile-education-major" class="profile-content">
-                <p>Education Major: <?php echo $row['education_major']; ?></p>
+                <p>Education Major: <?php echo ucfirst($row['education_major']); ?></p>
             </div>
         </div>
     </div>

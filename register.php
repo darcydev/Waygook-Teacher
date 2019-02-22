@@ -130,6 +130,12 @@ function roleCheck(that) {
                                 <option value="education">Education</option>
                                 <option value="english">English</option>
                                 <option value="business">Business</option>
+                                <option value="communication">Communication</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="maths">Maths</option>
+                                <option value="law">Law</option>
+                                <option value="social_sciences">Social Sciences</option>
+                                <option value="arts">Arts</option>
                                 <option value="other">Other</option>
                             </select>
                         </p>
