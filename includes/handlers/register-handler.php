@@ -54,7 +54,7 @@ if (isset($_POST['register-button'])) {
 	echo $rowsAffected;
 
     if($rowsAffected == 1) {
-		// create a session variable (value = "username")
+		// create a session variable
 		// TODO: consider changing this to email, so to allow removing username
 		$_SESSION['userLoggedIn'] = $un;
 		// if User is a teacher, direct to index-teacher. Else, to index-student

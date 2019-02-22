@@ -7,8 +7,7 @@ if (isset($_POST['send-message-button'])) {
     $rowsAffected = $user->insertMessage($messageText, $to_user_id);
 
     if ($rowsAffected > 0) {
-        echo "Message successfully sent";
-        // TODO: redirect back to conversation.php (with message just sent included)
+        header("Location: conversation-list.php");
     } else {
         echo "Error attempting to send message";
     }
