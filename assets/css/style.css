@@ -1,12 +1,26 @@
 * {
 	color: #000000;
-	font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	letter-spacing: 0.5px;
 }
 
 body {
 	font-size: 0.8em;
 	font-family: arial, sans-serif;
+}
+
+h1 {
+	font-size: 60px;
+	font-weight: 700;
+	text-align: center;
+	padding: 15px;
+	color: #5a96f1;
+}
+
+h2 {
+	padding: 20px;
+	font-size: 27px;
+	text-align: center;
 }
 
 a {
@@ -149,7 +163,7 @@ input {
     width: 100%;
 }
 
-#login-container #input-container {
+#input-container {
 	width: 400px;
     padding: 45px;
     float: left;
@@ -164,22 +178,18 @@ input {
 	box-sizing: border-box;
 }
 
-#login-container #input-container .register-form {
+#input-container .register-form {
 	display: block;
 }
 
-#login-container #input-container .register-form h2 {
-	text-align: center;
-}
-
-#login-container #input-container .register-form label {
+#input-container .register-form label {
 	color: #a0a0a0;
 	font-size: 13px;
 	display: block;
 	margin-top: 15px;
 }
 
-#login-container #input-container .register-form input {
+#input-container .register-form input {
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR…rvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC);
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -203,11 +213,11 @@ input {
     line-height: 27px;
 }
 
-#login-container #input-container #teacher-register-form label {
+#teacher-register-form label {
 	padding-bottom: 5px;
 }
 
-#login-container #input-container .register-form select {
+#input-container .register-form select {
 	background-color: #5a96f1;
 	width: 100%;
 	display: block;
@@ -216,7 +226,7 @@ input {
 	line-height: 27px;
 }
 
-#login-container #input-container .register-form button {
+#input-container .register-form button {
 	background-color: transparent;
     border: 2px solid #fff;
     border-radius: 250px;
@@ -229,22 +239,12 @@ input {
     width: 100%;
 }
 
-#login-container #login-text {
+#login-text {
 	padding: 45px;
 	display: table-cell;
 }
 
-#login-container #login-text h1 {
-	color: #ece61e;
-	font-size: 60px;
-	font-weight: 700;
-}
-
-#login-container #login-text h2 {
-	margin: 35px 0;
-}
-
-#login-container #login-text li {
+#login-text li {
 	font-size: 20px;
 	list-style-type: none;
 	padding: 5px 30px;
@@ -261,12 +261,12 @@ input {
 	text-decoration: none;
 }
 
-#nav-bar #nav-bar-header {
+#nav-bar-header {
 	font-size: 2em;
 	margin: 5px;
 }
 
-#nav-bar #nav-bar-links {
+#nav-bar-links {
 	background: #000;
 	list-style: none;
 	display: flex;
@@ -275,25 +275,14 @@ input {
 	padding-top: 1px;
 }
 
-#nav-bar #nav-bar-links li {
+#nav-bar-links li {
 	padding: 0 15px;
     border: 3px solid grey;
     border-radius: 10px;
 }
 
-#nav-bar #nav-bar-links li a {
+#nav-bar-links li a {
 	color: #cecece;
-}
-
-.introduction-text .introduction-heading h1 {
-	text-align: center;
-	padding: 15px;
-	font-size: 2em;
-}
-
-.introduction-text .introduction-heading h2 {
-	text-align: center;
-	font-size: 1.2em;
 }
 
 .introduction-text .introduction-content ul {
@@ -307,30 +296,30 @@ input {
 	margin: 0px 100px;
 }
 
-#profile-container #profile-content-container,
+#profile-content-container,
 #main-conversation-container .profile-info-container {
 	display: flex;
 }
 
-#profile-container #profile-content-container #profile-photo,
+#profile-content-container #profile-photo,
 #main-conversation-container .profile-info-container #profile-photo {
 	padding: 30px;
 }
 
-#profile-container #profile-content-container #profile-photo img,
+#profile-content-container #profile-photo img,
 #main-conversation-container .profile-info-container #profile-photo img {
 	height: 225px;
 	width: 225px;
 }
 
-#profile-container #profile-content-container #profile-text-content,
+#profile-content-container #profile-text-content,
 #main-conversation-container .profile-info-container #profile-text-content {
 	padding: 30px;
 	height: 225px;
 	width: 33%;
 }
 
-#profile-container #profile-content-container #profile-stats-content,
+#profile-content-container #profile-stats-content,
 #main-conversation-container .profile-info-container #profile-stats-content {
 	margin-top: 90px;
     border: 2px solid grey;
@@ -339,14 +328,14 @@ input {
 	display: inline-table;
 }
 
-#profile-container #profile-content-container #profile-text-content #profile-name,
+#profile-content-container #profile-text-content #profile-name,
 #main-conversation-container .profile-info-container #profile-text-content #profile-name {
 	font-size: 1.8em;
     font-weight: 700;
 	text-align: center;
 }
 
-#profile-content-container #profile-text-content #profile-flag,
+#profile-text-content #profile-flag,
 #main-conversation-container .profile-info-container #profile-text-content #profile-flag {
 	text-align: center;
 }
@@ -356,16 +345,16 @@ input {
 	height: 35px;
 }
 
-#profile-container #profile-description {
+#profile-description {
 	padding: 30px 180px;
 }
 
-#profile-container #profile-description h3 {
+#profile-description h3 {
 	font-size: 1.3em;
 	border-bottom: 1px solid grey;
 }
 
-#profile-container #profile-description p {
+#profile-description p {
 	padding-top: 10px;
 }
 
@@ -373,36 +362,36 @@ input {
 	padding-left: 50px;
 }
 
-#conversation-list-messages #message-item,
-#conversation-list-messages #conversation-item {
+#message-item,
+#conversation-item {
 	padding-bottom: 50px;
 	border-bottom: 3px solid;
 	padding-top: 10px;
 }
 
-#conversation-list-messages #from-user-photo {
+#from-user-photo {
 	position: absolute;
 	padding-bottom: 10px;
 }
 
-#conversation-list-messages #from-user-photo img {
+#from-user-photo img {
 	width: 80px;
 	height: 80px;
 }
 
-#conversation-list-messages #from-user-name {
+#from-user-name {
 	padding-left: 100px;
     font-size: 1.2em;
     font-weight: 700;
     padding-bottom: 10px;
 }
 
-#conversation-list-messages #from-user-date {
+#from-user-date {
 	float: right;
 	color: #999;
 }
 
-#conversation-list-messages #from-user-message {
+#from-user-message {
 	padding-bottom: 20px;
     padding-left: 100px;
     line-height: 18px;
@@ -412,7 +401,7 @@ input {
 	text-align: justify;
 }
 
-#send-message-form-container #send-message-form {
+#send-message-form {
 	display: inline-block;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -457,11 +446,6 @@ input {
 	border: 1.5px solid black;
 	padding: 10px;
 	text-decoration: none;
-}
-
-#conversation-list-heading h2 {
-	padding-left: 30px;
-	font-size: 2.7em;
 }
 
 #search-container #search-bar {
