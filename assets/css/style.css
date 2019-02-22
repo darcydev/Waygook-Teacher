@@ -13,6 +13,29 @@ a {
 	text-decoration: none;
 }
 
+input {
+	font-size: 14px;
+	line-height: 1;
+	font-weight: 400;
+	height: 38px;
+	padding: 0 12px 0 12px;
+	display: block;
+	max-width: 50%;
+	width: 50%;
+	position: relative;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	box-shadow: none;
+	border: 1px solid #dadfe1;
+	border-radius: 2px;
+	background-color: #fff;
+	background-position: right 12px center;
+	background-repeat: no-repeat;
+	color: #384047;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
 .b {
 	font-weight: 600;
 }
@@ -32,7 +55,41 @@ a {
 	line-height: 1.15;
 }
 
+.box-head {
+	padding-top: 14px;
+    padding-bottom: 13px;
+    min-height: 60px;
+}
+
+.box-head-title {
+	font-size: 22px;
+    line-height: 1.27272727;
+    font-weight: 400;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px 0 5px 0;
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 200px;
+}
+
+.box-content {
+	padding: 32px;
+}
+
+.form label {
+	margin-top: 6px;
+	margin-bottom: 6px;
+	float: left;
+	padding: 0 5px;
+	width: 33.33%;
+}
+
 #main-content {
+	font-size: 14px;
 	min-height: 100%;
 	width: 940px;
 	margin-right: auto;
@@ -110,7 +167,7 @@ a {
 }
 
 #login-container #input-container .register-form select {
-	background-color: transparent;
+	background-color: #5a96f1;
 	width: 100%;
 	display: block;
 	border-width: 1px;
@@ -442,4 +499,23 @@ a {
 	bottom: 0;
 	width: 100%;
 	height: 100px;
+}
+
+#settings-profile-container {
+	max-height: 100%;
+    min-height: 70vh;
+    display: flex;
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.settings-profile-content {
+	width: 752px;
+	padding: 32px;
 }
