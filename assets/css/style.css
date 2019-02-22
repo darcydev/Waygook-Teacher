@@ -80,6 +80,47 @@ input {
 	padding: 32px;
 }
 
+.buttons-row {
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-ms-flex-align: center;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.button {
+	background: #5a96f1;
+	font-size: 14px;
+	line-height: 1;
+	text-decoration: none;
+	font-weight: 600;
+	padding: 11px 16px;
+	border-radius: 2px;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	background-image: none;
+	border-width: 1px;
+	border-style: solid;
+	border-color: transparent;
+	overflow: hidden;
+	max-width: 100%;
+	text-overflow: ellipsis;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	outline: 0;
+	transition: color 50ms,background-color 50ms,border-color 50ms,box-shadow .2s;
+	color: #384047;
+	border-color: #ced3d6;
+}
+
 .form label {
 	margin-top: 6px;
 	margin-bottom: 6px;

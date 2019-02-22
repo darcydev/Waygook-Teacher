@@ -127,6 +127,49 @@ class User {
         }
     }
 
+    public function updatePassword($old_pw, $new_pw, $new_pw2) {
+        $this->validateOldPassword($old_pw);
+        $this->validatePasswords($new_pw, $new_pw2);
+
+        if (empty($this->errorArray) == true) {
+            $sql = "UPDATE Users SET password = ? WHERE userID = ?";
+            $stmt = $this->db->run($sql, [$new_pw, $this->userID]);
+            $rowsAffected = $stmt->rowCount();
+            return $rowsAffected;
+        }
+    }
+
+    private function validateOldPassword($pw) {
+        // check password correct
+        $sql = "SELECT userID, password FROM Users WHERE userID = ? AND password = ?";
+        $query = $this->db->run($sql, [$this->userID, $pw]);
+        // BUG: "rowCount()" is not for a SELECT query (https://stackoverflow.com/questions/40355262/pdo-rowcount-only-returning-one)
+        if ($query->rowCount() == 1) {
+            return true;
+        } else {
+            array_push($this->errorArray, Constants::$passwordIncorrect);
+            return false;
+        }
+    }
+
+    private function validatePasswords($pw, $pw2) {
+        // check passwords match
+        if($pw != $pw2) {
+            array_push($this->errorArray, Constants::$passwordsDoNoMatch);
+            return;
+        }
+        // check password alphanumberic
+        if(preg_match('/[^A-Za-z0-9]/', $pw)) {
+            array_push($this->errorArray, Constants::$passwordNotAlphanumeric);
+            return;
+        }
+        // check password length
+        if(strlen($pw) > 50 || strlen($pw) < 5) {
+            array_push($this->errorArray, Constants::$passwordCharacters);
+            return;
+        }
+    }
+
     public function insertMessage($messageText, $to_user_id) {
         $this->validateMessage($messageText);
 
