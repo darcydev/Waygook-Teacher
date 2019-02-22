@@ -43,7 +43,6 @@ class Account {
             $rowsAffected = $stmt->rowCount();
             return $rowsAffected;
         } else {
-			echo "<script>console.log('Account 7');</script>";
             $rowsAffected = 0;
             return $rowsAffected;
         }

@@ -1,1 +1,7 @@
-<?php echo php_ini_loaded_file(); ?>
+<?php
+
+// echo php_ini_loaded_file();
+
+echo phpinfo();
+
+?>
