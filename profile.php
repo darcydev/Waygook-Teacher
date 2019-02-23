@@ -65,7 +65,12 @@ if($row['username'] == $userLoggedIn) {
         </div>
     </div>
     <div id="profile-description" class="profile-content">
-                <h3>About this Teacher</h3>
+                <div id="description-teacher-title" class="profile-description-title">
+                    <h3>About this Teacher</h3>
+                </div>
+                <div id="description-student-title" class="profile-description-title">
+                    <h3>About this Student</h3>
+                </div>
                 <p>
                     <!-- nl2br ensures that the line breaks are printed -->
                     <?php echo nl2br($row['description']); ?>

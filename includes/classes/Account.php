@@ -38,7 +38,7 @@ class Account {
 
 		if(empty($this->errorArray) == true) {
             // insert into db
-			$sql = "INSERT INTO Users VALUES (userID, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?, ?, ?, ?)";
+			$sql = "INSERT INTO Users VALUES (userID, ?, ?, ?, ?, ?, DEFAULT, NULL, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->run($sql, [$fn, $ln, $un, $em, $pw, $role, $gender, $nationality, $flag, $educationLevel, $educationMajor, $dob]);
             $rowsAffected = $stmt->rowCount();
             return $rowsAffected;

@@ -42,6 +42,7 @@ include("includes/handlers/edit-profile-handler.php");
 include("includes/handlers/register-handler.php");
 include("includes/handlers/login-handler.php");
 include("includes/handlers/send-message-handler.php");
+
 ?>
 
 
@@ -59,11 +60,12 @@ include("includes/handlers/send-message-handler.php");
 <body>
     <div id="nav-bar">
     	<div id="nav-bar-header">
-    		<a href="index.php">WaygookTeacher</a>
+    		<a id="index-teacher-link" href="index-teacher.php">WaygookTeacher</a>
+            <a id="index-student-link" href="index-student.php">WaygookTeacher</a>
     	</div>
         <ul id="nav-bar-links">
             <li><a href="profile.php?userID=<?php echo $userLoggedInID; ?>">Profile</a></li>
-            <li><a href="search.php">Search</a></li>
+            <li id="search-nav-bar-link"><a href="search.php">Search</a></li>
             <li><a href="conversation-list.php">Messages</a></li>
             <li><a href="settings-password.php?userID=<?php echo $userLoggedInID; ?>">Settings</a></li>
             <li><a href="logout.php">Logout</a></li>

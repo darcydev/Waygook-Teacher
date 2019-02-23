@@ -60,11 +60,8 @@ if (isset($_POST['register-button'])) {
 		// if User is a teacher, direct to index-teacher. Else, to index-student
 		if ($role == 'teacher') {
 			header("Location: index-teacher.php");
-		} elseif ($role == 'student') {
-			header("Location: index-student.php");
 		} else {
-			// TODO: create 404.php (error page)
-			header("Location: 404.php");
+			header("Location: index-student.php");
 		}
 	}
 }
