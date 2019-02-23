@@ -24,6 +24,8 @@ if ($row['role'] == 'teacher') {
                 $("#description-teacher-title").hide();
                 ' /* remove profile stats box */ . '
                 $("#profile-stats-content").hide();
+                ' /* remove profile flag */ . '
+                $("#profile-flag").hide();
             });
         </script>';
 }

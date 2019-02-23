@@ -34,17 +34,46 @@ if (isset($_POST['search-teacher-button'])) {
     // include those vales in a WHERE clause in $sql
     if (count($conditions) > 0) {
         $sql .= " " . implode($conditions);
+        /// $sql .= "ORDER BY userID";
     }
 } else {
     // default search query (unless amended by search-teacher-form)
     // select 30 random Teachers to display on page
     $sql = "SELECT * FROM Users
             WHERE role = ?
-            ORDER BY RAND() LIMIT 30";
+            ORDER BY userID";
 }
 // run the $sql query (derived from above)
 $stmt = $db->run($sql, ['teacher']);
 $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+/* INCLUDE PAGINATION */
+// calculate number of rows in data
+$num_rows = count($teachers);
+// number of rows per page
+$rows_per_page = 12;
+// calculate the last page number
+$last_page = ceil($num_rows/$rows_per_page);
+// ensure the page number isn't less than 1, or more than max pages
+if ($page_num < 1) {
+    $page_num = 1;
+} elseif ($page_num > $last_page) {
+    $page_num = $last_page;
+}
+// LIMIT sql query to limit results to amount for that page
+$limit = ' LIMIT ' . ($page_num - 1) * $rows_per_page . ', ' . $rows_per_page;
+
+// new query to display relevant results for each page
+$sql = "SELECT * FROM Users
+        WHERE role = ?
+        ORDER BY userID
+        " . $limit;
+// run the $sql query (derived from above)
+$stmt = $db->run($sql, ['teacher']);
+$data_for_this_page = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 ?>
 
 <div id="search-container">
@@ -90,7 +119,7 @@ $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div id="search-results-container">
         <ul class="search-result-list">
             <?php
-            foreach ($teachers as $row) {
+            foreach ($data_for_this_page as $row) {
                 // create html div each time loops through $query
                 echo "<div id='search-view-item'>
                         <span id='search-result'>
