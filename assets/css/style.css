@@ -101,6 +101,8 @@ input {
 	-ms-flex-align: center;
 	align-items: center;
 	justify-content: space-evenly;
+	text-align: center;
+	padding-top: 15px;
 }
 
 .button {
@@ -136,11 +138,17 @@ input {
 }
 
 .form label {
+	font-size: 1.1em;
+	font-weight: 700;
 	margin-top: 6px;
 	margin-bottom: 6px;
 	float: left;
 	padding: 0 5px;
 	width: 33.33%;
+}
+
+.upload-file {
+	border: none;
 }
 
 #main-content {
@@ -427,25 +435,9 @@ input {
     border-radius: 15px;
 }
 
-#profile-container #profile-content-container #profile-text-content #profile-description {
+#profile-content-container #profile-text-content #profile-description {
 	border: 2px solid black;
 	padding: 15px
-}
-
-#profile-container #options-bar {
-	padding-top: 15px;
-}
-
-#profile-container .option-link {
-	text-align: center;
-	padding: 15px 0;
-	font-size: 1.2em;
-}
-
-#profile-container .option-link a {
-	border: 1.5px solid black;
-	padding: 10px;
-	text-decoration: none;
 }
 
 #search-container #search-bar {
@@ -470,8 +462,6 @@ input {
 	border-radius: 15px;
 	margin: 0 500px;
 }
-
-
 
 #search-container #search-results-container #search-view-item {
 	padding: 5px 20px;
@@ -500,24 +490,9 @@ input {
 	white-space: nowrap;
 }
 
-#edit-profile-content #edit-profile-form p {
-	padding: 20px 50px;
-}
-
-#edit-profile-content #edit-profile-form label {
-	font-weight: 700;
-	font-size: 1.1em;
-	display: grid;
-	padding-bottom: 15px;
-}
-
-#edit-profile-content #edit-profile-form textarea {
+.edit-profile textarea {
 	width: 400px;
 	height: 250px;
-}
-
-#edit-profile-content #edit-profile-form button {
-	margin-left: 50px;
 }
 
 #footer-container {

@@ -34,13 +34,13 @@ if($row['username'] == $userLoggedIn) {
             <div id="profile-flag" class="profile-content">
                 <img src=<?php echo $row['flag']; ?>>
             </div>
-            <div id="options-bar">
+            <div class="buttons-row">
                 <!-- only viewable if the User is viewing their own profile-->
-                <div id="edit-profile-link" class="option-link">
+                <div id="edit-profile-link" class="button">
                     <a href="edit-profile.php?userID=<?php echo $userID; ?>">EDIT PROFILE</a>
                 </div>
                 <!-- only viewable if the User is not viewing their own profile-->
-                <div id="send-message-link" class="option-link">
+                <div id="send-message-link" class="button">
                     <a href="conversation.php?userID=<?php echo $userID; ?>">SEND MESSAGE</a>
                 </div>
             </div>
