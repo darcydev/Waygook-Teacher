@@ -1,9 +1,8 @@
 <?php
 include("includes/header.php");
 
+/* SEARCH BAR */
 /*
-SEARCH BAR CODE
-
 The below operates the code for the search-teacher-form
 Essentially, everytime that User submits the form, I update the sql query
 and refresh the page with the new query
@@ -47,7 +46,12 @@ if (isset($_POST['search-teacher-button'])) {
 $stmt = $db->run($sql, ['teacher']);
 $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-/* INCLUDE PAGINATION */
+/* PAGINATION */
+if ((isset($_GET['page_num']))) {
+    $page_num = $_GET['page_num'];
+} else {
+    $page_num = 1;
+}
 // calculate number of rows in data
 $num_rows = count($teachers);
 // number of rows per page
@@ -60,9 +64,9 @@ if ($page_num < 1) {
 } elseif ($page_num > $last_page) {
     $page_num = $last_page;
 }
+
 // LIMIT sql query to limit results to amount for that page
 $limit = ' LIMIT ' . ($page_num - 1) * $rows_per_page . ', ' . $rows_per_page;
-
 // new query to display relevant results for each page
 $sql = "SELECT * FROM Users
         WHERE role = ?
@@ -71,9 +75,6 @@ $sql = "SELECT * FROM Users
 // run the $sql query (derived from above)
 $stmt = $db->run($sql, ['teacher']);
 $data_for_this_page = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-
 ?>
 
 <div id="search-container">
@@ -149,6 +150,26 @@ $data_for_this_page = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             ?>
         </ul>
+        <?php
+        /* PAGE LINKS */
+        // create the variables
+        $previous = $page_num - 1;
+        $next = $page_num + 1;
+        // show User what page their on, and the total number of pages
+        echo "<div class='page-links'>
+                <div class='page-links-button'>
+                    <a class='button' href='search.php'> << </a>
+                    <a class='button' href='search.php?page_num=$previous'> < </a>
+                </div>
+                <div class='page-links-info'>
+                    " . $page_num . " of " . $last_page . " " . "
+                </div>
+                <div>
+                    <a class='button' href='search.php?page_num=$next'> > </a>
+                    <a class='button' href='search.php?page_num=$last_page'> >> </a>
+                </div>
+            </div>";
+        ?>
     </div>
 </div>
 

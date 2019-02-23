@@ -519,3 +519,11 @@ input {
 	width: 752px;
 	padding: 32px;
 }
+
+.page-links {
+	display: flex;
+    font-size: 14px;
+    font-weight: 600;
+	align-items: center;
+	justify-content: center;
+}
