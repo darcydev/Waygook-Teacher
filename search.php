@@ -10,6 +10,7 @@ and refresh the page with the new query
 // TODO: I suspect that this is a very inefficient way of doing this
 if (isset($_POST['search-teacher-button'])) {
     // TODO: consider whether to move this into a class
+    // BUG: if search returns 0 results, page doesn't load. Instead, load <div class='no-results-found'>
     // get the values from the form
     // BUG: these values are being passed into sql directly directy (without going through PDO)
     $by_nation = $_POST['by_nationality'];
@@ -21,20 +22,21 @@ if (isset($_POST['search-teacher-button'])) {
     // check if the User included 'all' for any of the form values
     if ($by_nation !== 'all') {
         // BUG: this line could cause issues -- it's working, but I deviated from StackOverflow Answer
-        $conditions[] = "AND nationality='$by_nation'";
+        $conditions[] = " AND nationality='$by_nation'";
     }
     if ($by_gender !== 'all') {
-        $conditions[] = "AND gender='$by_gender'";
+        $conditions[] = " AND gender='$by_gender'";
     }
     if ($by_education_level !== 'all') {
-        $conditions[] = "AND education_level='$by_education_level'";
+        $conditions[] = " AND education_level='$by_education_level'";
     }
     // if the User searched for anything other than 'all' for any of the values
     // include those vales in a WHERE clause in $sql
     if (count($conditions) > 0) {
         $sql .= " " . implode($conditions);
-        /// $sql .= "ORDER BY userID";
+        /// $sql .= " ORDER BY userID";
     }
+    $sql .= " ORDER BY userID";
 } else {
     // default search query (unless amended by search-teacher-form)
     // select 30 random Teachers to display on page
@@ -45,6 +47,11 @@ if (isset($_POST['search-teacher-button'])) {
 // run the $sql query (derived from above)
 $stmt = $db->run($sql, ['teacher']);
 $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// unset session variables for search criteria
+unset($_SESSION['$by_nation']);
+unset($_SESSION['$by_gender']);
+unset($_SESSION['$by_education_level']);
 
 /* PAGINATION */
 if ((isset($_GET['page_num']))) {
@@ -67,11 +74,8 @@ if ($page_num < 1) {
 
 // LIMIT sql query to limit results to amount for that page
 $limit = ' LIMIT ' . ($page_num - 1) * $rows_per_page . ', ' . $rows_per_page;
-// new query to display relevant results for each page
-$sql = "SELECT * FROM Users
-        WHERE role = ?
-        ORDER BY userID
-        " . $limit;
+// add the limit to the (original) sql query
+$sql .= $limit;
 // run the $sql query (derived from above)
 $stmt = $db->run($sql, ['teacher']);
 $data_for_this_page = $stmt->fetchAll(PDO::FETCH_ASSOC);
