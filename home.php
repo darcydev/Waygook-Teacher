@@ -26,7 +26,7 @@
                     from around the world</h3>
                 </div>
                 <div class="box-img">
-                    <img src="" alt="teacher-globe-image">
+                    <img src="assets/images/pinned-globe.jpg" alt="teacher-globe-image">
                 </div>
                 <div class="box-content">
                     <div class="box-content-row">

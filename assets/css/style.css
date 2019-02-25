@@ -258,6 +258,18 @@ input {
 	background: url(../images/icons/checkmark.png) no-repeat;
 }
 
+.box-img {
+	margin: 0 auto;
+	max-width: 852px;
+	position: relative;
+}
+
+.box-img img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
 .box-content {
 	display: flex;
 	flex-wrap: wrap;
