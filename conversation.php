@@ -23,12 +23,15 @@ include("includes/header.php");
 // that is, between the User is currently logged in and the User whose page their viewing
 // for example, if I'm logged into Facebook and want to check the messages between me and my friend
 // by clicking on my friend's profile
+$userMessages = $user->getConversationMessages($_GET['userID'], $userLoggedInID);
+/*
 // TODO: in accordance with "DRY", move this in User.php (???)
 $sql = "SELECT * FROM Messages
         WHERE (to_user_id = ? AND from_user_id = ?)
         OR (to_user_id = ? AND from_user_id = ?)";
 $stmt = $db->run($sql, [$_GET['userID'], $userLoggedInID, $userLoggedInID, $_GET['userID']]);
 $userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+*/
 ?>
 
 <div id="main-conversation-container" class="conversation-container">
@@ -98,11 +101,6 @@ $userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </form>
     </div>
 </div>
-
-
-
-
-
 
 <?php
 include("includes/footer.php");

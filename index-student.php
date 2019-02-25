@@ -10,15 +10,24 @@ include("includes/header.php");
         </div>
         <div class="index-steps">
             <div id="teacher-index-text-step-one" class="index-text-step-one">
-                <p>We have many experienced English teachers, search for one you like!</p>
+                <p>
+                    <b>STEP 1</b>: search for a teacher!
+                    <br>We have many experienced English teachers, search for one you like!
+                </p>
                 <img src="" alt="search-teacher-img">
             </div>
             <div id="teacher-index-text-step-two" class="index-text-step-two">
-                <p>Send a message to arrange a lesson at your convience!</p>
+                <p>
+                    <b>STEP 2</b>: send the teacher a message!
+                    <br>Send a message to arrange a lesson at your convience!
+                </p>
                 <img src="" alt="send-message-img">
             </div>
             <div id="teacher-index-text-step-three" class="index-text-step-three">
-                <p>Private lesson on Skype tailored to your levels and goals!</p>
+                <p>
+                    <b>STEP 3</b>: organize a lesson over Skype!
+                    <br>Private lesson on Skype tailored to your levels and goals!
+                </p>
                 <img src="" alt="skype-lesson-img">
             </div>
         </div>
