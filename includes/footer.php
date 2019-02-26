@@ -1,6 +1,8 @@
 </div>
 
 <?php
+// BUG: it's loading slowly, perhaps straight JS is better
+// // TODO: move this into it's own and link via scripts_and_links.php
 // if User is a Teacher, 'logo' link to index-teacher.php
 // if User is a Student, make 'logo' link to index-student.php
 if ($row['role'] == 'teacher') {

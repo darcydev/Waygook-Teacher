@@ -64,6 +64,38 @@ input {
 	color: #6f757b;
 }
 
+.background {
+	background-color: #6f757b;
+    text-align: center;
+	min-height: 100%;
+}
+
+.auth-forms {
+	background: white;
+	text-align: center;
+    width: 50%;
+	margin-top: 50px;
+    margin-bottom: 50px;
+	background: white;
+	display: inline-block;
+	padding: 15px 0;
+}
+
+.auth-form {
+	line-height: 1em;
+    text-align: center;
+    display: inline-block;
+    width: 50%;
+}
+
+.change-auth-form {
+	padding: 15px;
+}
+
+.register-form {
+	display: none;
+}
+
 .side-nav {
 	width: 150px;
 	display: flex;
@@ -190,22 +222,7 @@ input {
     width: 100%;
 }
 
-.register-forms {
-	background: #5894f1;
-	width: 300px;
-    padding: 25px;
-    float: left;
-    border-right: 1px solid #999;
-}
-
-.register-form {
-	color: #fff;
-	display: block;
-	line-height: 1em;
-	box-sizing: border-box;
-}
-
-.register-form label {
+.auth-form label {
 	width: 100%;
 	color: #000000;
 	font-size: 15px;
@@ -213,7 +230,7 @@ input {
 	margin-top: 15px;
 }
 
-.register-form input {
+.auth-form input {
 	width: 100%;
 	max-width: 100%;
 }

@@ -33,15 +33,15 @@ function roleCheck(that) {
 <html>
 <head>
     <title>Waygook Teacher</title>
-    
+
     <?php
     include("includes/scripts_and_links.php");
     ?>
 </head>
 <body>
-    <div class="register-container">
-        <div class="register-forms">
-            <div class="register-form form">
+    <div class="background">
+        <div class="auth-forms">
+            <div id="login-form" class="login-form auth-form form">
                 <h2>Login</h2>
                 <p>
                     <?php echo $account->getError(Constants::$loginFailed); ?>
@@ -53,8 +53,9 @@ function roleCheck(that) {
                     <input id="login-password" name="login-password" type="password" required>
                 </p>
                 <button type="submit" name="login-button" class="button">LOG IN</button>
+                <div id="change-to-register-form" class="change-auth-form">New to us? Sign up here.</div>
             </div>
-            <div class="register-form form">
+            <div id="register-form" class="register-form auth-form form">
                 <h2>Register</h2>
                 <p>
                     <label for="role">Role</label>
@@ -147,6 +148,7 @@ function roleCheck(that) {
                     </p>
                 </div>
                 <button type="submit" name="register-button" class="button">SIGN UP</button>
+                <div id="change-to-login-form" class="change-auth-form">Already have an account? Login here.</div>
             </div>
         </div>
     </div>
