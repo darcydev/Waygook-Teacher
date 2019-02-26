@@ -7,8 +7,7 @@ include("includes/classes/User.php");
 
 $account = new Account();
 
-include("includes/handlers/register-handler.php");
-include("includes/handlers/login-handler.php");
+include("includes/handlers/auth-handler.php");
 
 function getInputValue($name) {
     if(isset($_POST[$name])) {
@@ -41,7 +40,7 @@ function roleCheck(that) {
 <body>
     <div class="background">
         <div class="auth-forms">
-            <div id="login-form" class="login-form auth-form form">
+            <form id="login-form" class="login-form auth-form form">
                 <h2>Login</h2>
                 <p>
                     <?php echo $account->getError(Constants::$loginFailed); ?>
@@ -52,10 +51,10 @@ function roleCheck(that) {
                     <label for="login-password">Password</label>
                     <input id="login-password" name="login-password" type="password" required>
                 </p>
-                <button type="submit" name="login-button" class="button">LOG IN</button>
+                <button type="submit" id="login-button" name="login-button" class="button">LOG IN</button>
                 <div id="change-to-register-form" class="change-auth-form">New to us? Sign up here.</div>
-            </div>
-            <div id="register-form" class="register-form auth-form form">
+            </form>
+            <form id="register-form" class="register-form auth-form form">
                 <h2>Register</h2>
                 <p>
                     <label for="role">Role</label>
@@ -147,9 +146,9 @@ function roleCheck(that) {
                         <input id="dob" name="dob" type="date">
                     </p>
                 </div>
-                <button type="submit" name="register-button" class="button">SIGN UP</button>
+                <button type="submit"  id="register-button" name="register-button" class="button">SIGN UP</button>
                 <div id="change-to-login-form" class="change-auth-form">Already have an account? Login here.</div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

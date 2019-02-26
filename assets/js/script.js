@@ -18,7 +18,4 @@ $(document).ready(function() {
         document.getElementById("login-form").style.display = "inline-block";
     });
 
-
-
-
 });
