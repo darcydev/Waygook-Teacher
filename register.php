@@ -40,7 +40,7 @@ function roleCheck(that) {
 <body>
     <div class="background">
         <div class="auth-forms">
-            <form id="login-form" class="login-form auth-form form">
+            <form id="login-form" class="login-form auth-form form" method="POST">
                 <h2>Login</h2>
                 <p>
                     <?php echo $account->getError(Constants::$loginFailed); ?>
@@ -54,7 +54,7 @@ function roleCheck(that) {
                 <button type="submit" id="login-button" name="login-button" class="button">LOG IN</button>
                 <div id="change-to-register-form" class="change-auth-form">New to us? Sign up here.</div>
             </form>
-            <form id="register-form" class="register-form auth-form form">
+            <form id="register-form" class="register-form auth-form form" method="POST">
                 <h2>Register</h2>
                 <p>
                     <label for="role">Role</label>
