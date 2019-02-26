@@ -1,7 +1,7 @@
 * {
 	color: #000000;
-	font-family: 'Roboto', sans-serif;
-	letter-spacing: 0.5px;
+	font-family: 'Roboto', 'Archivo', sans-serif;
+	letter-spacing: 0.6px;
 }
 
 body {
@@ -58,6 +58,10 @@ input {
 
 .b {
 	font-weight: 600;
+}
+
+.text {
+	color: #6f757b;
 }
 
 .side-nav {
@@ -220,28 +224,26 @@ input {
 	overflow: auto;
 }
 
+.landing-box-first {
+	/* BUG: background-image isn't working */
+	background-image: url("../images/oxford.jpg");
+	background-repeat: no-repeat;
+	min-height: 200px;
+	width: 100%;
+}
+
 .box {
 	background: white;
 	margin: 64px 0;
 }
 
 .box-icon {
-	position: relative;
-	margin-bottom: absolute;
-	margin-bottom: 50%;
+	display: flex;
+	justify-content: center;
 	margin-bottom: 48px;
-	min-height: 1px;
-	width: 64px;
-	height: 64px;
 }
 
 .box-icon img {
-	position: absolute;
-	left: 50%;
-	top: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	width: 64px;
 	height: 64px;
 	border-radius: 50%;
@@ -303,26 +305,79 @@ input {
 	line-height: 1.3;
 }
 
-.post-content {
-	#6f757b;
+.process {
+	display: flex;
+	align-items: center;
+	margin-bottom: 30px;
 }
 
-#nav-bar,
+.process-col {
+	flex: 1 1 0;
+}
+
+.process-main {
+	display: flex;
+	width: 460px;
+}
+
+.process-num {
+	display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex: none;
+    flex: none;
+    width: 48px;
+    height: 48px;
+    margin-right: 24px;
+    background: rgba(59,179,189,.08);
+    border-radius: 50%;
+    color: #3bb3bd;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.process-content {
+    flex: 1 1 auto;
+}
+
+.process-title {
+	margin-bottom: 6px;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+.process-text {
+    line-height: 1.57142857;
+}
+
+.process-picture {
+	padding-left: 30px;
+}
+
+.process-picture img {
+	display: block;
+	max-width: 494px;
+	height: auto;
+}
+
+.nav-bar,
 #footer-container {
 	background: #5a96f1;
 	padding-top: 15px;
 }
 
-#nav-bar a {
+.nav-bar a {
 	text-decoration: none;
 }
 
-#nav-bar-header {
+.nav-bar-header {
 	font-size: 2em;
 	margin: 5px;
 }
 
-#nav-bar-links {
+.nav-bar-links {
 	background: #000;
 	list-style: none;
 	display: flex;
@@ -331,13 +386,13 @@ input {
 	padding-top: 1px;
 }
 
-#nav-bar-links li {
+.nav-bar-links li {
 	padding: 0 15px;
     border: 3px solid grey;
     border-radius: 10px;
 }
 
-#nav-bar-links li a {
+.nav-bar-links li a {
 	color: #cecece;
 }
 

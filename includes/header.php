@@ -50,20 +50,18 @@ include("includes/handlers/send-message-handler.php");
 <head>
 	<title>Waygook Teacher</title>
 
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="assets/js/register.js"></script>
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <?php
+    include("includes/scripts_and_links.php");
+    ?>
 </head>
 <body>
-    <div id="nav-bar">
-    	<div id="nav-bar-header">
+    <div class="nav-bar">
+    	<div class="nav-bar-header">
+            <?php // TODO: include logo ?>
     		<a id="index-teacher-link" href="index-teacher.php">WaygookTeacher</a>
             <a id="index-student-link" href="index-student.php">WaygookTeacher</a>
     	</div>
-        <ul id="nav-bar-links">
+        <ul class="nav-bar-links">
             <li><a href="profile.php?userID=<?php echo $userLoggedInID; ?>">Profile</a></li>
             <li id="search-nav-bar-link"><a href="search.php?page_num=1">Search</a></li>
             <li><a href="conversation-list.php">Messages</a></li>

@@ -33,8 +33,10 @@ function roleCheck(that) {
 <html>
 <head>
     <title>Waygook Teacher</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <?php
+    include("includes/scripts_and_links.php");
+    ?>
 </head>
 <body>
     <div class="register-container">
