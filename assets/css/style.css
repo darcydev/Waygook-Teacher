@@ -29,6 +29,10 @@ h3 {
 	text-align: center;
 }
 
+h4 {
+	text-align: center;
+}
+
 a {
 	text-decoration: none;
 }
@@ -329,6 +333,7 @@ input {
 	display: flex;
 	align-items: center;
 	margin-bottom: 30px;
+	padding-top: 30px;
 }
 
 .process-col {
