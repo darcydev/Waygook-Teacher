@@ -1,4 +1,4 @@
-<html>
+ <html>
 <head>
     <title>Waygook Teacher</title>
 
@@ -202,5 +202,7 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+
+<?php
+include("includes/footer.php");
+?>
