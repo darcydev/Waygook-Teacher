@@ -14,7 +14,7 @@
             </div>
             <ul class="nav-bar-links">
                 <li><a href="register.php">Login / Register</a></li>
-                <select id="select-language" name="select-language" type="text" onchange="changeLanguage(this);" required>
+                <select id="select-language" class="select-language" name="select-language" type="text" onchange="changeLanguage(this);" required>
                     <option value="english">English</option>
                     <option value="korean">한국어</option>
                 </select>

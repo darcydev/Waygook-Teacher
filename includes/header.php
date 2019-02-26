@@ -67,7 +67,7 @@ include("includes/handlers/send-message-handler.php");
             <li><a href="conversation-list.php">Messages</a></li>
             <li><a href="settings-password.php?userID=<?php echo $userLoggedInID; ?>">Settings</a></li>
             <li><a href="logout.php">Logout</a></li>
-            <select id="select-language" name="select-language" type="text" onchange="changeLanguage(this);" required>
+            <select id="select-language" class="select-language" name="select-language" type="text" onchange="changeLanguage(this);" required>
                 <option value="english">English</option>
                 <option value="korean">한국어</option>
             </select>

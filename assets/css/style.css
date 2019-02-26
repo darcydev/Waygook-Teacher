@@ -169,6 +169,10 @@ input {
 	border: none;
 }
 
+.select-language {
+	width: 120px;
+}
+
 #main-content {
 	font-size: 14px;
 	min-height: 100%;
@@ -349,6 +353,7 @@ input {
 
 .process-text {
     line-height: 1.57142857;
+	list-style: none;
 }
 
 .process-picture {
@@ -362,7 +367,7 @@ input {
 }
 
 .nav-bar,
-#footer-container {
+.footer-container {
 	background: #5a96f1;
 	padding-top: 15px;
 }
@@ -597,10 +602,21 @@ input {
 	height: 250px;
 }
 
-#footer-container {
-	bottom: 0;
-	width: 100%;
-	height: 100px;
+.footer-container {
+	background: #384047;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-us-container {
+	padding-left: 40px;
+}
+
+.change-language-container {
+	padding-right: 40px;
 }
 
 #settings-profile-container {
