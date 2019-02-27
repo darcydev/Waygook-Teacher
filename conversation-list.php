@@ -37,42 +37,42 @@ $conversationMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div id="main-conversation-list-container" class="conversation-container">
-    <div id="conversation-list-heading" class="heading">
+    <div id="conversation-list-heading" class="page-heading">
         <h2>Conversations</h2>
     </div>
-    <div id="conversation-list-messages">
+    <div id="conversation-list-messages" class="page-content">
         <?php
-        foreach ($conversationMessages as $row) {
+        foreach ($conversationMessages as $data_row) {
             // fetch the first_name, last_name of the User involved in the conversation who isn't userLoggedIn
             // aka 'the other messager'
             // use if/else to get userID of 'the other messanger'
             // if $userLoggedInID != $from_user_id, then $from_user_id must equal $otherUserID, and vice versa
-            if ($userLoggedInID == $row['from_user_id']) {
-                $otherUserID = $row['to_user_id'];
+            if ($userLoggedInID == $data_row['from_user_id']) {
+                $otherUserID = $data_row['to_user_id'];
             } else {
-                $otherUserID = $row['from_user_id'];
+                $otherUserID = $data_row['from_user_id'];
             }
-            // collected from $row['from_user_id'] which has FK relation with User.userID
+            // collected from $data_row['from_user_id'] which has FK relation with User.userID
             $sql = "SELECT * FROM Users WHERE userID = ?";
             $stmt = $db->run($sql, [$otherUserID]);
             $other_user_row = $stmt->fetch(PDO::FETCH_ASSOC);
             // create html div each time loops through $query
             echo "<a href='conversation.php?userID=" . $otherUserID . "'>
-                    <div id='conversation-item'>
+                    <div class='conversation-item'>
                         <span id='conversation-result'>
-                            <div id='from-user-photo'>
+                            <div class='conversation-photo profile-photo'>
                                 <img src=" . $other_user_row['profile_pic'] . " alt='from-user-photo'>
                             </div>
-                            <div id='from-user-name'>
+                            <div class='conversation-name'>
                                 " . $other_user_row['first_name'] . "
                             </div>
-                            <div id='from-user-date'>
-                                " . $row['date'] . "
+                            <div class='conversation-date'>
+                                " . $data_row['date'] . "
                             </div>
-                            <div id='from-user-message'>
+                            <div class='conversation-text'>
                                 " .
                                 /* print first 200 characters of each message */
-                                substr($row['message_content'], 0, 200) . "
+                                substr($data_row['message_content'], 0, 200) . "
                             </div>
                         </span>
                     </div>

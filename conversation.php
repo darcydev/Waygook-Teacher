@@ -19,19 +19,18 @@ The two Users in question are: a) userLoggedIn and b) ?userID=x (from the url)
 <?php
 include("includes/header.php");
 
+
 // select all messages sent between userLoggedIn and ?userID=x
 // that is, between the User is currently logged in and the User whose page their viewing
 // for example, if I'm logged into Facebook and want to check the messages between me and my friend
 // by clicking on my friend's profile
-$userMessages = $user->getConversationMessages($_GET['userID'], $userLoggedInID);
-/*
+
 // TODO: in accordance with "DRY", move this in User.php (???)
 $sql = "SELECT * FROM Messages
         WHERE (to_user_id = ? AND from_user_id = ?)
         OR (to_user_id = ? AND from_user_id = ?)";
 $stmt = $db->run($sql, [$_GET['userID'], $userLoggedInID, $userLoggedInID, $_GET['userID']]);
 $userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
-*/
 ?>
 
 <div id="main-conversation-container" class="conversation-container">
@@ -60,10 +59,10 @@ $userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
-    <div id="conversation-list-heading" class="heading">
+    <div class="page-heading">
         <h2>Messages</h2>
     </div>
-    <div id="conversation-list-messages">
+    <div class="page-content">
         <?php
         foreach ($userMessages as $row) {
             // fetch the first_name, last_name of the User who sent each message
@@ -76,16 +75,16 @@ $userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
             // create html div each time loops through $query
             echo "<div id='message-item'>
                     <span id='message-result'>
-                        <div id='from-user-photo'>
+                        <div class='conversation-photo'>
                             <img src='' alt='from-user-photo'>
                         </div>
-                        <div id='from-user-name'>
+                        <div class='conversation-name'>
                             " . $from_user_first_name . " " . $from_user_last_name . "
                         </div>
-                        <div id='from-user-date'>
+                        <div class='conversation-date'>
                             " . $row['date'] . "
                         </div>
-                        <div id='from-user-message'>
+                        <div class='conversation-text'>
                             " . nl2br($row['message_content']) . "
                         </div>
                     </span>
@@ -97,7 +96,7 @@ $userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div id="send-message-form-container">
         <form id="send-message-form" class="edit-db-form" method="post">
             <textarea name="send-message" rows="10" cols="30"></textarea>
-            <button type="submit" name="send-message-button">SEND</button>
+            <button type="submit" class="button" name="send-message-button button">SEND</button>
         </form>
     </div>
 </div>

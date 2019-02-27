@@ -190,15 +190,5 @@ class User {
         // TODO: insert code...
         // fe, ensure that User has actually entered a message (perhaps validate with min. characters?)
     }
-
-    public function getConversationMessages($user_one_ID, $user_two_ID) {
-        $sql = "SELECT * FROM Messages
-                WHERE (to_user_id = ? AND from_user_id = ?)
-                OR (to_user_id = ? AND from_user_id = ?)";
-        $stmt = $db->run($sql, [$user_one_ID, $user_two_ID, $user_two_ID, $user_one_ID]);
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $results;
-    }
 }
-
 ?>

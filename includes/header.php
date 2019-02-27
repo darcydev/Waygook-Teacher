@@ -72,4 +72,4 @@ include("includes/handlers/send-message-handler.php");
             </select>
         </ul>
     </div>
-    <div id="main-content">
+    <div class="main-container">
