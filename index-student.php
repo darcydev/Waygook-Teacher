@@ -1,5 +1,11 @@
 <?php
 include("includes/header.php");
+
+// prevent Teachers from viewing this page (also handled in jQuery.php)
+// direct them to index-teacher.php
+if ($userLoggedInRow['role'] == 'teacher') {
+    header("Location: index-teacher.php");
+}
 ?>
 
 <div class="index-container">

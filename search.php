@@ -1,6 +1,12 @@
 <?php
 include("includes/header.php");
 
+// prevent Teachers from viewing this page (also handled in jQuery.php)
+// direct them to index-teacher.php
+if ($userLoggedInRow['role'] == 'teacher') {
+    header("Location: index-teacher.php");
+}
+
 /* SEARCH BAR */
 /*
 The below operates the code for the search-teacher-form
