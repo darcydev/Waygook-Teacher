@@ -61,10 +61,19 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $stmt = $db->run($sql, [$employment_row['employmentID']]);
                 $lessons = $stmt->fetch(PDO::FETCH_ASSOC);
 
+                // get variables into 'plain English'
+                if ($lessons['confirmed'] == 1) {
+                    $lesson_confirmed_text = 'Confirmed';
+                } else {
+                    $lesson_confirmed_text = 'Unconfirmed';
+                }
+
                 echo "<tbody class='lessons-body page-table-body'>
                         <tr class='tr-row'>
-                            <td class='td-profile-info'>
+                            <td id='td-profile-info' class='td-profile-info'>
                                 <div class='info-content profile-pic'>
+                                    <img id='down-btn' class='sub-table-btn' src='assets/images/icons/icons8-about.png' alt='drop-down-btn'>
+                                    <img id='up-btn' class='sub-table-btn' src='assets/images/icons/icons8-idea.png' alt='pull-up-btn'>
                                     <img src=" . $other_user_row['profile_pic'] . " alt='profile-pic'>
                                     " . $other_user_row['first_name'] . "
                                 </div>
@@ -83,35 +92,30 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </ul>
                             </td>
                         </tr>
+                        <tr class='tr-row tr-sub-table lessons-list page-table page-table-head'>
+                            <th class='th-date'>Date</th>
+                            <th class='th-duration'>Duration</th>
+                            <th class='th-earnings'>Earnings</th>
+                            <th class='th-status'>Lesson status</th>
+                        </tr>
+                        <tr class='tr-row tr-sub-table'>
+                            <td class='td-date'>
+                                " . $lessons['datetime'] . "
+                            </td>
+                            <td class='td-duration'>
+                                " . $lessons['duration'] . " mins
+                            </td>
+                            <td class='td-earnings'>
+                                $" . $lessons['teacher_payment'] . "
+                            </td>
+                            <td class='td-status'>
+                                " . $lesson_confirmed_text . "
+                            </td>
+                        </tr>
                     </tbody>";
             ?>
         </table>
         <?php
-
-
-
-
-            /*
-            // create html div each time loops through $query
-            echo "<a href='conversation.php?userID=" . $otherUserID . "'>
-                    <div class='conversation-item'>
-                        <span id='conversation-result'>
-                            <div class='conversation-photo profile-photo'>
-                                <img src=" . $other_user_row['profile_pic'] . " alt='from-user-photo'>
-                            </div>
-                            <div class='conversation-name'>
-                                " . $other_user_row['first_name'] . "
-                            </div>
-                            <div class='conversation-prepaid'>
-                                " . $employment_row['prepaid_amount'] . "
-                            </div>
-                            <div class='conversation-date'>
-                                " . $lessons['datetime'] . "
-                            </div>
-                        </span>
-                    </div>
-                </a>";
-            */
         }
         ?>
     </div>

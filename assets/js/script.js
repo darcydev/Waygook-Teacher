@@ -18,4 +18,16 @@ $(document).ready(function() {
         document.getElementById("login-form").style.display = "inline-block";
     });
 
+    // if User clicks on down-btn lessons-list, show a drop down menu of all lessons associated with that User
+    $("#down-btn").click(function () {
+        $('.tr-sub-table').css('display', 'table-row');
+        $('#down-btn').css('display', 'none');
+        $('#up-btn').css('display', 'inline-block');
+    });
+    // OPPOSITE OF ABOVE: if User on up-btn on lessons-list, collapse up lesson list details
+    $("#up-btn").click(function () {
+        $('.tr-sub-table').css('display', 'none');
+        $('#up-btn').css('display', 'none');
+        $('#down-btn').css('display', 'inline-block');
+    });
 });

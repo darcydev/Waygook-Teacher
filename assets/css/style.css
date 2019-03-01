@@ -428,22 +428,34 @@ input {
 }
 
 .page-table th:first-child,
-.page-table td:first-child {
-	border-top: 0;
-	padding-left: 32px;
-}
-
-.page-table tr:first-child td {
+.page-table td:first-child,
+.page-table tr:first-child td,
+.tr-sub-table tr:first-child td  {
 	border-top: 0;
 }
 
-.page-table th:last-child {
+.page-table th,
+.page-table td {
+	padding-left: 20px;
+}
+
+.tr-sub-table {
+	background: #e8e8e8;
+}
+
+.page-table th:last-child,
+.page-table .tr-sub-table td:last-child {
 	text-align: right;
 	padding-right: 24px;
 }
 
 .page-table tr {
 	height: 70px;
+}
+
+.page-table .tr-sub-table {
+	height: 40px;
+	display: none;
 }
 
 .page-table-body .td-profile-info {
@@ -465,6 +477,19 @@ input {
     border-radius: 50%;
 }
 
+#down-btn,
+#up-btn {
+	width: 17px;
+	height: 17px;
+}
+
+#down-btn {
+	display: inline-block;
+}
+
+#up-btn {
+	display: none;
+}
 
 .page-table-body .td-prepaid {
 	width: 16%;
@@ -473,6 +498,19 @@ input {
 .page-table-body .td-rate {
 	width: 10%;
 }
+
+.page-table-body .th-date {
+	width: 10%;
+}
+
+.page-table-body .th-status {
+	width: 22%;
+}
+
+.page-table-body .th-duration {
+	width: 10%;
+}
+
 
 .ul-links {
 	list-style: none;
@@ -528,6 +566,11 @@ input {
 .introduction-text .introduction-content li {
 	padding: 10px;
 	margin: 0px 100px;
+}
+
+.td-profile-info .sub-menu-btn img {
+	height: 15px;
+	width: 15px;
 }
 
 #profile-content-container,
