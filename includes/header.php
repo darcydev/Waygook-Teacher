@@ -63,6 +63,7 @@ include("includes/handlers/send-message-handler.php");
         <ul class="nav-bar-links">
             <li><a href="profile.php?userID=<?php echo $userLoggedInID; ?>">Profile</a></li>
             <li id="search-nav-bar-link"><a href="search.php?page_num=1">Search</a></li>
+            <li><a href="lesson-list.php">Lessons</a></li>
             <li><a href="conversation-list.php">Messages</a></li>
             <li><a href="settings-password.php?userID=<?php echo $userLoggedInID; ?>">Settings</a></li>
             <li><a href="logout.php">Logout</a></li>

@@ -37,6 +37,10 @@ a {
 	text-decoration: none;
 }
 
+button, a {
+	cursor: pointer;
+}
+
 input {
 	font-size: 14px;
 	line-height: 1;
@@ -72,6 +76,13 @@ input {
 	background-color: #6f757b;
     text-align: center;
 	min-height: 100%;
+}
+
+.page-heading h2 {
+	padding: 30px 10px 0 10px;
+	font-size: 2em;
+	font-weight: 700;
+	text-align: left;
 }
 
 .auth-forms {
@@ -388,6 +399,92 @@ input {
 	height: auto;
 }
 
+.page-table {
+	width: 100%;
+	font-size: 13px;
+}
+
+.page-table th {
+	text-align: left;
+	padding: 16px 0;
+	border-bottom: 1px solid #e3e5e6;
+	text-transform: uppercase;
+	color: #aeb5bc;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: .63px;
+	line-height: 1.45454545;
+}
+
+.page-table td {
+	padding-left: 10px;
+	border-top: 1px dashed #e3e5e6;
+	color: #384047;
+}
+
+.page-table tr:hover {
+	background: #f8f8f8;
+	border-style: solid;
+}
+
+.page-table th:first-child,
+.page-table td:first-child {
+	border-top: 0;
+	padding-left: 32px;
+}
+
+.page-table tr:first-child td {
+	border-top: 0;
+}
+
+.page-table th:last-child {
+	text-align: right;
+	padding-right: 24px;
+}
+
+.page-table tr {
+	height: 70px;
+}
+
+.page-table-body .td-profile-info {
+	position: relative;
+	width: 23%;
+}
+
+.page-table-body .td-profile-info .info-content {
+	position: relative;
+	display: table;
+}
+
+.page-table-body .td-profile-info .profile-pic img {
+	margin: 0 22px 0 10px;
+    width: 38px;
+    height: 38px;
+    object-fit: cover;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+
+.page-table-body .td-prepaid {
+	width: 16%;
+}
+
+.page-table-body .td-rate {
+	width: 10%;
+}
+
+.ul-links {
+	list-style: none;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.ul-links a {
+	color: #65a0f3;
+	font-weight: 700;
+}
+
 .nav-bar,
 .footer-container {
 	background: #5a96f1;
@@ -510,6 +607,7 @@ input {
 .conversation-photo img {
 	width: 80px;
 	height: 80px;
+	border-radius: 25px;
 }
 
 .conversation-name {

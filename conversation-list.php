@@ -36,11 +36,11 @@ $stmt = $db->run($sql, [$userLoggedInID, $userLoggedInID]);
 $conversationMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div id="main-conversation-list-container" class="conversation-container">
-    <div id="conversation-list-heading" class="page-heading">
+<div class="page-container">
+    <div class="page-heading">
         <h2>Conversations</h2>
     </div>
-    <div id="conversation-list-messages" class="page-content">
+    <div class="page-content">
         <?php
         foreach ($conversationMessages as $data_row) {
             // fetch the first_name, last_name of the User involved in the conversation who isn't userLoggedIn
