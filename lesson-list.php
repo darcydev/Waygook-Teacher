@@ -1,22 +1,9 @@
 <!--
-The page shows the list of all lessons for userLoggedIn
+The page shows the list of all employments for userLoggedIn
 
 On this page, we display:
-* the lessons preview for all the teacher-student relationships for the userLoggedIn
-* by clicking on one of the lessons preview, a drop down appears to show the details for all the lessons of that teacher-student relationship
-
-Tasks:
-1) Display
-2) Write SQL query to collect all lessons involving userLoggedIn
-3) Display each employment in a 'lesson-list'
-    ** Preview includes:
-    3.1) Photo of other User
-    3.2) Name of other User
-    3.3) Prepaid amount for that employment
-    3.4) Price per hour for that employment
-    3.5) Total number of lessons for that employment
-    3.6) Button to send message to other User
-    3.7) Button to schedule a lesson with other User
+* the lessons preview for all the employments for the userLoggedIn
+* by clicking on one of the employments, a drop down appears to show the details for all the lessons of that employment
 -->
 
 <?php
@@ -67,6 +54,8 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 } else {
                     $lesson_confirmed_text = 'Unconfirmed';
                 }
+                // format the $lesson date
+                $datetime = date_format(date_create($lessons['datetime']), 'F j, Y, g:i a');
 
                 echo "<tbody class='lessons-body page-table-body'>
                         <tr class='tr-row'>
@@ -86,9 +75,9 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </td>
                             <td class='td-actions'>
                                 <ul class='ul-links ul-actions'>
-                                    <li><a href='conversation.php'>Send message</a></li>
+                                    <li><a href='conversation.php?userID=" . $otherUserID . "'>Send message</a></li>
                                     <li><a href='conversation.php'>Schedule lesson</a></li>
-                                    <li><a href='conversation.php'>View profile</a></li>
+                                    <li><a href='profile.php?userID=" . $otherUserID . "'>View profile</a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -100,7 +89,7 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </tr>
                         <tr id='lessons-table-body_" . $other_user_row['userID'] . "' class='tr-row tr-sub-table'>
                             <td class='td-date'>
-                                " . $lessons['datetime'] . "
+                                " . $datetime . "
                             </td>
                             <td class='td-duration'>
                                 " . $lessons['duration'] . " mins

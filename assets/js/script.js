@@ -1,7 +1,9 @@
-// TODO: consider whether to include jQuery from footer.php here
-// I don't think it's appropriate, becuase in footer.php, I use
-// a call to the sql db
 
+// js function that's called by onclick in html
+function downLessons(id) {
+    // send to jquery function
+    jQ_drop_lessons_table(id);
+}
 
 // execute as soon as the document is ready
 $(document).ready(function() {
@@ -44,9 +46,3 @@ $(document).ready(function() {
     };
 
 });
-
-// js function that's called by onclick in html
-function downLessons(id) {
-    // send to jquery function
-    jQ_drop_lessons_table(id);
-}
