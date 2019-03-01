@@ -477,17 +477,17 @@ input {
     border-radius: 50%;
 }
 
-#down-btn,
-#up-btn {
+.page-table-body .td-profile-info .profile-pic .down-btn,
+.page-table-body .td-profile-info .profile-pic .up-btn {
 	width: 17px;
 	height: 17px;
 }
 
-#down-btn {
+.down-btn {
 	display: inline-block;
 }
 
-#up-btn {
+.up-btn {
 	display: none;
 }
 

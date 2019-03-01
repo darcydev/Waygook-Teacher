@@ -19,15 +19,34 @@ $(document).ready(function() {
     });
 
     // if User clicks on down-btn lessons-list, show a drop down menu of all lessons associated with that User
-    $("#down-btn").click(function () {
-        $('.tr-sub-table').css('display', 'table-row');
-        $('#down-btn').css('display', 'none');
-        $('#up-btn').css('display', 'inline-block');
+    $(".down-btn").click(function () {
+        // $('.tr-sub-table').css('display', 'table-row');
+        $('.down-btn').css('display', 'none');
+        $('.up-btn').css('display', 'inline-block');
     });
     // OPPOSITE OF ABOVE: if User on up-btn on lessons-list, collapse up lesson list details
-    $("#up-btn").click(function () {
+    $(".up-btn").click(function () {
         $('.tr-sub-table').css('display', 'none');
-        $('#up-btn').css('display', 'none');
-        $('#down-btn').css('display', 'inline-block');
+        $('.up-btn').css('display', 'none');
+        $('.down-btn').css('display', 'inline-block');
     });
+
+    // BUG: I'm sure that this is a very complicated and inefficency way of doing this!
+    // jquery function to drop the specific table that was clicked on
+    // fe, if User clicks on 'Tom', ensures that only Tom's lessons are shown
+    jQ_drop_lessons_table = function(id) {
+        // make all display:none
+        $('.tr-sub-table').css('display', 'none');
+        // make that particular sub table display:table-row
+        $('#lessons-table-head_' + id).css('display', 'table-row');
+        $('#lessons-table-body_' + id).css('display', 'table-row');
+
+    };
+
 });
+
+// js function that's called by onclick in html
+function downLessons(id) {
+    // send to jquery function
+    jQ_drop_lessons_table(id);
+}

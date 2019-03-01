@@ -72,8 +72,8 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <tr class='tr-row'>
                             <td id='td-profile-info' class='td-profile-info'>
                                 <div class='info-content profile-pic'>
-                                    <img id='down-btn' class='sub-table-btn' src='assets/images/icons/icons8-about.png' alt='drop-down-btn'>
-                                    <img id='up-btn' class='sub-table-btn' src='assets/images/icons/icons8-idea.png' alt='pull-up-btn'>
+                                    <img onclick='downLessons(" . $other_user_row['userID'] . ")' class='down-btn sub-table-btn' src='assets/images/icons/icons8-about.png' alt='drop-down-btn'>
+                                    <img class='up-btn sub-table-btn' src='assets/images/icons/icons8-idea.png' alt='pull-up-btn'>
                                     <img src=" . $other_user_row['profile_pic'] . " alt='profile-pic'>
                                     " . $other_user_row['first_name'] . "
                                 </div>
@@ -92,13 +92,13 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </ul>
                             </td>
                         </tr>
-                        <tr class='tr-row tr-sub-table lessons-list page-table page-table-head'>
+                        <tr id='lessons-table-head_" . $other_user_row['userID'] . "' class='tr-row tr-sub-table page-table page-table-head'>
                             <th class='th-date'>Date</th>
                             <th class='th-duration'>Duration</th>
                             <th class='th-earnings'>Earnings</th>
                             <th class='th-status'>Lesson status</th>
                         </tr>
-                        <tr class='tr-row tr-sub-table'>
+                        <tr id='lessons-table-body_" . $other_user_row['userID'] . "' class='tr-row tr-sub-table'>
                             <td class='td-date'>
                                 " . $lessons['datetime'] . "
                             </td>
@@ -113,11 +113,9 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </td>
                         </tr>
                     </tbody>";
+            }
             ?>
         </table>
-        <?php
-        }
-        ?>
     </div>
 
 </div>
