@@ -260,6 +260,7 @@ input {
 .box {
 	background: white;
 	width: 100%;
+	min-height: 100%;
 }
 
 .box-icon {
@@ -426,7 +427,7 @@ input {
 
 .page-table th,
 .page-table td {
-	padding-left: 20px;
+	padding: 0 10px;
 }
 
 .tr-sub-table {
@@ -450,7 +451,7 @@ input {
 
 .page-table-body .td-profile-info {
 	position: relative;
-	width: 23%;
+	width: 30%%;
 }
 
 .page-table-body .td-profile-info .info-content {
@@ -459,9 +460,15 @@ input {
 }
 
 .page-table-body .td-profile-info .profile-photo-small img {
-	margin: 0 22px 0 10px;
+	margin: 0 10px;
     object-fit: cover;
     vertical-align: middle;
+}
+
+#sub-menu-btn {
+	margin: 0;
+	width: 15px;
+	height: 15px;
 }
 
 .page-table-body .td-profile-info .profile-pic .down-btn,
@@ -479,7 +486,7 @@ input {
 }
 
 .page-table-body .td-prepaid {
-	width: 16%;
+	width: 10%;
 }
 
 .page-table-body .td-rate {
@@ -491,6 +498,8 @@ input {
 	list-style: none;
 	display: flex;
 	justify-content: space-evenly;
+	margin-left: 0;
+	padding-left: 0;
 }
 
 .ul-links a {
