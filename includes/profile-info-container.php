@@ -1,4 +1,4 @@
-<div class="profile-info-container">
+<div class='profile-info-container'>
     <div class="profile-content-row-a">
         <div class="profile-content profile-photo-large profile-photo">
             <img src=<?php echo $row['profile_pic']; ?> alt='profile-pic'>

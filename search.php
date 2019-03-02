@@ -87,99 +87,96 @@ $stmt = $db->run($sql, ['teacher']);
 $data_for_this_page = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div id="search-container">
-    <div id="search-bar">
-        <form class="search-teacher-form" method="post">
-            <table>
-                <tr>
-                    <td>
-                        <label>Nationality</label>
-                        <select id="by_nationality" name="by_nationality" type="text">
-                            <option value="all">All</option>
-                            <option value="american">American</option>
-                            <option value="australian">Australian</option>
-                            <option value="british">British</option>
-                            <option value="canadian">Canadian</option>
-                            <option value="filipino">Filipino</option>
-                        </select>
-                    </td>
-                    <td>
-                        <label>Gender</label>
-                        <select id="by_gender" name="by_gender" type="text">
-                            <option value="all">All</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                    </td>
-                    <td>
-                        <label>Education Level</label>
-                        <select id="by_education_level" name="by_education_level" type="text">
-                            <option value="all">All</option>
-                            <option value="teritary">Teritary</option>
-                            <option value="diploma">Diploma</option>
-                            <option value="bachelor">Bachelor</option>
-                            <option value="masters">Masters</option>
-                            <option value="doctorate">Doctorate</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
-            <button type="submit" name="search-teacher-button">SEARCH</button>
-        </form>
+<div class="profile-info-container settings-profile-container">
+    <div class="side-nav">
+        <div id="search-bar">
+            <form class="search-teacher-form auth-form form" method="post">
+                <label>Nationality</label>
+                <select id="by_nationality" class="select" name="by_nationality" type="text">
+                    <option value="all">All</option>
+                    <option value="american">American</option>
+                    <option value="australian">Australian</option>
+                    <option value="british">British</option>
+                    <option value="canadian">Canadian</option>
+                    <option value="filipino">Filipino</option>
+                </select>
+                <label>Gender</label>
+                <select id="by_gender"  class="select" name="by_gender" type="text">
+                    <option value="all">All</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <label>Education Level</label>
+                <select id="by_education_level"  class="select" name="by_education_level" type="text">
+                    <option value="all">All</option>
+                    <option value="teritary">Teritary</option>
+                    <option value="diploma">Diploma</option>
+                    <option value="bachelor">Bachelor</option>
+                    <option value="masters">Masters</option>
+                    <option value="doctorate">Doctorate</option>
+                </select>
+                <button type="submit" class="button" name="search-teacher-button">Search</button>
+            </form>
+        </div>
     </div>
-    <div id="search-results-container">
-        <ul class="search-result-list">
-            <?php
-            foreach ($data_for_this_page as $row) {
-                // create html div each time loops through $query
-                echo "<div id='search-view-item'>
-                        <span id='search-result'>
-                            <a href='profile.php?userID=" . $row['userID'] . "'>
-                                <div class='search-result-info photo'>
-            						<img src='" . $row['profile_pic'] . "'>
+    <div class="profile-content settings-profile-content">
+        <div class="box">
+            <div class="box-content">
+                <div class="profile-text-container">
+                    <div class="search-results-container">
+                        <ul class="search-result-list">
+                            <?php
+                            foreach ($data_for_this_page as $row) {
+                                // create html div each time loops through $query
+                                echo "<div class='search-view-item'>
+                                        <span id='search-result'>
+                                            <a href='profile.php?userID=" . $row['userID'] . "'>
+                                                <div class='profile-photo-large'>
+                                                    <img src='" . $row['profile_pic'] . "'>
+                                                </div>
+                                                <div class='profile-content'>
+                                                    <div class='profile-name'>
+                                                        " . $row['first_name'] . "
+                                                    </div>
+                                                    <div class='profile-stats-container'>
+                                                        <div class='profile-content profile-flag'>
+                                                            <img src='" . $row['flag'] . "'>
+                                                        </div>
+                                                        <div class='profile-content profile-edu-level'>
+                                                            " . $row['education_level'] . "
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>";
+                            }
+                            ?>
+                        </ul>
+                        <?php
+                        /* PAGE LINKS */
+                        // create the variables
+                        $previous = $page_num - 1;
+                        $next = $page_num + 1;
+                        // show User what page their on, and the total number of pages
+                        echo "<div class='page-links'>
+                                <div class='page-links-button'>
+                                    <a class='button' href='search.php'> << </a>
+                                    <a class='button' href='search.php?page_num=$previous'> < </a>
                                 </div>
-                                <div class='search-result-info'>
-                                    <div class='info-name'>
-                                        " . $row['first_name'] . "
-                                    </div>
-                                    <div class='info-details'>
-                                        <span class='info-country'>
-                                            <img src='" . $row['flag'] . "'>
-                                        </span>
-                                        <span class='info-rate'>
-                                            " . "$18" . "
-                                        </span>
-                                        <span class='info-reviews'>
-                                                " . "3.5 stars" . "
-                                        </span>
-                                    </div>
+                                <div class='page-links-info'>
+                                    " . $page_num . " of " . $last_page . " " . "
                                 </div>
-                            </a>
-                        </span>
-                    </div>";
-            }
-            ?>
-        </ul>
-        <?php
-        /* PAGE LINKS */
-        // create the variables
-        $previous = $page_num - 1;
-        $next = $page_num + 1;
-        // show User what page their on, and the total number of pages
-        echo "<div class='page-links'>
-                <div class='page-links-button'>
-                    <a class='button' href='search.php'> << </a>
-                    <a class='button' href='search.php?page_num=$previous'> < </a>
+                                <div>
+                                    <a class='button' href='search.php?page_num=$next'> > </a>
+                                    <a class='button' href='search.php?page_num=$last_page'> >> </a>
+                                </div>
+                            </div>";
+                        ?>
+                    </div>
                 </div>
-                <div class='page-links-info'>
-                    " . $page_num . " of " . $last_page . " " . "
-                </div>
-                <div>
-                    <a class='button' href='search.php?page_num=$next'> > </a>
-                    <a class='button' href='search.php?page_num=$last_page'> >> </a>
-                </div>
-            </div>";
-        ?>
+            </div>
+        </div>
     </div>
 </div>
 
