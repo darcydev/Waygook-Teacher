@@ -458,13 +458,10 @@ input {
 	display: table;
 }
 
-.page-table-body .td-profile-info .profile-pic img {
+.page-table-body .td-profile-info .profile-photo-small img {
 	margin: 0 22px 0 10px;
-    width: 38px;
-    height: 38px;
     object-fit: cover;
     vertical-align: middle;
-    border-radius: 50%;
 }
 
 .page-table-body .td-profile-info .profile-pic .down-btn,
@@ -570,6 +567,12 @@ input {
 	width: 225px;
 }
 
+.profile-photo-small img {
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+}
+
 .profile-text-container {
 	padding: 30px;
 	width: 90%;
@@ -590,22 +593,14 @@ input {
 	padding-top: 10px;
 }
 
-#message-item,
 .conversation-item {
-	padding-bottom: 50px;
-	border-bottom: 3px solid;
-	padding-top: 10px;
+	padding: 10px 0;
+	border-bottom: 1px solid #e3e5e6;
 }
 
 .conversation-photo {
 	position: absolute;
 	padding-bottom: 10px;
-}
-
-.conversation-photo img {
-	width: 80px;
-	height: 80px;
-	border-radius: 25px;
 }
 
 .conversation-name {

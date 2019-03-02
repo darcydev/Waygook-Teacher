@@ -36,51 +36,64 @@ $stmt = $db->run($sql, [$userLoggedInID, $userLoggedInID]);
 $conversationMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="page-container">
-    <div class="page-heading">
-        <h2>Conversations</h2>
+<div class="profile-info-container settings-profile-container conversation-list-container">
+    <div class="side-nav">
+        <?php // TODO: include href links ?>
+        <a class="side-nav-item b" href="#">Schedule lesson</a>
     </div>
-    <div class="page-content">
-        <?php
-        foreach ($conversationMessages as $data_row) {
-            // fetch the first_name, last_name of the User involved in the conversation who isn't userLoggedIn
-            // aka 'the other messager'
-            // use if/else to get userID of 'the other messanger'
-            // if $userLoggedInID != $from_user_id, then $from_user_id must equal $otherUserID, and vice versa
-            if ($userLoggedInID == $data_row['from_user_id']) {
-                $otherUserID = $data_row['to_user_id'];
-            } else {
-                $otherUserID = $data_row['from_user_id'];
-            }
-            // collected from $data_row['from_user_id'] which has FK relation with User.userID
-            $sql = "SELECT * FROM Users WHERE userID = ?";
-            $stmt = $db->run($sql, [$otherUserID]);
-            $other_user_row = $stmt->fetch(PDO::FETCH_ASSOC);
-            // create html div each time loops through $query
-            echo "<a href='conversation.php?userID=" . $otherUserID . "'>
-                    <div class='conversation-item'>
-                        <span id='conversation-result'>
-                            <div class='conversation-photo profile-photo'>
-                                <img src=" . $other_user_row['profile_pic'] . " alt='from-user-photo'>
-                            </div>
-                            <div class='conversation-name'>
-                                " . $other_user_row['first_name'] . "
-                            </div>
-                            <div class='conversation-date'>
-                                " . $data_row['date'] . "
-                            </div>
-                            <div class='conversation-text'>
-                                " .
-                                /* print first 200 characters of each message */
-                                substr($data_row['message_content'], 0, 200) . "
-                            </div>
-                        </span>
+    <div class="conversation-list-content profile-content settings-profile-content">
+        <div class="box">
+            <div class="box-content">
+                <div class="profile-text-container profile-conversation-container">
+                    <div class="profile-content profile-description">
+                        <div class="profile-description-title">
+                            <h3>Conversations</h3>
+                        </div>
+                        <p>
+                            <?php
+                            foreach ($conversationMessages as $data_row) {
+                                // fetch the first_name, last_name of the User involved in the conversation who isn't userLoggedIn
+                                // aka 'the other messager'
+                                // use if/else to get userID of 'the other messanger'
+                                // if $userLoggedInID != $from_user_id, then $from_user_id must equal $otherUserID, and vice versa
+                                if ($userLoggedInID == $data_row['from_user_id']) {
+                                    $otherUserID = $data_row['to_user_id'];
+                                } else {
+                                    $otherUserID = $data_row['from_user_id'];
+                                }
+                                // collected from $data_row['from_user_id'] which has FK relation with User.userID
+                                $sql = "SELECT * FROM Users WHERE userID = ?";
+                                $stmt = $db->run($sql, [$otherUserID]);
+                                $other_user_row = $stmt->fetch(PDO::FETCH_ASSOC);
+                                // create html div each time loops through $query
+                                echo "<a href='conversation.php?userID=" . $otherUserID . "'>
+                                        <div class='conversation-item'>
+                                            <span id='conversation-result'>
+                                                <div class='conversation-photo profile-photo-small'>
+                                                    <img src=" . $other_user_row['profile_pic'] . " alt='from-user-photo'>
+                                                </div>
+                                                <div class='conversation-name'>
+                                                    " . $other_user_row['first_name'] . "
+                                                </div>
+                                                <div class='conversation-date'>
+                                                    " . $data_row['date'] . "
+                                                </div>
+                                                <div class='conversation-text'>
+                                                    " .
+                                                    /* print first 200 characters of each message */
+                                                    substr($data_row['message_content'], 0, 200) . "
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </a>";
+                            }
+                            ?>
+                        </p>
                     </div>
-                </a>";
-        }
-        ?>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>
 
 <?php

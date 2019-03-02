@@ -60,7 +60,7 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo "<tbody class='lessons-body page-table-body'>
                         <tr class='tr-row'>
                             <td id='td-profile-info' class='td-profile-info'>
-                                <div class='info-content profile-pic'>
+                                <div class='info-content profile-photo-small'>
                                     <img onclick='downLessons(" . $other_user_row['userID'] . ")' class='down-btn sub-table-btn' src='assets/images/icons/icons8-about.png' alt='drop-down-btn'>
                                     <img class='up-btn sub-table-btn' src='assets/images/icons/icons8-idea.png' alt='pull-up-btn'>
                                     <img src=" . $other_user_row['profile_pic'] . " alt='profile-pic'>
