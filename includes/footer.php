@@ -1,5 +1,6 @@
 </div>
 
+</div>
 <div class="footer-container">
     <div class="about-us-container footer-section">
         <div class="process-title">About us</div>

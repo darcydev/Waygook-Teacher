@@ -1,12 +1,12 @@
 * {
 	color: #000000;
-	font-family: 'Roboto', 'Archivo', sans-serif;
-	letter-spacing: 0.6px;
 }
 
 body {
-	font-size: 0.8em;
-	font-family: arial, sans-serif;
+	font-size: 0.85em;
+	font-family: 'Roboto', 'Archivo', sans-serif;
+	margin: 0;
+	letter-spacing: 0.6px;
 }
 
 h1 {
@@ -18,13 +18,12 @@ h1 {
 }
 
 h2 {
-	padding: 20px;
 	font-size: 27px;
 	text-align: center;
+	margin-top: 0;
 }
 
 h3 {
-	padding: 12px;
 	font-size: 18px;
 	text-align: center;
 }
@@ -117,6 +116,8 @@ input {
 	flex-direction: column;
 	flex: none;
 	padding: 32px 0;
+	background: #e3e3e3;
+	border-right: 1px solid #666666;
 }
 
 .side-nav-item {
@@ -124,27 +125,7 @@ input {
 	color: #6f757b;
 	padding: 12px 16px;
 	line-height: 1.15;
-}
-
-.box-head {
-	padding-top: 14px;
-    padding-bottom: 13px;
-    min-height: 60px;
-}
-
-.box-head-title {
-	font-size: 22px;
-    line-height: 1.27272727;
-    font-weight: 400;
-    display: block;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 5px 0 5px 0;
-    -ms-flex: 1;
-    flex: 1;
-    min-width: 200px;
+	cursor: pointer;
 }
 
 .box-content {
@@ -159,6 +140,7 @@ input {
 	line-height: 27px;
 }
 
+/* TODO: can remove in future (2/3/19) */
 .buttons-row {
 	display: flex;
 	-ms-flex-wrap: wrap;
@@ -176,6 +158,7 @@ input {
 	line-height: 1;
 	text-decoration: none;
 	font-weight: 600;
+	margin-top: 10px;
 	padding: 11px 16px;
 	border-radius: 2px;
 	position: relative;
@@ -202,11 +185,14 @@ input {
 	border-color: #ced3d6;
 }
 
+.form {
+	width: 70%;
+}
+
 .form label {
 	font-size: 1.1em;
 	font-weight: 700;
-	margin-top: 6px;
-	margin-bottom: 6px;
+	margin-bottom: 8px;
 	float: left;
 	padding: 0 5px;
 	width: 33.33%;
@@ -218,6 +204,10 @@ input {
 
 .select-language {
 	width: 120px;
+}
+
+.background-container {
+	background: #e0e0e0;
 }
 
 .main-container {
@@ -269,7 +259,7 @@ input {
 
 .box {
 	background: white;
-	margin: 64px 0;
+	width: 100%;
 }
 
 .box-icon {
@@ -531,8 +521,8 @@ input {
 	list-style: none;
 	display: flex;
 	justify-content: flex-end;
-	padding-right: 15px;
-	padding-top: 1px;
+	margin-bottom: 0;
+	padding: 2px 15px;
 }
 
 .nav-bar-links li {
@@ -561,65 +551,42 @@ input {
 	width: 15px;
 }
 
-#profile-content-container,
-#main-conversation-container .profile-info-container {
+.profile-info-container {
 	display: flex;
+	width: 90%;
 }
 
-#profile-photo,
-#main-conversation-container .profile-info-container #profile-photo {
+.profile-content-row-a {
 	padding: 30px;
 }
 
-#profile-photo img,
-#main-conversation-container .profile-info-container #profile-photo img {
+.profile-content-row-b {
+	padding: 30px;
+	width: 80%;
+}
+
+.profile-photo-large img {
 	height: 225px;
 	width: 225px;
 }
 
-#profile-text-content,
-#main-conversation-container .profile-info-container #profile-text-content {
+.profile-text-container {
 	padding: 30px;
-	height: 225px;
-	width: 33%;
+	width: 90%;
 }
 
-#profile-stats-content,
-#main-conversation-container .profile-info-container #profile-stats-content {
-	margin-top: 90px;
-    border: 2px solid grey;
-    padding: 10px;
-    width: 30%;
-	display: inline-table;
-}
-
-#profile-text-content #profile-name,
-#main-conversation-container .profile-info-container #profile-text-content #profile-name {
-	font-size: 1.8em;
-    font-weight: 700;
-	text-align: center;
-}
-
-#profile-flag,
-#main-conversation-container .profile-info-container #profile-text-content #profile-flag {
-	text-align: center;
-}
-
-#profile-flag img {
+.profile-flag img {
 	width: 35px;
 	height: 35px;
 }
 
-#profile-description {
-	padding: 30px 180px;
-}
-
-#profile-description h3 {
+.profile-description h3 {
 	font-size: 1.3em;
 	border-bottom: 1px solid grey;
+	text-align: left;
 }
 
-#profile-description p {
+.profile-description p {
 	padding-top: 10px;
 }
 
@@ -663,27 +630,16 @@ input {
 	text-align: justify;
 }
 
-#send-message-form {
-	display: inline-block;
-    margin-right: 20px;
-    margin-bottom: 20px;
+.edit-db-form {
     width: 29%;
     max-width: 200px;
     min-width: 150px;
-    text-align: center;
-	padding-top: 30px;
-    padding-left: 50px;
 }
 
-#send-message-form-container #send-message-form textarea {
-	font-size: 1.2em;
+.edit-db-form textarea {
+	font-size: 1em;
 	width: 600px;
-	height: 300px;
-}
-
-#profile-content-container #profile-text-content #profile-description {
-	border: 2px solid black;
-	padding: 15px
+	height: 200px;
 }
 
 #search-container #search-bar {
@@ -758,9 +714,8 @@ input {
 	padding-right: 40px;
 }
 
-#settings-profile-container {
-	max-height: 100%;
-    min-height: 70vh;
+.settings-profile-container {
+	min-height: 100%;
     display: flex;
     flex-basis: auto;
     flex-grow: 1;
@@ -774,7 +729,6 @@ input {
 
 .settings-profile-content {
 	width: 752px;
-	padding: 32px;
 }
 
 .page-links {
@@ -783,4 +737,8 @@ input {
     font-weight: 600;
 	align-items: center;
 	justify-content: center;
+}
+
+#account-details-form, #contact-info-form {
+	display: none;
 }

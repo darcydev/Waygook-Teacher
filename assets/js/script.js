@@ -8,6 +8,23 @@ function downLessons(id) {
 // execute as soon as the document is ready
 $(document).ready(function() {
 
+    // on edit-profile.php, enable User to switch between different tabs
+    $('#about-me-nav').click(function () {
+        document.getElementById("about-me-form").style.display = "inline-table";
+        document.getElementById("contact-info-form").style.display = "none";
+        document.getElementById("account-details-form").style.display = "none";
+    });
+    $('#contact-info-nav').click(function () {
+        document.getElementById("contact-info-form").style.display = "inline-table";
+        document.getElementById("about-me-form").style.display = "none";
+        document.getElementById("account-details-form").style.display = "none";
+    });
+    $('#account-details-nav').click(function () {
+        document.getElementById("account-details-form").style.display = "inline-table";
+        document.getElementById("contact-info-form").style.display = "none";
+        document.getElementById("about-me-form").style.display = "none";
+    });
+
     // switch between register and login forms
     // if change-to-register-form was clicked, show register form and hide login form
     $('#change-to-register-form').click(function () {

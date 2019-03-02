@@ -33,73 +33,83 @@ $stmt = $db->run($sql, [$_GET['userID'], $userLoggedInID, $userLoggedInID, $_GET
 $userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div id="main-conversation-container" class="conversation-container">
-    <div class="profile-info-container">
-        <div id="profile-photo" class="profile-photo-content">
-            <img src=<?php echo $row['profile_pic']; ?>>
+<div class="profile-info-container settings-profile-container conversation-container">
+    <div class="side-nav">
+        <?php // TODO: include href links ?>
+        <a class="side-nav-item b" href="#">Schedule lesson</a>
+        <a class="side-nav-item b" href="#">View profile</a>
+    </div>
+    <div class="conversation-content profile-content settings-profile-content">
+        <div class="box">
+            <div class="box-content">
+                <div class="profile-info-container">
+                    <div class="profile-content-row-a">
+                        <div class="profile-content profile-photo-large profile-photo">
+                            <img src=<?php echo $row['profile_pic']; ?> alt='profile-pic'>
+                        </div>
+                    </div>
+                    <div class="profile-content-row-b">
+                        <div class="profile-content profile-name">
+                            <h2><?php echo $row['first_name']; ?></h2>
+                        </div>
+                        <div class="profile-stats-container">
+                            <div class="profile-content profile-flag">
+                                <p>Nationality: <img src=<?php echo $row['flag']; ?>></p>
+                            </div>
+                            <div class="profile-content">
+                                <p>INSERT PROFILE STATS</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-text-container profile-conversation-container">
+                    <div class="profile-content profile-description">
+                        <div id="send-message-form-container">
+                            <form id="send-message-form" class="edit-db-form" method="post">
+                                <textarea name="send-message" rows="10" cols="30"></textarea>
+                                <button type="submit" class="button" name="send-message-button button">SEND</button>
+                            </form>
+                        </div>
+                        <div class="profile-description-title">
+                            <h3>Messages</h3>
+                        </div>
+                        <p>
+                            <?php
+                            foreach ($userMessages as $row) {
+                                // fetch the first_name, last_name of the User who sent each message
+                                // collected from $row['from_user_id'] which has FK relation with User.userID
+                                $sql = "SELECT first_name, last_name FROM Users WHERE userID = ?";
+                                $stmt = $db->run($sql, [$row['from_user_id']]);
+                                $from_user_row = $stmt->fetch(PDO::FETCH_ASSOC);
+                                $from_user_first_name = $from_user_row['first_name'];
+                                $from_user_last_name = $from_user_row['last_name'];
+                                // create html div each time loops through $query
+                                echo "<div id='message-item'>
+                                        <span id='message-result'>
+                                            <div class='conversation-photo'>
+                                                <img src='' alt='from-user-photo'>
+                                            </div>
+                                            <div class='conversation-name'>
+                                                " . $from_user_first_name . " " . $from_user_last_name . "
+                                            </div>
+                                            <div class='conversation-date'>
+                                                " . $row['date'] . "
+                                            </div>
+                                            <div class='conversation-text'>
+                                                " . nl2br($row['message_content']) . "
+                                            </div>
+                                        </span>
+                                    </div>";
+                            }
+                            ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="profile-text-content">
-            <div id="profile-name" class="profile-content">
-                <p><?php echo $row['first_name']; ?></p>
-            </div>
-            <div id="profile-flag" class="profile-content">
-                <p>INSERT NATIONALITY FLAG</pa>
-            </div>
-            <div id="profile-age" class="profile-content">
-                <p><?php echo $row['DOB']; ?></p>
-            </div>
-            <div id="profile-education-level" class="profile-content">
-                <p><?php echo $row['education_level']; ?></p>
-            </div>
-            <div id="profile-education-major" class="profile-content">
-                <p><?php echo $row['education_major']; ?></p>
-            </div>
-            <div id="profile-description" class="profile-content">
-                <p>DESCRIPTION: <p><?php echo $row['description']; ?></p></p>
-            </div>
-        </div>
-    </div>
-    <div class="page-heading">
-        <h2>Messages</h2>
-    </div>
-    <div class="page-content">
-        <?php
-        foreach ($userMessages as $row) {
-            // fetch the first_name, last_name of the User who sent each message
-            // collected from $row['from_user_id'] which has FK relation with User.userID
-            $sql = "SELECT first_name, last_name FROM Users WHERE userID = ?";
-            $stmt = $db->run($sql, [$row['from_user_id']]);
-            $from_user_row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $from_user_first_name = $from_user_row['first_name'];
-            $from_user_last_name = $from_user_row['last_name'];
-            // create html div each time loops through $query
-            echo "<div id='message-item'>
-                    <span id='message-result'>
-                        <div class='conversation-photo'>
-                            <img src='' alt='from-user-photo'>
-                        </div>
-                        <div class='conversation-name'>
-                            " . $from_user_first_name . " " . $from_user_last_name . "
-                        </div>
-                        <div class='conversation-date'>
-                            " . $row['date'] . "
-                        </div>
-                        <div class='conversation-text'>
-                            " . nl2br($row['message_content']) . "
-                        </div>
-                    </span>
-                </div>";
-        }
-        ?>
-    </div>
-    </div>
-    <div id="send-message-form-container">
-        <form id="send-message-form" class="edit-db-form" method="post">
-            <textarea name="send-message" rows="10" cols="30"></textarea>
-            <button type="submit" class="button" name="send-message-button button">SEND</button>
-        </form>
     </div>
 </div>
+
 
 <?php
 include("includes/footer.php");

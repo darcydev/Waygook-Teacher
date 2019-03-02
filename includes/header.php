@@ -41,7 +41,6 @@ if(isset($_GET['userID'])) {
 include("includes/handlers/edit-profile-handler.php");
 include("includes/handlers/auth-handler.php");
 include("includes/handlers/send-message-handler.php");
-
 ?>
 
 
@@ -73,4 +72,5 @@ include("includes/handlers/send-message-handler.php");
             </select>
         </ul>
     </div>
-    <div class="main-container">
+    <div class="background-container">
+        <div class="main-container">

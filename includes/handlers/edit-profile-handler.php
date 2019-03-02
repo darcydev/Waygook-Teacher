@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['edit-profile-button'])) {
+if (isset($_POST['edit-about-me-button'])) {
 
     $success = False;
 
@@ -46,6 +46,22 @@ if (isset($_POST['edit-profile-button'])) {
             echo "Sorry, there has been an error updating your profile.";
         }
     }
+
+    if ($success = True) {
+        header("Location: profile.php?userID=" . $userLoggedInID);
+    }
+}
+
+if (isset($_POST['contact-info-form'])) {
+    $success = False;
+
+    if ($success = True) {
+        header("Location: profile.php?userID=" . $userLoggedInID);
+    }
+}
+
+if (isset($_POST['account-details-form'])) {
+    $success = False;
 
     if ($success = True) {
         header("Location: profile.php?userID=" . $userLoggedInID);

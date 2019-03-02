@@ -4,10 +4,9 @@
 if ($userLoggedInRow['role'] == 'teacher') {
     echo '<script>
             $(document).ready(function() {
-                ' /* remove search link on nav-bar
-                // BUG: this isn't working on some pages */ . '
+                ' /* hide search link on nav-bar */ . '
                 $("#search-nav-bar-link").hide();
-                ' /* remove 'logo' link to index-student.php */ . '
+                ' /* hide 'logo' link to index-student.php */ . '
                 $("#index-student-link").hide();
                 ' /* change profile description title */ . '
                 $("#description-student-title").hide();
@@ -16,14 +15,16 @@ if ($userLoggedInRow['role'] == 'teacher') {
 } else {
     echo '<script>
             $(document).ready(function() {
-                ' /* remove 'logo' link to index-teacher.php */ . '
+                ' /* hide 'logo' link to index-teacher.php */ . '
                 $("#index-teacher-link").hide();
                 ' /* change profile description title */ . '
                 $("#description-teacher-title").hide();
-                ' /* remove profile stats box */ . '
+                ' /* hide profile stats box */ . '
                 $("#profile-stats-content").hide();
                 ' /* remove profile flag */ . '
                 $("#profile-flag").hide();
+                ' /* hide account-details nav bar link in edit-profile */ . '
+                $("#account-details-nav").hide();
             });
         </script>';
 }

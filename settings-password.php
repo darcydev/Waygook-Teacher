@@ -30,7 +30,7 @@ if (isset($_POST['change-password-button'])) {
 }
 ?>
 
-<div id="settings-profile-container">
+<div class="settings-profile-container">
     <div class="side-nav">
         <a class="side-nav-item b" href="settings-password.php">Password</a>
         <a class="side-nav-item b" href="settings-vertification.php">Vertification</a>
@@ -38,9 +38,6 @@ if (isset($_POST['change-password-button'])) {
     </div>
     <div class="settings-profile-content">
         <div class="box">
-            <div class="box-head">
-                <div class="box-head-title">Change Password</div>
-            </div>
             <div class="box-content">
                 <form class="form" method="post">
                     <p>
