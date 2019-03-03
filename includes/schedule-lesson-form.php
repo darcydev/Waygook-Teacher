@@ -5,7 +5,7 @@
         </div>
         <form class="schedule-form auth-form form" method="POST">
             <p>
-                <?php echo $account->getError(Constants::$invalidLessonDate); ?>
+                <?php echo $employment->getError(Constants::$invalidLessonDate); ?>
                 <label for="lesson-date">Date</label>
                 <input id="lesson-date" name="lesson-date" type="date" required>
             </p>

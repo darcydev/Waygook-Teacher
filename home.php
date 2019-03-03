@@ -76,7 +76,7 @@
                     <div class="box-content-row">
                         <div class="post">
                             <div class="post-icon">
-                                <img src="" alt="post-icon">
+                                <img src="assets/images/icons/icons8-thumb_up.png" alt="post-icon">
                             </div>
                             <div class="post-main">
                                 <div class="post-title">Affordable prices</div>
@@ -98,7 +98,7 @@
                     <div class="box-content-row">
                         <div class="post">
                             <div class="post-icon">
-                                <img src="" alt="post-icon">
+                                <img src="assets/images/icons/icons8-passport.png" alt="post-icon">
                             </div>
                             <div class="post-main">
                                 <div class="post-title">Immerse yourself in a new culture</div>
@@ -109,7 +109,7 @@
                     <div class="box-content-row">
                         <div class="post">
                             <div class="post-icon">
-                                <img src="" alt="post-icon">
+                                <img src="assets/images/icons/icons8-hard_working.png" alt="post-icon">
                             </div>
                             <div class="post-main">
                                 <div class="post-title">Succeed in your career</div>
@@ -131,7 +131,7 @@
                     <div class="box-content-row">
                         <div class="post">
                             <div class="post-icon">
-                                <img src="" alt="post-icon">
+                                <img src="assets/images/icons/icons8-talk_female.png" alt="post-icon">
                             </div>
                             <div class="post-main">
                                 <div class="post-title">Speak naturally, always</div>
@@ -143,7 +143,7 @@
             </div>
             <div class="box">
                 <div class="box-icon">
-                    <img src="" alt="box-icon">
+                    <img src="assets/images/icons/icons8-process.png" alt="box-icon">
                 </div>
                 <div class="box-title">
                     <h2>How WaygookTeacher works</h2>
