@@ -1,6 +1,6 @@
 <div id="schedule-lesson-form" class="overlay-item auth-forms">
     <div class="overlay-container">
-        <div class="schedule-form auth-form form">
+        <form class="schedule-form auth-form form">
             <h3>Schedule lesson</h3>
             <div id="schedule-lesson-close" class="close-button menu-button">
                 <img src="assets/images/icons/icons8-globe.png" alt="close-button">
@@ -18,14 +18,15 @@
                 <input id="lesson-end" name="lesson-end" type="time" required>
             </p>
             <p>
-                <label for="lesson-student">Select student</label>
-                <div id="choose-student-list">
-                    <ul id='choose-student-list' class='choose-list user-list list'>
+                <label for="lesson-with">With</label>
+                <select id="lesson-with" class="select" name="lesson-with" type="text" required>
                     <?php
                     // fetch all Employments associated with userLoggedIn
                     $sql = "SELECT * FROM Employments
                             WHERE teacher_id = ?
-                            OR student_id = ?";
+                            OR student_id = ?
+                            AND prepaid_amount > 0
+                            ORDER BY prepaid_amount DESC";
                     $stmt = $db->run($sql, [$userLoggedInID, $userLoggedInID]);
                     $choose_employments_row = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -49,20 +50,17 @@
 
                         foreach ($other_user_row as $user_row) {
 
-                            echo "<li id='schedule_user_" . $otherUserID . "' class='choose-student'>
-                                    <div class='info-content profile-photo-small'>
-                                        <img src=" . $user_row['profile_pic'] . " alt='profile-pic'>
-                                    </div>
-                                    <p>" . $user_row['first_name'] . "</p>
-                                    <span class='gray'>" . $prepaid_hours . " hrs</span>
-                                </li>";
+                            echo "
+                                    <option value=" . $user_row['userID'] .">
+                                        " . $user_row['first_name'] . " -- " . $prepaid_hours . " prepaid hrs remaining
+                                    </option>
+                                ";
                         }
                     }
                     ?>
-                    </ul>
-                </div>
+                </select>
             </p>
             <button type="submit" id="schedule-lesson-button" name="schedule-lesson-button" class="button">Schedule lesson</button>
-        </div>
+        </form>
     </div>
 </div>
