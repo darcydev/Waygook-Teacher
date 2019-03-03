@@ -1,10 +1,9 @@
 <div id="schedule-lesson-form" class="overlay-item auth-forms">
     <div class="overlay-container">
-        <form class="schedule-form auth-form form">
-            <h3>Schedule lesson</h3>
-            <div id="schedule-lesson-close" class="close-button menu-button">
-                <img src="assets/images/icons/icons8-globe.png" alt="close-button">
-            </div>
+        <div id="schedule-lesson-close" class="close-button menu-button">
+            <img src="assets/images/icons/icons8-globe.png" alt="close-button">
+        </div>
+        <form class="schedule-form auth-form form" method="POST">
             <p>
                 <label for="lesson-date">Date</label>
                 <input id="lesson-date" name="lesson-date" type="date" required>
@@ -14,8 +13,8 @@
                 <input id="lesson-start" name="lesson-start" type="time" required>
             </p>
             <p>
-                <label for="lesson-end">End time</label>
-                <input id="lesson-end" name="lesson-end" type="time" required>
+                <label for="duration">Duration (mins)</label>
+                <input id="duration" name="duration" type="number" step="30" min="30" max="240" required>
             </p>
             <p>
                 <label for="lesson-with">With</label>

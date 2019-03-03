@@ -4,6 +4,7 @@ include("includes/classes/MyPDO.php");
 include("includes/classes/Account.php");
 include("includes/classes/Constants.php");
 include("includes/classes/User.php");
+include("includes/classes/Employment.php");
 
 if(isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = $_SESSION['userLoggedIn'];
@@ -29,6 +30,9 @@ $sql = "SELECT * FROM Users WHERE username = ?";
 $stmt = $db->run($sql, [$userLoggedIn]);
 $userLoggedInRow = $stmt->fetch(PDO::FETCH_ASSOC);
 $userLoggedInID = $userLoggedInRow['userID'];
+$userLoggedInRole = $userLoggedInRow['role'];
+
+$employment = new Employment($userLoggedInID, $userLoggedInRole);
 
 // 2) (if avalible) Fetch db details of userURL
 if(isset($_GET['userID'])) {
@@ -41,6 +45,7 @@ if(isset($_GET['userID'])) {
 include("includes/handlers/edit-profile-handler.php");
 include("includes/handlers/auth-handler.php");
 include("includes/handlers/send-message-handler.php");
+include("includes/handlers/schedule-lesson-handler.php");
 ?>
 
 

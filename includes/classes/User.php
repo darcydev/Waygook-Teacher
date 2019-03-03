@@ -190,5 +190,6 @@ class User {
         // TODO: insert code...
         // fe, ensure that User has actually entered a message (perhaps validate with min. characters?)
     }
+
 }
 ?>

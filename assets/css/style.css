@@ -142,6 +142,7 @@ input {
 	border-width: 1px;
 	height: 38px;
 	line-height: 27px;
+	font-size: 14px;
 }
 
 /* TODO: can remove in future (2/3/19) */
