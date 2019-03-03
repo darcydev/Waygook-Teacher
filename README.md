@@ -26,7 +26,7 @@ Waygook Teacher is a platform to connect Korean students with English teachers.
 
 #### Feb Tasks
 
-* improve appearance of profile.php (include more fields)
+* improve appearance of profile.php (include more fields) [X]
 * include filter functionality in search.php [X]
 * include settings.php
     ** changing email, password, name, etc. should be done in Profile.php
@@ -41,6 +41,14 @@ Waygook Teacher is a platform to connect Korean students with English teachers.
         3.1) Direct to Student-index
         3.2) Information about search for Teachers,
         3.3) Send Teacher a message to organise a lesson,
+
+#### Icons required
+
+* Drop down menu btn
+* Pull up menu btn
+* X to close box btn
+* Time Icon
+* plus 1 User icon (schedule lesson box)
 
 ### Stage 2 (Aug/19 - Oct/19)
 

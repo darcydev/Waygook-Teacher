@@ -27,7 +27,7 @@ if($row['username'] == $userLoggedIn) {
         <!-- only viewable if the User is not viewing their own profile-->
         <a id="send-message-link" class="side-nav-item b" href="conversation.php?userID=<?php echo $userID; ?>">Send message</a>
         <?php // TODO: include href links ?>
-        <a class="side-nav-item b" href="#">Schedule lesson</a>
+        <a id="schedule-lesson-link" class="side-nav-item b" href="#">Schedule lesson</a>
     </div>
     <div class="profile-content settings-profile-content">
         <div class="box">

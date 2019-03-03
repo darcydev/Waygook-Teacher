@@ -1,4 +1,8 @@
 <?php
+/* SCHEDULE LESSON HANDLER */
+
+
+
 /* LOGIN HANDLER */
 if (isset($_POST['login-button'])) {
 	//Login button was pressed

@@ -59,7 +59,16 @@ $(document).ready(function() {
         // make that particular sub table display:table-row
         $('#lessons-table-head_' + id).css('display', 'table-row');
         $('#lessons-table-body_' + id).css('display', 'table-row');
-
     };
+
+    // Open / close schedule lesson overlay box
+    $('#schedule-lesson-link').click(function () {
+        $('#schedule-lesson-form').css('display', 'block');
+        $('.background-container').css('opacity', '0.3');
+    });
+    $('#schedule-lesson-close').click(function () {
+        $('#schedule-lesson-form').css('display', 'none');
+        $('.background-container').css('opacity', '1');
+    });
 
 });

@@ -72,5 +72,6 @@ include("includes/handlers/send-message-handler.php");
             </select>
         </ul>
     </div>
+    <?php include("schedule-lesson-form.php"); ?>
     <div class="background-container">
         <div class="main-container">
