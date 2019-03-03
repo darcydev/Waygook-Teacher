@@ -8,35 +8,19 @@ class Employment {
     private $userLoggedInID;
     private $userLoggedInRole;
 
-    private $employmentID;
-    private $teacher_id;
-    private $student_id;
-    private $prepaid_amount;
-    private $rate;
-
     public function __construct($userLoggedInID, $userLoggedInRole) {
         $this->db = MyPDO::instance();
         $this->errorArray = array();
         $this->userLoggedInID = $userLoggedInID;
         $this->userLogggedInRole = $userLoggedInRole;
-
-        /*
-
-        $sql = "SELECT * FROM Employments
-                WHERE teacher_id = ?
-                OR student_id = ?";
-        $stmt = $this->db->run($sql, [$userLoggedInID, $userLoggedInID]);
-        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $this->employmentID = $row['employmentID'];
-        // $this->teacher_id = $row['teacher_id'];
-        // $this->student_id = $row['student_id'];
-        $this->prepaid_amount = $row['prepaid_amount'];
-        $this->rate = $row['rate'];
-        */
     }
 
-    // TODO: include getError function
+    public function getError($error) {
+        if(!in_array($error, $this->errorArray)) {
+            $error = "";
+        }
+        return "<span class='errorMessage'>$error</span>";
+    }
 
     // function to get the particular Employment involving $userLoggedIn and $other_user
     public function getThisEmployment($userLoggedInID, $other_user) {
@@ -49,6 +33,7 @@ class Employment {
     }
 
     public function scheduleLesson($date, $start_time, $duration, $other_user) {
+        $this->validateLessonDate($date);
         $row = $this->getThisEmployment($this->userLoggedInID, $other_user);
 
         // assign correct teacher/student IDs depending on role of userLoggedIn
@@ -70,7 +55,6 @@ class Employment {
 
         $sql = "INSERT INTO Lessons
                 VALUES (lessonID, ?, ?, ?, ?, ?, NULL, ?, ?, ?, DEFAULT)";
-
         $stmt = $this->db->run($sql,
             [
                 $row['employmentID'],
@@ -88,11 +72,25 @@ class Employment {
     }
 
     private function validateLessonDate($date) {
-        // TODO:
+        // get today's date
+        $today = date('Y-m-d');
+        // convert today's date to time and add 60 days
+        $max_date = strtotime('60 day', strtotime($today));
+        // convert back to date
+        $max_date = date('Y-m-d', $max_date);
+        // conver today's date to time and minus 10 days
+        $min_date = strtotime('-10 day', strtotime($today));
+        // convert back to time
+        $min_date = date('Y-m-d', $min_date);
+
+        // check $date is within $max_date / $min_date range
+        if ($date > $min_date && $date < $max_date) {
+            // pass
+        } else {
+            array_push($this->errorArray, Constants::$invalidLessonDate);
+            return;
+        }
     }
 
-    private function validateLessonTime($start_time) {
-        // TODO:
-    }
 }
 ?>

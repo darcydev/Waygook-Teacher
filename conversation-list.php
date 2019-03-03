@@ -39,7 +39,7 @@ $conversationMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="profile-info-container settings-profile-container conversation-list-container">
     <div class="side-nav">
         <?php // TODO: include href links ?>
-        <a class="side-nav-item b" href="#">Schedule lesson</a>
+        <a id="schedule-lesson-link" class="side-nav-item b" href="#">Schedule lesson</a>
     </div>
     <div class="conversation-list-content profile-content settings-profile-content">
         <div class="box">

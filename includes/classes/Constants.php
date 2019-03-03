@@ -19,5 +19,7 @@ class Constants {
 	public static $invalidFileExtension = "The file must a JPEG or PNG file";
 	public static $invalidFileSize = "The file must be less than 2MB";
 	public static $invalidFileName = "The file already exists. Please rename the file";
+
+	public static $invalidLessonDate = "The lesson must be between -10 and +60 days from today";
 }
 ?>

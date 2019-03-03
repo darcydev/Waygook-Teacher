@@ -8,14 +8,12 @@ if (isset($_POST['schedule-lesson-button'])) {
 
     $rowsAffected = $employment->scheduleLesson($date, $start_time, $duration, $other_user);
 
-    echo $rowsAffected;
-    /*
     if ($rowsAffected == 1) {
-        header("Location: calendar.php");
+        // TODO: direct to calendar.php
+        header("Location: profile.php");
     } else {
         header("Location: fail.php");
     }
-    */
 
 }
 
