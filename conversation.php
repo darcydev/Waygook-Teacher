@@ -19,7 +19,6 @@ The two Users in question are: a) userLoggedIn and b) ?userID=x (from the url)
 <?php
 include("includes/header.php");
 
-
 // select all messages sent between userLoggedIn and ?userID=x
 // that is, between the User is currently logged in and the User whose page their viewing
 // for example, if I'm logged into Facebook and want to check the messages between me and my friend
