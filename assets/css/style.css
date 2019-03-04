@@ -778,3 +778,26 @@ input {
 .gray {
 	color: #7e8389;
 }
+
+.calendar-item span {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.calendar-item .calendar-result div {
+	margin-top: 6px;
+}
+
+.calendar-item .calendar-result .calendar-photo {
+	position: initial;
+	margin-top: 0;
+}
+
+.calendar-item .calendar-result .calendar-name {
+	padding-left: 0
+}
+
+.calendar-item .calendar-result .calendar-duration {
+	padding-left: 0;
+	margin-right: 0;
+}
