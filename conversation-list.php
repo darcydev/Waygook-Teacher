@@ -1,10 +1,8 @@
 <!--
-This file (conversation-list.php) shows the list of all conversation for userLoggedIn
+The page shows the list of all conversation for userLoggedIn
 
 conversation.php shows the indiviudal conversation between two Users
--->
 
-<!--
 On this page, we display:
 * all the conversation preview for all the conversations for the userLoggedIn.
 * by clicking on one of the conversations, takes the User to conversation.php for that particular conversation

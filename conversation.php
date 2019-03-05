@@ -1,10 +1,8 @@
 <!--
-This file (conversation.php) shows the indiviudal conversation between two Users
+The page shows the indiviudal conversation between two Users
 
 conversation-list.php shows the list of all conversation for userLoggedIn
--->
 
-<!--
 On this page, we display:
 * the messages between two Users
 * 'send-message' box that allows Users to send a new message
@@ -36,6 +34,8 @@ $userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="side-nav">
         <?php // TODO: include href links ?>
         <a id="schedule-lesson-link" class="side-nav-item b" href="#">Schedule lesson</a>
+        <!-- direct to 'other users' profile page -->
+        <?php // TODO: href='profile.php?userID="$_GET['userID']"'?>
         <a class="side-nav-item b" href="#">View profile</a>
     </div>
     <div class="conversation-content profile-content settings-profile-content">
@@ -89,7 +89,6 @@ $userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-
 
 <?php
 include("includes/footer.php");
