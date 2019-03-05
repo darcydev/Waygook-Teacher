@@ -70,7 +70,7 @@ include("includes/handlers/schedule-lesson-handler.php");
             <li><a href="lesson-list.php">Lessons</a></li>
             <li><a href="calendar.php">Calendar</a></li>
             <li><a href="conversation-list.php">Messages</a></li>
-            <li><a href="settings-password.php?userID=<?php echo $userLoggedInID; ?>">Settings</a></li>
+            <li><a href="settings.php?userID=<?php echo $userLoggedInID; ?>">Settings</a></li>
             <li><a href="logout.php">Logout</a></li>
             <select id="select-language" class="select-language" name="select-language" type="text" onchange="changeLanguage(this);" required>
                 <option value="english">English</option>

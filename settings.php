@@ -1,18 +1,5 @@
 <?php
 include("includes/header.php");
-?>
-
-<?php
-
-// REFACTOR: include these as part of Account, and call them using
-// Account::sanitizeFormString, etc.
-// in accordance with "DRY" principle
-/*
-function sanitizeFormPassword($inputText) {
-	$inputText = strip_tags($inputText);
-	return $inputText;
-}
-*/
 
 // HANDLER
 if (isset($_POST['change-password-button'])) {
@@ -32,14 +19,13 @@ if (isset($_POST['change-password-button'])) {
 
 <div class="settings-profile-container">
     <div class="side-nav">
-        <a class="side-nav-item b" href="settings-password.php">Password</a>
-        <a class="side-nav-item b" href="settings-vertification.php">Vertification</a>
-        <a class="side-nav-item b" href="settings-notifications.php">Notifications</a>
+        <div id="nav-settings-password" class="side-nav-item b">Password</div>
+        <div id="nav-settings-account" class="side-nav-item b">Account</div>
     </div>
     <div class="settings-profile-content">
         <div class="box">
             <div class="box-content">
-                <form class="form" method="post">
+                <form id="settings-password" class="form" method="post">
                     <p>
                         <?php echo $user->getError(Constants::$passwordIncorrect); ?>
                         <label for="old-password">Current password</label>
@@ -58,6 +44,20 @@ if (isset($_POST['change-password-button'])) {
                     </p>
                     <div class="buttons-row">
                         <button class="button" type="submit" name="change-password-button">SAVE PASSWORD</button>
+                    </div>
+                </form>
+                <form id="settings-account" class="form" method="post">
+                    <p>
+                        <label for="timezone">Current timezone</label>
+                        <input id="old-timezone" name="old-timezone" type="text" value="INSERT CURRENT TIMEZONE" readonly="readonly" required>
+                    </p>
+                    <select class="select" name="new-timezone">
+                        <option value="">INCLUDE TIMEZONES</option>
+                        <?php // TODO: https://stackoverflow.com/questions/1727077/generating-a-drop-down-list-of-timezones-with-php ?>
+                    </select>
+                    </p>
+                    <div class="buttons-row">
+                        <button class="button" type="submit" name="change-timezone-button">CHANGE TIMEZONE</button>
                     </div>
                 </form>
             </div>

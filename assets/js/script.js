@@ -8,6 +8,16 @@ function downLessons(id) {
 // execute as soon as the document is ready
 $(document).ready(function() {
 
+    // on settings.php, if User clicks item on navbar; change form on display
+    $("#nav-settings-password").click(function () {
+        document.getElementById("settings-password").style.display = "block";
+        document.getElementById("settings-account").style.display = "none";
+    });
+    $("#nav-settings-account").click(function () {
+        document.getElementById("settings-account").style.display = "block";
+        document.getElementById("settings-password").style.display = "none";
+    });
+
     // on edit-profile.php, enable User to switch between different tabs
     $('#about-me-nav').click(function () {
         document.getElementById("about-me-form").style.display = "inline-table";
