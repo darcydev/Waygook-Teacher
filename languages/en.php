@@ -1,0 +1,34 @@
+<?php
+    $lang['hello'] = 'Hello';
+    $lang['login/register'] = "Login / Register";
+    $lang['Welcome to...'] = 'Welcome to Waygook Teacher';
+    $lang['platform to connect...'] = 'a platform to connect Korean students with professional native English teachers';
+    $lang['edu world access'] = 'Education makes the World accessible to you';
+    $lang['speak naturally'] = 'Speak naturally with professional English teachers from around the world';
+    $lang['expert tutors'] = 'Expert Tutors';
+    $lang['expert tutors text'] = 'Find native speakers and certified private tutors';
+    $lang['verified profiles'] = 'Verified profiles';
+    $lang['verified profiles text'] = "We carefully check and confirm each tutor's profile";
+    $lang['learn anytime'] = "Learn anytime";
+    $lang['learn anytime text'] = "Take video lessons anytime that suits you. Tutors available 24/7";
+    $lang['affordable prices'] = "Affordable prices";
+    $lang['affordable prices text'] = "Choose an experienced tutor that fits your budget";
+    $lang['focus on...'] = "Focus on skills you need";
+    $lang['prepare to achieve...'] = "Prepare to achieve your goals with private tutors";
+    $lang['immerse yourself...'] = "Immerse yourself in a new culture";
+    $lang['immerse yourself... text'] = "Connect with language experts from around the world.";
+    $lang['succeed in your career'] = "Succeed in your career";
+    $lang['succeed in your career text'] = "Develop your working vocabulary and communicate clearly";
+    $lang['get expert help...'] = "Get expert help when you need it";
+    $lang['get expert help... text'] = "Learn to solve any problem in any language";
+    $lang['speak naturally, always'] = "Speak naturally, always";
+    $lang['speak naturally, always text'] = "Make a good impression and build trust in any language";
+    $lang['how waygook teacher works'] = "How WaygookTeacher works";
+    $lang['learn languages online...'] = "Learn languages online with the world's best tutors";
+    $lang['find the perfect tutor'] = "Find the perfect tutor";
+    $lang['find the perfect tutor text'] = "Search by nationality, education, gender, or price.";
+    $lang['schedule a lesson'] = "Schedule a lesson";
+    $lang['schedule a lesson text'] = "Send your teacher a message to schedule a suitable time for a lesson.";
+    $lang['meet your tutor on skype'] = "Meet your tutor on Skype";
+    $lang['meet your tutor on skype text'] = "Take lessons using Skype's easy-to-use tool for video chat and messaging.";
+?>

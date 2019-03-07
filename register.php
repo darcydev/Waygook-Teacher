@@ -1,8 +1,7 @@
 <?php
-include("includes/config.php");
-include("includes/classes/MyPDO.php");
+include("includes/included-files.php");
+
 include("includes/classes/Account.php");
-include("includes/classes/Constants.php");
 include("includes/classes/User.php");
 
 $account = new Account();
