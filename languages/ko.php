@@ -47,7 +47,6 @@
     $lang['email'] = "이메일";
     $lang['Skype ID'] = "스카이프 아이디";
     $lang['rate per hour'] = "시간당 요금 (USD)";
-
     $lang['earn income'] = "자신의 집에서 편리하게 수입을 올리십시오!";
     $lang['t complete profile'] = "프로필 작성하기";
     $lang['t complete profile text 1'] = "프로필을 자신의 최근 사진과 강의 경험에 대한 설명으로 작성하십시오.";
@@ -58,4 +57,10 @@
     $lang['t conduct lesson'] = "Skype를 통해 학생과 개인 교습을하십시오.";
     $lang['t conduct lesson text 1'] = "자신에게 가장 잘 맞는 시간과 장소에서 화상 전화로 학생과 교습을하십시오.";
     $lang['t conduct lesson text 2'] = "학생이 공과를 확인하면 학비가 지급됩니다!";
+
+    $lang['s complete profile text 1'] = "사진으로 프로파일을 작성하고 학습 목표에 대한 설명을 작성하십시오.";
+    $lang['s complete profile text 2'] = "귀하의 목표에 대한보다 자세한 정보는 교사가 공과를 준비하는 데 도움이됩니다.";
+    $lang['find perfect tutor text 2'] = "WaygookTeacher는 선택할 수있는 많은 전문 교사들을 보유하고 있습니다.";
+    $lang['s conduct lesson'] = "Skype를 통해 교사와 개인 교습을하십시오.";
+    $lang['s conduct lesson text 2'] = "강의가 끝나면 교사에게 Google 플랫폼에 대한 리뷰를 남깁니다.";
 ?>

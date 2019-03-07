@@ -19,9 +19,9 @@ if ($userLoggedInRow['role'] == 'teacher') {
                 <div class="process-main">
                     <div class="process-num">1</div>
                     <div class="process-content">
-                        <div class="process-title">Complete your profile</div>
-                        <div class="process-text text">Fill out profile with a recent photo and description of your teaching experience.</div>
-                        <div class="process-text text"><br>The more detailed information about your experience the better.</div>
+                        <div class="process-title"><?php echo $lang['t complete profile']; ?></div>
+                        <div class="process-text text"><?php echo $lang['s complete profile text 1']; ?></div>
+                        <div class="process-text text"><br><?php echo $lang['s complete profile text 2']; ?></div>
                     </div>
                 </div>
             </div>
@@ -36,9 +36,9 @@ if ($userLoggedInRow['role'] == 'teacher') {
                 <div class="process-main">
                     <div class="process-num">2</div>
                     <div class="process-content">
-                        <div class="process-title">Organize a lesson with Students over message</div>
-                        <div class="process-text text">Students will search for Teachers, and send you a message if they like your profile.</div>
-                        <div class="process-text text"><br>Arrange a suitable time for a lesson with Students.</div>
+                        <div class="process-title"><?php echo $lang['find the perfect tutor']; ?></div>
+                        <div class="process-text text"><?php echo $lang['find the perfect tutor text']; ?></div>
+                        <div class="process-text text"><br><?php echo $lang['find perfect tutor text 2']; ?></div>
                     </div>
                 </div>
             </div>
@@ -53,9 +53,9 @@ if ($userLoggedInRow['role'] == 'teacher') {
                 <div class="process-main">
                     <div class="process-num">3</div>
                     <div class="process-content">
-                        <div class="process-title">Conduct private lesson with Student over Skype</div>
-                        <div class="process-text text">At a time and place that suits you best, conduct a lesson with the Student over video call.</div>
-                        <div class="process-text text"><br>After the Student confirms the lesson, you will be paid!</div>
+                        <div class="process-title"><?php echo $lang['s conduct lesson']; ?></div>
+                        <div class="process-text text"><?php echo $lang['meet your tutor on skype text']; ?></div>
+                        <div class="process-text text"><br><?php echo $lang['s conduct lesson text 2']; ?></div>
                     </div>
                 </div>
             </div>

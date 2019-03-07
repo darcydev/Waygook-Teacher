@@ -48,7 +48,6 @@
     $lang['email'] = "Email";
     $lang['Skype ID'] = "Skype ID";
     $lang['rate per hour'] = "Rate per hour (USD)";
-
     $lang['earn income'] = "earn extra income from the convenience of your own home!";
     $lang['t complete profile'] = "Complete your profile";
     $lang['t complete profile text 1'] = "Fill out profile with a recent photo of yourself and description of your teaching experience";
@@ -60,4 +59,9 @@
     $lang['t conduct lesson text 1'] = "At a time and place that suits you best, conduct a lesson with the Student over video call.";
     $lang['t conduct lesson text 2'] = "After the Student confirms the lesson, you will be paid!";
 
+    $lang['s complete profile text 1'] = "Fill out profile with a photo and description of your learning goals.";
+    $lang['s complete profile text 2'] = "The more detailed information about your goals the teachers to prepare for your lessons.";
+    $lang['find perfect tutor text 2'] = "WaygookTeacher has many professional native Teachers to choose from";
+    $lang['s conduct lesson'] = "Conduct private lesson with Teacher over Skype";
+    $lang['s conduct lesson text 2'] = "After the lesson is finished, leave the Teacher a review on our platform";
 ?>
