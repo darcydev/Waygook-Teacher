@@ -31,4 +31,33 @@
     $lang['schedule a lesson text'] = "Send your teacher a message to schedule a suitable time for a lesson.";
     $lang['meet your tutor on skype'] = "Meet your tutor on Skype";
     $lang['meet your tutor on skype text'] = "Take lessons using Skype's easy-to-use tool for video chat and messaging.";
+    $lang['calendar'] = 'Calendar';
+    $lang['search'] = 'Search';
+    $lang['profile'] = 'Profile';
+    $lang['lessons'] = 'Lessons';
+    $lang['messages'] = 'Messages';
+    $lang['settings'] = 'Settings';
+    $lang['logout'] = 'Logout';
+    $lang['conversations'] = "Conversations";
+    $lang['contact info'] = "Contact info";
+    $lang['about me'] = "About me";
+    $lang['account details'] = "Account details";
+    $lang['upload profile picture'] = "Upload Profile Picture";
+    $lang['profile description'] = "Profile Description";
+    $lang['confirm'] = "Confirm";
+    $lang['email'] = "Email";
+    $lang['Skype ID'] = "Skype ID";
+    $lang['rate per hour'] = "Rate per hour (USD)";
+
+    $lang['earn income'] = "earn extra income from the convenience of your own home!";
+    $lang['t complete profile'] = "Complete your profile";
+    $lang['t complete profile text 1'] = "Fill out profile with a recent photo of yourself and description of your teaching experience";
+    $lang['t complete profile text 2'] = "The more detailed information about your experience the better";
+    $lang['t organize lesson'] = "Organize a lesson with Students over message";
+    $lang['t organize lesson text 1'] = "Students will search for Teachers, and send you a message if they like your profile";
+    $lang['t organize lesson text 2'] = "Arrange a suitable time for a lesson with Students";
+    $lang['t conduct lesson'] = "Conduct private lesson with Student over Skype";
+    $lang['t conduct lesson text 1'] = "At a time and place that suits you best, conduct a lesson with the Student over video call.";
+    $lang['t conduct lesson text 2'] = "After the Student confirms the lesson, you will be paid!";
+
 ?>

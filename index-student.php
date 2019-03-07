@@ -10,8 +10,8 @@ if ($userLoggedInRow['role'] == 'teacher') {
 
 <div class="index-container">
     <div class="index-heading">
-        <h2>Welcome to Waygook Teacher!</h2>
-        <h4>platform to connect Korean students with English teachers</h4>
+        <h2><?php echo $lang['Welcome to...']; ?></h2>
+        <h4><?php echo $lang['platform to connect...']; ?></h4>
     </div>
     <div class="index-body">
         <div class="process">

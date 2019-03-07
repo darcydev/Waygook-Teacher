@@ -22,7 +22,7 @@ $lessons = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="profile-info-container settings-profile-container conversation-container">
     <div class="side-nav">
-        <a id="schedule-lesson-link" class="side-nav-item b" href="#">Schedule lesson</a>
+        <a id="schedule-lesson-link" class="side-nav-item b" href="#"><?php echo $lang['schedule a lesson']; ?></a>
     </div>
     <div class="conversation-content profile-content settings-profile-content">
         <div class="box">
@@ -30,7 +30,7 @@ $lessons = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="profile-text-container profile-conversation-container">
                     <div class="profile-content profile-description">
                         <div class="profile-description-title">
-                            <h3>Calendar</h3>
+                            <h3><?php echo $lang['calendar']; ?></h3>
                         </div>
                         <p>
                             <?php

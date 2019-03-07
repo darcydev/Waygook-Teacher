@@ -64,17 +64,14 @@ include("includes/handlers/schedule-lesson-handler.php");
             <a id="index-student-link" href="index-student.php">WaygookTeacher</a>
     	</div>
         <ul class="nav-bar-links">
-            <li><a href="profile.php?userID=<?php echo $userLoggedInID; ?>">Profile</a></li>
-            <li id="search-nav-bar-link"><a href="search.php?page_num=1">Search</a></li>
-            <li><a href="lesson-list.php">Lessons</a></li>
-            <li><a href="calendar.php">Calendar</a></li>
-            <li><a href="conversation-list.php">Messages</a></li>
-            <li><a href="settings.php?userID=<?php echo $userLoggedInID; ?>">Settings</a></li>
-            <li><a href="logout.php">Logout</a></li>
-            <select id="select-language" class="select-language" name="select-language" type="text" onchange="changeLanguage(this);" required>
-                <option value="english">English</option>
-                <option value="korean">한국어</option>
-            </select>
+            <li><a href="profile.php?userID=<?php echo $userLoggedInID; ?>"><?php echo $lang['profile']; ?></a></li>
+            <li id="search-nav-bar-link"><a href="search.php?page_num=1"><?php echo $lang['search']; ?></a></li>
+            <li><a href="lesson-list.php"><?php echo $lang['lessons']; ?></a></li>
+            <li><a href="calendar.php"><?php echo $lang['calendar']; ?></a></li>
+            <li><a href="conversation-list.php"><?php echo $lang['messages']; ?></a></li>
+            <li><a href="settings.php?userID=<?php echo $userLoggedInID; ?>"><?php echo $lang['settings']; ?></a></li>
+            <li><a href="logout.php"><?php echo $lang['logout']; ?></a></li>
+            <?php include("includes/set-lang-form.php"); ?>
         </ul>
     </div>
     <?php include("schedule-lesson-form.php"); ?>
