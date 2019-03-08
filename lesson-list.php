@@ -20,7 +20,7 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="profile-info-container settings-profile-container lesson-list-container">
     <div class="side-nav">
         <?php // TODO: include href links ?>
-        <a id="schedule-lesson-link" class="side-nav-item b" href="#">Schedule lesson</a>
+        <a id="schedule-lesson-link" class="side-nav-item b" href="#"><?php echo $lang['schedule a lesson']; ?></a>
     </div>
     <div class="lesson-list-content profile-content settings-profile-content">
         <div class="box">
@@ -30,10 +30,10 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <p>
                             <table class="lessons-table page-table">
                                 <thead class="lessons-head page-table-head">
-                                    <th>Name</th>
-                                    <th>Prepaid amount</th>
-                                    <th>Price per hour</th>
-                                    <th>Actions</th>
+                                    <th><?php echo $lang['name']; ?></th>
+                                    <th><?php echo $lang['prepaid amount']; ?></th>
+                                    <th><?php echo $lang['price per hour']; ?></th>
+                                    <th><?php echo $lang['actions']; ?></th>
                                 </thead>
                                 <?php
                                 foreach ($employments as $employment_row) {

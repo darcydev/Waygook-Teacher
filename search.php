@@ -91,31 +91,31 @@ $data_for_this_page = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="side-nav">
         <div id="search-bar">
             <form class="search-teacher-form auth-form form" method="post">
-                <label>Nationality</label>
+                <label><?php echo $lang['nationality']; ?></label>
                 <select id="by_nationality" class="select" name="by_nationality" type="text">
-                    <option value="all">All</option>
-                    <option value="american">American</option>
-                    <option value="australian">Australian</option>
-                    <option value="british">British</option>
-                    <option value="canadian">Canadian</option>
-                    <option value="filipino">Filipino</option>
+                    <option value="all"><?php echo $lang['all']; ?></option>
+                    <option value="american"><?php echo $lang['american']; ?></option>
+                    <option value="australian"><?php echo $lang['australian']; ?></option>
+                    <option value="british"><?php echo $lang['british']; ?></option>
+                    <option value="canadian"><?php echo $lang['canadian']; ?></option>
+                    <option value="filipino"><?php echo $lang['filipino']; ?></option>
                 </select>
-                <label>Gender</label>
+                <label><?php echo $lang['gender']; ?></label>
                 <select id="by_gender"  class="select" name="by_gender" type="text">
-                    <option value="all">All</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="all"><?php echo $lang['all']; ?></option>
+                    <option value="male"><?php echo $lang['male']; ?></option>
+                    <option value="female"><?php echo $lang['female']; ?></option>
                 </select>
-                <label>Education Level</label>
+                <label><?php echo $lang['education level']; ?></label>
                 <select id="by_education_level"  class="select" name="by_education_level" type="text">
-                    <option value="all">All</option>
-                    <option value="teritary">Teritary</option>
-                    <option value="diploma">Diploma</option>
-                    <option value="bachelor">Bachelor</option>
-                    <option value="masters">Masters</option>
-                    <option value="doctorate">Doctorate</option>
+                    <option value="all"><?php echo $lang['all']; ?></option>
+                    <option value="teritary"><?php echo $lang['tertiary']; ?></option>
+                    <option value="diploma"><?php echo $lang['diploma']; ?></option>
+                    <option value="bachelor"><?php echo $lang['bachelor']; ?></option>
+                    <option value="masters"><?php echo $lang['masters']; ?></option>
+                    <option value="doctorate"><?php echo $lang['doctorate']; ?></option>
                 </select>
-                <button type="submit" class="button" name="search-teacher-button">Search</button>
+                <button type="submit" class="button" name="search-teacher-button"><?php echo $lang['search']; ?></button>
             </form>
         </div>
     </div>
