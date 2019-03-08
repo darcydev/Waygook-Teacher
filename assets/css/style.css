@@ -255,11 +255,15 @@ input {
 }
 
 .landing-box-first {
-	/* BUG: background-image isn't working */
-	background-image: url("../images/oxford.jpg");
+	background-image: url(../images/girl-laptop.jpg);
 	background-repeat: no-repeat;
-	min-height: 200px;
+	height: 85%;
+	min-height: 100vh;
 	width: 100%;
+}
+
+.landing-box-first h2 {
+	padding-top: 50px;
 }
 
 .box {
@@ -804,4 +808,16 @@ input {
 
 #settings-account {
 	display: none;
+}
+
+#set-lang-form {
+	margin-bottom: 0;
+	padding-top: 2px;
+}
+
+#set-lang-form button {
+	background: #000;
+	color: #fff;
+	border-radius: 6px;
+	font-size: 12px;
 }
