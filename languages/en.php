@@ -125,4 +125,6 @@
 
     $lang['current timezone'] = "Current timezone";
     $lang['change timezone'] = "Change timezone";
+    $lang['change'] = "Change";
+    $lang['save'] = "Save";
 ?>

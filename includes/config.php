@@ -7,7 +7,6 @@ session_start();
 date_default_timezone_set('Asia/Seoul');
 
 /* SET LANGUAGE */
-
 // languages supported
 $available_langs = array('en', 'ko');
 // if lang cookie isn't set, default as eng

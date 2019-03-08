@@ -8,8 +8,6 @@ if ($userLoggedInRow['role'] == 'teacher') {
                 $("#search-nav-bar-link").hide();
                 ' /* hide 'logo' link to index-student.php */ . '
                 $("#index-student-link").hide();
-                ' /* change profile description title */ . '
-                $("#description-student-title").hide();
             });
         </script>';
 } else {
@@ -17,8 +15,6 @@ if ($userLoggedInRow['role'] == 'teacher') {
             $(document).ready(function() {
                 ' /* hide 'logo' link to index-teacher.php */ . '
                 $("#index-teacher-link").hide();
-                ' /* change profile description title */ . '
-                $("#description-teacher-title").hide();
                 ' /* hide profile stats box */ . '
                 $("#profile-stats-content").hide();
                 ' /* remove profile flag */ . '

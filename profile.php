@@ -35,11 +35,7 @@ if($row['username'] == $userLoggedIn) {
                 <?php include("includes/profile-info-container.php"); ?>
                 <div class="profile-text-container">
                     <div class="profile-content profile-description">
-                        <?php // TODO: remove the jquery here as the heading is the same now ?>
-                        <div id="description-teacher-title" class="profile-description-title">
-                            <h3><?php echo $lang['background']; ?></h3>
-                        </div>
-                        <div id="description-student-title" class="profile-description-title">
+                        <div class="profile-description-title">
                             <h3><?php echo $lang['background']; ?></h3>
                         </div>
                         <p>

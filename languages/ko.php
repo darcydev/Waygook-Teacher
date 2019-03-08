@@ -98,10 +98,16 @@
     $lang['filipino'] = "필리핀 사람";
     $lang['education level'] = "교육 수준";
     $lang['tertiary'] = "제삼기";
+
+
+
+
+
+
     $lang['diploma'] = "졸업 증서";
-    $lang['bachelor'] = "미혼 남자"; // that's wrong
-    $lang['masters'] = "주인";
-    $lang['doctorate'] = "박사호";
+    $lang['bachelor'] = "학사 학위";
+    $lang['masters'] = "석사 학위";
+    $lang['doctorate'] = "박사 학위";
     $lang['education major'] = "교육 전공";
     $lang['none'] = "없음";
     $lang['education'] = "교육";
@@ -115,11 +121,15 @@
     $lang['arts'] = "기예";
     $lang['other'] = "다른";
     $lang['date of birth'] = "생년월일";
+
+
     $lang['sign up'] = "가입하기";
     $lang['login here'] = "이미 계정이 있으십니까? 여기에 로그인하십시오.";
     $lang['all'] = "모든";
     $lang['account'] = "계정";
 
+    
     $lang['current timezone'] = "현재 시간대";
     $lang['change timezone'] = "시간대 변경";
+    $lang['save'] = "변화";
 ?>
