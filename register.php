@@ -20,7 +20,6 @@ function getInputValue($name) {
 // that are relevant only to the teacher
 function roleCheck(that) {
     if (that.value == "teacher") {
-        alert("check");
         document.getElementById("teacher-register-form").style.display = "block";
     } else {
         document.getElementById("teacher-register-form").style.display = "none";
