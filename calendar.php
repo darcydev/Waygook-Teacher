@@ -9,16 +9,9 @@ In future, expand the calendar to include a Google calendar (like?) plugin
 <?php
 include("includes/header.php");
 
-// fetch all future lessons involving userLoggedIn
-// TODO: implement timezone functionality
-$sql = "SELECT * FROM Lessons
-        WHERE DATE(datetime) >= CURDATE()
-        AND (teacher_id = ? OR student_id = ?)
-        ORDER BY datetime DESC";
-$stmt = $db->run($sql, [$userLoggedInID, $userLoggedInID]);
-$lessons = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// TODO: implement timezone functionality (important func, but why is comment here specifically?)
+$lessons = $user->getUnconfirmedLessons($userLoggedInID);
 ?>
-
 
 <div class="profile-info-container settings-profile-container conversation-container">
     <div class="side-nav">
@@ -44,14 +37,12 @@ $lessons = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 } else {
                                     $otherUserID = $lesson_row['teacher_id'];
                                 }
-
                                 // format the $lesson date
                                 $datetime = date_format(date_create($lesson_row['datetime']), 'F j, Y, g:i a');
+                                // fetch DB details of 'other user'
+                                $other_user_row = $user->getOtherUser($otherUserID);
+                                $id = $lesson_row['lessonID'];
 
-                                // collected from $lesson_row['from_user_id'] which has FK relation with User.userID
-                                $sql = "SELECT * FROM Users WHERE userID = ?";
-                                $stmt = $db->run($sql, [$otherUserID]);
-                                $other_user_row = $stmt->fetch(PDO::FETCH_ASSOC);
                                 // create html div each time loops through $query
                                 echo "<div class='calendar-item'>
                                         <div class='conversation-item'>
@@ -67,6 +58,9 @@ $lessons = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 </div>
                                                 <div class='calendar-duration conversation-text'>
                                                     " . $lesson_row['duration'] . "mins
+                                                </div>
+                                                <div onClick='confirmLesson(" . $id . ")' id='calendar-lesson_" . $id . "' class='button'>
+                                                    " . $lang['confirm lesson'] . "
                                                 </div>
                                             </span>
                                         </div>

@@ -45,20 +45,15 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     } else {
                                         $otherUserID = $employment_row['teacher_id'];
                                     }
-                                    // collected from $employment_row['from_user_id'] which has FK relation with User.userID
-                                    $sql = "SELECT * FROM Users WHERE userID = ?";
-                                    $stmt = $db->run($sql, [$otherUserID]);
-                                    $other_user_row = $stmt->fetch(PDO::FETCH_ASSOC);
-                                    // collect all lessons associated with this employment from Lessons table
-                                    $sql = "SELECT * FROM Lessons WHERE employment_id = ?";
-                                    $stmt = $db->run($sql, [$employment_row['employmentID']]);
-                                    $lessons = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                                    $other_user_row = $user->getOtherUser($otherUserID);
+                                    $lessons = $user->getLessons($employment_row['employmentID']);
 
                                     // get variables into 'plain English'
                                     if ($lessons['confirmed'] == 1) {
-                                        $lesson_confirmed_text = 'Confirmed';
+                                        $lesson_confirmed_text = $lang['confirmed'];
                                     } else {
-                                        $lesson_confirmed_text = 'Unconfirmed';
+                                        $lesson_confirmed_text = $lang['unconfirmed'];
                                     }
                                     // format the $lesson date
                                     $datetime = date_format(date_create($lessons['datetime']), 'F j, Y, g:i a');

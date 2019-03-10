@@ -127,4 +127,9 @@
     $lang['change timezone'] = "Change timezone";
     $lang['change'] = "Change";
     $lang['save'] = "Save";
+    $lang['reviews'] = "Reviews";
+    $lang['lesson hours'] = "Lesson hours";
+    $lang['confirmed'] = "Confirmed";
+    $lang['unconfirmed'] = "Unconfirmed";
+    $lang['confirm lesson'] = "Confirm lesson";
 ?>

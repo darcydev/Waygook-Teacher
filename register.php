@@ -36,6 +36,15 @@ function roleCheck(that) {
     ?>
 </head>
 <body>
+    <div class="nav-bar">
+        <div class="nav-bar-header">
+            <?php // TODO: include logo ?>
+        </div>
+        <ul class="nav-bar-links">
+            <li><a href="register.php"><?php echo $lang['login/register']; ?></a></li>
+            <?php include("includes/set-lang-form.php"); ?>
+        </ul>
+    </div>
     <div class="background">
         <div class="auth-forms">
             <form id="login-form" class="login-form auth-form form" method="POST">

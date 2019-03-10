@@ -5,6 +5,23 @@ function downLessons(id) {
     jQ_drop_lessons_table(id);
 }
 
+function confirmLesson(id) {
+    // use ajax to make call to PHP script
+    $.ajax ({
+        url: 'includes/handlers/ajax/confirm-lesson.php',
+        type: 'POST',
+        data: { id : id },
+        success: function(id) {
+            console.log(id);
+        },
+        error: function(req, textStatus, errorThrown) {
+            alert('Error: ' + textStatus + ' ' +errorThrown);
+        }
+    }).done(function() {
+        $("calendar-lesson_" + id).addClass("confirmed");
+    });
+}
+
 // execute as soon as the document is ready
 $(document).ready(function() {
 

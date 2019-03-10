@@ -79,6 +79,41 @@ class User {
         return $this->description;
     }
 
+    public function getOtherUser($id) {
+        $sql = "SELECT * FROM Users WHERE userID = ?";
+        $stmt = $this->db->run($sql, [$id]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row;
+    }
+
+    public function getLessons($id) {
+        // fetch all lessons associated with this Employment
+        $sql = "SELECT * FROM Lessons WHERE employment_id = ?";
+        $stmt = $this->db->run($sql, [$employment_row['employmentID']]);
+        $lessons = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $lessons;
+    }
+
+    public function getUnconfirmedLessons($id) {
+        $sql = "SELECT * FROM Lessons
+                WHERE confirmed = ?
+                AND (teacher_id = ? OR student_id = ?)
+                ORDER BY datetime DESC";
+        $stmt = $this->db->run($sql, [0, $id, $id]);
+        $lessons = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $lessons;
+    }
+
+    public function getReviews($id) {
+        // fetch all reviews associated with User
+        $sql = "SELECT * FROM Reviews
+                WHERE teacher_id = ?
+                OR student_id = ?";
+        $stmt = $this->db->run($sql, [$id, $id]);
+        $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $reviews;
+    }
+
     public function updateDescription($desc) {
 		$this->validateDescription($desc);
 
@@ -132,7 +167,9 @@ class User {
         $this->validatePasswords($new_pw, $new_pw2);
 
         if (empty($this->errorArray) == true) {
-            $sql = "UPDATE Users SET password = ? WHERE userID = ?";
+            $sql = "UPDATE Users
+                    SET password = ?
+                    WHERE userID = ?";
             $stmt = $this->db->run($sql, [$new_pw, $this->userID]);
             $rowsAffected = $stmt->rowCount();
             return $rowsAffected;

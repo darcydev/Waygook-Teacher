@@ -121,15 +121,16 @@
     $lang['arts'] = "기예";
     $lang['other'] = "다른";
     $lang['date of birth'] = "생년월일";
-
-
     $lang['sign up'] = "가입하기";
     $lang['login here'] = "이미 계정이 있으십니까? 여기에 로그인하십시오.";
     $lang['all'] = "모든";
     $lang['account'] = "계정";
-
-    
     $lang['current timezone'] = "현재 시간대";
     $lang['change timezone'] = "시간대 변경";
     $lang['save'] = "변화";
+    $lang['reviews'] = "리뷰";
+    $lang['lesson hours'] = "수업 시간";
+    $lang['confirmed'] = "확인 됨";
+    $lang['unconfirmed'] = "확인되지 않은";
+    $lang['confirm lesson'] = "강의 확인";
 ?>

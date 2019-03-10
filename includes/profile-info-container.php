@@ -10,16 +10,14 @@
         </div>
         <div class="profile-stats-container">
             <div class="profile-content profile-flag">
-                <p>Nationality: <img src=<?php echo $row['flag']; ?>></p>
+                <h4><?php echo $lang['nationality'] . ': ' . $lang[$row['nationality']]; ?></h4>
             </div>
-            <div class="profile-content profile-dob">
-                <p><?php echo $row['DOB']; ?></p>
+            <div class="profile-content profile-lessons">
+                <h4><?php echo $row['lesson_hours'] . ' ' . $lang['lesson hours']; ?></h4>
             </div>
-            <div class="profile-content profile-edu-level">
-                <p><?php echo $row['education_level']; ?></p>
-            </div>
-            <div class="profile-content profile-edu-major">
-                <p><?php echo $row['education_major']; ?></p>
+            <div class="profile-content profile-rating">
+                <!-- echo number of reviews user has-->
+                <h4><?php echo sizeof($user->getReviews($_GET['userID'])) . ' ' . $lang['reviews']; ?></h4>
             </div>
         </div>
     </div>

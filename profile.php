@@ -26,8 +26,9 @@ if($row['username'] == $userLoggedIn) {
         <a id="edit-profile-link" class="side-nav-item b" href="edit-profile.php?userID=<?php echo $userID; ?>"><?php echo $lang['edit profile']; ?></a>
         <!-- only viewable if the User is not viewing their own profile-->
         <a id="send-message-link" class="side-nav-item b" href="conversation.php?userID=<?php echo $userID; ?>"><?php echo $lang['send message']; ?></a>
-        <?php // TODO: include href links ?>
         <a id="schedule-lesson-link" class="side-nav-item b" href="#"><?php echo $lang['schedule lesson']; ?></a>
+        <?php // TODO: include href link (to div on page), jQuery remove for Students ?>
+        <a id="schedule-lesson-link" class="side-nav-item b" href="#"><?php echo $lang['reviews']; ?></a>
     </div>
     <div class="profile-content settings-profile-content">
         <div class="box">
@@ -41,6 +42,17 @@ if($row['username'] == $userLoggedIn) {
                         <p>
                             <!-- nl2br ensures that the line breaks are printed -->
                             <?php echo nl2br($row['description']); ?>
+                        </p>
+                    </div>
+                    <div class="profile-content profile-description">
+                        <div class="profile-description-title">
+                            <?php // TODO: include $lang ?>
+                            <h3><?php echo $lang['reviews']; ?></h3>
+                        </div>
+                        <p>
+                            <!-- echo number of User's reviews -->
+                            <?php // TODO: present reviews in as 'divs you can cycle through' ?>
+                            <p><?php echo $user->getReviews($_GET['userID'])?></p>
                         </p>
                     </div>
                 </div>
