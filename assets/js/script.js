@@ -11,15 +11,14 @@ function confirmLesson(id) {
         url: 'includes/handlers/ajax/confirm-lesson.php',
         type: 'POST',
         data: { id : id },
-        success: function(id) {
-            console.log(id);
-        },
         error: function(req, textStatus, errorThrown) {
             alert('Error: ' + textStatus + ' ' +errorThrown);
         }
-    }).done(function() {
-        $("calendar-lesson_" + id).addClass("confirmed");
     });
+    // TODO: include evidence of 'confirmed lesson':
+        // RELOAD PAGE
+        // ALERT (the easiet)
+        // CHANGE IMAGE BACKGROUND + TEXT (the best)
 }
 
 // execute as soon as the document is ready
