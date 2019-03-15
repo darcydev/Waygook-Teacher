@@ -9,10 +9,12 @@ if (isset($_POST['schedule-lesson-button'])) {
     $rowsAffected = $employment->scheduleLesson($date, $start_time, $duration, $other_user);
 
     if ($rowsAffected == 1) {
-        // TODO: direct to calendar.php
-        header("Location: profile.php");
+        header("Location: calendar.php");
     } else {
-        header("Location: fail.php");
+        // alert message if DB fails to update
+        echo "<script>
+                alert('Sorry, there was an error scheduling the lesson');
+            </script>";
     }
 
 }

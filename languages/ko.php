@@ -70,6 +70,7 @@
     $lang['send message'] = "문자 보내";
     $lang['schedule lesson'] = "일정 수업";
     $lang['background'] = "배경";
+    $lang['view profile'] = "프로필보기";
 
     $lang['login'] = "로그인";
     $lang['username'] = "사용자 이름";

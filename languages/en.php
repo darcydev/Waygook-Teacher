@@ -73,6 +73,7 @@
     $lang['send message'] = "Send message";
     $lang['schedule lesson'] = "Schedule lesson";
     $lang['background'] = "Background";
+    $lang['view profile'] = "View profile";
 
     $lang['login'] = "Login";
     $lang['username'] = "Username";

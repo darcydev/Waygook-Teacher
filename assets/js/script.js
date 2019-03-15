@@ -6,19 +6,20 @@ function downLessons(id) {
 }
 
 function confirmLesson(id) {
-    // use ajax to make call to PHP script
+    // use ajax to make call to PHP script to confirm the lesson
     $.ajax ({
         url: 'includes/handlers/ajax/confirm-lesson.php',
         type: 'POST',
         data: { id : id },
         error: function(req, textStatus, errorThrown) {
             alert('Error: ' + textStatus + ' ' +errorThrown);
-        }
+        },
+        success: function(id) {
+            // TODO: rather than simply reloading the page, change the button into a green tick to indicate lesson has been confirmed
+            // if the ajax call has been successful, reload the page
+            location.reload();
+       }
     });
-    // TODO: include evidence of 'confirmed lesson':
-        // RELOAD PAGE
-        // ALERT (the easiet)
-        // CHANGE IMAGE BACKGROUND + TEXT (the best)
 }
 
 // execute as soon as the document is ready
@@ -85,6 +86,8 @@ $(document).ready(function() {
         // make that particular sub table display:table-row
         $('#lessons-table-head_' + id).css('display', 'table-row');
         $('#lessons-table-body_' + id).css('display', 'table-row');
+        $('.lessons-table-head_' + id).css('display', 'table-row');
+        $('.lessons-table-body_' + id).css('display', 'table-row');
     };
 
     // Open / close schedule lesson overlay box

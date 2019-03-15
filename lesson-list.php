@@ -20,7 +20,7 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="profile-info-container settings-profile-container lesson-list-container">
     <div class="side-nav">
         <?php // TODO: include href links ?>
-        <a id="schedule-lesson-link" class="side-nav-item b" href="#"><?php echo $lang['schedule a lesson']; ?></a>
+        <a id="schedule-lesson-link" class="side-nav-item b" href="#"><?php echo $lang['schedule lesson']; ?></a>
     </div>
     <div class="lesson-list-content profile-content settings-profile-content">
         <div class="box">
@@ -45,9 +45,73 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     } else {
                                         $otherUserID = $employment_row['teacher_id'];
                                     }
-
                                     $other_user_row = $user->getOtherUser($otherUserID);
+
+                                    // echo each employment row
+                                    echo "<tbody class='lessons-body page-table-body'>
+                                            <tr class='tr-row'>
+                                                <td id='td-profile-info' class='td-profile-info'>
+                                                    <div class='info-content profile-photo-small'>
+                                                        <img id='sub-menu-btn' onclick='downLessons(" . $other_user_row['userID'] . ")' class='down-btn sub-table-btn' src='assets/images/icons/icons8-about.png' alt='drop-down-btn'>
+                                                        <img id='sub-menu-btn'  class='up-btn sub-table-btn' src='assets/images/icons/icons8-idea.png' alt='pull-up-btn'>
+                                                        <img src=" . $other_user_row['profile_pic'] . " alt='profile-pic'>
+                                                        " . $other_user_row['first_name'] . "
+                                                    </div>
+                                                </td>
+                                                <td class='td-prepaid'>
+                                                    " . $employment_row['prepaid_amount'] . "
+                                                </td>
+                                                <td class='td-rate'>
+                                                    " . $employment_row['rate'] . "
+                                                </td>
+                                                <td class='td-actions'>
+                                                    <ul class='ul-links ul-actions'>
+                                                        <li><a href='conversation.php?userID=" . $otherUserID . "'>" . $lang['send message'] . "</a></li>
+                                                        <li><a href='profile.php?userID=" . $otherUserID . "'>" . $lang['view profile'] . "</a></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr id='lessons-table-head_" . $other_user_row['userID'] . "' class='tr-row tr-sub-table page-table page-table-head'>
+                                                <th class='th-date'>Date</th>
+                                                <th class='th-duration'>Duration</th>
+                                                <th class='th-earnings'>Earnings</th>
+                                                <th class='th-status'>Lesson status</th>
+                                            </tr>";
+
+                                    // echo each lesson row (within each employment)
                                     $lessons = $user->getLessons($employment_row['employmentID']);
+
+                                    foreach ($lessons as $lesson_row) {
+                                        // get variables into 'plain English'
+                                        if ($lesson_row['confirmed'] == 1) {
+                                            $lesson_confirmed_text = $lang['confirmed'];
+                                        } else {
+                                            $lesson_confirmed_text = $lang['unconfirmed'];
+                                        }
+                                        // format the $lesson date
+                                        $datetime = date_format(date_create($lesson_row['datetime']), 'F j, Y, g:i a');
+
+                                        echo "<tr class='tr-row tr-sub-table lessons-table-body_" . $other_user_row['userID'] . "'>
+                                                    <td class='td-date'>
+                                                        " . $datetime . "
+                                                    </td>
+                                                    <td class='td-duration'>
+                                                        " . $lesson_row['duration'] . " mins
+                                                    </td>
+                                                    <td class='td-earnings'>
+                                                        $" . $lesson_row['teacher_payment'] . "
+                                                    </td>
+                                                    <td class='td-status'>
+                                                        " . $lesson_confirmed_text . "
+                                                    </td>
+                                                </tr>
+                                            </tbody>";
+                                    }
+
+
+
+
+                                    /*
 
                                     // get variables into 'plain English'
                                     if ($lessons['confirmed'] == 1) {
@@ -76,9 +140,8 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 </td>
                                                 <td class='td-actions'>
                                                     <ul class='ul-links ul-actions'>
-                                                        <li><a href='conversation.php?userID=" . $otherUserID . "'>Send message</a></li>
-                                                        <li><a href='conversation.php'>Schedule lesson</a></li>
-                                                        <li><a href='profile.php?userID=" . $otherUserID . "'>View profile</a></li>
+                                                        <li><a href='conversation.php?userID=" . $otherUserID . "'>" . $lang['send message'] . "</a></li>
+                                                        <li><a href='profile.php?userID=" . $otherUserID . "'>" . $lang['view profile'] . "</a></li>
                                                     </ul>
                                                 </td>
                                             </tr>
@@ -103,6 +166,10 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 </td>
                                             </tr>
                                         </tbody>";
+
+
+                                    */
+
                                 }
                                 ?>
                             </table>
