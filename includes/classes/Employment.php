@@ -47,11 +47,10 @@ class Employment {
 
         // calculate variables for sql insertion
         $datetime = $date . " " . $start_time . ":00";
-        // TODO: add functionality to adjust this for each Employment
+        // TODO: add functionality to adjust this for each Employment (CHECK I HAVEN'T DONE THIS ALREADY)
         $teacher_rate = $row['rate'];
         $waygook_rate = 4.0;
         $teacher_payment = $row['rate'] - $waygook_rate;
-        $confirmed = 0;
 
         $sql = "INSERT INTO Lessons
                 VALUES (lessonID, ?, ?, ?, ?, ?, NULL, ?, ?, ?, DEFAULT)";
@@ -68,6 +67,11 @@ class Employment {
             ]
         );
         $rowsAffected = $stmt->rowCount();
+        // if the DB has been updated successfully
+        if ($rowsAffected == 1) {
+            // subtract $teacher_rate from Student's prepaid amount
+            // TODO: update DB...
+        }
         return $rowsAffected;
     }
 
