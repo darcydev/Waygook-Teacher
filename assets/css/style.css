@@ -838,3 +838,11 @@ input {
 	border-radius: 6px;
 	font-size: 12px;
 }
+
+.confirm-button {
+	background: #2bad01
+}
+
+.cancel-button {
+	background: #fd3204;
+}

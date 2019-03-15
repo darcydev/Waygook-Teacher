@@ -5,6 +5,7 @@ function downLessons(id) {
     jQ_drop_lessons_table(id);
 }
 
+// TODO: include popup: "are you sure you want to confirm?"
 function confirmLesson(id) {
     // use ajax to make call to PHP script to confirm the lesson
     $.ajax ({
@@ -17,6 +18,24 @@ function confirmLesson(id) {
         success: function(id) {
             // TODO: rather than simply reloading the page, change the button into a green tick to indicate lesson has been confirmed
             // if the ajax call has been successful, reload the page
+            location.reload();
+       }
+    });
+}
+
+// TODO: include popup: "are you sure you want to cancel?"
+function cancelLesson(id) {
+    $.ajax ({
+        url: 'includes/handlers/ajax/cancel-lesson.php',
+        type: 'POST',
+        data: { id : id },
+        error: function(req, textStatus, errorThrown) {
+            alert('Error: ' + textStatus + ' ' +errorThrown);
+        },
+        // if the ajax call has been successfull
+        success: function(id) {
+            // TODO: rather than simply reloading the page, change the button into a red cross to indicate lesson has been cancelled
+            // reload the page
             location.reload();
        }
     });

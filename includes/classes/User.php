@@ -88,7 +88,9 @@ class User {
 
     public function getLessons($id) {
         // fetch all lessons associated with this Employment
-        $sql = "SELECT * FROM Lessons WHERE employment_id = ?";
+        $sql = "SELECT * FROM Lessons
+                WHERE employment_id = ?
+                ORDER BY datetime DESC";
         $stmt = $this->db->run($sql, [$id]);
         $lessons = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $lessons;

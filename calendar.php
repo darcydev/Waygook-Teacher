@@ -27,6 +27,7 @@ $lessons = $user->getUnconfirmedLessons($userLoggedInID);
                         </div>
                         <p>
                             <?php
+                            // TODO: if there's no lessons to display, show image and text indicating as such (and to schedule a lesson)
                             foreach ($lessons as $lesson_row) {
                                 // fetch the first_name, last_name of the User involved in the conversation who isn't userLoggedIn
                                 // aka 'the other messager'
@@ -42,6 +43,20 @@ $lessons = $user->getUnconfirmedLessons($userLoggedInID);
                                 // fetch DB details of 'other user'
                                 $other_user_row = $user->getOtherUser($otherUserID);
                                 $id = $lesson_row['lessonID'];
+
+                                // if lesson date is in the future
+                                if ($lesson_row['datetime'] > new DateTime()) {
+                                    // option is 'CANCEL LESSON'
+                                    $option_button = "<div onClick='cancelLesson(" . $id . ")' id='calendar-lesson_" . $id . "' class='button cancel-button'>
+                                                        " . $lang['cancel lesson'] . "
+                                                    </div>";
+                                // if lesson date is in the past
+                                } else {
+                                    // option is 'CONFIRM LESSON'
+                                    $option_button = "<div onClick='confirmLesson(" . $id . ")' id='calendar-lesson_" . $id . "' class='button confirm-button'>
+                                                        " . $lang['confirm lesson'] . "
+                                                    </div>";
+                                }
 
                                 // create html div each time loops through $query
                                 echo "<div class='calendar-item'>
@@ -59,9 +74,7 @@ $lessons = $user->getUnconfirmedLessons($userLoggedInID);
                                                 <div class='calendar-duration conversation-text'>
                                                     " . $lesson_row['duration'] . "mins
                                                 </div>
-                                                <div onClick='confirmLesson(" . $id . ")' id='calendar-lesson_" . $id . "' class='button'>
-                                                    " . $lang['confirm lesson'] . "
-                                                </div>
+                                                " . $option_button . "
                                             </span>
                                         </div>
                                     </div>";

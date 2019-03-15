@@ -100,11 +100,6 @@
     $lang['education level'] = "교육 수준";
     $lang['tertiary'] = "제삼기";
 
-
-
-
-
-
     $lang['diploma'] = "졸업 증서";
     $lang['bachelor'] = "학사 학위";
     $lang['masters'] = "석사 학위";
@@ -134,4 +129,5 @@
     $lang['confirmed'] = "확인 됨";
     $lang['unconfirmed'] = "확인되지 않은";
     $lang['confirm lesson'] = "강의 확인";
+    $lang['cancel lesson'] = "수업 취소";
 ?>

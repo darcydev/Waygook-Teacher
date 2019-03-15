@@ -133,4 +133,5 @@
     $lang['confirmed'] = "Confirmed";
     $lang['unconfirmed'] = "Unconfirmed";
     $lang['confirm lesson'] = "Confirm lesson";
+    $lang['cancel lesson'] = "Cancel lesson";
 ?>
