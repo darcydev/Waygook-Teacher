@@ -130,4 +130,9 @@
     $lang['unconfirmed'] = "확인되지 않은";
     $lang['confirm lesson'] = "강의 확인";
     $lang['cancel lesson'] = "수업 취소";
+    $lang['skype name'] = "Skype 사용자 이름";
+    $lang['register rate'] = "시간당 요율 (USD). 나중에 언제든지이 금액을 변경할 수 있습니다.";
+
+    $lang['deposit for lessons'] = "수업 입금";
+    $lang['employment deposit'] = "이 교사와 함께 수업에 예치하는 금액 (USD)";
 ?>

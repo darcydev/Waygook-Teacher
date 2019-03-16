@@ -27,7 +27,7 @@ if ($userLoggedInRow['role'] == 'teacher') {
             </div>
             <div class="process-col">
                 <div class="process-picture">
-                    <img src="assets/images/pinned-globe.jpg" alt="process-col-img">
+                    <img src="assets/images/screen-edit-profile.png" alt="process-col-img">
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@ if ($userLoggedInRow['role'] == 'teacher') {
             </div>
             <div class="process-col">
                 <div class="process-picture">
-                    <img src="assets/images/pinned-globe.jpg" alt="process-col-img">
+                    <img src="assets/images/recruitment.png" alt="process-col-img">
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@ if ($userLoggedInRow['role'] == 'teacher') {
             </div>
             <div class="process-col">
                 <div class="process-picture">
-                    <img src="assets/images/pinned-globe.jpg" alt="process-col-img">
+                    <img src="assets/images/girl-video-call.jpg" alt="process-col-img">
                 </div>
             </div>
         </div>

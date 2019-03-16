@@ -209,25 +209,28 @@ class User {
         }
     }
 
-    public function insertMessage($messageText, $to_user_id) {
-        $this->validateMessage($messageText);
+    public function insertMessage($message_text, $to_user_id) {
+        $this->validateMessage($message_text);
 
         if (empty($this->errorArray) == true) {
             $sql = "INSERT INTO Messages VALUES (messageID, ?, ?, ?, ?)";
             $stmt = $this->db->run($sql, [
                 $this->userID, // from_user_id
                 $to_user_id, // to_user_id
-                $messageText, // message_content
+                $message_text, // message_content
                 date("Y-m-d H:i:s") // date
             ]);
             $rowsAffected = $stmt->rowCount();
-            return $rowsAffected;
+        } else {
+            $rowsAffected = 0;
         }
+        return $rowsAffected;
     }
 
     private function validateMessage($messageText) {
         // TODO: insert code...
         // fe, ensure that User has actually entered a message (perhaps validate with min. characters?)
+        return;
     }
 
 }

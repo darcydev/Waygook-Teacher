@@ -123,6 +123,8 @@
     $lang['login here'] = "Already have an account? Login here";
     $lang['all'] = "All";
     $lang['account'] = "Account";
+    $lang['skype name'] = "Skype username";
+    $lang['register rate'] = "Rate per hour (USD). You can always change this amount later.";
 
     $lang['current timezone'] = "Current timezone";
     $lang['change timezone'] = "Change timezone";
@@ -134,4 +136,7 @@
     $lang['unconfirmed'] = "Unconfirmed";
     $lang['confirm lesson'] = "Confirm lesson";
     $lang['cancel lesson'] = "Cancel lesson";
+
+    $lang['deposit for lessons'] = "Deposit for lessons";
+    $lang['employment deposit'] = "How much (USD) to deposit for lessons with this Teacher";
 ?>

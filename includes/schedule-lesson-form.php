@@ -49,7 +49,6 @@
                         $other_user_row = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         foreach ($other_user_row as $user_row) {
-
                             echo "
                                     <option value=" . $user_row['userID'] .">
                                         " . $user_row['first_name'] . " -- " . $prepaid_hours . " prepaid hrs remaining

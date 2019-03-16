@@ -22,6 +22,16 @@ class Employment {
         return "<span class='errorMessage'>$error</span>";
     }
 
+    public function insertORupdateEmployment($s_id, $t_id, $deposit) {
+        // ON DUPLICATE KEY UPDATE to
+        // check if Employment already exists
+            // if yes, update with deposit amount
+            // if no, create the employment with deposit amount
+        $sql = "INSERT INTO Employments
+                VALUES (employmentID, ?, ?, ?, ?)";
+        // TODO: finish....
+    }
+
     // function to get the particular Employment involving $userLoggedIn and $other_user
     public function getThisEmployment($userLoggedInID, $other_user) {
         $sql = "SELECT * FROM Employments

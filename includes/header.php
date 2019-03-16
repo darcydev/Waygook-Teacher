@@ -45,6 +45,7 @@ include("includes/handlers/edit-profile-handler.php");
 include("includes/handlers/auth-handler.php");
 include("includes/handlers/send-message-handler.php");
 include("includes/handlers/schedule-lesson-handler.php");
+include("includes/handlers/deposit-employment-handler.php");
 ?>
 
 
@@ -75,5 +76,6 @@ include("includes/handlers/schedule-lesson-handler.php");
         </ul>
     </div>
     <?php include("schedule-lesson-form.php"); ?>
+    <?php include("deposit-employment-form.php"); ?>
     <div class="background-container">
         <div class="main-container">

@@ -66,8 +66,8 @@ function roleCheck(that) {
                 <p>
                     <label for="role"><?php echo $lang['role']; ?></label>
                     <select id="role" name="role" type="text" class="select" onchange="roleCheck(this);" required>
-                        <option value="teacher"><?php echo $lang['teacher']; ?></option>
                         <option value="student"><?php echo $lang['student']; ?></option>
+                        <option value="teacher"><?php echo $lang['teacher']; ?></option>
                     </select>
                 </p>
                 <p>
@@ -83,7 +83,7 @@ function roleCheck(that) {
                 </p>
                 <p>
                     <?php echo $account->getError(Constants::$lastNameCharacters); ?>
-                    <label for="last-name"><?php echo $lang['surname']; ?></label>
+                    <label for="last-name"><?php echo $lang['last name']; ?></label>
                     <input id="last-name" name="last-name" type="text" value="<?php getInputValue('lastName') ?>" required>
                 </p>
                 <p>
@@ -103,6 +103,10 @@ function roleCheck(that) {
                     <label for="password2"><?php echo $lang['confirm password']; ?></label>
                     <input id="password2" name="password2" type="password" required>
                 </p>
+                <p>
+                    <label for="skype-name"><?php echo $lang['skype name']; ?></label>
+                    <input id="skype-name" name="skype-name" type="text" required>
+                </p>
                 <div id="teacher-register-form" class="register-form">
                     <p>
                         <label for="gender"><?php echo $lang['gender']; ?></label>
@@ -118,7 +122,7 @@ function roleCheck(that) {
                             <option value="australian"><?php echo $lang['australian']; ?></option>
                             <option value="british"><?php echo $lang['british']; ?></option>
                             <option value="canadian"><?php echo $lang['canadian']; ?></option>
-                            <option value="southAfrica"><?php echo $lang['south african']; ?></option>
+                            <option value="south_african"><?php echo $lang['south african']; ?></option>
                             <option value="filipino"><?php echo $lang['filipino']; ?></option>
                         </select>
                     </p>
@@ -151,6 +155,10 @@ function roleCheck(that) {
                     <p>
                         <label for="dob"><?php echo $lang['date of birth']; ?></label>
                         <input id="dob" name="dob" type="date">
+                    </p>
+                    <p>
+                        <label for="rate"><?php echo $lang['register rate']; ?></label>
+                        <input id="rate" name="rate" type="number" step="0.05" min="1" max="200">
                     </p>
                 </div>
                 <button type="submit"  id="register-button" name="register-button" class="button"><?php echo $lang['sign up']; ?></button>

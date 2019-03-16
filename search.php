@@ -131,7 +131,7 @@ $data_for_this_page = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 echo "<div class='search-view-item'>
                                         <span id='search-result'>
                                             <a href='profile.php?userID=" . $row['userID'] . "'>
-                                                <div class='profile-photo-large'>
+                                                <div class='profile-photo-medium'>
                                                     <img src='" . $row['profile_pic'] . "'>
                                                 </div>
                                                 <div class='profile-content'>

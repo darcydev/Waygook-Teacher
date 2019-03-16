@@ -4,8 +4,7 @@
         <option value="en">English</option>
         <option value="ko">한국어</option>
     </select>
-    <button type="submit" name="input-set-lang">
-        <?php // TODO: change this to a 'CHANGE' SYMBOL SO IT'S UNIVERSALLY UNDERSTOOD ?>
-        <?php echo $lang['save']; ?>
+    <button type="submit" name="input-set-lang" class="icon-tiny">
+        <img src="assets/images/icons/icons8-process.png" alt="change-icon">
     </button>
 </form>

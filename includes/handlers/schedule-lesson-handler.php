@@ -1,5 +1,4 @@
 <?php
-
 if (isset($_POST['schedule-lesson-button'])) {
     $date = $_POST['lesson-date'];
     $start_time = $_POST['lesson-start'];
@@ -16,7 +15,5 @@ if (isset($_POST['schedule-lesson-button'])) {
                 alert('Sorry, there was an error scheduling the lesson');
             </script>";
     }
-
 }
-
 ?>

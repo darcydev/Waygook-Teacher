@@ -114,13 +114,23 @@ $(document).ready(function() {
         $('.lessons-table-body_' + id).css('display', 'table-row');
     };
 
-    // Open / close schedule lesson overlay box
+    // open / close schedule lesson overlay box
     $('#schedule-lesson-link').click(function () {
         $('#schedule-lesson-form').css('display', 'block');
         $('.background-container').css('opacity', '0.3');
     });
     $('#schedule-lesson-close').click(function () {
         $('#schedule-lesson-form').css('display', 'none');
+        $('.background-container').css('opacity', '1');
+    });
+
+    // open / close schedule lesson overlay box
+    $('#deposit-employment-link').click(function () {
+        $('#deposit-employment-form').css('display', 'block');
+        $('.background-container').css('opacity', '0.3');
+    });
+    $('#deposit-employment-close').click(function () {
+        $('#deposit-employment-form').css('display', 'none');
         $('.background-container').css('opacity', '1');
     });
 

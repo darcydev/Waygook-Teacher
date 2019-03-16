@@ -18,7 +18,8 @@ class Account {
 	}
 
 	public function loginAccount($un, $pw) {
-		$sql = "SELECT username, password FROM Users WHERE username = ? AND password = ?";
+		$sql = "SELECT username, password FROM Users
+				WHERE username = ? AND password = ?";
 		$query = $this->db->run($sql, [$un, $pw]);
 		// BUG: "rowCount()" is not for a SELECT query (https://stackoverflow.com/questions/40355262/pdo-rowcount-only-returning-one)
 		if ($query->rowCount() == 1) {
@@ -29,23 +30,35 @@ class Account {
 		}
 	}
 
-	public function registerAccount($role, $fn, $ln, $un, $em, $pw, $pw2, $gender, $nationality, $flag, $educationLevel, $educationMajor, $dob) {
+	public function registerAccount(
+		$role, $fn, $ln, $un, $em,
+		$pw, $pw2, $skype_name, $gender, $nationality,
+		$flag, $edu_level, $edu_major, $dob, $rate
+	) {
 		$this->validateUsername($un);
 		$this->validateFirstName($fn);
 		$this->validateLastName($ln);
 		$this->validateEmail($em);
 		$this->validatePasswords($pw, $pw2);
+		// TODO: validate skype name
 
 		if(empty($this->errorArray) == true) {
             // insert into db
-			$sql = "INSERT INTO Users VALUES (userID, ?, ?, ?, ?, ?, DEFAULT, NULL, ?, ?, ?, ?, ?, ?, ?)";
-            $stmt = $this->db->run($sql, [$fn, $ln, $un, $em, $pw, $role, $gender, $nationality, $flag, $educationLevel, $educationMajor, $dob]);
+			$sql = "INSERT INTO Users VALUES (
+				userID, ?, ?, ?, ?,
+				?, DEFAULT, NULL, ?, ?,
+				?, ?, ?, ?, ?,
+				?, ?, ?, NULL, ?)";
+            $stmt = $this->db->run($sql, [
+				$fn, $ln, $un, $em, $pw,
+				$role, $gender, $nationality, $flag, $edu_level,
+				$edu_major, $dob, $rate, $skype_name, 0,
+				0]);
             $rowsAffected = $stmt->rowCount();
-            return $rowsAffected;
         } else {
             $rowsAffected = 0;
-            return $rowsAffected;
         }
+		return $rowsAffected;
     }
 
 	private function validateUsername($un) {
@@ -62,7 +75,6 @@ class Account {
             array_push($this->errorArray, Constants::$usernameTaken);
             return;
         }
-
 	}
 
 	private function validateFirstName($fn) {
@@ -89,7 +101,7 @@ class Account {
 		$stmt = $this->db->run($sql, [$em]);
 		$rowsAffected = $stmt->rowCount();
 		if ($rowsAffected != 0) {
-			array_push($this->errorArray, Constants::$usernameTaken);
+			array_push($this->errorArray, Constants::$emailTaken);
 			return;
 		}
 	}
