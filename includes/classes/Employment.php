@@ -22,16 +22,6 @@ class Employment {
         return "<span class='errorMessage'>$error</span>";
     }
 
-    public function insertORupdateEmployment($s_id, $t_id, $deposit) {
-        // ON DUPLICATE KEY UPDATE to
-        // check if Employment already exists
-            // if yes, update with deposit amount
-            // if no, create the employment with deposit amount
-        $sql = "INSERT INTO Employments
-                VALUES (employmentID, ?, ?, ?, ?)";
-        // TODO: finish....
-    }
-
     // function to get the particular Employment involving $userLoggedIn and $other_user
     public function getThisEmployment($userLoggedInID, $other_user) {
         $sql = "SELECT * FROM Employments
@@ -40,6 +30,24 @@ class Employment {
         $stmt = $this->db->run($sql, [$userLoggedInID, $other_user, $other_user, $userLoggedInID]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row;
+    }
+
+    public function createEmployment($s_id, $t_id, $t_rate, $deposit) {
+        $sql = "INSERT INTO Employments
+                VALUES (employmentID, ?, ?, ?, ?)";
+        $stmt = $this->db->run($sql, [$t_id, $s_id, $deposit, $t_rate]);
+        $rowsAffected = $stmt->rowCount();
+        return $rowsAffected;
+    }
+
+    public function updateEmployment($s_id, $t_id, $deposit) {
+        $sql = "UPDATE Employments
+                SET prepaid_amount = prepaid_amount + ?
+                WHERE (teacher_id = ? AND student_id = ?)
+                OR (teacher_id = ? AND student_id = ?)";
+        $stmt = $this->db->run($sql, [$deposit, $t_id, $s_id, $t_id, $s_id]);
+        $rowsAffected = $stmt->rowCount();
+        return $rowsAffected;
     }
 
     public function scheduleLesson($date, $start_time, $duration, $other_user) {

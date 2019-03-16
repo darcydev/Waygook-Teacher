@@ -6,9 +6,17 @@ if (isset($_POST['deposit-employment-button'], $userLoggedInID, $_GET['userID'])
     $s_id = $userLoggedInID;
     $t_id = $row['userID'];
     $t_rate = $row['rate'];
-    $deposit = $_POST['employment_deposit'];
+    $deposit = $_POST['employment-deposit'];
 
-    $rowsAffected = $employment->insertORupdateEmployment($s_id, $t_id, $t_rate, $deposit);
+    // check if Employment between T & S already exists
+    $row = $employment->getThisEmployment($s_id, $t_id);
+    // if yes, UPDATE Employment
+    if ($row) {
+        $rowsAffected = $employment->updateEmployment($s_id, $t_id, $deposit);
+    // if no, INSERT INTO Employment
+    } else {
+        $rowsAffected = $employment->createEmployment($s_id, $t_id, $t_rate, $deposit);
+    }
 
     if ($rowsAffected == 1) {
         header("Location: lesson-list.php");
