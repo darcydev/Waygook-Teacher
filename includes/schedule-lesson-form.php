@@ -1,7 +1,7 @@
 <div id="schedule-lesson-form" class="overlay-item auth-forms">
     <div class="overlay-container">
         <div id="schedule-lesson-close" class="close-button menu-button">
-            <img src="assets/images/icons/icons8-globe.png" alt="close-button">
+            <img src="assets/images/icons/icons8-multiply-26.png" alt="close-button">
         </div>
         <form class="schedule-form auth-form form" method="POST">
             <p>

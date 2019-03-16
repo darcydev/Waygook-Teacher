@@ -39,13 +39,19 @@ $lessons = $user->getUnconfirmedLessons($userLoggedInID);
                                     $otherUserID = $lesson_row['teacher_id'];
                                 }
                                 // format the $lesson date
-                                $datetime = date_format(date_create($lesson_row['datetime']), 'F j, Y, g:i a');
+                                $datetime = date_format(date_create($lesson_row['datetime']), 'D j M Y G:i T');
                                 // fetch DB details of 'other user'
                                 $other_user_row = $user->getOtherUser($otherUserID);
                                 $id = $lesson_row['lessonID'];
+                                $duration = $lesson_row['duration'];
+                                $t_pay = $lesson_row['teacher_payment'];
+                                $t_id = $lesson_row['teacher_id'];
+
+                                $now_time = strtotime('now');
+                                $lesson_time = strtotime($datetime);
 
                                 // if lesson date is in the future
-                                if ($lesson_row['datetime'] > new DateTime()) {
+                                if ($lesson_time > $now_time) {
                                     // option is 'CANCEL LESSON'
                                     $option_button = "<div onClick='cancelLesson(" . $id . ")' id='calendar-lesson_" . $id . "' class='button cancel-button'>
                                                         " . $lang['cancel lesson'] . "
@@ -53,7 +59,7 @@ $lessons = $user->getUnconfirmedLessons($userLoggedInID);
                                 // if lesson date is in the past
                                 } else {
                                     // option is 'CONFIRM LESSON'
-                                    $option_button = "<div onClick='confirmLesson(" . $id . ")' id='calendar-lesson_" . $id . "' class='button confirm-button'>
+                                    $option_button = "<div onClick='confirmLesson(" . $id . ", " . $duration . ", " . $t_id . ", " . $t_pay . ")' id='calendar-lesson_" . $id . "' class='button confirm-button'>
                                                         " . $lang['confirm lesson'] . "
                                                     </div>";
                                 }
@@ -72,7 +78,7 @@ $lessons = $user->getUnconfirmedLessons($userLoggedInID);
                                                     " . $datetime . "
                                                 </div>
                                                 <div class='calendar-duration conversation-text'>
-                                                    " . $lesson_row['duration'] . "mins
+                                                    " . $duration . "mins
                                                 </div>
                                                 " . $option_button . "
                                             </span>

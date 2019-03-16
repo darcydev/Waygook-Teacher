@@ -69,8 +69,11 @@ class Employment {
         $rowsAffected = $stmt->rowCount();
         // if the DB has been updated successfully
         if ($rowsAffected == 1) {
-            // subtract $teacher_rate from Student's prepaid amount
-            // TODO: update DB...
+            // subtract $teacher_rate from Employment's prepaid amount
+            $sql = "UPDATE Employments
+                    SET prepaid_amount = prepaid_amount - ?
+                    WHERE employmentID = ?";
+            $stmt = $db->run($sql, [$teacher_rate, $row['employmentID']]);
         }
         return $rowsAffected;
     }

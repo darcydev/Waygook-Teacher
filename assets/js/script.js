@@ -6,16 +6,21 @@ function downLessons(id) {
 }
 
 // TODO: include popup: "are you sure you want to confirm?"
-function confirmLesson(id) {
+function confirmLesson(id, duration, t_id, t_pay) {
     // use ajax to make call to PHP script to confirm the lesson
     $.ajax ({
         url: 'includes/handlers/ajax/confirm-lesson.php',
         type: 'POST',
-        data: { id : id },
+        data: {
+            id : id,
+            duration: duration,
+            t_id: t_id,
+            t_pay: t_pay
+        },
         error: function(req, textStatus, errorThrown) {
             alert('Error: ' + textStatus + ' ' +errorThrown);
         },
-        success: function(id) {
+        success: function(id, duration, t_id, t_pay) {
             // TODO: rather than simply reloading the page, change the button into a green tick to indicate lesson has been confirmed
             // if the ajax call has been successful, reload the page
             location.reload();

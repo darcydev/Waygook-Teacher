@@ -162,7 +162,7 @@ include("includes/included-files.php");
                         </div>
                         <div class="process-col">
                             <div class="process-picture">
-                                <img src="assets/images/pinned-globe.jpg" alt="process-col-img">
+                                <img src="assets/images/recruitment.png" alt="process-col-img">
                             </div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@ include("includes/included-files.php");
                         </div>
                         <div class="process-col">
                             <div class="process-picture">
-                                <img src="assets/images/pinned-globe.jpg" alt="process-col-img">
+                                <img src="assets/images/screen-schedule-lesson.png" alt="process-col-img">
                             </div>
                         </div>
                     </div>
@@ -194,7 +194,7 @@ include("includes/included-files.php");
                         </div>
                         <div class="process-col">
                             <div class="process-picture">
-                                <img src="assets/images/pinned-globe.jpg" alt="process-col-img">
+                                <img src="assets/images/girl-video-call.jpg" alt="process-col-img">
                             </div>
                         </div>
                     </div>

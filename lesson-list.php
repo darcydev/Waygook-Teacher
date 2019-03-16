@@ -52,8 +52,8 @@ $employments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <tr class='tr-row'>
                                                 <td id='td-profile-info' class='td-profile-info'>
                                                     <div class='info-content profile-photo-small'>
-                                                        <img id='sub-menu-btn' onclick='downLessons(" . $other_user_row['userID'] . ")' class='down-btn sub-table-btn' src='assets/images/icons/icons8-about.png' alt='drop-down-btn'>
-                                                        <img id='sub-menu-btn'  class='up-btn sub-table-btn' src='assets/images/icons/icons8-idea.png' alt='pull-up-btn'>
+                                                        <img id='sub-menu-btn' onclick='downLessons(" . $other_user_row['userID'] . ")' class='down-btn sub-table-btn' src='assets/images/icons/icons8-drop-down-40.png' alt='drop-down-btn'>
+                                                        <img id='sub-menu-btn'  class='up-btn sub-table-btn' src='assets/images/icons/icons8-up-squared-40.png' alt='pull-up-btn'>
                                                         <img src=" . $other_user_row['profile_pic'] . " alt='profile-pic'>
                                                         " . $other_user_row['first_name'] . "
                                                     </div>
