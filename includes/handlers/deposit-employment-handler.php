@@ -8,7 +8,7 @@ if (isset($_POST['deposit-employment-button'], $userLoggedInID, $_GET['userID'])
     $t_rate = $row['rate'];
     $deposit = $_POST['employment-deposit'];
 
-    // check if Employment between T & S already exists
+    // check if Employment between this T & S already exists
     $row = $employment->getThisEmployment($s_id, $t_id);
     // if yes, UPDATE Employment
     if ($row) {

@@ -13,7 +13,5 @@
     <a id="schedule-lesson-link" class="side-nav-item b" href="#"><?php echo $lang['schedule lesson']; ?></a>
     <?php // TODO: include href link (to div on page), jQuery remove for Students ?>
     <a id="schedule-lesson-link" class="side-nav-item b" href="#"><?php echo $lang['reviews']; ?></a>
-    <?php // TODO: hide if viewing own profile ?>
-    <?php // TODO: only students should be able to see this ?>
     <a id="deposit-employment-link" class="side-nav-item b" href="#"><?php echo $lang['deposit for lessons']; ?></a>
 </div>

@@ -8,6 +8,8 @@ if ($userLoggedInRow['role'] == 'teacher') {
                 $("#search-nav-bar-link").hide();
                 ' /* hide 'logo' link to index-student.php */ . '
                 $("#index-student-link").hide();
+                ' /* hide 'deposit-employment-form' link on side-nav.php (as teachers should be able to deposit money for lessons) */ . '
+                $("#deposit-employment-link").hide();
             });
         </script>';
 } else {
@@ -21,6 +23,17 @@ if ($userLoggedInRow['role'] == 'teacher') {
                 $("#profile-flag").hide();
                 ' /* hide account-details nav bar link in edit-profile */ . '
                 $("#account-details-nav").hide();
+            });
+        </script>';
+}
+
+// if User is viewing their own profile
+if ($_GET['userID'] == $userLoggedInID) {
+    echo '<script>
+            $(document).ready(function() {
+                ' /* hide 'deposit-employment-form' link on side-nav.php
+                reasoning is that Users should be able to deposit $ for lessons with themselves */ . '
+                $("#deposit-employment-link").hide();
             });
         </script>';
 }
