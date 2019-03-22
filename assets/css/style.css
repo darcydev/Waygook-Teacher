@@ -521,6 +521,7 @@ input {
 .ul-links a {
 	color: #65a0f3;
 	font-weight: 700;
+	padding: 0 4px;
 }
 
 .nav-bar,
