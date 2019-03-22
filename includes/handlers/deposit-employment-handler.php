@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['deposit-employment-button'], $userLoggedInID, $_GET['userID'])) {
     // variables fetched from header.php
-    // as only Students can click the deposit-employment-form button, the
+    // as only Students can click the deposit-employment-container button, the
     // userLoggedIn will always be the student
     $s_id = $userLoggedInID;
     $t_id = $row['userID'];

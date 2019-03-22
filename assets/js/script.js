@@ -126,11 +126,11 @@ $(document).ready(function() {
 
     // open / close schedule lesson overlay box
     $('#deposit-employment-link').click(function () {
-        $('#deposit-employment-form').css('display', 'block');
+        $('#deposit-employment-container').css('display', 'block');
         $('.background-container').css('opacity', '0.3');
     });
     $('#deposit-employment-close').click(function () {
-        $('#deposit-employment-form').css('display', 'none');
+        $('#deposit-employment-container').css('display', 'none');
         $('.background-container').css('opacity', '1');
     });
 
