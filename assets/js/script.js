@@ -1,3 +1,9 @@
+// function to update the deposit amount
+// depending upon how many lessons User selects to purchase
+function updateAmount(data) {
+    deposit_amount = data;
+    alert(deposit_amount);
+}
 
 // js function that's called by onclick in html
 function downLessons(id) {

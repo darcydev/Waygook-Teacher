@@ -6,11 +6,6 @@
 <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
 
 <script>
-
-    // get amount from deposit-employment-form
-    var amount = $('#employment-deposit').val();
-    console.log(amount);
-
     // Render the PayPal button into #deposit-employment-form
     paypal.Buttons({
         // Set up the transaction
@@ -18,7 +13,8 @@
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: '0.01'
+                        // deposit_amount is got from onchange in html  
+                        value: deposit_amount
                     }
                 }]
             });

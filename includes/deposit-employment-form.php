@@ -7,6 +7,23 @@
 
 // DELETED FROM form action=
 /// action="https://www.sandbox.paypal.com/cgi-bin/webscr"
+
+// in order to get the value of X hours
+// see if the specific Employment exists
+// if so, use the rate from the Employment
+// if not, use the rate from the Teacher
+// the reasoning is that a Teacher may have a different rate for each Employment
+$s_id = $userLoggedInID;
+$t_id = $row['userID'];
+$employment_row = $employment->getThisEmployment($s_id, $t_id);
+// check if the specific Employment already exists already
+if (! $employment_row) {
+    // if not, $rate equals Teacher's current rate
+    $rate = $row['rate'];
+} else {
+    // if so, $rate equals Employment's current rate
+    $rate = $employment_row['rate'];
+}
 ?>
 
 <div id="deposit-employment-container" class="overlay-item auth-forms">
@@ -24,23 +41,14 @@
                 <input type="text" class="readonly" name="employment-teacher" value="<?php echo $row['first_name']; ?>" readonly>
             </p>
             <p>
-                <label for="deposit">HOW MANY HOURS DO YOU WANT TO PURCHASE WITH THIS TEACHER?</label>
-                <select id="deposit" name="deposit" class="select" type="text">
-                    <option value="<?php echo $employment_row['rate'] ?>">1 HOUR</option>
-                    <option value="">5 HOURS</option>
-                    <option value="">10 HOURS</option>
-                    <option value="">20 HOURS</option>
-                    <option value="">50 HOURS</option>
+                <label for="deposit"><?php echo $lang['# lessons buy']; ?></label>
+                <select onchange="updateAmount(this.value)" id="deposit" name="deposit" class="select" type="text">
+                    <option value="" disabled selected><?php echo $lang['select option']; ?></option>
+                    <option value="<?php echo $rate * 5 ?>"><?php echo $lang['5 lessons']; ?></option>
+                    <option value="<?php echo $rate * 10 ?>"><?php echo $lang['10 lessons']; ?></option>
+                    <option value="<?php echo $rate * 20 ?>"><?php echo $lang['20 lessons']; ?></option>
+                    <option value="<?php echo $rate * 50 ?>"><?php echo $lang['50 lessons']; ?></option>
                 </select>
-            </p>
-
-
-
-
-
-            <p>
-                <label for="employment-deposit"><?php echo $lang['employment deposit']; ?></label>
-                <input id="employment-deposit" name="employment-deposit" type="number" step="0.05" min="1" max="1000">
             </p>
         </form>
     </div>

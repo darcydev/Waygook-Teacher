@@ -135,4 +135,10 @@
 
     $lang['deposit for lessons'] = "수업 입금";
     $lang['employment deposit'] = "이 교사와 함께 수업에 예치하는 금액 (USD)";
+    $lang['# lessons buy'] = "이 강사와 함께 구매하려는 강의 수";
+    $lang['select option'] = "선택 옵션";
+    $lang['5 lessons'] = "5 레슨";
+    $lang['10 lessons'] = "10 레슨";
+    $lang['20 lessons'] = "20 레슨";
+    $lang['50 lessons'] = "50 레슨";
 ?>
