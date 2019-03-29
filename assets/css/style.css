@@ -132,10 +132,6 @@ input {
 	cursor: pointer;
 }
 
-.box-content {
-	padding: 32px;
-}
-
 .select {
 	width: 100%;
 	display: block;
@@ -317,6 +313,8 @@ input {
 .box-content {
 	display: flex;
 	flex-wrap: wrap;
+	padding: 32px;
+	min-height: 100vh;
 }
 
 .box-content-row {
