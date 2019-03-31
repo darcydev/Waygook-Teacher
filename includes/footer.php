@@ -6,7 +6,6 @@
         <div class="process-title">About us</div>
         <div class="process-text">
             <li>Who we are</li>
-            <li>Help</li>
             <li>How it works</li>
         </div>
     </div>
