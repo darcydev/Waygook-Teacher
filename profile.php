@@ -36,9 +36,12 @@ if($row['username'] == $userLoggedIn) {
                             <?php echo nl2br($row['description']); ?>
                         </p>
                     </div>
+                    <?php
+                    /* **
+                    ** REVIEWS SECTION
+                        ** think of IDEA how to present the reviews
                     <div class="profile-content profile-description">
                         <div class="profile-description-title">
-                            <?php // TODO: include $lang ?>
                             <h3><?php echo $lang['reviews']; ?></h3>
                         </div>
                         <p>
@@ -47,10 +50,12 @@ if($row['username'] == $userLoggedIn) {
                             <p><?php echo $user->getReviews($_GET['userID'])?></p>
                         </p>
                     </div>
+                    ** */
+                    ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<?php include("includes/footer.php") ?>
+<?php include("includes/footer.php"); ?>

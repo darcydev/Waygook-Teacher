@@ -41,24 +41,25 @@ paypal.Buttons({
         ** this version is the 'basic integration'
         ** it creates the transaction on the Client-side
         ** therefore, it is suspectible to the User adjusting amount.value
-
+        ** for use in sandbox only
+    ** */
     createOrder: function(data, actions) {
         return actions.order.create({
             purchase_units: [{
                 amount: {
                     // deposit_amount is got from onchange in deposit-employment-form.php
-                    // change to ; deposit_amount
-                    value: 0.02
+                    value: deposit_amount // REAL-AMOUNT
+                    // value: 0.02 // TEST-AMOUNT
                 }
             }]
         });
     },
-    ** */
+
     /* **
         ** this version is the more advanced integration
         ** it creates the transaction on the Server-side
         ** returns a successful response to the client with the orderID
-    ** */
+
     createOrder: function() {
         return fetch('http://127.0.0.1:8888/Waygook-Teacher/paypal/create-transaction.php', {
             method: 'post',
@@ -71,8 +72,7 @@ paypal.Buttons({
             return data.orderID;
         });
     },
-
-
+    ** */
     // finalize the transaction
     /* **
         ** this version is the 'basic integration'
@@ -80,11 +80,11 @@ paypal.Buttons({
         ** returns a success alert message
     ** */
     onApprove: function(data, actions) {
-      // Capture the funds from the transaction
-      return actions.order.capture().then(function(details) {
-        // Show a success message to your buyer
-        alert('Transaction completed by ' + details.payer.name.given_name);
-      });
+        // Capture the funds from the transaction
+        return actions.order.capture().then(function(details) {
+            // Show a success message to your buyer
+            alert('Transaction completed by ' + details.payer.name.given_name);
+        });
     }
     /*
     onApprove: function(data) {
