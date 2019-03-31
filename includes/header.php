@@ -77,6 +77,5 @@ include("includes/handlers/deposit-employment-handler.php");
     </div>
     <?php include("schedule-lesson-form.php"); ?>
     <?php include("deposit-employment-form.php"); ?>
-    <?php include("assets/js/render-paypal-buttons.js"); ?>
     <div class="background-container">
         <div class="main-container">
