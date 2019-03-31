@@ -1,4 +1,5 @@
 <?php
+// OLD 
 if (isset($_POST['deposit-employment-button'], $userLoggedInID, $_GET['userID'])) {
     // variables fetched from header.php
     // as only Students can click the deposit-employment-container button, the

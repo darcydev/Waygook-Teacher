@@ -16,6 +16,7 @@
 $s_id = $userLoggedInID;
 $t_id = $row['userID'];
 $employment_row = $employment->getThisEmployment($s_id, $t_id);
+$emp_id = $employment_row['employmentID'];
 // check if the specific Employment already exists already
 if (! $employment_row) {
     // if not, $rate equals Teacher's current rate
@@ -25,6 +26,84 @@ if (! $employment_row) {
     $rate = $employment_row['rate'];
 }
 ?>
+
+<!-- PAYPAL SMART BUTTONS -->
+<!-- set up a container element for the button; -->
+<div id="paypal-button-container"></div>
+<!-- Include the PayPal JavaScript SDK -->
+<?php // NOTE: within the url, I changed the parameter 'client-id' from sb ?>
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+<script>
+// render the PayPal button into #deposit-employment-form
+paypal.Buttons({
+    // set up the transaction
+    /* **
+        ** this version is the 'basic integration'
+        ** it creates the transaction on the Client-side
+        ** therefore, it is suspectible to the User adjusting amount.value
+
+    createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    // deposit_amount is got from onchange in deposit-employment-form.php
+                    // change to ; deposit_amount
+                    value: 0.02
+                }
+            }]
+        });
+    },
+    ** */
+    /* **
+        ** this version is the more advanced integration
+        ** it creates the transaction on the Server-side
+        ** returns a successful response to the client with the orderID
+    ** */
+    createOrder: function() {
+        return fetch('http://127.0.0.1:8888/Waygook-Teacher/paypal/create-transaction.php', {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(function(res) {
+            return res.json();
+        }).then(function(data) {
+            return data.orderID;
+        });
+    },
+
+
+    // finalize the transaction
+    /* **
+        ** this version is the 'basic integration'
+        ** it creates the transaction on the Client-side
+        ** returns a success alert message
+    ** */
+    onApprove: function(data, actions) {
+      // Capture the funds from the transaction
+      return actions.order.capture().then(function(details) {
+        // Show a success message to your buyer
+        alert('Transaction completed by ' + details.payer.name.given_name);
+      });
+    }
+    /*
+    onApprove: function(data) {
+      return fetch('http://127.0.0.1:8888/Waygook-Teacher/assets/js/get-paypal-transaction', {
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          orderID: data.orderID
+        })
+      }).then(function(res) {
+        return res.json();
+      }).then(function(details) {
+        alert('Transaction approved by ' + details.payer_given_name);
+        })
+    }
+    */
+}).render('#deposit-employment-form');
+</script>
 
 <div id="deposit-employment-container" class="overlay-item auth-forms">
     <div class="overlay-container">

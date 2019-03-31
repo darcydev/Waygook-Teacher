@@ -13,6 +13,7 @@ class ComposerStaticInit2f39a85826b86dbe1c374e201aa98873
         ),
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'PayPalCheckoutSdk\\' => 18,
         ),
         'B' => 
@@ -26,6 +27,10 @@ class ComposerStaticInit2f39a85826b86dbe1c374e201aa98873
         array (
             0 => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/samples',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'PayPalCheckoutSdk\\' => 
         array (
             0 => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk',
@@ -36,11 +41,22 @@ class ComposerStaticInit2f39a85826b86dbe1c374e201aa98873
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PayPal' => 
+            array (
+                0 => __DIR__ . '/..' . '/paypal/rest-api-sdk-php/lib',
+            ),
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit2f39a85826b86dbe1c374e201aa98873::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit2f39a85826b86dbe1c374e201aa98873::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit2f39a85826b86dbe1c374e201aa98873::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

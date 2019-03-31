@@ -1,4 +1,5 @@
 <?php
+// OLD ???
 if (strcmp ($res, "VERIFIED") == 0) {
 	// assign posted variables to local variables
 	$item_name = $_POST['item_name'];
