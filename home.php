@@ -22,13 +22,16 @@ include("includes/included-files.php");
             </ul>
         </div>
         <div class="landing-page-row">
-            <div class="landing-box-first">
+            <div class="box-home">
                 <div class="box-title">
                     <h1><?php echo $lang['Welcome to...']; ?></h1>
                     <h2><?php echo $lang['platform to connect...']; ?></h2>
                 </div>
+                <div class="box-img">
+                    <img src="assets/images/girl-laptop.jpg" alt="teacher-globe-image">
+                </div>
             </div>
-            <div class="box">
+            <div class="box-home">
                 <div class="box-icon">
                     <img src="assets/images/icons/icons8-globe.png" alt="box-icon">
                 </div>
@@ -86,7 +89,7 @@ include("includes/included-files.php");
                     </div>
                 </div>
             </div>
-            <div class="box">
+            <div class="box-home">
                 <div class="box-icon">
                     <img src="assets/images/icons/icons8-checked_filled.png" alt="box-icon">
                 </div>
@@ -141,7 +144,7 @@ include("includes/included-files.php");
                     </div>
                 </div>
             </div>
-            <div class="box">
+            <div class="box-home">
                 <div class="box-icon">
                     <img src="assets/images/icons/icons8-process.png" alt="box-icon">
                 </div>

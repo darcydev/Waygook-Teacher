@@ -255,22 +255,16 @@ input {
 	overflow: auto;
 }
 
-.landing-page-row .box:nth-child(3) {
-	min-height: 0%;
+.box-home:nth-child(1) {
+	padding-bottom: 35px;
 }
 
-.landing-box-first {
-	background-image: url(../images/girl-laptop.jpg);
-	background-repeat: no-repeat;
-	background-size: 100%;
-	height: 85%;
-	min-height: 100vh;
+.box-home {
 	width: 100%;
 }
 
-.landing-box-first h2 {
-	color: #f7f7f7;
-	padding-top: 50px;
+.box-home .box-content {
+	min-height: 0;
 }
 
 .box {
