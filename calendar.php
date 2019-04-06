@@ -1,15 +1,22 @@
-<!--
-The page shows the calendar for userLoggedIn
-
-The calendar consists of all future lessons, and certain past lessons (ie -10 days from today)
-
-In future, expand the calendar to include a Google calendar (like?) plugin
--->
-
 <?php
 include("includes/header.php");
 
-// TODO: implement timezone functionality (important func, but why is comment here specifically?)
+/* **
+PAGE DETAILS:
+    ** Calendar.php displays the calendar of all lessons for userLoggedIn.
+    ** The lessons displayed on the calendar are all future lessons, and "recent" past lessons.
+
+IDEA:
+    ** Include a Google calendar plugin
+
+TODO:
+    ** Implement timezone functionality (where the datetime of each lesson will adjust
+    ** depending on the User's timezone).
+
+BUG:
+    ** n/a
+** */
+
 $lessons = $user->getUnconfirmedLessons($userLoggedInID);
 ?>
 

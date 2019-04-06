@@ -1,13 +1,22 @@
-<!--
-The page shows the list of all employments for userLoggedIn
-
-On this page, we display:
-* the lessons preview for all the employments for the userLoggedIn
-* by clicking on one of the employments, a drop down appears to show the details for all the lessons of that employment
--->
-
 <?php
 include("includes/header.php");
+
+/* **
+PAGE DETAILS:
+    ** Lesson-list.php displays each Employment for userLoggedIn.
+    ** The employments are displayed in table, sorted by User.
+    ** By clicking on one of the Employments, a dropdown appers to show all the lessons
+    ** details for that Employment.
+
+IDEA:
+    **
+
+TODO:
+    **
+
+BUG:
+    **
+** */
 
 // select all employments involving userLoggedIn
 $sql = "SELECT * FROM `Employments`
