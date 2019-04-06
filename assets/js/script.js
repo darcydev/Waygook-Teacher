@@ -1,3 +1,8 @@
+// function to update the deposit amount
+// depending upon how many lessons User selects to purchase
+function updateAmount(data) {
+    deposit_amount = data;
+}
 
 // js function that's called by onclick in html
 function downLessons(id) {
@@ -126,11 +131,11 @@ $(document).ready(function() {
 
     // open / close schedule lesson overlay box
     $('#deposit-employment-link').click(function () {
-        $('#deposit-employment-form').css('display', 'block');
+        $('#deposit-employment-container').css('display', 'block');
         $('.background-container').css('opacity', '0.3');
     });
     $('#deposit-employment-close').click(function () {
-        $('#deposit-employment-form').css('display', 'none');
+        $('#deposit-employment-container').css('display', 'none');
         $('.background-container').css('opacity', '1');
     });
 

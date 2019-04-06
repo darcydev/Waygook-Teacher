@@ -139,4 +139,10 @@
 
     $lang['deposit for lessons'] = "Deposit for lessons";
     $lang['employment deposit'] = "How much (USD) to deposit for lessons with this Teacher";
+    $lang['# lessons buy'] = "How many lessons do you wish to purchase with this Teacher";
+    $lang['select option'] = "Select option";
+    $lang['5 lessons'] = "5 lessons";
+    $lang['10 lessons'] = "10 lessons";
+    $lang['20 lessons'] = "20 lessons";
+    $lang['50 lessons'] = "50 lessons";
 ?>

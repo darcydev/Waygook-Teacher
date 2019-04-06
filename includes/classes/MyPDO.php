@@ -13,8 +13,8 @@ class MyPDO {
         $DB_HOST = 'localhost';
         $DB_NAME = 'Waygook-Teacher';
         $DB_USER = 'root';
-        // $DB_PASS = 'root'; // MAMP
-        $DB_PASS = 'mysql'; // AMPPS
+        $DB_PASS = 'root'; // MAMP
+        //// $DB_PASS = 'mysql'; // AMPPS
         $DB_CHAR = 'utf8mb4';
 
         $dsn = 'mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset='.$DB_CHAR;
