@@ -5,7 +5,7 @@ include("includes/classes/Account.php");
 include("includes/classes/User.php");
 include("includes/classes/Employment.php");
 
-if(isset($_SESSION['userLoggedIn'])) {
+if (isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = $_SESSION['userLoggedIn'];
 }
 else {
@@ -41,11 +41,58 @@ if(isset($_GET['userID'])) {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+/* **
+BACKGROUND TO ISSUE:
+    ** site was loading slowly because PayPal script was loading on every page.
+    ** Instead, it's only necessary for PayPal script to load on page where
+    ** the 'deposit-employment-link' is avaliable to be clicked.
+    ** To achieve this, check the URL of the current page. If the URL is that of a
+    ** page on which deposit-employment-link is avaliable, load the script.
+
+MORE INFO:
+    ** For info on optimize loading PayPal script, see here:
+    ** https://developer.paypal.com/docs/checkout/troubleshoot/performance/#instant-render
+** */
+// an array of all pages on which PayPal script should be avaliable
+$paypal_pages = array(
+    "profile.php",
+    "lesson-list.php"
+);
+// get the name of the page the User is currently on
+$currentFile = $_SERVER["PHP_SELF"];
+$parts = Explode('/', $currentFile);
+$currentPage = $parts[count($parts) - 1];
+// check if the page the User is currently on, is one of the 'PayPal pages'
+// if so, load the PayPal script, as required
+if (in_array($currentPage, $paypal_pages)) {
+    include("includes/paypal-script.php");
+}
+
+// include the AJAX HANDLERS
 include("includes/handlers/edit-profile-handler.php");
 include("includes/handlers/auth-handler.php");
 include("includes/handlers/send-message-handler.php");
 include("includes/handlers/schedule-lesson-handler.php");
 include("includes/handlers/deposit-employment-handler.php");
+
+/* **
+LEGACY CODE:
+    ** legacy code to check whether the User is currently viewing the site from
+    ** local production or live deployment
+// an array of all potential pages of 'local production' (that is, localhost)
+$localhost_pages = array(
+    '127.0.0.1',
+    '::1'
+);
+// check if the User is on the site on the localhost or the live site.
+if (in_array($_SERVER['REMOTE_ADDR'], $localhost_pages)) {
+    // if the User is on the localhost (localhost:8888/waygook-teacher.com)
+    // echo 'Localhost';
+} else {
+    // if the User is on the live site (waygookteacher.com)
+    // echo 'Live';
+}
+** */
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +107,6 @@ include("includes/handlers/deposit-employment-handler.php");
 <body>
     <div class="nav-bar">
     	<div class="nav-bar-header">
-            <?php // TODO: include logo ?>
     		<a id="index-teacher-link" href="index-teacher.php">WaygookTeacher</a>
             <a id="index-student-link" href="index-student.php">WaygookTeacher</a>
     	</div>

@@ -28,11 +28,6 @@ if (! $employment_row) {
 ?>
 
 <!-- PAYPAL SMART BUTTONS -->
-<!-- set up a container element for the button; -->
-<div id="paypal-button-container"></div>
-<!-- Include the PayPal JavaScript SDK -->
-<?php // NOTE: within the url, I changed the parameter 'client-id' from sb ?>
-<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
 <script>
 // render the PayPal button into #deposit-employment-form
 paypal.Buttons({

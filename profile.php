@@ -3,7 +3,7 @@ include("includes/header.php");
 
 // if User is viewing own profile, show 'edit-profile' button
 // else, show 'send-message' button
-if($row['username'] == $userLoggedIn) {
+if ($row['username'] == $userLoggedIn) {
     echo '<script>
             $(document).ready(function() {
                 $("#edit-profile-link").show();
