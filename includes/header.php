@@ -41,33 +41,6 @@ if(isset($_GET['userID'])) {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-/* **
-BACKGROUND TO ISSUE:
-    ** site was loading slowly because PayPal script was loading on every page.
-    ** Instead, it's only necessary for PayPal script to load on page where
-    ** the 'deposit-employment-link' is avaliable to be clicked.
-    ** To achieve this, check the URL of the current page. If the URL is that of a
-    ** page on which deposit-employment-link is avaliable, load the script.
-
-MORE INFO:
-    ** For info on optimize loading PayPal script, see here:
-    ** https://developer.paypal.com/docs/checkout/troubleshoot/performance/#instant-render
-** */
-// an array of all pages on which PayPal script should be avaliable
-$paypal_pages = array(
-    "profile.php",
-    "lesson-list.php"
-);
-// get the name of the page the User is currently on
-$currentFile = $_SERVER["PHP_SELF"];
-$parts = Explode('/', $currentFile);
-$currentPage = $parts[count($parts) - 1];
-// check if the page the User is currently on, is one of the 'PayPal pages'
-// if so, load the PayPal script, as required
-if (in_array($currentPage, $paypal_pages)) {
-    include("includes/paypal-script.php");
-}
-
 // include the AJAX HANDLERS
 include("includes/handlers/edit-profile-handler.php");
 include("includes/handlers/auth-handler.php");

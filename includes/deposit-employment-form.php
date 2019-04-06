@@ -28,6 +28,24 @@ if (! $employment_row) {
 ?>
 
 <!-- PAYPAL SMART BUTTONS -->
+<!-- Include the PayPal JavaScript SDK -->
+<!--
+BACKGROUND TO ISSUE:
+    ** The site was/is loading slowly, because PayPal script is loading on every
+    ** page. As a fix, I attempted the following:
+        *** Load the script only on necessary pages
+        *** Load the script async in the header
+    ** However, these solutions weren't working. So, I've reverted back to
+    ** loading the script within the form as below.
+
+MORE INFO:
+    ** For info on optimize loading PayPal script, see here:
+    ** https://developer.paypal.com/docs/checkout/troubleshoot/performance/#instant-render
+-->
+<!-- NOTE: within the url, I changed the parameter 'client-id' from sb -->
+<script
+  src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD">
+</script>
 <script>
 // render the PayPal button into #deposit-employment-form
 paypal.Buttons({
