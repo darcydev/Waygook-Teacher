@@ -1,6 +1,26 @@
 <?php
 include("includes/header.php");
 
+/* **
+PAGE DETAILS:
+    ** Profile.php displays a User's profile.
+    ** userLoggedIn could either be:
+        a) viewing thier own profile, or
+        b) viewing the profile of another User
+    ** Depending on whether it is a) or b), the side-nav will adjust. For instance,
+    ** a User will be able to edit their own profile, but obviously not another
+    ** User's profile, etc.
+
+TODO:
+    ** Display the User's reviews
+
+BUG:
+    ** n/a
+
+IDEA:
+    ** Include a Google calendar plugin
+** */
+
 // if User is viewing own profile, show 'edit-profile' button
 // else, show 'send-message' button
 if ($row['username'] == $userLoggedIn) {
