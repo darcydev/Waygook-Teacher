@@ -100,3 +100,7 @@ $lessons = $user->getUnconfirmedLessons($userLoggedInID);
         </div>
     </div>
 </div>
+
+<?php
+include("includes/footer.php");
+?>

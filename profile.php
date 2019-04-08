@@ -14,9 +14,6 @@ PAGE DETAILS:
 TODO:
     ** Display the User's reviews
 
-BUG:
-    ** n/a
-
 IDEA:
     ** Include a Google calendar plugin
 ** */

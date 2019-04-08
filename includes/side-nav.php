@@ -1,8 +1,15 @@
-<?php // TODO: include all side navs into this file
-            // use JS(?) to adjust which side navs are viewable depending upon:
-                // role
-                // own page?
-                // which page (eg settings vs profile, etc.)
+<?php
+ /* **
+ PAGE DETAILS:
+     ** side-nav.php is the reuseable side-nav that is displayed across several
+     ** pages.
+
+ TODO:
+     ** Point each of the side-navs to this file (to avoid duplicate code)
+     ** Each page will have a different side-nav contents. For example:
+        *** Profile.php will have the option to 'send message', whereas,
+        *** Calendar.php won't have that option (on the side-nav).
+ ** */
  ?>
 
 <div class="side-nav">

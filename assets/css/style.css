@@ -388,13 +388,9 @@ input {
 	list-style: none;
 }
 
-.process-picture {
-	padding-left: 30px;
-}
-
 .process-picture img {
 	display: block;
-	max-width: 494px;
+	max-width: 92%;
 	height: auto;
 }
 
@@ -864,4 +860,11 @@ input {
 .cancel-button {
 	background: #fd3204;
 	width: 17%;
+}
+
+.landing-page-row {
+	background: #fff;
+	padding: 0;
+	max-width: 1200px;
+	margin: 0 auto;
 }

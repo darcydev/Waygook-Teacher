@@ -97,4 +97,4 @@ if (in_array($_SERVER['REMOTE_ADDR'], $localhost_pages)) {
     <?php include("schedule-lesson-form.php"); ?>
     <?php include("deposit-employment-form.php"); ?>
     <div class="background-container">
-        <div class="main-container">
+        <div class="main-container landing-page-row">
