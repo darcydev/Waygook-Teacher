@@ -1,27 +1,21 @@
-<!--
-The page shows the indiviudal conversation between two Users
-
-conversation-list.php shows the list of all conversation for userLoggedIn
-
-On this page, we display:
-* the messages between two Users
-* 'send-message' box that allows Users to send a new message
-
-The two Users in question are: a) userLoggedIn and b) ?userID=x (from the url)
-
-1) Display info of ?userID=x
-2) Display messages between the two Users
-3) Display 'send-message' box that sends a message to ?userID=x
--->
-
 <?php
 include("includes/header.php");
 
-// select all messages sent between userLoggedIn and ?userID=x
-// that is, between the User is currently logged in and the User whose page their viewing
-// for example, if I'm logged into Facebook and want to check the messages between me and my friend
-// by clicking on my friend's profile
+/* **
+PAGE DETAILS:
+    ** Conversation.php shows the individual conversation between two Users.
+    ** The two Users are a) userLoggedIn and b) $_GET['userID'] (from the url). That is,
+    the User who is currently logged in and the User whose page their viewing.
+    ** The page displays:
+        *** A 'send message' box that allows Users to send a new message
+        *** The list of all messages sent between the two Users
+** */
 
+/*
+    Select all messages sent between userLoggedIn and $_GET['userID']. That is,
+    all the messages between the User that is currently logged in and the User whose
+    page their viewing.
+*/
 // TODO: in accordance with "DRY", move this in User.php (???)
 $sql = "SELECT * FROM Messages
         WHERE (to_user_id = ? AND from_user_id = ?)

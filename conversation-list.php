@@ -1,25 +1,23 @@
-<!--
-The page shows the list of all conversation for userLoggedIn
-
-conversation.php shows the indiviudal conversation between two Users
-
-On this page, we display:
-* all the conversation preview for all the conversations for the userLoggedIn.
-* by clicking on one of the conversations, takes the User to conversation.php for that particular conversation
-
-Tasks:
-1) Display generic html content heading (Name, Message, Date)
-2) Write SQL query to collect all messages sent to or from userLoggedIn
-3) Display a preview of each message in a 'conversation-list'
-    ** Preview includes:
-    3.1) Photo of other user
-    3.2) Name of other user
-    3.3) Preview (one line) of most recent message
-    3.4) Date of most recent message
--->
-
 <?php
 include("includes/header.php");
+
+/* **
+PAGE DETAILS:
+    ** Conversation-list.php displays a list of all conversations for userLoggedIn
+    ** On this page, we display:
+        *** A conversation preview for all the conversations for the userLoggedIn
+    ** By clicking on one of the conversation previews, it directs the User to conversation.php for
+    the details of that particular conversation.
+
+IDEA:
+    **
+
+TODO:
+    **
+
+BUG:
+    **
+** */
 
 // select all messages either sent from or sent to userLoggedIn
 $sql = "SELECT * FROM  `Messages` a
