@@ -43,19 +43,19 @@ $userMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($userMessages as $row) {
                                 // fetch the first_name, last_name of the User who sent each message
                                 // collected from $row['from_user_id'] which has FK relation with User.userID
-                                $sql = "SELECT first_name, last_name FROM Users WHERE userID = ?";
+                                $sql = "SELECT first_name, last_name, profile_pic
+                                        FROM Users
+                                        WHERE userID = ?";
                                 $stmt = $db->run($sql, [$row['from_user_id']]);
                                 $from_user_row = $stmt->fetch(PDO::FETCH_ASSOC);
-                                $from_user_first_name = $from_user_row['first_name'];
-                                $from_user_last_name = $from_user_row['last_name'];
                                 // create html div each time loops through $query
                                 echo "<div id='message-item'>
                                         <span id='message-result'>
-                                            <div class='conversation-photo'>
-                                                <img src='' alt='from-user-photo'>
+                                            <div class='conversation-photo profile-photo-small'>
+                                                <img src='" . $from_user_row['profile_pic'] . "' alt='profilePic'>
                                             </div>
                                             <div class='conversation-name'>
-                                                " . $from_user_first_name . " " . $from_user_last_name . "
+                                                " . $from_user_row['first_name'] . " " . $from_user_row['last_name'] . "
                                             </div>
                                             <div class='conversation-date'>
                                                 " . $row['date'] . "

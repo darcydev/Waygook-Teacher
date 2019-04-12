@@ -76,7 +76,7 @@ $lessons = $user->getUnconfirmedLessons($userLoggedInID);
                                         <div class='conversation-item'>
                                             <span id='conversation-result' class='calendar-result'>
                                                 <div class='conversation-photo calendar-photo profile-photo-small'>
-                                                    <img src=" . $other_user_row['profile_pic'] . " alt='from-user-photo'>
+                                                    <img src='" . $other_user_row['profile_pic'] . "' alt='profilePic'>
                                                 </div>
                                                 <div class='calendar-name conversation-name'>
                                                     " . $other_user_row['first_name'] . "
