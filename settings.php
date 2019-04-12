@@ -10,12 +10,27 @@ if (isset($_POST['change-password-button'])) {
     $rowsAffected = $user->updatePassword($old_pw, $new_pw, $new_pw2);
 
     if ($rowsAffected == 1) {
-        header("Location: index.php");
+        header("Location: settings.php");
     } else {
         echo "Error updating new password";
     }
 }
+
+// CHANGE TIMEZONE HANDLER
+if (isset($_POST['change-timezone-button'])) {
+    // get the new-timezone from the from the form input
+    $tz = $_POST['new-timezone'];
+    // update in db
+    $rowsAffected = $user->updateTimezone($tz);
+    // if updated successfully, direct to index.php
+    if ($rowsAffected == 1) {
+        header("Location: settings.php");
+    } else {
+        echo "Error updating new timezone";
+    }
+}
 ?>
+
 
 <div class="settings-profile-container">
     <div class="side-nav">
@@ -52,8 +67,14 @@ if (isset($_POST['change-password-button'])) {
                         <input id="old-timezone" name="old-timezone" type="text" value="<?php echo $userLoggedInRow['timezone']; ?>" readonly="readonly" required>
                     </p>
                     <select class="select" name="new-timezone">
-                        <option value="">INCLUDE TIMEZONES</option>
-                        <?php // TODO: https://stackoverflow.com/questions/1727077/generating-a-drop-down-list-of-timezones-with-php ?>
+                        <?php
+                        // get a list of all timezones
+                        $timezones = DateTimeZone::listIdentifiers();
+                        // iterate over timezones and add each as an option
+                        foreach ($timezones as $tz) {
+                            echo "<option value='" . $tz . "'>" . $tz . "</option>";
+                        }
+                        ?>
                     </select>
                     </p>
                     <div class="buttons-row">

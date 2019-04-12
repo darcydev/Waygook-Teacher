@@ -233,5 +233,12 @@ class User {
         return;
     }
 
+    public function updateTimezone($tz) {
+        $sql = "UPDATE Users SET timezone = ? WHERE userID = ?";
+        $stmt = $this->db->run($sql, [$tz, $this->userID]);
+        $rowsAffected = $stmt->rowCount();
+        return $rowsAffected;
+    }
+
 }
 ?>
