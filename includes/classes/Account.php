@@ -44,16 +44,48 @@ class Account {
 
 		if(empty($this->errorArray) == true) {
             // insert into db
-			$sql = "INSERT INTO Users VALUES (
-				userID, ?, ?, ?, ?,
-				?, DEFAULT, NULL, ?, ?,
-				?, ?, ?, ?, ?,
-				?, ?, ?, NULL, ?)";
+			$sql = "INSERT INTO Users
+					VALUES (
+						userID,
+						:first_name,
+						:last_name,
+						:username,
+						:email,
+						:password,
+						DEFAULT,
+						NULL,
+						:role,
+						:gender,
+						:nationality,
+						:flag,
+						:education_level,
+						:education_major,
+						:DOB,
+						:rate,
+						:skype_name,
+						:lesson_hours,
+						NULL,
+						:account_balance,
+						DEFAULT
+					)";
             $stmt = $this->db->run($sql, [
-				$fn, $ln, $un, $em, $pw,
-				$role, $gender, $nationality, $flag, $edu_level,
-				$edu_major, $dob, $rate, $skype_name, 0,
-				0]);
+				':first_name' => $fn,
+				':last_name' => $ln,
+				':username' => $un,
+				':email' => $em,
+				':password' => $pw,
+				':role' => $role,
+				':gender' => $gender,
+				':nationality' => $nationality,
+				':flag' => $flag,
+				':education_level' => $edu_level,
+				':education_major' => $edu_major,
+				':DOB' => $dob,
+				':rate' => $rate,
+				':skype_name' => $skype_name,
+				':lesson_hours' => 0,
+				':account_balance' => 0
+			]);
             $rowsAffected = $stmt->rowCount();
         } else {
             $rowsAffected = 0;

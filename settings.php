@@ -1,7 +1,7 @@
 <?php
 include("includes/header.php");
 
-// HANDLER
+// CHANGE PASSWORD HANDLER
 if (isset($_POST['change-password-button'])) {
     $old_pw = md5($_POST['old-password']);
 	$new_pw = md5($_POST['new-password']);
@@ -49,7 +49,7 @@ if (isset($_POST['change-password-button'])) {
                 <form id="settings-account" class="form" method="post">
                     <p>
                         <label for="timezone"><?php echo $lang['current timezone']; ?></label>
-                        <input id="old-timezone" name="old-timezone" type="text" value="INSERT CURRENT TIMEZONE" readonly="readonly" required>
+                        <input id="old-timezone" name="old-timezone" type="text" value="<?php echo $userLoggedInRow['timezone']; ?>" readonly="readonly" required>
                     </p>
                     <select class="select" name="new-timezone">
                         <option value="">INCLUDE TIMEZONES</option>
