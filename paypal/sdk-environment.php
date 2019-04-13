@@ -1,5 +1,5 @@
 <?php
-// COPIED FROM HERE: https://developer.paypal.com/docs/checkout/reference/server-integration/setup-sdk/#install-the-sdk
+// COPIED FROM HERE: https://bit.ly/2X9zbvo
 
 namespace Sample;
 

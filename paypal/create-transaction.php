@@ -1,10 +1,9 @@
 <?php
-// COPIED FROM: https://developer.paypal.com/docs/checkout/reference/server-integration/set-up-transaction/#
 
 namespace Sample\CaptureIntentExamples;
 
 require __DIR__ . '/vendor/autoload.php';
-//1. Import the PayPal SDK client that was created in `Set up the Server SDK`. (see sdk-environment.php)
+//1. Import the PayPal SDK client that was created in `Set up the Server SDK`.
 use Sample\PayPalClient;
 use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
 
@@ -37,7 +36,7 @@ class CreateOrder
       }
 
       // To print the whole response body, uncomment the following line
-      // echo json_encode($response->result, JSON_PRETTY_PRINT);
+      echo json_encode($response->result, JSON_PRETTY_PRINT);
     }
 
     // 4. Return a successful response to the client.
@@ -65,7 +64,7 @@ class CreateOrder
                             'amount' =>
                                 array(
                                     'currency_code' => 'USD',
-                                    'value' => '2.20'
+                                    'value' => '2.22'
                                 )
                         )
                 )

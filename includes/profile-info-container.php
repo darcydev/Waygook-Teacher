@@ -24,9 +24,7 @@ if (isset($_GET['userID'])) {
 } else {
     header("Location: index-student.php");
 }
-
 ?>
-
 
 <div class='profile-info-container'>
     <div class="profile-content-row-a">
@@ -56,10 +54,12 @@ if (isset($_GET['userID'])) {
                 display the User's skype details or hide them with a 'deposit money'
                 message, respectively.
                 */
+                // if the Skype details are visible for this User
                 if ($skype_visible) {
                     echo "<a href='skype:" . $row['skype_name'] . "?add'>
                             <h4>" . $lang['Skype ID'] . ": " . $row['skype_name'] . "</h4>
                         </a>";
+                // if the Skype details are hidden for this User
                 } else {
                     echo "Sorry, the Skype details for this User are currently hidden.
                         In order to display the Skype details, please deposit money for lessons
