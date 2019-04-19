@@ -1,35 +1,31 @@
 <?php
-
-include("../includes/included-files.php");
+include("includes/header.php");
+/// include("includes/included-files.php");
 // Include Functions
 require 'paypal-functions.php';
 
-// For test payments we want to enable the sandbox mode. If you want to put live
-// payments through then this setting needs changing to `false`.
+// For sandbox payments, set to `true`
+// For live payments, set to `false`
 $enableSandbox = true;
-
-// Database settings. Change these for your database configuration.
-$dbConfig = [
-    'host' => 'localhost',
-    'username' => 'user',
-    'password' => 'secret',
-    'name' => 'example_database'
-];
 
 // PayPal settings. Change these to your account details and the relevant URLs
 // for your site.
 $paypalConfig = [
     'email' => 'darcyelsing@gmail.com',
-    'return_url' => 'http://waygookteacher.com/payment-successful.html',
-    'cancel_url' => 'http://waygookteacher.com/payment-cancelled.html',
-    'notify_url' => 'http://waygookteacher.com/payments.php'
+    'return_url' => 'http://waygookteacher.com/payment-successful.php',
+    'cancel_url' => 'http://waygookteacher.com/payment-cancelled.php',
+    'notify_url' => 'http://waygookteacher.com/paypal-payments.php'
 ];
 
 $paypalUrl = $enableSandbox ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 'https://www.paypal.com/cgi-bin/webscr';
 
 // Product being purchased.
-$itemName = 'Test Item';
-$itemAmount = 0.05;
+if (isset($_POST['deposit'])) {
+    $itemAmount = $_POST['deposit'];
+    $itemName = $itemAmount . ' lessons';
+} else {
+    echo "Sorry, the number of lessons was not selected";
+}
 
 // Check if paypal request or response
 if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])) {
@@ -70,8 +66,7 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])) {
     // Handle the PayPal response.
 
     // Create a connection to the database.
-    //// $db = new mysqli($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['name']);
-    $db = MyPDO::instance();
+    //// $db = MyPDO::instance();
 
     // Assign posted variables to local data array.
     $data = [
@@ -90,12 +85,28 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])) {
     // already processed the transaction before adding the payment to our
     // database.
     if (verifyTransaction($_POST) && checkTxnid($data['txn_id'])) {
-        if (addPayment($data) !== false) {
-            // Payment successfully added.
-            echo "<script>console.log('Done')</script>";
-            /// $rowsAffected = $payment->insertIncomingPayment
 
+        // insert the payment into the DB
+
+        $u_id = 23;
+        $e_id = 10;
+        $amount = 5.00;
+        $date = date("Y-m-d H:i:s");
+        $rowsAffected = $payment->insertIncomingPayment($u_id, $e_id, $amount, $date);
+
+        //// $rowsAffected = $payment->insertIncomingPayment($u_id, $e_id, $amount);
+
+        mail("darcyeprice@hotmail.com", "Test 4.3.1", "test");
+
+        // if the payment was successfully inserted into the DB
+        if ($rowsAffected == 1) {
+            // Payment successfully added.
+            mail("darcyeprice@hotmail.com", "Test 4.4", "test");
+        // if there was an error inserting the payment into the DB
+        } else {
+            mail("darcyeprice@hotmail.com", "Test 4.5", "test");
         }
+
     }
 }
 

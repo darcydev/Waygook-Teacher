@@ -4,6 +4,7 @@ include("includes/included-files.php");
 include("includes/classes/Account.php");
 include("includes/classes/User.php");
 include("includes/classes/Employment.php");
+include("includes/classes/Payment.php");
 
 if (isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = $_SESSION['userLoggedIn'];
@@ -32,6 +33,7 @@ $userLoggedInID = $userLoggedInRow['userID'];
 $userLoggedInRole = $userLoggedInRow['role'];
 
 $employment = new Employment($userLoggedInID, $userLoggedInRole);
+$payment = new Payment($userLoggedInID);
 
 // 2) (if avalible) Fetch db details of userURL
 if(isset($_GET['userID'])) {
@@ -46,7 +48,7 @@ include("includes/handlers/edit-profile-handler.php");
 include("includes/handlers/auth-handler.php");
 include("includes/handlers/send-message-handler.php");
 include("includes/handlers/schedule-lesson-handler.php");
-include("includes/handlers/deposit-employment-handler.php");
+/// include("includes/handlers/deposit-employment-handler.php");
 
 // PAYPAL files
 include("includes/paypal-payment-form.php");

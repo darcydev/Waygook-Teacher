@@ -51,13 +51,27 @@ if (! $employment_row) {
             </p>
             <p>
                 <label for="deposit"><?php echo $lang['# lessons buy']; ?></label>
-                <select onchange="updateAmount(this.value)" id="deposit" name="deposit" class="select" type="text">
+				<?php // TODO: for security reasons, we don't want to pass the paypal amount using JS ?>
+				<select id="deposit" name="deposit" class="select" type="text">
+					<option disabled selected><?php echo $lang['select option']; ?></option>
+                    <option value="5"><?php echo $lang['5 lessons']; ?></option>
+                    <option value="10"><?php echo $lang['10 lessons']; ?></option>
+                    <option value="20"><?php echo $lang['20 lessons']; ?></option>
+                    <option value="50"><?php echo $lang['50 lessons']; ?></option>
+				</select>
+
+
+            <!--
+			<select onchange="updateAmount(this.value)" id="deposit" name="deposit" class="select" type="text">
                     <option value="" disabled selected><?php echo $lang['select option']; ?></option>
                     <option value="<?php echo $rate * 5 ?>"><?php echo $lang['5 lessons']; ?></option>
                     <option value="<?php echo $rate * 10 ?>"><?php echo $lang['10 lessons']; ?></option>
                     <option value="<?php echo $rate * 20 ?>"><?php echo $lang['20 lessons']; ?></option>
                     <option value="<?php echo $rate * 50 ?>"><?php echo $lang['50 lessons']; ?></option>
-                </select>
+            </select>
+			-->
+
+
             </p>
             <input type="submit" name="submit" value="Submit Payment"/>
         </form>
