@@ -1,4 +1,6 @@
+
 <?php
+/*
 // the variables are fetched in header.php
 // because only Students are able to click the link to the deposit-employment-container
 // the Student will always be $userLoggedIn
@@ -25,6 +27,7 @@ if (! $employment_row) {
 	// if so, $rate equals Employment's current rate
 	$rate = $employment_row['rate'];
 }
+*/
 ?>
 
 <!-- PAYPAL SMART BUTTONS -->
@@ -139,6 +142,7 @@ paypal.Buttons({
 }).render('#deposit-employment-form');
 </script>
 
+<!--
 <div id="deposit-employment-container" class="overlay-item auth-forms">
 	<div class="overlay-container">
 		<div id="deposit-employment-close" class="close-button menu-button">
@@ -166,3 +170,4 @@ paypal.Buttons({
 		</form>
 	</div>
 </div>
+-->

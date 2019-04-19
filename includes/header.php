@@ -48,6 +48,9 @@ include("includes/handlers/send-message-handler.php");
 include("includes/handlers/schedule-lesson-handler.php");
 include("includes/handlers/deposit-employment-handler.php");
 
+// PAYPAL files
+include("includes/paypal-payment-form.php");
+
 /* **
 LEGACY CODE:
     ** legacy code to check whether the User is currently viewing the site from
