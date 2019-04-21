@@ -18,7 +18,7 @@ $paypalConfig = [
 
 $paypalUrl = $enableSandbox ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 'https://www.paypal.com/cgi-bin/webscr';
 
-$itemAmount = $_POST['deposit'];
+$itemAmount = $_POST['deposit'] * $_POST['employmentRate'];
 $itemName = $itemAmount . ' lessons';
 
 // if the custom field (employmentID) is set in the form

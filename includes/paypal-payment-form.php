@@ -33,18 +33,23 @@ if (! $employment_row) {
 			<img src="assets/images/icons/icons8-multiply-26.png" alt="close-button">
 		</div>
         <form id="deposit-employment-form" class="schedule-form auth-form form paypal" action="paypal-payments.php" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_xclick" />
+			<!--
+			TODO:
+				** disable shipping
+				** prevent User from being able to submit from without selecting the number of lessons
+			-->
+			<input type="hidden" name="cmd" value="_xclick" />
             <input type="hidden" name="no_note" value="1" />
             <input type="hidden" name="lc" value="UK" />
             <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
-            <input type="hidden" name="first_name" value="Customer's First Name" />
-            <input type="hidden" name="last_name" value="Customer's Last Name" />
+            <input type="hidden" name="first_name" value="<?php echo $userLoggedIn['first_name']; ?>" />
+            <input type="hidden" name="last_name" value="<?php echo $userLoggedIn['last_name']; ?>" />
             <input type="hidden" name="payer_email" value="customer@example.com" />
             <input type="hidden" name="item_number" value="123456" / >
-			<input type="hidden" name="custom" value="<?php echo $employmentID; ?>" / >
-			<input type="hidden" name="employmentRate" value="<?php echo $rate; ?>" / >
-			<input type="hidden" name="student" value="<?php echo $s_id; ?>" / >
-			<input type="hidden" name="teacher" value="<?php echo $t_id; ?>" / >
+			<input type="hidden" name="custom" value="<?php echo $employmentID; ?>" />
+			<input type="hidden" name="employmentRate" value="<?php echo $rate; ?>" />
+			<input type="hidden" name="student" value="<?php echo $s_id; ?>" />
+			<input type="hidden" name="teacher" value="<?php echo $t_id; ?>" />
 
             <label for="deposit"><?php echo $lang['# lessons buy']; ?></label>
 			<select id="deposit" name="deposit" class="select" type="text">
@@ -55,7 +60,17 @@ if (! $employment_row) {
                 <option value="50"><?php echo $lang['50 lessons']; ?></option>
 			</select>
 
-			<input type="submit" name="submit" value="Submit Payment"/>
+			<div class="paypal-box">
+				<div class="paypal-button">
+					<span class="paypal-button-title">
+						Buy now with
+					</span>
+					<span class="paypal-logo">
+						<i>Pay</i><i>Pal</i>
+					</span>
+				</div>
+				<input type="submit" name="submit" value="">
+			</div>
         </form>
 	</div>
 </div>
