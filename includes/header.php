@@ -85,7 +85,7 @@ if (in_array($_SERVER['REMOTE_ADDR'], $localhost_pages)) {
 <body>
     <div class="nav-bar">
     	<div class="nav-bar-header">
-            <!-- jQuery will display one or the other, depending on whether the User is a Teacher/Student -->
+            <!-- will display one or the other, depending on whether the User is a Teacher/Student -->
     		<a id="index-teacher-link" href="index-teacher.php">WaygookTeacher</a>
             <a id="index-student-link" href="index-student.php">WaygookTeacher</a>
     	</div>
@@ -101,6 +101,5 @@ if (in_array($_SERVER['REMOTE_ADDR'], $localhost_pages)) {
         </ul>
     </div>
     <?php include("schedule-lesson-form.php"); ?>
-    <?php include("deposit-employment-form.php"); ?>
     <div class="background-container">
         <div class="main-container landing-page-row">

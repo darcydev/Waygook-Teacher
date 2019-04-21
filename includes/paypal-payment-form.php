@@ -5,9 +5,7 @@
 // the Teacher will always be $_GET['userID']
 
 
-// DELETED FROM form action=
-/// action="https://www.sandbox.paypal.com/cgi-bin/webscr"
-
+// OUTDATED::::
 // in order to get the value of X hours
 // see if the specific Employment exists
 // if so, use the rate from the Employment
@@ -16,7 +14,7 @@
 $s_id = $userLoggedInID;
 $t_id = $row['userID'];
 $employment_row = $employment->getThisEmployment($s_id, $t_id);
-$emp_id = $employment_row['employmentID'];
+$employmentID = $employment_row['employmentID'];
 // check if the specific Employment already exists already
 if (! $employment_row) {
 	// if not, $rate equals Teacher's current rate
@@ -41,6 +39,7 @@ if (! $employment_row) {
             <input type="hidden" name="last_name" value="Customer's Last Name" />
             <input type="hidden" name="payer_email" value="customer@example.com" />
             <input type="hidden" name="item_number" value="123456" / >
+			<input type="hidden" name="custom" value="<?php echo $employmentID; ?>" / >
             <p>
                 <label for="employment-student"><?php echo $lang['student']; ?></label>
                 <input type="text" class="readonly" name="employment-student" value="<?php echo $userLoggedInRow['first_name']; ?>" readonly>
@@ -51,7 +50,6 @@ if (! $employment_row) {
             </p>
             <p>
                 <label for="deposit"><?php echo $lang['# lessons buy']; ?></label>
-				<?php // TODO: for security reasons, we don't want to pass the paypal amount using JS ?>
 				<select id="deposit" name="deposit" class="select" type="text">
 					<option disabled selected><?php echo $lang['select option']; ?></option>
                     <option value="5"><?php echo $lang['5 lessons']; ?></option>
@@ -59,19 +57,6 @@ if (! $employment_row) {
                     <option value="20"><?php echo $lang['20 lessons']; ?></option>
                     <option value="50"><?php echo $lang['50 lessons']; ?></option>
 				</select>
-
-
-            <!--
-			<select onchange="updateAmount(this.value)" id="deposit" name="deposit" class="select" type="text">
-                    <option value="" disabled selected><?php echo $lang['select option']; ?></option>
-                    <option value="<?php echo $rate * 5 ?>"><?php echo $lang['5 lessons']; ?></option>
-                    <option value="<?php echo $rate * 10 ?>"><?php echo $lang['10 lessons']; ?></option>
-                    <option value="<?php echo $rate * 20 ?>"><?php echo $lang['20 lessons']; ?></option>
-                    <option value="<?php echo $rate * 50 ?>"><?php echo $lang['50 lessons']; ?></option>
-            </select>
-			-->
-
-
             </p>
             <input type="submit" name="submit" value="Submit Payment"/>
         </form>

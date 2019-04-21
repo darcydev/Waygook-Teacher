@@ -1,8 +1,6 @@
 <?php
 
 function verifyTransaction($data) {
-    return true;
-    /*
     global $paypalUrl;
 
     $req = 'cmd=_notify-validate';
@@ -41,16 +39,13 @@ function verifyTransaction($data) {
     }
 
     curl_close($ch);
-
-    return $res === 'VERIFIED';    */
-
-
+    return $res === 'VERIFIED';
 }
 
 function checkTxnid($txnid) {
     return true;
     /*
-global $db;
+    global $db;
 
     $txnid = $db->real_escape_string($txnid);
     $results = $db->query('SELECT * FROM `payments` WHERE txnid = \'' . $txnid . '\'');

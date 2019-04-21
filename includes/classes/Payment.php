@@ -40,8 +40,7 @@ class Payment {
     }
 
     // insert a deposit into the DB
-    public function insertIncomingPayment($u_id, $e_id, $amount, $date) {
-    //// public function insertIncomingPayment($u_id, $e_id, $amount) {
+    public function insertIncomingPayment($e_id, $amount) {
         $sql = "INSERT INTO Incoming_Payments
                 VALUES (
                     incomingID,
@@ -51,39 +50,13 @@ class Payment {
                     :payment_date
                 )";
         $stmt = $this->db->run($sql, [
-            ':user_id' => $u_id,
+            ':user_id' => $this->userLoggedInID,
             ':employment_id' => $e_id,
             ':amount' => $amount,
-            ':payment_date' => $date
+            ':payment_date' => date("Y-m-d H:i:s")
         ]);
         $rowsAffected = $stmt->rowCount();
         return $rowsAffected;
-        /*
-        // if there are no errors with the variables to be inserted
-        if (empty($this->errorArray) == true) {
-            // insert into db
-            $sql = "INSERT INTO Incoming_Payments
-                    VALUES (
-                        incomingID,
-                        :user_id,
-                        :employment_id,
-                        :amount,
-                        :payment_date
-                    )";
-            $stmt = $this->db->run($sql, [
-                ':user_id' => $u_id,
-                ':employment_id' => $e_id,
-                ':amount' => $amount,
-                ':payment_date' => $date
-            ]);
-            $rowsAffected = $stmt->rowCount();
-            mail("darcyeprice@hotmail.com", "iIP 2.1", "test");
-        } else {
-            $rowsAffected = 0;
-        }
-        // return the number of rows affected by the sql query
-        mail("darcyeprice@hotmail.com", "iIP 3", "test");
-        return $rowsAffected;*/
     }
 
 

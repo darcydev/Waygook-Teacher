@@ -19,12 +19,13 @@ $paypalConfig = [
 
 $paypalUrl = $enableSandbox ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 'https://www.paypal.com/cgi-bin/webscr';
 
-// Product being purchased.
-if (isset($_POST['deposit'])) {
+// check if the deposit amount and custom field (employmentID) are set in the form
+if (isset($_POST['deposit'], $_POST['custom'])) {
     $itemAmount = $_POST['deposit'];
     $itemName = $itemAmount . ' lessons';
+    $employmentID = $_POST['custom'];
 } else {
-    echo "Sorry, the number of lessons was not selected";
+    // TODO: if the employmentID isn't set in the form, create the Employment here
 }
 
 // Check if paypal request or response
@@ -53,7 +54,7 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])) {
     $data['currency_code'] = 'USD';
 
     // Add any custom fields for the query string.
-    //$data['custom'] = USERID;
+    $data['custom'] = $employmentID;
 
     // Build the query string from the data.
     $queryString = http_build_query($data);
@@ -64,9 +65,6 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])) {
 
 } else {
     // Handle the PayPal response.
-
-    // Create a connection to the database.
-    //// $db = MyPDO::instance();
 
     // Assign posted variables to local data array.
     $data = [
@@ -87,24 +85,15 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])) {
     if (verifyTransaction($_POST) && checkTxnid($data['txn_id'])) {
 
         // insert the payment into the DB
-
-        $u_id = 23;
-        $e_id = 10;
-        $amount = 5.00;
-        $date = date("Y-m-d H:i:s");
-        $rowsAffected = $payment->insertIncomingPayment($u_id, $e_id, $amount, $date);
-
-        //// $rowsAffected = $payment->insertIncomingPayment($u_id, $e_id, $amount);
-
-        mail("darcyeprice@hotmail.com", "Test 4.3.1", "test");
+        $e_id = $data['custom'];
+        $amount = $data['payment_amount'];
+        $rowsAffected = $payment->insertIncomingPayment($e_id, $amount);
 
         // if the payment was successfully inserted into the DB
         if ($rowsAffected == 1) {
             // Payment successfully added.
-            mail("darcyeprice@hotmail.com", "Test 4.4", "test");
         // if there was an error inserting the payment into the DB
         } else {
-            mail("darcyeprice@hotmail.com", "Test 4.5", "test");
         }
 
     }
