@@ -47,16 +47,17 @@ class Employment {
             ':prepaid_amount' => 0,
             ':rate' => $rate
         ]);
-        return $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row;
     }
 
     public function updateEmploymentAmount($employmentID, $amount) {
         $sql = "UPDATE Employments
-                SET prepaid_amount = prepaid_amount + :amount
-                WHERE employmentID = :employmentID";
+                SET prepaid_amount = prepaid_amount + ?
+                WHERE employmentID = ?";
         $stmt = $this->db->run($sql, [
-            ':amount' => $amount,
-            ':employmentID' => $employmentID,
+            $amount,
+            $employmentID,
         ]);
         $rowsAffected = $stmt->rowCount();
         return $rowsAffected;
@@ -84,18 +85,16 @@ class Employment {
 
         $sql = "INSERT INTO Lessons
                 VALUES (lessonID, ?, ?, ?, ?, ?, NULL, ?, ?, ?, DEFAULT)";
-        $stmt = $this->db->run($sql,
-            [
-                $row['employmentID'],
-                $teacher_id,
-                $student_id,
-                $datetime,
-                $duration,
-                $teacher_rate,
-                $waygook_rate,
-                $teacher_payment
-            ]
-        );
+        $stmt = $this->db->run($sql, [
+            $row['employmentID'],
+            $teacher_id,
+            $student_id,
+            $datetime,
+            $duration,
+            $teacher_rate,
+            $waygook_rate,
+            $teacher_payment
+        ]);
         $rowsAffected = $stmt->rowCount();
         // if the DB has been updated successfully
         if ($rowsAffected == 1) {
