@@ -14,14 +14,16 @@
 $s_id = $userLoggedInID;
 $t_id = $row['userID'];
 $employment_row = $employment->getThisEmployment($s_id, $t_id);
-$employmentID = $employment_row['employmentID'];
 // check if the specific Employment already exists already
 if (! $employment_row) {
 	// if not, $rate equals Teacher's current rate
 	$rate = $row['rate'];
+	// default as 0
+	$employmentID = 0;
 } else {
 	// if so, $rate equals Employment's current rate
 	$rate = $employment_row['rate'];
+	$employmentID = $employment_row['employmentID'];
 }
 ?>
 
@@ -40,25 +42,20 @@ if (! $employment_row) {
             <input type="hidden" name="payer_email" value="customer@example.com" />
             <input type="hidden" name="item_number" value="123456" / >
 			<input type="hidden" name="custom" value="<?php echo $employmentID; ?>" / >
-            <p>
-                <label for="employment-student"><?php echo $lang['student']; ?></label>
-                <input type="text" class="readonly" name="employment-student" value="<?php echo $userLoggedInRow['first_name']; ?>" readonly>
-            </p>
-            <p>
-                <label for="employment-teacher"><?php echo $lang['teacher']; ?></label>
-                <input type="text" class="readonly" name="employment-teacher" value="<?php echo $row['first_name']; ?>" readonly>
-            </p>
-            <p>
-                <label for="deposit"><?php echo $lang['# lessons buy']; ?></label>
-				<select id="deposit" name="deposit" class="select" type="text">
-					<option disabled selected><?php echo $lang['select option']; ?></option>
-                    <option value="5"><?php echo $lang['5 lessons']; ?></option>
-                    <option value="10"><?php echo $lang['10 lessons']; ?></option>
-                    <option value="20"><?php echo $lang['20 lessons']; ?></option>
-                    <option value="50"><?php echo $lang['50 lessons']; ?></option>
-				</select>
-            </p>
-            <input type="submit" name="submit" value="Submit Payment"/>
+			<input type="hidden" name="employmentRate" value="<?php echo $rate; ?>" / >
+			<input type="hidden" name="student" value="<?php echo $s_id; ?>" / >
+			<input type="hidden" name="teacher" value="<?php echo $t_id; ?>" / >
+
+            <label for="deposit"><?php echo $lang['# lessons buy']; ?></label>
+			<select id="deposit" name="deposit" class="select" type="text">
+				<option disabled selected><?php echo $lang['select option']; ?></option>
+                <option value="5"><?php echo $lang['5 lessons']; ?></option>
+                <option value="10"><?php echo $lang['10 lessons']; ?></option>
+                <option value="20"><?php echo $lang['20 lessons']; ?></option>
+                <option value="50"><?php echo $lang['50 lessons']; ?></option>
+			</select>
+
+			<input type="submit" name="submit" value="Submit Payment"/>
         </form>
 	</div>
 </div>

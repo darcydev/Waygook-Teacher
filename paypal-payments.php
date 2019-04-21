@@ -18,13 +18,24 @@ $paypalConfig = [
 
 $paypalUrl = $enableSandbox ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 'https://www.paypal.com/cgi-bin/webscr';
 
-// check if the deposit amount and custom field (employmentID) are set in the form
-if (isset($_POST['deposit'], $_POST['custom'])) {
-    $itemAmount = $_POST['deposit'];
-    $itemName = $itemAmount . ' lessons';
+$itemAmount = $_POST['deposit'];
+$itemName = $itemAmount . ' lessons';
+
+// if the custom field (employmentID) is set in the form
+// (other than as the default of 0)
+// that is, if the Employment already exists
+if ($_POST['custom'] != 0) {
     $employmentID = $_POST['custom'];
+// if the custom field (employmentID) is not set in the form
+// that is, if the Employment doesn't already exist
 } else {
-    // TODO: if the employmentID isn't set in the form, create the Employment here
+    $rate = $_POST['employmentRate'];
+    $studentID = $_POST['student'];
+    $teacherID = $_POST['teacher'];
+    // create the Employment in the DB
+    $row = $employment->createEmployment($studentID, $teacherID, $rate);
+    // set the employmentID as the ID for the newly-created row in the DB
+    $employmentID = $row['employmentID'];
 }
 
 // Check if paypal request or response

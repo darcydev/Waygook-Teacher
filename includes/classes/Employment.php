@@ -32,24 +32,23 @@ class Employment {
         return $row;
     }
 
-    public function createEmployment($s_id, $t_id, $t_rate, $deposit) {
+    public function createEmployment($studentID, $teacherID, $rate) {
         $sql = "INSERT INTO Employments
-                VALUES (employmentID, ?, ?, ?, ?)";
-        $stmt = $this->db->run($sql, [$t_id, $s_id, $deposit, $t_rate]);
-        $rowsAffected = $stmt->rowCount();
-        return $rowsAffected;
+                VALUES (
+                    employmentID,
+                    :teacher_id,
+                    :student_id,
+                    :prepaid_amount,
+                    :rate
+                )";
+        $stmt = $this->db->run($sql, [
+            ':teacher_id' => $teacherID,
+            ':student_id' => $studentID,
+            ':prepaid_amount' => 0,
+            ':rate' => $rate
+        ]);
+        return $row = $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
-    /*
-    public function updateEmployment($s_id, $t_id, $deposit) {
-        $sql = "UPDATE Employments
-                SET prepaid_amount = prepaid_amount + ?
-                WHERE (teacher_id = ? AND student_id = ?)
-                OR (teacher_id = ? AND student_id = ?)";
-        $stmt = $this->db->run($sql, [$deposit, $t_id, $s_id, $t_id, $s_id]);
-        $rowsAffected = $stmt->rowCount();
-        return $rowsAffected;
-    }    */
 
     public function updateEmploymentAmount($employmentID, $amount) {
         $sql = "UPDATE Employments
