@@ -9,7 +9,7 @@ if (isset($_POST['login-button'])) {
 	$result = $account->loginAccount($username, $password);
 
 	// if $account->loginAccount returns true
-	if($result == true) {
+	if ($result == true) {
 		// set session variable
 		// TODO: consider changing session variable to email
 		$_SESSION['userLoggedIn'] = $username;
@@ -98,7 +98,7 @@ if (isset($_POST['register-button'])) {
 		$flag, $edu_level, $edu_major, $dob, $rate
 	);
 
-    if($rowsAffected == 1) {
+    if ($rowsAffected == 1) {
 		// create a session variable
 		$_SESSION['userLoggedIn'] = $un;
 		// if User is a teacher, direct to index-teacher. Else, to index-student

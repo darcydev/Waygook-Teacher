@@ -14,10 +14,12 @@
 
 <?php
 // PayPal transaction scripts
+/*
 include("paypal/sdk-config.php");
 include("paypal/sdk-environment.php");
 include("paypal/create-transaction.php");
 include("paypal/get-transaction.php");
 include("paypal/capture-authorization.php");
 include("paypal/create-authorization.php");
+*/
 ?>

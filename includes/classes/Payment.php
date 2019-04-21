@@ -39,14 +39,28 @@ class Payment {
         // TODO: include...
     }
 
-    public function createIncomingPayment($u_id, $e_id, $amount, $date) {
+    // insert a deposit into the DB
+    public function insertIncomingPayment($employmentID, $amount) {
+        $sql = "INSERT INTO Incoming_Payments
+                VALUES (
+                    incomingID,
+                    :employment_id,
+                    :amount,
+                    :payment_date
+                )";
+        $stmt = $this->db->run($sql, [
+            ':employment_id' => $employmentID,
+            ':amount' => $amount,
+            ':payment_date' => date("Y-m-d H:i:s")
+        ]);
+        $rowsAffected = $stmt->rowCount();
+        return $rowsAffected;
+    }
+
+
+    public function insertOutgoingPayment($u_id, $e_id, $amount, $date) {
         // TODO: include...
     }
 
-    public function createOutgoingPayment($u_id, $e_id, $amount, $date) {
-        // TODO: include...
-    }
-
-
-
+}
 ?>
