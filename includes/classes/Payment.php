@@ -40,18 +40,16 @@ class Payment {
     }
 
     // insert a deposit into the DB
-    public function insertIncomingPayment($e_id, $amount) {
+    public function insertIncomingPayment($employmentID, $amount) {
         $sql = "INSERT INTO Incoming_Payments
                 VALUES (
                     incomingID,
-                    :user_id,
                     :employment_id,
                     :amount,
                     :payment_date
                 )";
         $stmt = $this->db->run($sql, [
-            ':user_id' => $this->userLoggedInID,
-            ':employment_id' => $e_id,
+            ':employment_id' => $employmentID,
             ':amount' => $amount,
             ':payment_date' => date("Y-m-d H:i:s")
         ]);

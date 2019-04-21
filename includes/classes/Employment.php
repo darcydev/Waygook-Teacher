@@ -40,12 +40,25 @@ class Employment {
         return $rowsAffected;
     }
 
+    /*
     public function updateEmployment($s_id, $t_id, $deposit) {
         $sql = "UPDATE Employments
                 SET prepaid_amount = prepaid_amount + ?
                 WHERE (teacher_id = ? AND student_id = ?)
                 OR (teacher_id = ? AND student_id = ?)";
         $stmt = $this->db->run($sql, [$deposit, $t_id, $s_id, $t_id, $s_id]);
+        $rowsAffected = $stmt->rowCount();
+        return $rowsAffected;
+    }    */
+
+    public function updateEmploymentAmount($employmentID, $amount) {
+        $sql = "UPDATE Employments
+                SET prepaid_amount = prepaid_amount + :amount
+                WHERE employmentID = :employmentID";
+        $stmt = $this->db->run($sql, [
+            ':amount' => $amount,
+            ':employmentID' => $employmentID,
+        ]);
         $rowsAffected = $stmt->rowCount();
         return $rowsAffected;
     }

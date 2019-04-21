@@ -8,8 +8,7 @@ require 'paypal-functions.php';
 // For live payments, set to `false`
 $enableSandbox = true;
 
-// PayPal settings. Change these to your account details and the relevant URLs
-// for your site.
+// PayPal settings
 $paypalConfig = [
     'email' => 'darcyelsing@gmail.com',
     'return_url' => 'http://waygookteacher.com/payment-successful.php',
@@ -79,21 +78,22 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])) {
         'custom' => $_POST['custom'],
     ];
 
-    // We need to verify the transaction comes from PayPal and check we've not
-    // already processed the transaction before adding the payment to our
-    // database.
+    // check that the transaction has come from PayPal, and
+    // check that we've not already processed the transaction (???)
     if (verifyTransaction($_POST) && checkTxnid($data['txn_id'])) {
-
-        // insert the payment into the DB
-        $e_id = $data['custom'];
+        // get the variables from the data array
+        $employmentID = $data['custom'];
         $amount = $data['payment_amount'];
-        $rowsAffected = $payment->insertIncomingPayment($e_id, $amount);
+        // insert the Incoming_Payment into the DB
+        $rowsAffected = $payment->insertIncomingPayment($employmentID, $amount);
 
-        // if the payment was successfully inserted into the DB
+        // if the Incoming_Payment was successfully inserted into the DB
         if ($rowsAffected == 1) {
-            // Payment successfully added.
-        // if there was an error inserting the payment into the DB
+            // update the Employment in the DB with the added deposit amount
+            $rowsAffected = $employment->updateEmploymentAmount($employmentID, $amount);
+        // if the Incoming_Payment wasn't inserted into the DB
         } else {
+            //
         }
 
     }
