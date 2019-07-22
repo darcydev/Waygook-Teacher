@@ -1,4 +1,7 @@
 <?php
+// set DOCUMENT_ROOT variable
+set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . "\Waygook-Teacher");
+
 require("config/config.php");
 include("src/models/Account.php");
 include("src/models/User.php");
@@ -34,11 +37,11 @@ if (isset($_SESSION['userEmail'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WaygookTeacher</title>
     <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700|Arimo:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="src/scss/style.css">
+    <link rel="stylesheet" href="/Waygook-Teacher/public/css/style.css">
 
     <!-- MY JAVASCRIPT -->
     <!-- BUG: navBarLinks is not defined when the JS is loaded at the bottom of the page -->
-    <script src="dist/js/main.js"></script>
+    <script src="/Waygook-Teacher/public/js/main.js"></script>
 
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <!-- Font Awesome -->

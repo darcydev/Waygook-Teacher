@@ -2,9 +2,7 @@
     <div class="container">
         <div class="site-footer-inner">
             <div class="brand footer-brand">
-                <a href="#">
-                    <img src="dist/images/logo.svg" alt="Blue logo">
-                </a>
+                <img src="/Waygook-Teacher/public/images/logo.svg" alt="Blue logo">
             </div>
             <ul class="footer-links list-reset">
                 <li>

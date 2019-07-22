@@ -1,8 +1,3 @@
-<?php
-// set DOCUMENT_ROOT variable
-set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . "\Waygook-Teacher");
-?>
-
 <!-- HEAD -->
 <?php include("src/views/head.php"); ?>
 <!-- \.HEAD -->
@@ -171,8 +166,6 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']
         </main>
 
         <?php include("src/views/modals/loginRegister.php"); ?>
-
-        <script src="dist/js/index.js"></script>
 
         <?php include("src/views/footer.php"); ?>
     </div>

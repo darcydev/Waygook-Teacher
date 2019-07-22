@@ -1,7 +1,12 @@
 <?php
-include("config.php");
+include("config/config.php");
 
 session_destroy();
 
-header("Location: ../index.php");
-?>
+/* BUG: not working */
+$url = $_SERVER['SERVER_NAME'] . '/Waygook-Teacher/public/index.php';
+header("Location:" . $url);
+
+echo $url;
+
+exit;
