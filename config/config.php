@@ -8,7 +8,7 @@ date_default_timezone_set('Asia/Seoul');
 // languages supported
 $available_langs = array('en', 'ko');
 // if lang cookie isn't set, default as eng
-if (! isset($_SESSION['lang'])) {
+if (!isset($_SESSION['lang'])) {
     // set default lang
     $_SESSION['lang'] = 'en';
 }
@@ -21,5 +21,4 @@ if (isset($_POST['input-set-lang'])) {
     }
 }
 // include active language
-include("languages/" . $_SESSION['lang'] . ".php");
-?>
+include("resources/translations/" . $_SESSION['lang'] . ".php");
