@@ -15,10 +15,10 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a id="profile-nav-link" class="nav-link" href="#">Profile</a>
+					<a id="profile-nav-link" class="nav-link" href="//localhost/Waygook-Teacher/src/views/profile.php">Profile</a>
 				</li>
 				<li class="nav-item">
-					<a id="search-nav-link" class="nav-link" href="../src/views/search.php">Search</a>
+					<a id="search-nav-link" class="nav-link" href="//localhost/Waygook-Teacher/src/views/search.php">Search</a>
 				</li>
 				<li class="nav-item">
 					<a id="login-nav-link" class="nav-link" href="#" data-toggle="modal" data-target="#modalLRForm">Login/Register</a>

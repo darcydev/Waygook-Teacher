@@ -1,6 +1,7 @@
 /* ABSTRACTS */
 @import "abstracts/mixins";
 @import "abstracts/variables";
+@import "abstracts/functions";
 
 /* COMPONENTS */
 @import "components/images";
@@ -8,7 +9,9 @@
 /* LAYOUTS */
 @import "layout/header";
 @import "layout/searchBar";
+@import "layout/sideBar";
 
 /* PAGES */
 @import "pages/index";
 @import "pages/search";
+@import "pages/profile";

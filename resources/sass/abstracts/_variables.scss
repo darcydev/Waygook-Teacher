@@ -1,3 +1,21 @@
+/* COLORS */
+$primary-color: #007bff;
+$white: #f8f8ff;
+
+$colors: (
+    primary: (
+        base: $primary-color,
+        light: lighten($primary-color, 5),
+        dark: darken($primary-color, 25)
+    ),
+    white: (
+        base: $white,
+        light: lighten($white, 5),
+        dark: darken($white, 25)
+    )
+);
+
+
 
 /* FONTS */
 $font-weights: (

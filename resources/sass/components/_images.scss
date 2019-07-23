@@ -7,3 +7,13 @@
         width: map-get($image-width, "s");
     }
 }
+
+.img-l img {
+    height: map-get($image-height, "l");
+    width: map-get($image-width, "l");
+
+    @include for-phone-only {    
+        height: map-get($image-height, "m");
+        width: map-get($image-width, "m");
+    }
+}
