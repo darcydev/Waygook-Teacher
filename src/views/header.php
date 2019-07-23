@@ -10,7 +10,7 @@
 			<!-- Links -->
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">WaygookTeacher
+					<a class="nav-link" href="//localhost/Waygook-Teacher/public/index.php">WaygookTeacher
 						<span class="sr-only">(current)</span>
 					</a>
 				</li>

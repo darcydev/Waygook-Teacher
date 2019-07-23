@@ -1,0 +1,22 @@
+.search-bar {
+    text-align: center;
+
+    .md-form {
+        margin-right: 40px;
+    }
+
+    @include for-phone-only {    
+        display: flex;
+        flex-flow: column;
+        margin: auto;
+        width: 80%;
+
+        label {
+            text-align: left;
+        }
+
+        .md-form {
+            margin-top: 0;
+        }
+    }
+}

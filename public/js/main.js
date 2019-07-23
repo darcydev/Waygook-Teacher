@@ -5,6 +5,7 @@ function logoutUser() {
   window.location.replace("https://www.cyclingnews.com");
 }; */
 
+
 // Function that controls which navBarLinks are displayed. takes a boolean of whether the a user is loggedin, or not
 function displayNavLinks(isUserLoggedIn) {
   if (isUserLoggedIn) {

@@ -1,3 +1,7 @@
+<?php 
+set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . "\Waygook-Teacher");
+?>
+
 <!-- HEAD -->
 <?php include("src/views/head.php"); ?>
 <!-- \.HEAD -->

@@ -1,0 +1,14 @@
+/* ABSTRACTS */
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+/* COMPONENTS */
+@import "components/images";
+
+/* LAYOUTS */
+@import "layout/header";
+@import "layout/searchBar";
+
+/* PAGES */
+@import "pages/index";
+@import "pages/search";

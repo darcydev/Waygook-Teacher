@@ -37,7 +37,7 @@ if (isset($_SESSION['userEmail'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WaygookTeacher</title>
     <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700|Arimo:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/Waygook-Teacher/public/css/style.css">
+    <link rel="stylesheet" href="/Waygook-Teacher/resources/sass/main.css">
 
     <!-- MY JAVASCRIPT -->
     <!-- BUG: navBarLinks is not defined when the JS is loaded at the bottom of the page -->
@@ -56,7 +56,8 @@ if (isset($_SESSION['userEmail'])) {
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
     </script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/js/mdb.min.js">
     </script>
