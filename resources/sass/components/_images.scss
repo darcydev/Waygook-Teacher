@@ -12,8 +12,13 @@
     height: map-get($image-height, "l");
     width: map-get($image-width, "l");
 
-    @include for-phone-only {    
+    @include for-tablet-landscape-down {    
         height: map-get($image-height, "m");
         width: map-get($image-width, "m");
+    }
+
+    @include for-phone-only {    
+        height: map-get($image-height, "s");
+        width: map-get($image-width, "s");
     }
 }

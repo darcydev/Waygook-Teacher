@@ -38,41 +38,41 @@ if ($row['username'] == $userLoggedIn) {
 ?>
 
 <div class="profile-info-container settings-profile-container">
-    <?php include("includes/side-nav.php"); ?>
-    <div class="profile-content settings-profile-content">
-        <div class="box">
-            <div class="box-content">
-                <?php include("includes/profile-info-container.php"); ?>
-                <div class="profile-text-container">
-                    <div class="profile-content profile-description">
-                        <div class="profile-description-title">
-                            <h3><?php echo $lang['background']; ?></h3>
-                        </div>
-                        <p>
-                            <!-- nl2br ensures that the line breaks are printed -->
-                            <?php echo nl2br($row['description']); ?>
-                        </p>
-                    </div>
-                    <?php
+  <?php include("includes/side-nav.php"); ?>
+  <div class="profile-content settings-profile-content">
+    <div class="box">
+      <div class="box-content">
+        <?php include("includes/profile-info-container.php"); ?>
+        <div class="profile-text-container">
+          <div class="profile-content profile-description">
+            <div class="profile-description-title">
+              <h3><?php echo $lang['background']; ?></h3>
+            </div>
+            <p>
+              <!-- nl2br ensures that the line breaks are printed -->
+              <?php echo nl2br($row['description']); ?>
+            </p>
+          </div>
+          <?php
                     /* **
                     ** REVIEWS SECTION
                         ** think of IDEA how to present the reviews
                     <div class="profile-content profile-description">
                         <div class="profile-description-title">
                             <h3><?php echo $lang['reviews']; ?></h3>
-                        </div>
-                        <p>
-                            <!-- echo number of User's reviews -->
-                            <?php // TODO: present reviews in as 'divs you can cycle through' ?>
-                            <p><?php echo $user->getReviews($_GET['userID'])?></p>
-                        </p>
-                    </div>
-                    ** */
-                    ?>
-                </div>
-            </div>
         </div>
+        <p>
+          <!-- echo number of User's reviews -->
+          <?php // TODO: present reviews in as 'divs you can cycle through' ?>
+          <p><?php echo $user->getReviews($_GET['userID'])?></p>
+        </p>
+      </div>
+      ** */
+      ?>
     </div>
+  </div>
+</div>
+</div>
 </div>
 
 <?php include("includes/footer.php"); ?>

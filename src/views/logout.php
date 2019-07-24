@@ -8,5 +8,3 @@ session_destroy();
 /* BUG: not working */
 $url = '/Waygook-Teacher/public/index.php';
 header("Location:" . $url);
-
-

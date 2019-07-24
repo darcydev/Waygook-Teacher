@@ -49,7 +49,8 @@ include("src/controllers/search.php");
           <?php echo $row['first_name']; ?>
         </h5>
         <a class="btn btn-outline-primary"
-          href="//localhost/Waygook-Teacher/src/views/profile.php?userID=<?php echo $row['userID']; ?>">View more</a>
+          href="//localhost/Waygook-Teacher/src/views/profile.php?userID=<?php echo $row['userID']; ?>">View
+          more</a>
       </div>
       <!-- close PHP loop -->
       <?php } ?>

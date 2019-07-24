@@ -1,6 +1,5 @@
 .sidebar {
   width: 13%;
-  height: 60vh;
   position: fixed;
   left: 0;
   z-index: 9;
@@ -13,19 +12,24 @@
 
     li {
       padding: 0 0 20px 0;
+      display: flex;
+      align-items: center;
+
+      img {
+        padding: 0 10px 0 0;
+      }
     }
   }
 
-  @include for-tablet-landscape-down {
+  @include for-desktop-down {
 
-    width: 10%;
     padding: 0 10px 0 10px;
     
     ul {
       padding: 5px 0 0 0;
 
       li {
-        padding: 0 0 10px 0;
+        min-width: 70%;
 
         span {
           display: none;
