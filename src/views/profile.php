@@ -2,10 +2,10 @@
 // set DOCUMENT_ROOT variable
 set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . "\Waygook-Teacher");
 
-include("src/views/head.php");
-include("src/views/header.php");
+require_once("src/views/head.php");
+require_once("src/views/header.php");
 
-require("src/controllers/profile.php");
+require_once("src/controllers/profile.php");
 ?>
 
 <main>

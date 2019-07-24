@@ -2,16 +2,16 @@
 // set DOCUMENT_ROOT variable
 set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . "\Waygook-Teacher");
 
-require("config/config.php");
+require_once("config/config.php");
 include("src/models/Account.php");
 include("src/models/User.php");
-include("src/models/MyPDO.php");
+require_once("src/models/MyPDO.php");
 include("src/models/Constants.php");
 
 $account = new Account();
 
-include("src/controllers/login.php");
-include("src/controllers/register.php");
+require_once("src/controllers/login.php");
+require_once("src/controllers/register.php");
 
 if (isset($_SESSION['userEmail'])) {
     $loggedIn = true;
@@ -23,6 +23,13 @@ if (isset($_SESSION['userEmail'])) {
     $sql = "SELECT * FROM Users WHERE email = ?";
     $stmt = $db->run($sql, [$userEmail]);
     $userLoggedInRow = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    // set bool value for whether User is a Student or Teacher
+    if ($userLoggedInRow['role'] == 'student') {
+      $isStudent = true;
+    } else {
+      $isStudent = false;
+    }
 } else {
     $loggedIn = false;
 }
