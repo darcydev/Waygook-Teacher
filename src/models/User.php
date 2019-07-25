@@ -2,7 +2,6 @@
 
 class User
 {
-
   protected $db;
   protected $data;
   private $errorArray;
@@ -124,18 +123,6 @@ class User
     return $reviews;
   }
 
-  public function updateDescription($desc)
-  {
-    $this->validateDescription($desc);
-
-    if (empty($this->errorArray) == true) {
-      $sql = "UPDATE Users SET description = ? WHERE userID = ?";
-      $stmt = $this->db->run($sql, [$desc, $this->userID]);
-      $rowsAffected = $stmt->rowCount();
-      return $rowsAffected;
-    }
-  }
-
   private function validateDescription($desc)
   {
     // check description length
@@ -250,21 +237,20 @@ class User
     return;
   }
 
-  public function updateTimezone($tz)
+  /* A generic function to update all User details in the DB
+  The function takes two params: 
+    ** the name of the column to be updated,
+    ** the value of that column
+   */
+  public function updateUserDetails($columnName, $columnValue)
   {
-    $sql = "UPDATE Users SET timezone = ? WHERE userID = ?";
-    $stmt = $this->db->run($sql, [$tz, $this->userID]);
-    $rowsAffected = $stmt->rowCount();
-    return $rowsAffected;
-  }
+    // TODO: what is a 'DRY' way of validating each columnName?
 
-  public function updateSkypeName($sn)
-  {
-    // TODO: Skype name is unvalidated. Is it necessary? Possess no security flaw, and perhaps User's responsibility to
-    // ensure Skypename is correct. 
-    $sql = "UPDATE Users SET skype_name = ? WHERE userID = ?";
-    $stmt = $this->db->run($sql, [$sn, $this->userID]);
-    $rowsAffected = $stmt->rowCount();
-    return $rowsAffected;
+    if (empty($this->errorArray) == true) {
+      $sql = "UPDATE Users SET $columnName = ? WHERE userID = ?";
+      $stmt = $this->db->run($sql, [$columnValue, $this->userID]);
+      $rowsAffected = $stmt->rowCount();
+      return $rowsAffected;
+    }
   }
 }
