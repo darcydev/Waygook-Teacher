@@ -17,11 +17,14 @@ require_once("src/controllers/edit.php");
   <div class="row">
     <!-- left column -->
     <div class="col-md-3">
-      <div class="text-center">
-        <img src="<?php echo $userLoggedInRow['profile_pic']; ?>" class="avatar img-circle" alt="profile-pic">
-        <h6>Upload a different photo...</h6>
-        <input type="file" class="form-control">
-      </div>
+      <form method="POST" enctype="multipart/form-data">
+        <div class="text-center">
+          <img src="<?php echo $userLoggedInRow['profile_pic']; ?>" class="avatar img-circle" alt="profile-pic">
+          <h6>Upload a different photo...</h6>
+          <input name="profile-pic" type="file" class="form-control">
+          <button name="upload-profile-pic" class="btn btn-outline-primary" type="submit">Upload picture</button>
+        </div>
+      </form>
     </div>
 
     <!-- edit form column -->

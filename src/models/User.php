@@ -136,6 +136,7 @@ class User
   {
     $this->validateProfilePic($fileExtension, $fileSize, $uploadPath);
 
+    /* TODO: refactor this and simply replace it with $this->updateUserDetails('profile_pic', $db_uploadPath) */
     if (empty($this->errorArray) == true) {
       $sql = "UPDATE Users SET profile_pic = ? WHERE userID = ?";
       $stmt = $this->db->run($sql, [$db_uploadPath, $this->userID]);
@@ -146,7 +147,6 @@ class User
 
   private function validateProfilePic($fileExtension, $fileSize, $uploadPath)
   {
-    echo "<script>console.log('vPP 1')</script";
     // check file extension
     if (!in_array($fileExtension, ['jpeg', 'jpg', 'png'])) {
       array_push($this->errorArray, Constants::$invalidFileExtension);

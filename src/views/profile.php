@@ -22,7 +22,7 @@ require_once("src/controllers/profile.php");
       <div class="row">
         <div class="img-l">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/768px-Circle-icons-profile.svg.png"
+            src="/<?php echo $profileUser['profile_pic']; ?>"
             alt="profile-photo">
         </div>
         <div class="intro">
