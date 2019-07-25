@@ -257,4 +257,14 @@ class User
     $rowsAffected = $stmt->rowCount();
     return $rowsAffected;
   }
+
+  public function updateSkypeName($sn)
+  {
+    // TODO: Skype name is unvalidated. Is it necessary? Possess no security flaw, and perhaps User's responsibility to
+    // ensure Skypename is correct. 
+    $sql = "UPDATE Users SET skype_name = ? WHERE userID = ?";
+    $stmt = $this->db->run($sql, [$sn, $this->userID]);
+    $rowsAffected = $stmt->rowCount();
+    return $rowsAffected;
+  }
 }

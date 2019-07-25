@@ -9,6 +9,8 @@ require_once("src/controllers/profile.php");
 require_once("src/controllers/edit.php");
 ?>
 
+<script src="/Waygook-Teacher/src/js/edit.js"></script>
+
 <div class="container">
   <h2>Edit Profile</h2>
   <hr>
@@ -31,23 +33,23 @@ require_once("src/controllers/edit.php");
       </div>
       <h3>Personal info</h3>
 
-      <form class="form-horizontal" role="form">
+      <form method="POST">
         <div class="form-group">
           <label class="col-lg-3 control-label">First name:</label>
           <div class="col-lg-8">
-            <input name="first-name" class="form-control" type="text" value=<?php echo $userLoggedInRow['first_name']; ?>>
+            <input name="first-name" class="form-control" type="text" value=<?php echo $userLoggedInRow['first_name']; ?> disabled>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Last name:</label>
           <div class="col-lg-8">
-            <input name="last-name" class="form-control" type="text" value=<?php echo $userLoggedInRow['last_name']; ?>>
+            <input name="last-name" class="form-control" type="text" value=<?php echo $userLoggedInRow['last_name']; ?> disabled>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Email:</label>
           <div class="col-lg-8">
-            <input name="email" class="form-control" type="text" value=<?php echo $userLoggedInRow['email']; ?>>
+            <input name="email" class="form-control" type="text" value=<?php echo $userLoggedInRow['email']; ?> disabled>
           </div>
         </div>
         <div class="form-group">
@@ -68,7 +70,7 @@ require_once("src/controllers/edit.php");
         <div class="form-group">
           <label class="col-md-3 control-label">New password:</label>
           <div class="col-md-8">
-            <input name="password" class="form-control" type="password">
+            <input name="pw" class="form-control" type="password">
           </div>
         </div>
         <!-- \.NEW PASSWORD -->
@@ -76,10 +78,18 @@ require_once("src/controllers/edit.php");
         <div class="form-group">
           <label class="col-md-3 control-label">Confirm password:</label>
           <div class="col-md-8">
-            <input name="confirm-password" class="form-control" type="password">
+            <input name="pw2" class="form-control" type="password" onChange="displayOldPassword();">
           </div>
         </div>
         <!-- \.CONFIRM NEW PASSWORD -->
+        <!-- OLD PASSWORD -->
+        <div id="edit-profile-old-pw" class="form-group" style="display: none;">
+          <label class="col-md-3 control-label">Old password:</label>
+          <div class="col-md-8">
+            <input name="old-pw" class="form-control" type="password">
+          </div>
+        </div>
+        <!-- \.OLD PASSWORD -->
         <!-- SKYPE NAME -->
         <div class="form-group">
           <label class="col-md-3 control-label">Skype username:</label>
@@ -92,7 +102,7 @@ require_once("src/controllers/edit.php");
         <div class="form-group">
           <label class="col-md-3 control-label">Profile Descripton:</label>
           <div class="col-md-8">
-            <textarea name="description" type="text" class="form-control"><?php echo $userLoggedInRow['description']; ?></textarea>
+            <textarea name="description" type="text" class="form-control" oninput='this.style.height = "";this.style.height = this.scrollHeight + 3 + "px"'><?php echo $userLoggedInRow['description']; ?></textarea>
           </div>
         </div>
         <!-- /.PROFILE DESCRIPTION -->
@@ -156,13 +166,9 @@ require_once("src/controllers/edit.php");
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
             <button name="edit-profile-button" class="btn btn-primary" type="submit">Save profile</button>
-            <span></span>
-            <input type="reset" class="btn btn-default" value="Cancel">
           </div>
         </div>
       </form>
     </div>
   </div>
 </div>
-
-<script src="/Waygook-Teacher/src/js/edit.js"></script>

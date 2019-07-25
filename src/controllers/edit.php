@@ -5,30 +5,23 @@ $timezones = DateTimeZone::listIdentifiers();
 // EDIT PROFILE HANDLER
 if (isset($_POST['edit-profile-button'])) {
 
-  if (isset($_POST['first-name'])) {
-    /// $result = $user->updateRate($_POST['first-name']);
+  if (isset($_POST['timezone'])) {
+    $user->updateTimezone($_POST['timezone']);
   }
 
-  $fn = $_POST['first-name'];
-  $ln = $_POST['last-name'];
-  $em = $_POST['email'];
-  $tz = $_POST['timezone'];
-  $pw = md5($_POST['password']);
-  $pw2 = md5($_POST['confirm-password']);
-  $skype = $_POST['skype-name'];
+  if (isset($_POST['old-pw'], $_POST['pw'], $_POST['pw2'])) {
+    $old = md5($_POST['old-pw']);
+    $pw = md5($_POST['pw']);
+    $pw2 = md5($_POST['pw2']);
+    $user->updatePassword($old, $pw, $pw2);
+  }
 
+  if (isset($_POST['skype-name'])) {
+    $user->updateSkypeName($_POST['skype-name']);
+  }
+  
   if (isset($_POST['description'])) {
-    echo $_POST['description'];
     $user->updateDescription($_POST['description']);
-  }
-
-  /// $desc = $_POST['description'];
-  $nation = $_POST['nationality'];
-  $edu = $_POST['education-level'];
-  $dob = $_POST['dob'];
-
-  if (isset($_POST['rate'])) {
-    /// $result = $user->updateRate($_POST['rate']);
   }
 }
 ?>
