@@ -35,34 +35,31 @@ require_once("src/controllers/edit.php");
         <div class="form-group">
           <label class="col-lg-3 control-label">First name:</label>
           <div class="col-lg-8">
-            <input class="form-control" type="text" value=<?php echo $userLoggedInRow['first_name']; ?>>
+            <input name="first-name" class="form-control" type="text" value=<?php echo $userLoggedInRow['first_name']; ?>>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Last name:</label>
           <div class="col-lg-8">
-            <input class="form-control" type="text" value=<?php echo $userLoggedInRow['last_name']; ?>>
+            <input name="last-name" class="form-control" type="text" value=<?php echo $userLoggedInRow['last_name']; ?>>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Email:</label>
           <div class="col-lg-8">
-            <input class="form-control" type="text" value=<?php echo $userLoggedInRow['email']; ?>>
+            <input name="email" class="form-control" type="text" value=<?php echo $userLoggedInRow['email']; ?>>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Time Zone:</label>
           <div class="col-lg-8">
             <div class="ui-select">
-              <select id="user_time_zone" class="form-control">
-                <?php
-                // iterate over timezones and add each as an option
-                  foreach ($timezones as $tz) {
-                ?>
-                    <option value="<?php echo $tz; ?>"><?php echo $tz; ?></option>
-                <?php
-                  }
-                ?>
+              <select name="timezone" class="form-control">
+                <!-- PHP LOOP: iterate over $timezones, and add each as an option -->
+                <?php foreach ($timezones as $tz) { ?>
+                  <option value="<?php echo $tz; ?>"><?php echo $tz; ?></option>
+                <?php } ?>
+                <!-- \.PHP LOOP -->
               </select>
             </div>
           </div>
@@ -71,7 +68,7 @@ require_once("src/controllers/edit.php");
         <div class="form-group">
           <label class="col-md-3 control-label">New password:</label>
           <div class="col-md-8">
-            <input class="form-control" type="password">
+            <input name="password" class="form-control" type="password">
           </div>
         </div>
         <!-- \.NEW PASSWORD -->
@@ -79,23 +76,23 @@ require_once("src/controllers/edit.php");
         <div class="form-group">
           <label class="col-md-3 control-label">Confirm password:</label>
           <div class="col-md-8">
-            <input class="form-control" type="password">
+            <input name="confirm-password" class="form-control" type="password">
           </div>
         </div>
         <!-- \.CONFIRM NEW PASSWORD -->
-        <!-- HOURLY RATE -->
+        <!-- SKYPE NAME -->
         <div class="form-group">
           <label class="col-md-3 control-label">Skype username:</label>
           <div class="col-md-8">
-            <input class="form-control" type="text" value=<?php echo $userLoggedInRow['skype_name']; ?>>
+            <input name="skype-name" class="form-control" type="text" value=<?php echo $userLoggedInRow['skype_name']; ?>>
           </div>
         </div>
-        <!-- \.HOURLY RATE -->
+        <!-- \.SKYPE NAME -->
         <!-- PROFILE DESCRIPTION -->
         <div class="form-group">
           <label class="col-md-3 control-label">Profile Descripton:</label>
           <div class="col-md-8">
-            <textarea type="text" class="form-control"><?php echo $userLoggedInRow['description']; ?></textarea>
+            <textarea name="description" type="text" class="form-control"><?php echo $userLoggedInRow['description']; ?></textarea>
           </div>
         </div>
         <!-- /.PROFILE DESCRIPTION -->
@@ -106,7 +103,7 @@ require_once("src/controllers/edit.php");
             <label class="col-md-3 control-label">Nationality:</label>
             <div class="col-lg-8">
               <div class="ui-select">
-                <select id="user-nationality" class="form-control">
+                <select name="nationality" class="form-control">
                   <option value="USA">USA</option>
                   <option value="Korea">Korea</option>
                   <option value="Canada">Canada</option>
@@ -127,7 +124,7 @@ require_once("src/controllers/edit.php");
             <label class="col-md-3 control-label">Education Level:</label>
             <div class="col-lg-8">
               <div class="ui-select">
-                <select id="user-education-level" class="form-control">
+                <select name="education-level" class="form-control">
                   <option value="Tertiary">Tertiary</option>
                   <option value="Bachelor">Bachelor</option>
                   <option value="Masters">Masters</option>
@@ -141,7 +138,7 @@ require_once("src/controllers/edit.php");
           <div class="form-group">
             <label class="col-md-3 control-label">DOB:</label>
             <div class="col-md-8">
-              <input class="form-control" type="date" name="DOB">
+              <input name="dob" class="form-control" type="date">
             </div>
           </div>
           <!-- \.DOB -->
@@ -149,7 +146,7 @@ require_once("src/controllers/edit.php");
           <div class="form-group">
             <label class="col-md-3 control-label">Hourly Rate ($USD):</label>
             <div class="col-md-8">
-              <input class="form-control" type="number" name="rate" min="1" max="500" step="0.01" value=<?php echo $userLoggedInRow['rate']; ?>>
+              <input name="rate" class="form-control" type="number" name="rate" min="1" max="500" step="0.01" value=<?php echo $userLoggedInRow['rate']; ?>>
             </div>
           </div>
           <!-- \.HOURLY RATE -->
@@ -158,7 +155,7 @@ require_once("src/controllers/edit.php");
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input type="button" class="btn btn-primary" value="Save Changes">
+            <button name="edit-profile-button" class="btn btn-primary" type="submit">Save profile</button>
             <span></span>
             <input type="reset" class="btn btn-default" value="Cancel">
           </div>
