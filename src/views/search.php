@@ -42,7 +42,7 @@ include("src/controllers/search.php");
       <div class="item">
         <div class="img-m round">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/768px-Circle-icons-profile.svg.png"
+            src="<?php echo $row['profile_pic']; ?>"
             alt="profile-photo">
         </div>
         <h5>

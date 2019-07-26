@@ -135,14 +135,7 @@ class User
   public function updateProfilePic($db_uploadPath, $fileExtension, $fileSize, $uploadPath)
   {
     $this->validateProfilePic($fileExtension, $fileSize, $uploadPath);
-
-    /* TODO: refactor this and simply replace it with $this->updateUserDetails('profile_pic', $db_uploadPath) */
-    if (empty($this->errorArray) == true) {
-      $sql = "UPDATE Users SET profile_pic = ? WHERE userID = ?";
-      $stmt = $this->db->run($sql, [$db_uploadPath, $this->userID]);
-      $rowsAffected = $stmt->rowCount();
-      return $rowsAffected;
-    }
+    return $this->updateUserDetails('profile_pic', $db_uploadPath);
   }
 
   private function validateProfilePic($fileExtension, $fileSize, $uploadPath)
@@ -168,14 +161,16 @@ class User
     $this->validateOldPassword($old_pw);
     $this->validatePasswords($new_pw, $new_pw2);
 
-    if (empty($this->errorArray) == true) {
+    /* UNTESTED : 
+       if (empty($this->errorArray) == true) {
       $sql = "UPDATE Users
                     SET password = ?
                     WHERE userID = ?";
       $stmt = $this->db->run($sql, [$new_pw, $this->userID]);
       $rowsAffected = $stmt->rowCount();
       return $rowsAffected;
-    }
+    } */
+    $this->updateUserDetails('password', $new_pw);
   }
 
   private function validateOldPassword($pw)
@@ -249,8 +244,7 @@ class User
     if (empty($this->errorArray) == true) {
       $sql = "UPDATE Users SET $columnName = ? WHERE userID = ?";
       $stmt = $this->db->run($sql, [$columnValue, $this->userID]);
-      $rowsAffected = $stmt->rowCount();
-      return $rowsAffected;
+      return $stmt->rowCount(); // returns number of rows affected
     }
   }
 }

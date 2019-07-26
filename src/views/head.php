@@ -14,24 +14,24 @@ require_once("src/controllers/login.php");
 require_once("src/controllers/register.php");
 
 if (isset($_SESSION['userEmail'])) {
-    $loggedIn = true;
-    $userEmail = $_SESSION['userEmail'];
+  $loggedIn = true;
+  $userEmail = $_SESSION['userEmail'];
 
-    // fetch the User's detail from the DB
-    $user = new User($userEmail);
-    $db = MyPDO::instance();
-    $sql = "SELECT * FROM Users WHERE email = ?";
-    $stmt = $db->run($sql, [$userEmail]);
-    $userLoggedInRow = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-    // set bool value for whether User is a Student or Teacher
-    if ($userLoggedInRow['role'] == 'student') {
-      $isStudent = true;
-    } else {
-      $isStudent = false;
-    }
+  // fetch the User's detail from the DB
+  $user = new User($userEmail);
+  $db = MyPDO::instance();
+  $sql = "SELECT * FROM Users WHERE email = ?";
+  $stmt = $db->run($sql, [$userEmail]);
+  $userLoggedInRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  // set bool value for whether User is a Student or Teacher
+  if ($userLoggedInRow['role'] == 'student') {
+    $isStudent = true;
+  } else {
+    $isStudent = false;
+  }
 } else {
-    $loggedIn = false;
+  $loggedIn = false;
 }
 ?>
 
@@ -63,8 +63,7 @@ if (isset($_SESSION['userEmail'])) {
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
   </script>
   <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/js/mdb.min.js">
   </script>

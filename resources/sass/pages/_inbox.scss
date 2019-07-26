@@ -1,0 +1,67 @@
+.flex {
+  display: flex;
+}
+
+.inbox {
+  .header {
+    height: 20%;
+  }
+}
+
+.side-panel {
+  width: 30%;
+  background: clr(dark-grey);
+  color: clr(white, dark);
+
+  .search {
+    display: flex;
+    justify-content: center;
+
+    i, input {
+      align-self: center;
+    }
+
+    i {
+      padding-right: 10px;
+    }
+
+    input {
+      height: 50%;
+    }
+  }
+
+  .contacts {
+    ul {
+      padding: 5px;
+
+      li {
+        display: flex;
+        padding: 5px 0 5px 0;
+
+        .preview {
+          padding-left: 10px;
+          font-size: 0.8em;
+
+          p {
+            margin-bottom: 0;
+          }
+
+          .name {
+            width: 100%;
+            font-weight: map-get($font-weights, "bold");
+          }
+        }
+      }
+
+      .name {
+        width: 100%;
+        font-weight: map-get($font-weights, "bold");
+      }
+    }
+  }
+}
+
+.conversation {
+  width: 70%;
+  border: 2px solid red;
+}

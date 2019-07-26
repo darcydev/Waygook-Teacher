@@ -1,6 +1,7 @@
 /* COLORS */
 $primary-color: #007bff;
 $white: #f8f8ff;
+$space-grey: #2c3e50;
 
 $colors: (
     primary: (
@@ -10,6 +11,11 @@ $colors: (
     ),
     white: (
         base: $white,
+        light: lighten($white, 5),
+        dark: darken($white, 3)
+    ),
+    dark-grey: (
+        base: $space-grey,
         light: lighten($white, 5),
         dark: darken($white, 25)
     )

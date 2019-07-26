@@ -1,28 +1,43 @@
-.img-m img {
-    height: map-get($image-height, "m");
-    width: map-get($image-width, "m");
+.img-xs img {
+  height: map-get($image-height, "xs");
+  width: map-get($image-width, "xs");
+}
 
-    @include for-phone-only {    
-        height: map-get($image-height, "s");
-        width: map-get($image-width, "s");
-    }
+.img-s img {
+  height: map-get($image-height, "s");
+  width: map-get($image-width, "s");
+
+  @include for-phone-only {
+    height: map-get($image-height, "xs");
+    width: map-get($image-width, "xs");
+  }
+}
+
+.img-m img {
+  height: map-get($image-height, "m");
+  width: map-get($image-width, "m");
+
+  @include for-phone-only {
+    height: map-get($image-height, "s");
+    width: map-get($image-width, "s");
+  }
 }
 
 .img-l img {
-    height: map-get($image-height, "l");
-    width: map-get($image-width, "l");
+  height: map-get($image-height, "l");
+  width: map-get($image-width, "l");
 
-    @include for-tablet-landscape-down {    
-        height: map-get($image-height, "m");
-        width: map-get($image-width, "m");
-    }
+  @include for-tablet-landscape-down {
+    height: map-get($image-height, "m");
+    width: map-get($image-width, "m");
+  }
 
-    @include for-phone-only {    
-        height: map-get($image-height, "s");
-        width: map-get($image-width, "s");
-    }
+  @include for-phone-only {
+    height: map-get($image-height, "s");
+    width: map-get($image-width, "s");
+  }
 }
 
 .round img {
-    border-radius: 50%;
+  border-radius: 50%;
 }

@@ -5,6 +5,8 @@
 
 /* COMPONENTS */
 @import "components/images";
+@import "components/lists";
+@import "components/input";
 
 /* LAYOUTS */
 @import "layout/header";
@@ -16,3 +18,4 @@
 @import "pages/search";
 @import "pages/profile";
 @import "pages/edit";
+@import "pages/inbox";
