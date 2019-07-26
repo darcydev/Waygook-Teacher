@@ -7,18 +7,20 @@ $timezones = DateTimeZone::listIdentifiers();
 if (isset($_POST['upload-profile-pic'])) {
   if (!empty($_FILES['profile-pic']['name'])) {
     $currentDir = getcwd();
-    $targetDir = "public/images/profile_pics/";
+    $targetDir = "/Waygook-Teacher/public/images/profile_pics/";
 
     // to avoid the issue of duplicate file names in server,
     // save the file as a random number ahead of the fileName (fe "283572893572875johnlennon.png")
     // BUG: rand() is not secure (as it is predictable), consider using random_bytes() instead
-    $randomNumber = rand();
     // add $randomNumber to the beginning of the fileName
-    $fileName = $randomNumber . $_FILES['profile-pic']['name'];
+    $fileName = rand() . $_FILES['profile-pic']['name'];
     $fileSize = $_FILES['profile-pic']['size'];
     $fileTmpName = $_FILES['profile-pic']['tmp_name'];
     $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
-    $uploadPath = $currentDir . "\\" . $targetDir . basename($fileName);
+    // $uploadPath = $currentDir . "\\" . $targetDir . basename($fileName);
+    // $test_1 = __DIR__;
+    $uploadPath = $_SERVER['DOCUMENT_ROOT'] . $targetDir . basename($fileName);
+    // $real = "C:\\xampp\\htdocs\\Waygook-Teacher\\public\\images\\profile_pics\\" . basename($fileName);
     // POTENTIAL BUG: may have to remove "/" in
     $db_uploadPath = $targetDir . basename($fileName);
 
@@ -26,7 +28,7 @@ if (isset($_POST['upload-profile-pic'])) {
 
     if ($rowsAffected > 0) {
       // BUG: not working!
-      $successUpload = move_uploaded_file($fileName, $uploadPath);
+      $successUpload = move_uploaded_file($fileTmpName, $uploadPath);
     }
   }
 }

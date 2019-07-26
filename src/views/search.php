@@ -40,7 +40,7 @@ include("src/controllers/search.php");
       <!-- open PHP loop -->
       <?php foreach ($users as $row) { ?>
       <div class="item">
-        <div class="img-m">
+        <div class="img-m round">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/768px-Circle-icons-profile.svg.png"
             alt="profile-photo">

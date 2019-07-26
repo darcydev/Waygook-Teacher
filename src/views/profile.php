@@ -20,9 +20,9 @@ require_once("src/controllers/profile.php");
     <!-- PROFILE CONTAINER -->
     <section class="section profile">
       <div class="row">
-        <div class="img-l">
+        <div class="img-l round">
           <img
-            src="/<?php echo $profileUser['profile_pic']; ?>"
+            src="<?php echo $profileUser['profile_pic']; ?>"
             alt="profile-photo">
         </div>
         <div class="intro">

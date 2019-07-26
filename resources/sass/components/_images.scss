@@ -22,3 +22,7 @@
         width: map-get($image-width, "s");
     }
 }
+
+.round img {
+    border-radius: 50%;
+}

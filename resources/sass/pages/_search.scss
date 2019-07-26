@@ -10,5 +10,10 @@
 
     .item {
         padding: 20px;
+
+        .img-m {
+            display: flex;
+            justify-content: center;
+        }
     }
 }
