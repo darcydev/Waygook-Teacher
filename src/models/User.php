@@ -14,6 +14,7 @@ class User
   private $profile_pic;
   private $description;
 
+  /* REFACTOR THIS SO IT DOESN'T REQURE $userEmail? */
   public function __construct($userEmail)
   {
     $this->db = MyPDO::instance();

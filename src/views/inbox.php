@@ -36,7 +36,8 @@ require_once("src/controllers/inbox.php");
           // fetch the DB details of the 'other User'
           $otherUserRow = $user->getOtherUser($otherUserID);
           ?>
-          <li class="contact img-xs round" onclick="getOtherUser(<?php echo $otherUserRow['userID']; ?>)">
+          <li class="contact img-xs round" onclick="fetchUserDetails(<?php echo $otherUserRow['userID']; ?>);
+                      fetchConversation(<?php echo $otherUserRow['userID']; ?>);">
             <div class="img-xs round">
               <img src="<?php echo $otherUserRow['profile_pic']; ?>" alt="profile-pic" />
             </div>
@@ -64,19 +65,8 @@ require_once("src/controllers/inbox.php");
       </a>
     </div>
 
-    <div class="messages">
-      <div class="message sent img-xs round">
-        <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-        <p>I'm a sent message</p>
-      </div>
-      <div class="message reply img-xs round">
-        <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-        <p>REPLY BABY REPLY BABYREPLY BABYREPLY BABYREPLY BABYREPLY BABYREPLY BABYREPLY BABYREPLY BABYREPLY BABYREPLY BABY</p>
-      </div>
-      <div class="message sent img-xs round">
-        <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-        <p>I'm a sent message</p>
-      </div>
+    <div id='messages' class='messages'>
+      <!-- DOM is updated from AJAX call in inbox.js -->
     </div>
 
     <div class="message-input">
@@ -87,73 +77,6 @@ require_once("src/controllers/inbox.php");
   <!-- \.CONVERSATION -->
 
 </main>
-
-
-
-
-
-<!-- <script>
-  $(".messages").animate({
-    scrollTop: $(document).height()
-  }, "fast");
-
-  $("#profile-img").click(function() {
-    $("#status-options").toggleClass("active");
-  });
-
-  $(".expand-button").click(function() {
-    $("#profile").toggleClass("expanded");
-    $("#contacts").toggleClass("expanded");
-  });
-
-  $("#status-options ul li").click(function() {
-    $("#profile-img").removeClass();
-    $("#status-online").removeClass("active");
-    $("#status-away").removeClass("active");
-    $("#status-busy").removeClass("active");
-    $("#status-offline").removeClass("active");
-    $(this).addClass("active");
-
-    if ($("#status-online").hasClass("active")) {
-      $("#profile-img").addClass("online");
-    } else if ($("#status-away").hasClass("active")) {
-      $("#profile-img").addClass("away");
-    } else if ($("#status-busy").hasClass("active")) {
-      $("#profile-img").addClass("busy");
-    } else if ($("#status-offline").hasClass("active")) {
-      $("#profile-img").addClass("offline");
-    } else {
-      $("#profile-img").removeClass();
-    };
-
-    $("#status-options").removeClass("active");
-  });
-
-  function newMessage() {
-    message = $(".message-input input").val();
-    if ($.trim(message) == '') {
-      return false;
-    }
-    $('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
-    $('.message-input input').val(null);
-    $('.contact.active .preview').html('<span>You: </span>' + message);
-    $(".messages").animate({
-      scrollTop: $(document).height()
-    }, "fast");
-  };
-
-  $('.submit').click(function() {
-    newMessage();
-  });
-
-  $(window).on('keydown', function(e) {
-    if (e.which == 13) {
-      newMessage();
-      return false;
-    }
-  });
-  //# sourceURL=pen.js
-</script> -->
 
 <?php
 include("src/views/footer.php");
