@@ -3,10 +3,10 @@
 set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . "\Waygook-Teacher");
 
 require_once("config/config.php");
-include("src/models/Account.php");
-include("src/models/User.php");
+require_once("src/models/Account.php");
+require_once("src/models/User.php");
 require_once("src/models/MyPDO.php");
-include("src/models/Constants.php");
+require_once("src/models/Constants.php");
 
 $account = new Account();
 

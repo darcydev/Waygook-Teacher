@@ -2,13 +2,13 @@
 // set DOCUMENT_ROOT variable
 set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . "\Waygook-Teacher");
 
-include("src/views/head.php");
-include("src/views/header.php");
+require_once("src/views/head.php");
+require_once("src/views/header.php");
 
-include("src/controllers/search.php");
+require_once("src/controllers/inbox.php");
 ?>
 
-<main class="container inbox flex">
+<main class="inbox flex">
 
   <!-- SIDE PANEL -->
   <section class="section side-panel">
@@ -23,24 +23,30 @@ include("src/controllers/search.php");
     <!-- CONTACTS LIST -->
     <div class="contacts">
       <ul>
-        <li class="contact img-xs round">
-          <div class="img-xs round">
-            <img src="http://emilcarlsson.se/assets/louislitt.png" alt="profile-pic" />
-          </div>
-          <div class="preview">
-            <p class="name">Tom Jones</p>
-            <p class="text">You just got LITT up, Mike.</p>
-          </div>
-        </li>
-        <li class="contact img-xs round active">
-          <div class="img-xs round">
-            <img src="http://emilcarlsson.se/assets/louislitt.png" alt="profile-pic" />
-          </div>
-          <div class="preview">
-            <p class="name">Tom Jones</p>
-            <p class="text">You just got LITT up, Mike.</p>
-          </div>
-        </li>
+        <!-- PHP LOOP: CONVERSATION ITEMS -->
+        <?php foreach ($allContacts as $item) { ?>
+          <?php
+          // In each conversation, there are two Users: theUserLoggedIn and 'the other User'
+          // As iterate through each conversation, determine which is which.
+          if ($userLoggedInRow['userID'] == $item['from_user_id']) {
+            $otherUserID = $item['to_user_id'];
+          } else {
+            $otherUserID = $item['from_user_id'];
+          }
+          // fetch the DB details of the 'other User'
+          $otherUserRow = $user->getOtherUser($otherUserID);
+          ?>
+          <li class="contact img-xs round" onclick="getOtherUser(<?php echo $otherUserRow['userID']; ?>)">
+            <div class="img-xs round">
+              <img src="<?php echo $otherUserRow['profile_pic']; ?>" alt="profile-pic" />
+            </div>
+            <div class="preview">
+              <p class="name"><?php echo $otherUserRow['first_name']; ?></p>
+              <p class="text"><?php echo $item['message_content']; ?></p>
+            </div>
+          </li>
+        <?php } ?>
+        <!-- \.PHP LOOP: CONVERSATION ITEMS -->
       </ul>
     </div>
 
@@ -51,26 +57,30 @@ include("src/controllers/search.php");
   <section class="section conversation">
 
     <div class="header img-s round">
-      <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-      <h5>Harvey Specter</h5>
+      <img id="conversation-header-photo" src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+      <!-- TODO: href is intentionally not working for now, but later direct to User's page -->
+      <a href="//localhost/Waygook-Teacher/src/views/profile.php?userID=<?php echo '15'; ?>">
+        <p id="conversation-header-name">Harvey Specter</p>
+      </a>
     </div>
 
     <div class="messages">
-      <ul>
-        <li class="sent img-xs round">
-          <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-          <p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
-        </li>
-        <li class="reply img-xs round">
-          <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-          <p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
-        </li>
-      </ul>
+      <div class="message sent img-xs round">
+        <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+        <p>I'm a sent message</p>
+      </div>
+      <div class="message reply img-xs round">
+        <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+        <p>REPLY BABY REPLY BABYREPLY BABYREPLY BABYREPLY BABYREPLY BABYREPLY BABYREPLY BABYREPLY BABYREPLY BABYREPLY BABY</p>
+      </div>
+      <div class="message sent img-xs round">
+        <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+        <p>I'm a sent message</p>
+      </div>
     </div>
 
     <div class="message-input">
-      <input type="text" placeholder="Please write your message...">
-      <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+      <textarea name="send-message" placeholder="Send message..."></textarea>
     </div>
 
   </section>
@@ -82,7 +92,7 @@ include("src/controllers/search.php");
 
 
 
-<script>
+<!-- <script>
   $(".messages").animate({
     scrollTop: $(document).height()
   }, "fast");
@@ -143,4 +153,10 @@ include("src/controllers/search.php");
     }
   });
   //# sourceURL=pen.js
-</script>
+</script> -->
+
+<?php
+include("src/views/footer.php");
+?>
+
+<script src="/Waygook-Teacher/src/js/inbox.js"></script>

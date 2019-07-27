@@ -247,4 +247,31 @@ class User
       return $stmt->rowCount(); // returns number of rows affected
     }
   }
+
+  /* INBOX: CONVERSATION & MESSAGES */
+
+  // fetchAll of most recent conversations involving userLoggedIn
+  public function getAllContacts()
+  {
+    $sql = "SELECT * FROM  `Messages` a
+        INNER JOIN (
+            SELECT MAX(  `messageID` ) AS id
+            FROM  `Messages` AS  `alt`
+            WHERE  `alt`.`to_user_id` = ?
+            OR  `alt`.`from_user_id` = ?
+            GROUP BY  least(`to_user_id` ,  `from_user_id`), greatest(`to_user_id` ,  `from_user_id`)
+        ) b ON a.messageID = b.id";
+    $stmt = $this->db->run($sql, [$this->userID, $this->userID]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  // fetch conversation between two specific Users
+  public function getConversation($otherUserID)
+  {
+    $sql = "SELECT * FROM Messages
+        WHERE (to_user_id = ? AND from_user_id = ?)
+        OR (to_user_id = ? AND from_user_id = ?)";
+    $stmt = $this->db->run($sql, [$otherUserID, $this->userID, $this->userID, $otherUserID]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
 }

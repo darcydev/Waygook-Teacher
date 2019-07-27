@@ -43,7 +43,7 @@ include("src/controllers/search.php");
         <div class="img-m round">
           <img
             src="<?php echo $row['profile_pic']; ?>"
-            alt="profile-photo">
+            alt="pp">
         </div>
         <h5>
           <?php echo $row['first_name']; ?>

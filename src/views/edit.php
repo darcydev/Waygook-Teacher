@@ -175,3 +175,7 @@ require_once("src/controllers/edit.php");
     </div>
   </div>
 </div>
+
+<?php
+include("src/views/footer.php");
+?>
