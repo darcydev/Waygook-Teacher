@@ -13,6 +13,9 @@ $account = new Account();
 require_once("src/controllers/login.php");
 require_once("src/controllers/register.php");
 
+require_once("src/views/modals/loginRegister.php");
+require_once("src/views/modals/sendMessage.php");
+
 if (isset($_SESSION['userEmail'])) {
   $loggedIn = true;
   $userEmail = $_SESSION['userEmail'];
@@ -33,6 +36,8 @@ if (isset($_SESSION['userEmail'])) {
 } else {
   $loggedIn = false;
 }
+
+require_once("src/controllers/sendMessage.php");
 ?>
 
 <!DOCTYPE html>

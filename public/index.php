@@ -169,8 +169,6 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']
             </section>
         </main>
 
-        <?php include("src/views/modals/loginRegister.php"); ?>
-
         <?php include("src/views/footer.php"); ?>
     </div>
 

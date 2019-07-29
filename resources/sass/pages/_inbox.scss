@@ -6,16 +6,17 @@
   padding: 50px;
   max-width: 1400px;
   margin: auto;
+  justify-content: center;
 
   @include for-tablet-landscape-down {
     padding: 10px;
   }
 
   .header {
-    height: 20%;
+    height: 85px;
 
     @include for-tablet-landscape-down {
-      height: 13%;
+      height: 50px;
     }
 
     @include for-phone-only {
@@ -82,6 +83,7 @@
         .preview {
           padding-left: 10px;
           font-size: 0.8em;
+          max-width: 80%;
 
           @include for-phone-only {
             display: none;
@@ -98,6 +100,9 @@
 
           .text {
             font-size: 0.8rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
 
             @include for-tablet-landscape-down {
               font-size: 0.75em;
@@ -115,7 +120,7 @@
 }
 
 .conversation {
-  max-width: 80%;
+  min-width: 80%;
   background: clr(off-white);
 
   .header {
@@ -175,6 +180,7 @@
 
     .sent {
       justify-content: flex-end;
+      margin-left: 30%;
 
       img {
         order: 2;
@@ -188,6 +194,7 @@
 
     .reply {
       justify-content: flex-start;
+      margin-right: 30%;
 
       p {
         background: clr(white);

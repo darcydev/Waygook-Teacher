@@ -1,25 +1,3 @@
-/* TODO:
-** scroll on the contact list
-** scroll on message container
-** click on contact = open that message container
-** press enter in textarea = send message (via DOM) and (via PHP SQL w/ AJAX)
-** press enter on searchbar = search contacts for that input
-*/
-
-// TODO: use AJAX to open the specific conversation
-/* function getOtherUser(otherUserID) {
-  $.ajax({
-    url: '/Waygook-Teacher/src/controllers/ajax/getOtherUser.php',
-    type: 'POST',
-    data: ({ otherUserID: otherUserID }),
-    success: function (response) {
-      /// document.querySelector("#conversation-header-name").src = data['profile_picture'];
-      console.log(response);
-      document.querySelector("#conversation-header-name").innerHTML = response.first_name;
-    }
-  });
-}; */
-
 function fetchUserDetails(otherID) {
   var formData = new FormData();
   formData.append("otherID", otherID);
@@ -43,16 +21,19 @@ function fetchConversation(otherID) {
   })
     .then(res => res.json())
     .then(data => updateConversation(data, otherID))
+
     .catch(e => console.log(`Error: ${e}`))
 }
 
 function updateHeader(data) {
   document.querySelector("#conversation-header-name").innerHTML = data.first_name;
-  document.querySelector("#conversation-header-photo").innerHTML = data.profile_pic;
+  document.querySelector("#conversation-header-photo").src = data.profile_pic;
+  document.querySelector("#conversation-header-a").href += data.userID;
 }
 
 function updateConversation(data, otherID) {
-  // TODO: clear all messages
+  // remove all preexisting messages (child nodes) within #messages
+  document.querySelector('#messages').innerHTML = '';
 
   let allMsg = data.map(x => x);
   // iterate of each message individually
@@ -72,4 +53,7 @@ function updateConversation(data, otherID) {
 
     document.querySelector('#messages').appendChild(div);
   });
+
+  // GENERIC function (is in main.js) to append a param to URL
+  updateURL('userID', otherID);
 }

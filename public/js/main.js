@@ -1,13 +1,16 @@
-/* 
-// commented out as the function is now obsolte, as the logout link is done through href
-function logoutUser() {
-  console.log("hety");
-  window.location.replace("https://www.cyclingnews.com");
-}; */
+// GENERIC function to append a parameter to a URL
+// takes the name of the parameter (key)
+// and the value of the parameter (value)
+function updateURL(key, value) {
+  let param = `?${key}=${value}`;
+  window.history.pushState('', '', param);
+}
 
 // Function that controls which sideBarLinks are displayed. takes a boolean of whether the User is viewing their own profile (true), or not (false)
 function displaySideLinks(isOwnProfile) {
-  if (!isOwnProfile) {
+  if (isOwnProfile) {
+    document.querySelector('#sidebar-message').style.display = "none";
+  } else {
     document.querySelector('#sidebar-edit').style.display = "none";
     document.querySelector('#sidebar-calendar').style.display = "none";
     document.querySelector('#sidebar-settings').style.display = "none";

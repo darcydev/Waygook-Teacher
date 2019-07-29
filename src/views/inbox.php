@@ -37,9 +37,9 @@ require_once("src/controllers/inbox.php");
           $otherUserRow = $user->getOtherUser($otherUserID);
           ?>
           <li class="contact img-xs round" onclick="fetchUserDetails(<?php echo $otherUserRow['userID']; ?>);
-                      fetchConversation(<?php echo $otherUserRow['userID']; ?>);">
+                                  fetchConversation(<?php echo $otherUserRow['userID']; ?>);">
             <div class="img-xs round">
-              <img src="<?php echo $otherUserRow['profile_pic']; ?>" alt="profile-pic" />
+              <img src="<?php echo $otherUserRow['profile_pic']; ?>" alt="pp" />
             </div>
             <div class="preview">
               <p class="name"><?php echo $otherUserRow['first_name']; ?></p>
@@ -58,10 +58,10 @@ require_once("src/controllers/inbox.php");
   <section class="section conversation">
 
     <div class="header img-s round">
-      <img id="conversation-header-photo" src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+      <img id='conversation-header-photo' src='' alt='' />
       <!-- TODO: href is intentionally not working for now, but later direct to User's page -->
-      <a href="//localhost/Waygook-Teacher/src/views/profile.php?userID=<?php echo '15'; ?>">
-        <p id="conversation-header-name">Harvey Specter</p>
+      <a id='conversation-header-a' href="//localhost/Waygook-Teacher/src/views/profile.php?userID=">
+        <p id="conversation-header-name"></p>
       </a>
     </div>
 
@@ -69,8 +69,11 @@ require_once("src/controllers/inbox.php");
       <!-- DOM is updated from AJAX call in inbox.js -->
     </div>
 
-    <div class="message-input">
-      <textarea name="send-message" placeholder="Send message..."></textarea>
+    <div id='message-input' class="message-input">
+      <form class="flex" method="POST">
+        <textarea name="send-message-text" type='text' oninput='this.style.height = "";this.style.height = this.scrollHeight + 3 + "px"'></textarea>
+        <button class='btn btn-primary vertical-align-btn' name='send-message-button' type='submit' class="btn btn-primary">Send</button>
+      </form>
     </div>
 
   </section>

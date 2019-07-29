@@ -1,7 +1,7 @@
 <nav id="sidebar" class="sidebar">
   <ul>
     <!-- SEND MESSAGE LINK -->
-    <li id="sidebar-message"><img src="https://img.icons8.com/dusk/64/000000/new-message.png" alt="message-icon">
+    <li id='sidebar-message' data-toggle="modal" data-target="#send-message-modal"><img src="https://img.icons8.com/dusk/64/000000/new-message.png" alt="message-icon">
       <span>Message</span>
     </li>
     <!-- \.SEND MESSAGE LINK -->

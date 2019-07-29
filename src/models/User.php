@@ -219,11 +219,8 @@ class User
         $message_text, // message_content
         date("Y-m-d H:i:s") // date
       ]);
-      $rowsAffected = $stmt->rowCount();
-    } else {
-      $rowsAffected = 0;
+      return $stmt->rowCount();
     }
-    return $rowsAffected;
   }
 
   private function validateMessage($messageText)
