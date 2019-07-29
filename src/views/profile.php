@@ -11,11 +11,12 @@ require_once("src/controllers/profile.php");
 <main>
 
   <div class="container profile-container">
-    <!-- STICKY SIDEBAR -->
+
+    <!-- SIDEBAR -->
     <section class="section">
       <?php include("src/views/sidebar.php"); ?>
     </section>
-    <!-- \.STICKY SIDEBAR -->
+    <!-- \.SIDEBAR -->
 
     <!-- PROFILE CONTAINER -->
     <section class="section profile">

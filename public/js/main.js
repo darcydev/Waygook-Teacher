@@ -6,17 +6,6 @@ function updateURL(key, value) {
   window.history.pushState('', '', param);
 }
 
-// Function that controls which sideBarLinks are displayed. takes a boolean of whether the User is viewing their own profile (true), or not (false)
-function displaySideLinks(isOwnProfile) {
-  if (isOwnProfile) {
-    document.querySelector('#sidebar-message').style.display = "none";
-  } else {
-    document.querySelector('#sidebar-edit').style.display = "none";
-    document.querySelector('#sidebar-calendar').style.display = "none";
-    document.querySelector('#sidebar-settings').style.display = "none";
-  }
-}
-
 // Function that controls which navBarLinks are displayed. takes a boolean of whether the a user is loggedin, or not
 function displayNavLinks(isUserLoggedIn) {
   if (isUserLoggedIn) {

@@ -38,6 +38,9 @@ if (isset($_SESSION['userEmail'])) {
 }
 
 require_once("src/controllers/sendMessage.php");
+require_once("src/controllers/scheduleLesson.php");
+
+require_once("src/views/modals/scheduleLesson.php");
 ?>
 
 <!DOCTYPE html>

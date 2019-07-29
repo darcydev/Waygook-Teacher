@@ -24,18 +24,20 @@
           <a id="search-nav-link" class="nav-link" href="//localhost/Waygook-Teacher/src/views/search.php">Search</a>
         </li>
         <li class="nav-item">
+          <a id="calendar-nav-link" class="nav-link" href="//localhost/Waygook-Teacher/src/views/calendar.php">Calendar</a>
+        </li>
+        <li class="nav-item">
           <a id="login-nav-link" class="nav-link" href="#" data-toggle="modal" data-target="#modalLRForm">Login/Register</a>
           <a id="logout-nav-link" class="nav-link" href="//localhost/Waygook-Teacher/src/views/logout.php">Logout</a>
         </li>
 
         <!-- Dropdown -->
-        <li id="dropdown-nav-link" class="nav-item dropdown">
+<!--         <li id="dropdown-nav-link" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">more</a>
           <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Schedule a lesson(???)</a>
-            <a class="dropdown-item" href="#">Calendar (???)</a>
           </div>
-        </li>
+        </li> -->
+        <!-- \.Dropdown -->
       </ul>
       <!-- Links -->
     </div>

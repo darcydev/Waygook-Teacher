@@ -87,27 +87,37 @@ class User
   {
     $sql = "SELECT * FROM Users WHERE userID = ?";
     $stmt = $this->db->run($sql, [$id]);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $row;
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
+
+  // fetch all Employments (w/ prepaid balance > 0) associated with userLoggedIn
+  public function getEmployments()
+  {
+    $sql = "SELECT * FROM Employments
+      WHERE teacher_id = ?
+      OR student_id = ?
+      AND prepaid_amount > 0
+      ORDER BY prepaid_amount DESC";
+    $stmt = $this->db->run($sql, [$this->userID, $this->userID]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
   public function getLessons($id)
   {
     // fetch all lessons associated with this Employment
     $sql = "SELECT * FROM Lessons
-                WHERE employment_id = ?
-                ORDER BY datetime DESC";
+      WHERE employment_id = ?
+      ORDER BY datetime DESC";
     $stmt = $this->db->run($sql, [$id]);
-    $lessons = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $lessons;
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
   public function getUnconfirmedLessons($id)
   {
     $sql = "SELECT * FROM Lessons
-                WHERE confirmed = ?
-                AND (teacher_id = ? OR student_id = ?)
-                ORDER BY datetime DESC";
+      WHERE confirmed = ?
+      AND (teacher_id = ? OR student_id = ?)
+      ORDER BY datetime DESC";
     $stmt = $this->db->run($sql, [0, $id, $id]);
     $lessons = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $lessons;
@@ -117,8 +127,8 @@ class User
   {
     // fetch all reviews associated with User
     $sql = "SELECT * FROM Reviews
-                WHERE teacher_id = ?
-                OR student_id = ?";
+      WHERE teacher_id = ?
+      OR student_id = ?";
     $stmt = $this->db->run($sql, [$id, $id]);
     $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $reviews;
@@ -267,8 +277,8 @@ class User
   public function getConversation($otherUserID)
   {
     $sql = "SELECT * FROM Messages
-        WHERE (to_user_id = ? AND from_user_id = ?)
-        OR (to_user_id = ? AND from_user_id = ?)";
+      WHERE (to_user_id = ? AND from_user_id = ?)
+      OR (to_user_id = ? AND from_user_id = ?)";
     $stmt = $this->db->run($sql, [$otherUserID, $this->userID, $this->userID, $otherUserID]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }

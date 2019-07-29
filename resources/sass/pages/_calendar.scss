@@ -1,0 +1,699 @@
+$color_1: #ffffff;
+$color_2: #ff3b30;
+$color_3: #333333;
+$color_4: #919191;
+$color_5: #b8b8b8;
+$font_family_1: "Helvetica Neue", Helvetica;
+$font_family_2: monospace;
+$background_color_1: #ff3b30;
+$background_color_2: #ffe3e3;
+$background_color_3: #fff;
+$background_color_4: #f3dcf8;
+$background_color_5: #c6ebfe;
+$background_color_6: #ffbebe;
+$background_color_7: #beffbf;
+$background_color_8: #f7f7f7;
+$background_color_9: #ffffff;
+$background_color_10: #b8b8b8;
+$border_color_1: #ff3b30;
+$border_color_2: #cdcdcd;
+
+/*!
+ * FullCalendar v1.6.4 Stylesheet
+ * Docs & License: http://arshaw.com/fullcalendar/
+ * (c) 2013 Adam Shaw
+ */
+/* Header
+------------------------------------------------------------------------*/
+/* buttons edges butting together */
+/* non-theme */
+/* button layering (for border precedence) */
+/* Content
+------------------------------------------------------------------------*/
+/* Cell Styles
+------------------------------------------------------------------------*/
+/* <th>, usually */
+/* Buttons
+------------------------------------------------------------------------*/
+/*
+	Our default prev/next buttons use HTML entities like &lsaquo; &rsaquo; &laquo; &raquo;
+	and we'll try to make them look good cross-browser.
+*/
+/* icon (for jquery ui) */
+/* Global Event Styles
+------------------------------------------------------------------------*/
+/* Horizontal Events
+------------------------------------------------------------------------*/
+/* resizable */
+/* Reusable Separate-border Table
+------------------------------------------------------------*/
+/* Month View, Basic Week View, Basic Day View
+------------------------------------------------------------------------*/
+/* event styles */
+/* right-to-left */
+/* Agenda Week View, Agenda Day View
+------------------------------------------------------------------------*/
+/* make axis border take precedence */
+/* all-day area */
+/* divider (between all-day and slots) */
+/* slot rows */
+/* Vertical Events
+------------------------------------------------------------------------*/
+/* TODO: something nicer like .fc-opacity */
+/* resizable */
+
+$color_1: #fff;
+$color_2: #666;
+$font_family_1: "Helvetica Nueue", Arial, Verdana, sans-serif;
+$background_color_1: #DDDDDD;
+$background_color_2: #FFFFFF;
+
+body {
+	margin-top: 40px;
+	text-align: center;
+	font-size: 14px;
+	font-family: $font_family_1;
+	background-color: $background_color_1;
+}
+#wrap {
+	width: 1100px;
+	margin: 0 auto;
+}
+#external-events {
+	float: left;
+	width: 150px;
+	padding: 0 10px;
+	text-align: left;
+	h4 {
+		font-size: 16px;
+		margin-top: 0;
+		padding-top: 1em;
+	}
+	p {
+		margin: 1.5em 0;
+		font-size: 11px;
+		color: $color_2;
+		input {
+			margin: 0;
+			vertical-align: middle;
+		}
+	}
+}
+.external-event {
+	margin: 10px 0;
+	padding: 2px 4px;
+	background: #3366CC;
+	color: $color_1;
+	font-size: .85em;
+	cursor: pointer;
+}
+#calendar {
+	margin: 0 auto;
+	width: 900px;
+	background-color: $background_color_2;
+	border-radius: 6px;
+	box-shadow: 0 1px 2px #C3C3C3;
+}
+
+.fc {
+  direction: ltr;
+  text-align: left;
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    font-family: $font_family_1;
+  }
+  td {
+    padding: 0;
+    vertical-align: top;
+  }
+  th {
+    padding: 0;
+    vertical-align: top;
+  }
+  .fc-header-space {
+    padding-left: 10px;
+  }
+  .ui-resizable-handle {
+    display: block;
+    position: absolute;
+    z-index: 99999;
+    overflow: hidden;
+    font-size: 300%;
+    line-height: 50%;
+  }
+  .fc-week-number {
+    width: 22px;
+    text-align: center;
+    div {
+      padding: 0 2px;
+    }
+  }
+  .ui-draggable-dragging {
+    .fc-event-bg {
+      display: none\9;
+    }
+  }
+}
+html {
+  .fc {
+    font-size: 1em;
+    font-family: $font_family_1;
+  }
+}
+.fc-header {
+  td {
+    white-space: nowrap;
+    padding: 15px 10px 0px;
+  }
+  .fc-button {
+    margin-bottom: 1em;
+    vertical-align: top;
+    margin-right: -1px;
+  }
+  .fc-corner-right {
+    margin-right: 0;
+  }
+  .ui-corner-right {
+    margin-right: 0;
+  }
+  .fc-state-hover {
+    z-index: 2;
+  }
+  .ui-state-hover {
+    z-index: 2;
+  }
+  .fc-state-down {
+    z-index: 3;
+  }
+  .fc-state-active {
+    z-index: 4;
+  }
+  .ui-state-active {
+    z-index: 4;
+  }
+}
+.fc-header-left {
+  width: 25%;
+  text-align: left;
+}
+.fc-header-center {
+  text-align: center;
+}
+.fc-header-right {
+  width: 25%;
+  text-align: right;
+}
+.fc-header-title {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: -5px;
+  h2 {
+    margin-top: 0;
+    white-space: nowrap;
+    font-size: 32px;
+    font-weight: 100;
+    margin-bottom: 10px;
+  }
+}
+.fc-content {
+  clear: both;
+  zoom: 1;
+}
+.fc-view {
+  width: 100%;
+  overflow: hidden;
+}
+.fc-widget-content {
+  border: 1px solid #e5e5e5;
+}
+.fc-widget-header {
+  border-bottom: 1px solid #eee;
+  .fc-agenda-divider-inner {
+    background: #eee;
+  }
+}
+.fc-state-highlight {
+  > div {
+    > div.fc-day-number {
+      background-color: $background_color_1;
+      color: $color_1;
+      border-radius: 50%;
+      margin: 4px;
+    }
+  }
+}
+.fc-cell-overlay {
+  background: #bce8f1;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}
+.fc-button {
+  position: relative;
+  display: inline-block;
+  padding: 0 0.6em;
+  overflow: hidden;
+  height: 1.9em;
+  line-height: 1.9em;
+  white-space: nowrap;
+  cursor: pointer;
+  .fc-icon-wrap {
+    position: relative;
+    float: left;
+    top: 50%;
+  }
+  .ui-icon {
+    position: relative;
+    float: left;
+    margin-top: -50%;
+    *margin-top: 0;
+    *top: -50%;
+  }
+}
+.fc-state-default {
+  border: 1px solid;
+  border-color: $border_color_1;
+  color: $color_2;
+}
+.fc-state-default.fc-corner-left {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.fc-state-default.fc-corner-right {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.fc-text-arrow {
+  margin: 0 0.4em;
+  font-size: 2em;
+  line-height: 23px;
+  vertical-align: baseline;
+}
+.fc-button-prev {
+  .fc-text-arrow {
+    font-weight: bold;
+  }
+}
+.fc-button-next {
+  .fc-text-arrow {
+    font-weight: bold;
+  }
+}
+.fc-button-month.fc-state-default {
+  min-width: 67px;
+  text-align: center;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+.fc-button-agendaWeek.fc-state-default {
+  min-width: 67px;
+  text-align: center;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+.fc-button-agendaDay.fc-state-default {
+  min-width: 67px;
+  text-align: center;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+.fc-state-hover {
+  color: $color_3;
+  background-color: $background_color_2;
+  color: $color_2;
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+.fc-state-down {
+  color: $color_3;
+  background-color: $background_color_2;
+  background-color: $background_color_1;
+  background-image: none;
+  outline: 0;
+  color: $color_1;
+}
+.fc-state-active {
+  color: $color_3;
+  background-color: $background_color_2;
+  background-color: $background_color_1;
+  background-image: none;
+  outline: 0;
+  color: $color_1;
+}
+.fc-state-disabled {
+  color: $color_3;
+  background-color: $background_color_2;
+  cursor: default;
+  background-image: none;
+  background-color: $background_color_2;
+  filter: alpha(opacity=65);
+  box-shadow: none;
+  border: 1px solid #ffe3e3;
+  color: $color_2;
+}
+.fc-event-container {
+  > * {
+    z-index: 8;
+  }
+  > .ui-draggable-dragging {
+    z-index: 9;
+  }
+  > .ui-resizable-resizing {
+    z-index: 9;
+  }
+}
+.fc-event {
+  border: 1px solid #fff;
+  background-color: $background_color_3;
+  color: $color_4;
+  font-size: 12px;
+  cursor: default;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+.fc-event.chill {
+  background-color: $background_color_4;
+}
+.fc-event.info {
+  background-color: $background_color_5;
+}
+.fc-event.important {
+  background-color: $background_color_6;
+}
+.fc-event.success {
+  background-color: $background_color_7;
+}
+a.fc-event {
+  text-decoration: none;
+  cursor: pointer;
+}
+.fc-event-draggable {
+  cursor: pointer;
+}
+.fc-rtl {
+  .fc-event {
+    text-align: right;
+  }
+  .fc-event-hori.fc-event-end {
+    border-left-width: 1px;
+  }
+  .fc-event-hori.fc-event-start {
+    border-right-width: 1px;
+  }
+  .fc-grid {
+    .fc-day-number {
+      float: left;
+    }
+    .fc-event-time {
+      float: right;
+    }
+  }
+}
+.fc-event-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  line-height: 15px;
+}
+.fc-event-time {
+  padding: 0 1px;
+}
+.fc-event-title {
+  padding: 0 1px;
+}
+.fc-event-hori {
+  border-width: 1px 0;
+  margin-bottom: 1px;
+  .ui-resizable-e {
+    top: 0 !important;
+    right: -3px !important;
+    width: 7px !important;
+    height: 100% !important;
+    cursor: e-resize;
+  }
+  .ui-resizable-w {
+    top: 0 !important;
+    left: -3px !important;
+    width: 7px !important;
+    height: 100% !important;
+    cursor: w-resize;
+  }
+  .ui-resizable-handle {
+    _padding-bottom: 14px;
+  }
+}
+.fc-ltr {
+  .fc-event-hori.fc-event-start {
+    border-left-width: 1px;
+  }
+  .fc-event-hori.fc-event-end {
+    border-right-width: 1px;
+  }
+}
+table.fc-border-separate {
+  border-collapse: separate;
+}
+.fc-border-separate {
+  th {
+    border-width: 1px 0 0 1px;
+  }
+  td {
+    border-width: 1px 0 0 1px;
+  }
+  th.fc-last {
+    border-right-width: 1px;
+  }
+  td.fc-last {
+    border-right-width: 1px;
+  }
+  .fc-week {
+    .fc-first {
+      border-left: 0;
+    }
+    .fc-last {
+      border-right: 0;
+    }
+  }
+  tr.fc-last {
+    th {
+      border-bottom-width: 1px;
+      border-color: $border_color_2;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 30px;
+    }
+  }
+  tbody {
+    tr.fc-first {
+      td {
+        border-top-width: 0;
+      }
+      th {
+        border-top-width: 0;
+      }
+    }
+  }
+}
+.fc-grid {
+  th {
+    text-align: center;
+  }
+  .fc-day-number {
+    float: right;
+    padding: 0 2px;
+  }
+  .fc-other-month {
+    .fc-day-number {
+      opacity: 0.3;
+      filter: alpha(opacity=30);
+    }
+  }
+  .fc-day-content {
+    clear: both;
+    padding: 2px 2px 1px;
+  }
+  .fc-event-time {
+    font-weight: bold;
+  }
+}
+.fc-agenda {
+  table {
+    border-collapse: separate;
+  }
+  .fc-agenda-axis {
+    width: 50px;
+    padding: 0 4px;
+    vertical-align: middle;
+    text-align: right;
+    white-space: nowrap;
+    font-weight: normal;
+  }
+  .fc-week-number {
+    font-weight: bold;
+  }
+  .fc-day-content {
+    padding: 2px 2px 1px;
+  }
+  .ui-resizable-resizing {
+    _overflow: hidden;
+  }
+}
+.fc-agenda-days {
+  th {
+    text-align: center;
+  }
+  .fc-agenda-axis {
+    border-right-width: 1px;
+  }
+  .fc-col0 {
+    border-left-width: 0;
+  }
+}
+.fc-agenda-allday {
+  th {
+    border-width: 0 1px;
+  }
+  .fc-day-content {
+    min-height: 34px;
+    _height: 34px;
+  }
+}
+.fc-agenda-divider-inner {
+  height: 2px;
+  overflow: hidden;
+}
+.fc-agenda-slots {
+  th {
+    border-width: 1px 1px 0;
+  }
+  td {
+    border-width: 1px 0 0;
+    background: none;
+    div {
+      height: 20px;
+    }
+  }
+  tr.fc-slot0 {
+    th {
+      border-top-width: 0;
+    }
+    td {
+      border-top-width: 0;
+    }
+  }
+  tr.fc-minor {
+    th.ui-widget-header {
+      *border-top-style: solid;
+    }
+  }
+}
+.fc-event-vert {
+  border-width: 0 1px;
+  .fc-event-time {
+    white-space: nowrap;
+    font-size: 10px;
+  }
+  .fc-event-inner {
+    position: relative;
+    z-index: 2;
+  }
+  .fc-event-bg {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: 0.25;
+    filter: alpha(opacity=25);
+  }
+  .ui-resizable-s {
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 8px !important;
+    overflow: hidden !important;
+    line-height: 8px !important;
+    font-size: 11px !important;
+    font-family: $font_family_2;
+    text-align: center;
+    cursor: s-resize;
+  }
+}
+.fc-event-vert.fc-event-start {
+  border-top-width: 1px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.fc-event-vert.fc-event-end {
+  border-bottom-width: 1px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.fc-select-helper {
+  .fc-event-bg {
+    display: none\9;
+  }
+}
+thead {
+  tr.fc-first {
+    background-color: $background_color_8;
+  }
+}
+table.fc-header {
+  background-color: $background_color_9;
+  border-radius: 6px 6px 0 0;
+}
+.fc-week {
+  .fc-day {
+    > div {
+      .fc-day-number {
+        font-size: 15px;
+        margin: 2px;
+        min-width: 19px;
+        padding: 6px;
+        text-align: center;
+      }
+    }
+    &:hover {
+      .fc-day-number {
+        background-color: $background_color_10;
+        border-radius: 50%;
+        color: $color_1;
+        transition: background-color 0.2s;
+      }
+    }
+  }
+  .fc-day.fc-state-highlight {
+    &:hover {
+      .fc-day-number {
+        background-color: $background_color_1;
+      }
+    }
+  }
+}
+.fc-sun {
+  color: $color_5;
+}
+.fc-sat {
+  color: $color_5;
+}
+.fc-button-today {
+  border: 1px solid rgba(255, 255, 255, 0);
+}
+.fc-view-agendaDay {
+  thead {
+    tr.fc-first {
+      .fc-widget-header {
+        text-align: right;
+        padding-right: 10px;
+      }
+    }
+  }
+}

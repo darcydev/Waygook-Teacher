@@ -6,7 +6,7 @@
     </li>
     <!-- \.SEND MESSAGE LINK -->
     <!-- SCHEDULE LESSON LINK -->
-    <li id="sidebar-schedule"><img src="https://img.icons8.com/officel/64/000000/overtime.png" alt="calendar-icon">
+    <li id="sidebar-schedule" data-toggle="modal" data-target="#schedule-lesson-modal"><img src="https://img.icons8.com/officel/64/000000/overtime.png" alt="calendar-icon">
       <span>Schedule</span>
     </li>
     <!-- \.SCHEDULE LESSON LINK -->
@@ -16,10 +16,7 @@
       <span>Edit</span>
     </a>
     <!-- \.EDIT PROFILE LINK -->
-    <!-- VIEW CALENDER LINK -->
-    <li id="sidebar-calendar"><img src="https://img.icons8.com/plasticine/64/000000/calendar.png" alt="calendar-icon">
-      <span>Calendar</span>
-    </li>
-    <!-- \.VIEW CALENDAR LINK -->
   </ul>
 </nav>
+
+<script src="/Waygook-Teacher/src/js/sidebar.js"></script>
