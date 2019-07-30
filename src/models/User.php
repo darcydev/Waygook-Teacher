@@ -102,13 +102,14 @@ class User
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public function getLessons($id)
+  // fetch all Lessons associated with userLoggedIn
+  public function getLessons()
   {
-    // fetch all lessons associated with this Employment
     $sql = "SELECT * FROM Lessons
-      WHERE employment_id = ?
+      WHERE teacher_id = ?
+      OR student_id = ?
       ORDER BY datetime DESC";
-    $stmt = $this->db->run($sql, [$id]);
+    $stmt = $this->db->run($sql, [$this->userID, $this->userID]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 

@@ -21,7 +21,7 @@ if (isset($_POST['schedule-lesson-button'], $isStudent)) {
   $ra = $employment->scheduleLesson($date, $datetime, $duration, $studentID, $teacherID);
 
   if ($ra == 1) {
-    echo "Lesson booked";
+    // TODO: use AJAX to update calendar.php (display new lesson on the calendar)
   } else {
     echo "Sorry, there was an error trying to book the lesson";
   }
