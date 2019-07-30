@@ -30,11 +30,16 @@ require_once("src/controllers/calendar.php");
           <div class='col-10'>
             <!-- get the first name of 'other User' -->
             <h3><?php echo $isStudent ? $user->getOtherUser($les['teacher_id'])['first_name'] : $user->getOtherUser($les['student_id'])['first_name']; ?> lesson</h3>
-            <ul class='list-inline'>
+            <ul>
               <li class='list-inline-item'><?php echo date("H:i T", strtotime($les['datetime'])); ?></li>
               <i class="far fa-clock"></i>
               <li class='list-inline-item'><?php echo $les['duration']; ?> minutes</li>
               <li class='list-inline-item'><i class='fab fa-skype' aria-hidden='true'></i></li>
+            </ul>
+            <ul class="btn-list">
+              <li class="btn btn-success btn-sm">Confirm</li>
+              <li class="btn btn-warning btn-sm">Reschedule</li>
+              <li class="btn btn-danger btn-sm">Cancel</li>
             </ul>
           </div>
           <!-- TODO: include buttons -->

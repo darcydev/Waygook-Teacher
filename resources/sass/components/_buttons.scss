@@ -1,5 +1,14 @@
 .vertical-align-btn {
-  align-items: center!important;
-  margin: auto!important;
-  padding: 0 5px 0 5px!important;
+  align-items: center !important;
+  margin: auto !important;
+  padding: 0 5px 0 5px !important;
+}
+
+.btn-list {
+  text-align: center !important;
+
+  @include for-tablet-landscape-down {
+    display: flex;
+    flex-flow: column;
+  }
 }

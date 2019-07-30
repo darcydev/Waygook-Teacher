@@ -8,13 +8,36 @@ $background_color_2: #ffffff;
 }
 
 .row-striped {
+  padding: 15px 0;
+
   &:nth-of-type(odd) {
-    background-color: $background_color_1;
-    border-left: 4px #000000 solid;
+    background-color: clr(off-white);
+    border-left: 4px clr(dark-grey) solid;
   }
   &:nth-of-type(even) {
-    background-color: $background_color_2;
-    border-left: 4px #efefef solid;
+    background-color: clr(white);
+    border-left: 4px clr(black) solid;
   }
-  padding: 15px 0;
+
+  .col-2 {
+    h2 {
+      @include for-tablet-landscape-down {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .col-10 {
+    @include for-tablet-landscape-down {
+      display: flex;
+      flex-flow: column;
+      text-align: right;
+    }
+
+    h3 {
+      @include for-tablet-landscape-down {
+        font-size: 1rem;
+      }
+    }
+  }
 }
