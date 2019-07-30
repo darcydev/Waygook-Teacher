@@ -90,13 +90,13 @@ class User
     return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
-  // fetch all Employments (w/ prepaid balance > 0) associated with userLoggedIn
+  // fetch all Employments (w/ prepaid balance > 0.15) associated with userLoggedIn
   public function getEmployments()
   {
     $sql = "SELECT * FROM Employments
       WHERE teacher_id = ?
       OR student_id = ?
-      AND prepaid_amount > 0
+      AND prepaid_amount > 0.15
       ORDER BY prepaid_amount DESC";
     $stmt = $this->db->run($sql, [$this->userID, $this->userID]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -172,7 +172,7 @@ class User
     $this->validateOldPassword($old_pw);
     $this->validatePasswords($new_pw, $new_pw2);
 
-    /* UNTESTED : 
+    /* TODO: REMOVED -- test if can delete
        if (empty($this->errorArray) == true) {
       $sql = "UPDATE Users
                     SET password = ?

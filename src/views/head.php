@@ -5,6 +5,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']
 require_once("config/config.php");
 require_once("src/models/Account.php");
 require_once("src/models/User.php");
+require_once("src/models/Employment.php");
 require_once("src/models/MyPDO.php");
 require_once("src/models/Constants.php");
 
@@ -18,8 +19,10 @@ require_once("src/views/modals/loginRegister.php");
 $isLoggedIn = isset($_SESSION['userEmail']) ? true : false;
 
 if ($isLoggedIn) {
-  // $userEmail = $_SESSION['userEmail']; -- DELETE: REMOVED ON 30/7/19 -- delete soon unless errors occur
+  
+  // $userEmail = $_SESSION['userEmail']; // TODO: delete this line (REMOVED on 30/7/19)
   $user = new User($_SESSION['userEmail']);
+  $employment = new Employment($user->getID());
 
   /* PDO VARIABLE */
   $db = MyPDO::instance();
@@ -27,7 +30,7 @@ if ($isLoggedIn) {
   /* FETCH USER FROM DB */
   $userLoggedInRow = $user->getOtherUser($user->getID());
 
-  /*   -- DELETE: REMOVED ON 30/7/19 -- delete soon unless errors occur
+  /*   // TODO: delete these lines (REMOVED on 30/7/19)
   $stmt = $db->run($sql, [$userEmail]);
   $userLoggedInRow = $stmt->fetch(PDO::FETCH_ASSOC); */
 

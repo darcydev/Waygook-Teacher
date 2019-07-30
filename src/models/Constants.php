@@ -19,4 +19,5 @@ class Constants
 	public static $invalidFileName = "The file already exists. Please rename the file";
 
 	public static $invalidLessonDate = "The lesson must be between -10 and +60 days from today";
+	public static $invalidBalanceForLesson = "Sorry, this isn't sufficient balance for this lesson duration";
 }
