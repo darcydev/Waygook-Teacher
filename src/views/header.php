@@ -18,7 +18,7 @@
           <a id="profile-nav-link" class="nav-link" href="//localhost/Waygook-Teacher/src/views/profile.php">Profile</a>
         </li>
         <li class="nav-item">
-          <a id="search-nav-link" class="nav-link" href="//localhost/Waygook-Teacher/src/views/inbox.php">Inbox</a>
+          <a id="inbox-nav-link" class="nav-link" href="//localhost/Waygook-Teacher/src/views/inbox.php">Inbox</a>
         </li>
         <li class="nav-item">
           <a id="search-nav-link" class="nav-link" href="//localhost/Waygook-Teacher/src/views/search.php">Search</a>
@@ -31,13 +31,13 @@
           <a id="logout-nav-link" class="nav-link" href="//localhost/Waygook-Teacher/src/views/logout.php">Logout</a>
         </li>
 
-        <!-- Dropdown -->
-<!--         <li id="dropdown-nav-link" class="nav-item dropdown">
+        <!-- REMOVED: Dropdown -->
+        <!--         <li id="dropdown-nav-link" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">more</a>
           <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
           </div>
         </li> -->
-        <!-- \.Dropdown -->
+        <!-- \.REMOVED: Dropdown -->
       </ul>
       <!-- Links -->
     </div>
@@ -47,9 +47,9 @@
 </header>
 
 <?php
-// Call the displayNavLinks function with the boolean variable $loggedIn of whether a User is currently logged in
-// or not.
-if ($loggedIn == true) {
+// function takes a bool of whether the User is logged in or not
+/* echo "<script>displayNavLinks($isLoggedIn);</script>"; */
+if ($isLoggedIn) {
   echo "<script>displayNavLinks(true);</script>";
 } else {
   echo "<script>displayNavLinks(false);</script>";

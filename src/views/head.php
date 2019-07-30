@@ -12,35 +12,34 @@ $account = new Account();
 
 require_once("src/controllers/login.php");
 require_once("src/controllers/register.php");
-
 require_once("src/views/modals/loginRegister.php");
-require_once("src/views/modals/sendMessage.php");
 
-if (isset($_SESSION['userEmail'])) {
-  $loggedIn = true;
-  $userEmail = $_SESSION['userEmail'];
+// set bool for whether User is logged in or not
+$isLoggedIn = isset($_SESSION['userEmail']) ? true : false;
 
-  // fetch the User's detail from the DB
-  $user = new User($userEmail);
+if ($isLoggedIn) {
+  // $userEmail = $_SESSION['userEmail']; -- DELETE: REMOVED ON 30/7/19 -- delete soon unless errors occur
+  $user = new User($_SESSION['userEmail']);
+
+  /* PDO VARIABLE */
   $db = MyPDO::instance();
-  $sql = "SELECT * FROM Users WHERE email = ?";
+
+  /* FETCH USER FROM DB */
+  $userLoggedInRow = $user->getOtherUser($user->getID());
+
+  /*   -- DELETE: REMOVED ON 30/7/19 -- delete soon unless errors occur
   $stmt = $db->run($sql, [$userEmail]);
-  $userLoggedInRow = $stmt->fetch(PDO::FETCH_ASSOC);
+  $userLoggedInRow = $stmt->fetch(PDO::FETCH_ASSOC); */
 
-  // set bool value for whether User is a Student or Teacher
-  if ($userLoggedInRow['role'] == 'student') {
-    $isStudent = true;
-  } else {
-    $isStudent = false;
-  }
-} else {
-  $loggedIn = false;
+  // set bool for whether User is student or not
+  $isStudent = $userLoggedInRow['role'] == 'student' ? true : false;
+
+  /* INCLUDE FILES */
+  require_once("src/controllers/sendMessage.php");
+  require_once("src/controllers/scheduleLesson.php");
+  require_once("src/views/modals/scheduleLesson.php");
+  require_once("src/views/modals/sendMessage.php");
 }
-
-require_once("src/controllers/sendMessage.php");
-require_once("src/controllers/scheduleLesson.php");
-
-require_once("src/views/modals/scheduleLesson.php");
 ?>
 
 <!DOCTYPE html>
@@ -54,9 +53,10 @@ require_once("src/views/modals/scheduleLesson.php");
   <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700|Arimo:400,700" rel="stylesheet">
   <link rel="stylesheet" href="/Waygook-Teacher/resources/sass/main.css">
 
-  <!-- MY JAVASCRIPT -->
-  <!-- BUG: navBarLinks is not defined when the JS is loaded at the bottom of the page -->
-  <script src="/Waygook-Teacher/public/js/main.js" aysnc></script>
+  <!-- TODO: there's only one function in here, move it somehwere else -->
+  <script src="/Waygook-Teacher/public/js/main.js"></script>
+  <!-- the reason this JS file is loaded in the <head> is because it doesn't work unless it's loaded before the header -->
+  <script src="/Waygook-Teacher/src/js/navBar.js"></script>
 
   <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
   <!-- Font Awesome -->

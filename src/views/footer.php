@@ -1,3 +1,6 @@
+<script src="/Waygook-Teacher/src/js/index.js"></script>
+<script src="/Waygook-Teacher/src/js/generic.js"></script>
+
 <footer class="site-footer">
   <div class="container">
     <div class="site-footer-inner">
