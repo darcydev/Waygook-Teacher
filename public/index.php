@@ -1,4 +1,4 @@
-<?php 
+<?php
 set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . "\Waygook-Teacher");
 ?>
 
@@ -22,7 +22,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']
                             <p class="hero-paragraph is-revealing">The platform to connect Korean students with expert
                                 English teachers.</p>
                             <p class="hero-cta mb-0 is-revealing">
-                                <a class="button button-primary button-shadow" href="#">Start learning</a>
+                                <a class="button button-primary button-shadow" href="#" data-toggle="modal" data-target="#modalLRForm">Start learning</a>
                             </p>
                         </div>
                         <div class="hero-illustration">
@@ -162,7 +162,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']
                     <div class="cta-inner section-inner is-revealing">
                         <h3 class="section-title mt-0">Still not convinced?</h3>
                         <div class="cta-cta">
-                            <a class="button button-primary button-shadow" href="#">Schedule a free trial lesson</a>
+                            <a class="button button-primary button-shadow" href="#" data-toggle="modal" data-target="#modalLRForm">Schedule a free trial lesson</a>
                         </div>
                     </div>
                 </div>
