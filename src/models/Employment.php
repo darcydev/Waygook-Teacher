@@ -51,6 +51,7 @@ class Employment
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+/* ---------- LESSONS ---------- */
     public function scheduleLesson($date, $datetime, $duration, $studentID, $teacherID)
     {
         $emp = $this->getEmployment($studentID, $teacherID);
@@ -61,15 +62,15 @@ class Employment
         $teacherPayment = $teacherRate - $waygookRate;
         $lessonTotal = ($teacherRate / 60) * $duration;
 
-        /* VALIDATE DATA */
         // validate that the Employment has sufficient prepaid balance for the lesson
         $this->validateBalance($emp, $lessonTotal);
         // valid that the date is within a certain range
         $this->validateDate($date);
 
         if (empty($this->errorArray)) {
+            // TODO: change the SQL query to make it more clear format (ie :teacherID, :studentID, etc.)
             $sql = "INSERT INTO Lessons
-                VALUES (lessonID, ?, ?, ?, ?, ?, NULL, ?, ?, ?, DEFAULT)";
+                VALUES (lessonID, ?, ?, ?, ?, ?, NULL, ?, ?, ?, DEFAULT, DEFAULT)";
             $stmt = $this->db->run($sql, [
                 $emp['employmentID'],
                 $teacherID,
@@ -85,6 +86,27 @@ class Employment
             return ($stmt->rowCount()) ? $this->decreaseAmount($emp['employmentID'], $lessonTotal) : 0;
         }
     }
+    public function cancelLesson($lessonID)
+    {
+        // TODO: validate that the lesson hasn't already been confirmed
+
+        $sql = "UPDATE Lessons
+            SET cancelled = 1
+            WHERE lessonID = ?";
+        $stmt = $this->db->run($sql, [$lessonID]);
+        return $stmt->rowCount();
+    }
+    public function confirmLesson($lessonID)
+    {
+        // TODO: validate that the lesson is at a past date (can't confirm future lessons)
+
+        $sql = "UPDATE Lessons
+            SET confirmed = 1
+            WHERE lessonID = ?";
+        $stmt = $this->db->run($sql, [$lessonID]);
+        return $stmt->rowCount();
+    }
+/* ---------- \.LESSONS ---------- */
 
     // REPLACED: updateEmploymentAmount()
     // increase prepaid_amount for specific Employment
@@ -109,6 +131,7 @@ class Employment
         return $stmt->rowCount();
     }
 
+/* ---------- VALIDATION ---------- */
     // validate that the lesson date is within a certain range
     private function validateDate($date)
     {
@@ -139,4 +162,5 @@ class Employment
             return;
         }
     }
+/* ---------- \.VALIDATION ---------- */
 }

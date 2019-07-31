@@ -22,7 +22,7 @@ require_once("src/controllers/calendar.php");
     <section id='agenda' class="agenda">
       <!-- PHP LOOP: iterate over $allLessons, and add each as an HTML element -->
       <?php foreach ($allLessons as $les) { ?>
-        <div id='lessonID' class='row row-striped'>
+        <div id="<?php echo $les['lessonID']; ?>" class='row row-striped<?php echo $les['cancelled'] ? ' cancelled' : '' ?><?php echo $les['confirmed'] ? ' confirmed' : '' ?>'>
           <div class='col-2 text-right'>
             <h1 class='display-4'><span class='badge badge-secondary'><?php echo date("d", strtotime($les['datetime'])); ?></span></h1>
             <h2><?php echo date("M", strtotime($les['datetime'])); ?></h2>
@@ -34,15 +34,15 @@ require_once("src/controllers/calendar.php");
               <li class='list-inline-item'><?php echo date("H:i T", strtotime($les['datetime'])); ?></li>
               <i class="far fa-clock"></i>
               <li class='list-inline-item'><?php echo $les['duration']; ?> minutes</li>
-              <li class='list-inline-item'><i class='fab fa-skype' aria-hidden='true'></i></li>
+              <li class='list-inline-item'><i class='fab fa-skype' aria-hidden='true'></i> <?php echo $isStudent ? $user->getOtherUser($les['teacher_id'])['skype_name'] : $user->getOtherUser($les['student_id'])['skype_name']; ?></li>
             </ul>
             <ul class="btn-list">
-              <li class="btn btn-success btn-sm">Confirm</li>
+              <li class="btn btn-success btn-sm" onclick="confirmLesson(<?php echo $les['lessonID']; ?>);"><?php echo $les['confirmed'] ? 'Lesson Confirmed' : 'Confirm' ?></li>
               <li class="btn btn-warning btn-sm">Reschedule</li>
-              <li class="btn btn-danger btn-sm">Cancel</li>
+              <!-- TODO: include confirmation ('are you sure?') as a beforeSend to the fetch API -->
+              <li class="btn btn-danger btn-sm" onclick="cancelLesson(<?php echo $les['lessonID']; ?>);"><?php echo $les['cancelled'] ? 'Lesson Cancelled' : 'Cancel' ?></li>
             </ul>
           </div>
-          <!-- TODO: include buttons -->
         </div>
       <?php } ?>
       <!-- \.PHP LOOP -->

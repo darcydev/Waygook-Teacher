@@ -33,7 +33,7 @@
             </select>
           </div>
           <div class="text-center mt-2">
-            <button name='schedule-lesson-button' type="submit" class="btn btn-primary">Send message</button>
+            <button name='schedule-lesson-button' type="submit" class="btn btn-primary">Schedule lesson</button>
           </div>
         </form>
       </div>

@@ -1,57 +1,38 @@
-/* // IIF!
-// Use AJAX to fetch all lessons associated with userLoggedIn, and display them on calendar.php
-(function fetchLessons() {
-  fetch('/Waygook-Teacher/src/controllers/ajax/getLessons.php', {
-    method: 'POST'
+function confirmLesson(lessonID) {
+  var formData = new FormData();
+  formData.append("lessonID", lessonID);
+
+  fetch('/Waygook-Teacher/src/controllers/ajax/confirmLesson.php', {
+    method: 'POST',
+    body: formData
   })
-    .then(res => res.json())
-    .then(data => updateCalendar(data))
-
+    .then(res => confirmSuccess(lessonID))
     .catch(e => console.log(`Error: ${e}`))
-}());
+}
 
-function updateCalendar(data) {
-  // remove all preexisting lessons (child nodes) within #agenda
-  document.querySelector('#agenda').innerHTML = '';
+function confirmSuccess(lessonID) {
+  document.getElementById(lessonID).classList.add('confirmed');
+  document.getElementById(lessonID).querySelector('.btn-success').innerText = "Lesson Confirmed";
+}
 
-  // FIXME: is this best practice?
-  let domString =
-    `<div id='lessonID' class='row row-striped'>
-      <div class='col-2 text-right'>
-        <h1 class='display-4'><span id='date' class='badge badge-secondary'></span></h1>
-        <h2 id='month'>OCT</h2>
-      </div>
-      <div class='col-10'>
-        <h3 id='with'></h3>
-        <ul class='list-inline'>
-          <li id='time' class='list-inline-item'></li>
-          <i class="far fa-clock"></i>
-          <li id='duration' class='list-inline-item'></li>
-          <li id='skype' class='list-inline-item'><i class='fab fa-skype' aria-hidden='true'></i></li>
-        </ul>
-      </div>
-    </div>`;
+// TODO: reschedule lesson (ajax)
+function rescheduleLesson(lessonID) {
 
-  var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+}
 
+function cancelLesson(lessonID) {
+  var formData = new FormData();
+  formData.append("lessonID", lessonID);
 
+  fetch('/Waygook-Teacher/src/controllers/ajax/cancelLesson.php', {
+    method: 'POST',
+    body: formData
+  })
+    .then(res => cancelSuccess(lessonID))
+    .catch(e => console.log(`Error: ${e}`))
+}
 
-  // FIXME: combine into oneliner of two maps ?
-  let allLessons = data.map(x => x);
-  // iterate over each lesson
-  allLessons.map(x => {
-    // create DOM from the string
-    // FIXME: best practice? seems like worst practice...
-    document.querySelector('#agenda').innerHTML += domString;
-
-    var lessonDate = new Date(x.datetime);
-    console.log(lessonDate);
-
-    // update the DOM with the relevant details from each lesson
-    document.querySelector('#date').innerHTML = lessonDate.getDate();
-    document.querySelector('#month').innerHTML = months[lessonDate.getMonth()];
-    document.querySelector('#with').innerHTML = 'otherUser FirstName';
-    document.querySelector('#time').innerHTML = `${lessonDate.getHours()}:${lessonDate.getMinutes()} (KST)`;
-    document.querySelector('#duration').innerHTML = `${x.duration} minutes`;
-  });
-} */
+function cancelSuccess(lessonID) {
+  document.getElementById(lessonID).classList.add('cancelled');
+  document.getElementById(lessonID).querySelector('.btn-danger').innerText = "Lesson Cancelled";
+}

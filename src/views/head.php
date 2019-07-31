@@ -42,6 +42,7 @@ if ($isLoggedIn) {
   require_once("src/controllers/scheduleLesson.php");
   require_once("src/views/modals/scheduleLesson.php");
   require_once("src/views/modals/sendMessage.php");
+  require_once("src/views/modals/confirmAction.php");
 }
 ?>
 
