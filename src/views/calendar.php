@@ -37,9 +37,11 @@ require_once("src/controllers/calendar.php");
               <li class='list-inline-item'><i class='fab fa-skype' aria-hidden='true'></i> <?php echo $isStudent ? $user->getOtherUser($les['teacher_id'])['skype_name'] : $user->getOtherUser($les['student_id'])['skype_name']; ?></li>
             </ul>
             <ul class="btn-list">
-              <li class="btn btn-success btn-sm" onclick="confirmLesson(<?php echo $les['lessonID']; ?>);"><?php echo $les['confirmed'] ? 'Lesson Confirmed' : 'Confirm' ?></li>
-              <li class="btn btn-warning btn-sm">Reschedule</li>
               <!-- TODO: include confirmation ('are you sure?') as a beforeSend to the fetch API -->
+              <!-- the User can't confirm 'future lessons'. Thus, the confirm button will only display if the lesson is 'in the past' -->
+              <li class="btn btn-success btn-sm<?php echo $les['datetime'] > date("Y-m-d H:i:s") ? ' display-none' : ''; ?>" onclick="confirmLesson(<?php echo $les['lessonID']; ?>);"><?php echo $les['confirmed'] ? 'Lesson Confirmed' : 'Confirm' ?></li>
+              <!-- TODO: include reschedule lesson functionality
+                        <li class="btn btn-warning btn-sm" onclick="rescheduleLesson(<?php echo $les['lessonID']; ?>);">Reschedule</li> -->
               <li class="btn btn-danger btn-sm" onclick="cancelLesson(<?php echo $les['lessonID']; ?>);"><?php echo $les['cancelled'] ? 'Lesson Cancelled' : 'Cancel' ?></li>
             </ul>
           </div>
