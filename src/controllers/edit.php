@@ -7,7 +7,7 @@ $timezones = DateTimeZone::listIdentifiers();
 if (isset($_POST['upload-profile-pic'])) {
   if (!empty($_FILES['profile-pic']['name'])) {
     $currentDir = getcwd();
-    $targetDir = "/Waygook-Teacher/public/images/profile_pics/";
+    $targetDir = "/public/images/profile_pics/";
 
     // to avoid the issue of duplicate file names in server,
     // save the file as a random number ahead of the fileName (fe "283572893572875johnlennon.png")
@@ -71,7 +71,7 @@ if (isset($_POST['edit-profile-button'])) {
 }
 ?>
 
-<!-- JS is in src/js/edit.js -->
+<!-- JS is in /js/edit.min.js -->
 <script>
   document.addEventListener("DOMContentLoaded", function(event) {
     displayEdit(<?php echo $isStudent; ?>);

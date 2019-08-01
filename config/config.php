@@ -5,6 +5,8 @@ session_start();
 date_default_timezone_set('Asia/Seoul');
 
 /* SET LANGUAGE */
+/*
+TODO: language function isn't implemented.
 // languages supported
 $available_langs = array('en', 'ko');
 // if lang cookie isn't set, default as eng
@@ -22,3 +24,4 @@ if (isset($_POST['input-set-lang'])) {
 }
 // include active language
 include("resources/translations/" . $_SESSION['lang'] . ".php");
+*/

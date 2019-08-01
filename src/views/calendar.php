@@ -1,6 +1,6 @@
 <?php
 // set DOCUMENT_ROOT variable
-set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . "\Waygook-Teacher");
+set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
 
 require_once("src/views/head.php");
 require_once("src/views/header.php");
@@ -59,4 +59,4 @@ require_once("src/controllers/calendar.php");
 include("src/views/footer.php");
 ?>
 
-<script src="/Waygook-Teacher/src/js/calendar.js"></script>
+<script src="/js/calendar.min.js"></script>

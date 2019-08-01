@@ -1,10 +1,8 @@
 <?php
-set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . "\Waygook-Teacher");
-?>
+set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
 
-<!-- HEAD -->
-<?php require_once("src/views/head.php"); ?>
-<!-- \.HEAD -->
+require_once("src/views/head.php");
+?>
 
 <body class="is-boxed has-animations">
     <div class="body-wrap boxed-container">
@@ -169,7 +167,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']
             </section>
         </main>
 
-        <?php include("src/views/footer.php"); ?>
+        <?php require_once("src/views/footer.php"); ?>
     </div>
 
 </body>

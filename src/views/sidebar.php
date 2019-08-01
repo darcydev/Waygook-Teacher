@@ -11,7 +11,7 @@
     </li>
     <!-- \.SCHEDULE LESSON LINK -->
     <!-- EDIT PROFILE -->
-    <a id="sidebar-edit" href="//localhost/Waygook-Teacher/src/views/edit.php">
+    <a id="sidebar-edit" href="/src/views/edit.php">
       <img src="https://img.icons8.com/dusk/64/000000/contract-job.png" alt="profile-icon">
       <span>Edit</span>
     </a>
@@ -19,4 +19,4 @@
   </ul>
 </nav>
 
-<script src="/Waygook-Teacher/src/js/sidebar.js"></script>
+<script src="/js/sidebar.min.js"></script>

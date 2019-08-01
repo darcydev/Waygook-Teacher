@@ -1,6 +1,5 @@
 <?php
-// set DOCUMENT_ROOT variable
-set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . "\Waygook-Teacher");
+set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
 
 require_once("config/config.php");
 require_once("src/models/Account.php");
@@ -46,7 +45,7 @@ if ($isLoggedIn) {
 } else {
   // if the User isn't logged in, redirect them to index.php
   // TODO: uncomment when live
-  /// header("Location: http://waygookteacher.com");
+  // header("Location: http://waygookteacher.com");
 }
 ?>
 
@@ -59,9 +58,9 @@ if ($isLoggedIn) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WaygookTeacher</title>
 
-  <link rel="stylesheet" href="/Waygook-Teacher/resources/sass/main.css">
-  <!-- the reason this JS file is loaded in the <head> is because it doesn't work unless it's loaded before the header -->
-  <script src="/Waygook-Teacher/src/js/navBar.js"></script>
+  <link rel="stylesheet" href="/css/main.min.css">
+  <!-- the reason this JS file is loaded in the <head> is because it doesn't work unless it is loaded before the header -->
+  <script src="/js/navBar.min.js"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700|Arimo:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">

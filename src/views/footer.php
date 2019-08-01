@@ -1,11 +1,11 @@
-<script src="/Waygook-Teacher/src/js/index.js"></script>
-<script src="/Waygook-Teacher/src/js/generic.js"></script>
+<script src="/js/index.min.js"></script>
+<script src="/js/generic.min.js"></script>
 
 <footer class="site-footer">
   <div class="container">
     <div class="site-footer-inner">
       <div class="brand footer-brand">
-        <img src="/Waygook-Teacher/public/images/logo.png" alt="logo">
+        <img src="/images/logo.png" alt="logo">
       </div>
       <ul class="footer-links list-reset">
         <li>
