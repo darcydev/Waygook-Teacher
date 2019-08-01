@@ -1,0 +1,51 @@
+.sidebar {
+  width: 13%;
+  position: fixed;
+  left: 0;
+  z-index: 9;
+  background: clr(primary);
+  color: clr(white);
+
+  @include for-phone-only {
+    width: 50%!important;
+    background: transparent;
+    top: 80px;
+    right: 0;
+  }
+
+  ul {
+    padding: 10px 0 0 20px;
+    list-style: none;
+
+    li,
+    a {
+      padding: 0 0 20px 0;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: clr(white);
+
+      img {
+        padding: 0 10px 0 0;
+      }
+    }
+  }
+
+  @include for-big-desktop-down {
+    padding: 0 10px 0 10px;
+    width: 10%;
+
+    ul {
+      padding: 5px 0 0 0;
+
+      li,
+      a {
+        min-width: 70%;
+
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}

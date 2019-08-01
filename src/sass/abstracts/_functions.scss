@@ -1,0 +1,5 @@
+/* COPIED FROM: https://www.kevinpowell.co/article/using-my-colors/ */
+@function clr($base, $shade: base) {
+  $color: map-get(map-get($colors, $base), $shade);
+  @return $color;
+}
