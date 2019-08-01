@@ -3,13 +3,13 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']
 ?>
 
 <!-- HEAD -->
-<?php include("src/views/head.php"); ?>
+<?php require_once("src/views/head.php"); ?>
 <!-- \.HEAD -->
 
 <body class="is-boxed has-animations">
     <div class="body-wrap boxed-container">
         <!-- navBar -->
-        <?php include("src/views/header.php"); ?>
+        <?php require_once("src/views/header.php"); ?>
         <!-- \.navBar -->
         <main>
             <section class="hero">

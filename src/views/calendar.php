@@ -40,8 +40,8 @@ require_once("src/controllers/calendar.php");
               <!-- TODO: include confirmation ('are you sure?') as a beforeSend to the fetch API -->
               <!-- the User can't confirm 'future lessons'. Thus, the confirm button will only display if the lesson is 'in the past' -->
               <li class="btn btn-success btn-sm<?php echo $les['datetime'] > date("Y-m-d H:i:s") ? ' display-none' : ''; ?>" onclick="confirmLesson(<?php echo $les['lessonID']; ?>);"><?php echo $les['confirmed'] ? 'Lesson Confirmed' : 'Confirm' ?></li>
-              <!-- TODO: include reschedule lesson functionality
-                        <li class="btn btn-warning btn-sm" onclick="rescheduleLesson(<?php echo $les['lessonID']; ?>);">Reschedule</li> -->
+              <!-- TODO: include reschedule lesson functionality -->
+              <!-- <li class="btn btn-warning btn-sm" onclick="rescheduleLesson(<?php echo $les['lessonID']; ?>);">Reschedule</li> -->
               <li class="btn btn-danger btn-sm" onclick="cancelLesson(<?php echo $les['lessonID']; ?>);"><?php echo $les['cancelled'] ? 'Lesson Cancelled' : 'Cancel' ?></li>
             </ul>
           </div>
