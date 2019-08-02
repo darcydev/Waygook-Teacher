@@ -1,5 +1,24 @@
 <?php
-set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+// determine whether being run on localhost or not
+if ($_SERVER['HTTP_HOST'] == "localhost") {
+    $_SESSION['isLocalHost'] = true;
+} else {
+    $_SESSION['isLocalHost'] = false;
+}
+
+if ($_SESSION['isLocalHost']) {
+    $_SESSION['projectPath'] = '/Waygook-Teacher';
+    $_SESSION['baseURL'] = 'Waygook-Teacher/public/';
+    set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . $_SESSION['projectPath']);
+} else {
+    $_SESSION['projectPath'] = '';
+    $_SESSION['baseURL'] = '';
+    set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
+}
 
 require_once("src/views/head.php");
 ?>

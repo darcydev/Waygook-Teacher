@@ -1,6 +1,4 @@
 <?php
-set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
-
 require_once("config/config.php");
 require_once("src/models/Account.php");
 require_once("src/models/User.php");
@@ -19,7 +17,6 @@ $isLoggedIn = isset($_SESSION['userEmail']) ? true : false;
 
 if ($isLoggedIn) {
 
-  // $userEmail = $_SESSION['userEmail']; // TODO: delete this line (REMOVED on 30/7/19)
   $user = new User($_SESSION['userEmail']);
   $employment = new Employment($user->getID());
 
@@ -28,10 +25,6 @@ if ($isLoggedIn) {
 
   /* FETCH USER FROM DB */
   $userLoggedInRow = $user->getOtherUser($user->getID());
-
-  /*   // TODO: delete these lines (REMOVED on 30/7/19)
-  $stmt = $db->run($sql, [$userEmail]);
-  $userLoggedInRow = $stmt->fetch(PDO::FETCH_ASSOC); */
 
   // set bool for whether User is student or not
   $isStudent = $userLoggedInRow['role'] == 'student' ? true : false;
@@ -44,7 +37,7 @@ if ($isLoggedIn) {
   require_once("src/views/modals/confirmAction.php");
 } else {
   // if the User isn't logged in, redirect them to index.php
-  // TODO: uncomment when live
+  // TOFIX: not working (infinite redirects)
   // header("Location: http://waygookteacher.com");
 }
 ?>
@@ -58,9 +51,9 @@ if ($isLoggedIn) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WaygookTeacher</title>
 
-  <link rel="stylesheet" href="/css/main.min.css">
+  <link rel="stylesheet" href="/<?php echo $_SESSION['baseURL']; ?>css/main.min.css">
   <!-- the reason this JS file is loaded in the <head> is because it doesn't work unless it is loaded before the header -->
-  <script src="/js/navBar.min.js"></script>
+  <script src="/<?php echo $_SESSION['baseURL']; ?>js/navBar.min.js"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700|Arimo:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">

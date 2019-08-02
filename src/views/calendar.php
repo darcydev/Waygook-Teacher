@@ -1,7 +1,4 @@
 <?php
-// set DOCUMENT_ROOT variable
-set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
-
 require_once("src/views/head.php");
 require_once("src/views/header.php");
 
@@ -56,7 +53,7 @@ require_once("src/controllers/calendar.php");
 </main>
 
 <?php
-include("src/views/footer.php");
+require_once("src/views/footer.php");
 ?>
 
-<script src="/js/calendar.min.js"></script>
+<script src="/<?php echo $_SESSION['baseURL']; ?>js/calendar.min.js"></script>

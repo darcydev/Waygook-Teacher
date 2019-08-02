@@ -10,7 +10,7 @@
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="//localhost/Waygook-Teacher/public/index.php">WaygookTeacher
+          <a class="nav-link" href="index.php">WaygookTeacher
             <span class="sr-only">(current)</span>
           </a>
         </li>
@@ -24,7 +24,7 @@
           <a id="search-nav-link" class="nav-link" href="/src/views/search.php">Search</a>
         </li>
         <li class="nav-item">
-          <a id="calendar-nav-link" class="nav-link" href="/src/views/calendar.php">Calendar</a>
+          <a id="calendar-nav-link" class="nav-link" href="<?php $_SESSION['projectPath']; ?>/src/views/calendar.php">Calendar</a>
         </li>
         <li class="nav-item">
           <a id="login-nav-link" class="nav-link" href="#" data-toggle="modal" data-target="#modalLRForm">Login/Register</a>
