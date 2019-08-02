@@ -13,10 +13,9 @@ class MyPDO
             PDO::ATTR_EMULATE_PREPARES   => FALSE,
         );
         $DB_HOST = 'localhost';
-        $DB_NAME = 'teachesl_waygook-teacher';
-        $DB_USER = 'teachesl_way';
-        $DB_PASS = ';(U}L5GFe_U^';
-        // $DB_PASS = ''; // XAMPP
+        $DB_NAME = 'waygook-teacher';
+        $DB_USER = 'root';
+        $DB_PASS = '';
         $DB_CHAR = 'utf8mb4';
 
         $dsn = 'mysql:host=' . $DB_HOST . ';dbname=' . $DB_NAME . ';charset=' . $DB_CHAR;
