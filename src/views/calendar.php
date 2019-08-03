@@ -1,4 +1,10 @@
 <?php
+if ($_SERVER['HTTP_HOST'] == "localhost") {
+  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
+} else {
+  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
+}
+
 require_once("src/views/head.php");
 require_once("src/views/header.php");
 
@@ -52,8 +58,8 @@ require_once("src/controllers/calendar.php");
 
 </main>
 
+<script src="/<?php echo $_SESSION['baseURL']; ?>js/calendar.min.js"></script>
+
 <?php
 require_once("src/views/footer.php");
 ?>
-
-<script src="/<?php echo $_SESSION['baseURL']; ?>js/calendar.min.js"></script>

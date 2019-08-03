@@ -7,11 +7,9 @@ if (!isset($_SESSION)) {
 
 if ($_SESSION['isLocalHost']) {
     $_SESSION['projectPath'] = 'Waygook-Teacher/';
-    $_SESSION['baseURL'] = 'Waygook-Teacher/public/';
     set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
 } else {
     $_SESSION['projectPath'] = '';
-    $_SESSION['baseURL'] = '';
     set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
 }
 

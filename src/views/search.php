@@ -1,6 +1,9 @@
 <?php
-// set DOCUMENT_ROOT variable
-set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
+if ($_SERVER['HTTP_HOST'] == "localhost") {
+  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
+} else {
+  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
+}
 
 include("src/views/head.php");
 include("src/views/header.php");
@@ -49,7 +52,7 @@ include("src/controllers/search.php");
           <?php echo $row['first_name']; ?>
         </h5>
         <a class="btn btn-outline-primary"
-          href="/src/views/profile.php?userID=<?php echo $row['userID']; ?>">View
+          href="/<?php echo $_SESSION['projectPath']; ?>src/views/profile.php?userID=<?php echo $row['userID']; ?>">View
           more</a>
       </div>
       <!-- close PHP loop -->

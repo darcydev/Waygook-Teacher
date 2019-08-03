@@ -1,6 +1,9 @@
 <?php
-// set DOCUMENT_ROOT variable
-set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
+if ($_SERVER['HTTP_HOST'] == "localhost") {
+  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
+} else {
+  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
+}
 
 require_once("src/views/head.php");
 require_once("src/views/header.php");
@@ -8,8 +11,6 @@ require_once("src/views/header.php");
 require_once("src/controllers/profile.php");
 require_once("src/controllers/edit.php");
 ?>
-
-<script src="/js/edit.min.js"></script>
 
 <div class="container">
   <h2>Edit Profile</h2>
@@ -176,6 +177,8 @@ require_once("src/controllers/edit.php");
   </div>
 </div>
 
+<script src="/<?php echo $_SESSION['baseURL']; ?>js/edit.min.js"></script>
+
 <?php
-include("src/views/footer.php");
+require_once("src/views/footer.php");
 ?>

@@ -1,6 +1,9 @@
 <?php
-// set DOCUMENT_ROOT variable
-set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
+if ($_SERVER['HTTP_HOST'] == "localhost") {
+  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
+} else {
+  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
+}
 
 require_once("src/views/head.php");
 require_once("src/views/header.php");
@@ -37,7 +40,7 @@ require_once("src/controllers/inbox.php");
           $otherUserRow = $user->getOtherUser($otherUserID);
           ?>
           <li class="contact img-xs round" onclick="fetchUserDetails(<?php echo $otherUserRow['userID']; ?>);
-                                  fetchConversation(<?php echo $otherUserRow['userID']; ?>);">
+                                    fetchConversation(<?php echo $otherUserRow['userID']; ?>);">
             <div class="img-xs round">
               <img src="<?php echo $otherUserRow['profile_pic']; ?>" alt="pp" />
             </div>
@@ -81,8 +84,8 @@ require_once("src/controllers/inbox.php");
 
 </main>
 
-<?php
-include("src/views/footer.php");
-?>
+<script src="/<?php echo $_SESSION['baseURL']; ?>js/inbox.min.js"></script>
 
-<script src="/js/inbox.min.js"></script>
+<?php
+require_once("src/views/footer.php");
+?>
