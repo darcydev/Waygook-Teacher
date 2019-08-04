@@ -51,9 +51,9 @@ if ($isLoggedIn) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WaygookTeacher</title>
 
-  <link rel="stylesheet" href="/<?php echo $_SESSION['baseURL']; ?>css/main.min.css">
+  <link rel="stylesheet" href="/Waygook-Teacher/public/css/main.min.css">
   <!-- the reason this JS file is loaded in the <head> is because it doesn't work unless it is loaded before the header -->
-  <script src="/<?php echo $_SESSION['baseURL']; ?>js/navBar.min.js"></script>
+  <script src="/Waygook-Teacher/public/js/navBar.min.js"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700|Arimo:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">

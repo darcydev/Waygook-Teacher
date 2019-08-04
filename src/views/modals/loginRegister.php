@@ -3,10 +3,8 @@
   <div class="modal-dialog cascading-modal" role="document">
     <!--Content-->
     <div class="modal-content">
-
       <!--Modal cascading tabs-->
       <div class="modal-c-tabs">
-
         <!-- Nav tabs -->
         <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-1" role="tablist">
           <li class="nav-item">
@@ -20,12 +18,10 @@
             </a>
           </li>
         </ul>
-
         <!-- Tab panels -->
         <div class="tab-content">
           <!--Panel 7-->
           <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-
             <!--LOGIN FORM -->
             <div class="modal-body mb-1">
               <form id="login-form" method="POST">
@@ -52,13 +48,10 @@
               <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
             </div>
             <!-- \.LOGIN FORM -->
-
           </div>
           <!--/.Panel 7-->
-
           <!--Panel 8-->
           <div class="tab-pane fade" id="panel8" role="tabpanel">
-
             <!-- REGISTER FORM -->
             <div class="modal-body">
               <form id="register-form" method="POST">
@@ -122,7 +115,6 @@
           </div>
           <!--/.Panel 8-->
         </div>
-
       </div>
     </div>
     <!--/.Content-->

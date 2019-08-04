@@ -1,9 +1,6 @@
 <?php
-if ($_SERVER['HTTP_HOST'] == "localhost") {
-  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
-} else {
-  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
-}
+set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
+
 
 require_once("src/views/head.php");
 require_once("src/views/header.php");
@@ -17,7 +14,7 @@ require_once("src/controllers/calendar.php");
 
     <!-- SIDEBAR -->
     <section class="section">
-      <?php include("src/views/sidebar.php"); ?>
+      <?php require_once("src/views/sidebar.php"); ?>
     </section>
     <!-- \.SIDEBAR -->
 
@@ -58,7 +55,7 @@ require_once("src/controllers/calendar.php");
 
 </main>
 
-<script src="/<?php echo $_SESSION['baseURL']; ?>js/calendar.min.js"></script>
+<script src="/Waygook-Teacher/public/js/calendar.min.js"></script>
 
 <?php
 require_once("src/views/footer.php");

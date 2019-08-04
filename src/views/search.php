@@ -1,14 +1,10 @@
 <?php
-if ($_SERVER['HTTP_HOST'] == "localhost") {
-  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
-} else {
-  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
-}
+set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
 
-include("src/views/head.php");
-include("src/views/header.php");
+require_once("src/views/head.php");
+require_once("src/views/header.php");
 
-include("src/controllers/search.php");
+require_once("src/controllers/search.php");
 ?>
 
 <main>
@@ -52,7 +48,7 @@ include("src/controllers/search.php");
           <?php echo $row['first_name']; ?>
         </h5>
         <a class="btn btn-outline-primary"
-          href="/<?php echo $_SESSION['projectPath']; ?>src/views/profile.php?userID=<?php echo $row['userID']; ?>">View
+          href="/Waygook-Teacher/src/views/profile.php?userID=<?php echo $row['userID']; ?>">View
           more</a>
       </div>
       <!-- close PHP loop -->
@@ -63,5 +59,5 @@ include("src/controllers/search.php");
 </main>
 
 <?php
-include("src/views/footer.php");
+require_once("src/views/footer.php");
 ?>

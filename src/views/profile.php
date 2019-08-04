@@ -1,9 +1,10 @@
 <?php
-if ($_SERVER['HTTP_HOST'] == "localhost") {
+set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
+/* if ($_SERVER['HTTP_HOST'] == "localhost") {
   set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
 } else {
   set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
-}
+} */
 
 require_once("src/views/head.php");
 require_once("src/views/header.php");
@@ -17,7 +18,7 @@ require_once("src/controllers/profile.php");
 
     <!-- SIDEBAR -->
     <section class="section">
-      <?php include("src/views/sidebar.php"); ?>
+      <?php require_once("src/views/sidebar.php"); ?>
     </section>
     <!-- \.SIDEBAR -->
 
@@ -50,5 +51,5 @@ require_once("src/controllers/profile.php");
 </main>
 
 <?php
-include("src/views/footer.php");
+require_once("src/views/footer.php");
 ?>

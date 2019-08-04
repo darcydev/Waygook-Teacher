@@ -1,11 +1,11 @@
-<script src="/<?php echo $_SESSION['baseURL']; ?>js/index.min.js"></script>
-<script src="/<?php echo $_SESSION['baseURL']; ?>js/generic.min.js"></script>
+<script src="/Waygook-Teacher/public/js/index.min.js"></script>
+<script src="/Waygook-Teacher/public/js/generic.min.js"></script>
 
 <footer class="site-footer">
   <div class="container">
     <div class="site-footer-inner">
       <div class="brand footer-brand">
-        <img src="/<?php echo $_SESSION['baseURL']; ?>images/logo.png" alt="logo">
+        <img src="/Waygook-Teacher/public/images/logo.png" alt="logo">
       </div>
       <ul class="footer-links list-reset">
         <li><a href="#">Contact</a></li>

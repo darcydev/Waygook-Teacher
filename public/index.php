@@ -1,5 +1,5 @@
 <?php
-if (!isset($_SESSION)) {
+/* if (!isset($_SESSION)) {
     session_start();
 }
 
@@ -13,7 +13,11 @@ if ($_SESSION['isLocalHost']) {
     $_SESSION['projectPath'] = '';
     $_SESSION['baseURL'] = '';
     set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
-}
+} */
+
+// $_SESSION['isLocalHost'] = $_SERVER['HTTP_HOST'] == "localhost" ? true : false;
+
+set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
 
 require_once("src/views/head.php");
 ?>

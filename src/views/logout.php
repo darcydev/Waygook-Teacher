@@ -1,14 +1,9 @@
 <?php
-if ($_SERVER['HTTP_HOST'] == "localhost") {
-  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
-} else {
-  set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT']);
-}
+set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/Waygook-Teacher');
 
-require("config/config.php");
+require_once("config/config.php");
 
 session_destroy();
 
-/* BUG: not working (???) */
-$homepage = $_SESSION['projectPath'];
-header("Location: /" . $homepage . "public/index.php");
+// direct back to homepage
+header("Location: /Waygook-Teacher/public/index.php");
