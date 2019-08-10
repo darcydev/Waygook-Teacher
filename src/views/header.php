@@ -1,11 +1,12 @@
 <header class="site-header">
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark primary-color">
-    <!-- Collapse button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <!-- Collapsible content -->
+
     <div class="collapse navbar-collapse" id="basicExampleNav">
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
@@ -27,21 +28,15 @@
           <a id="calendar-nav-link" class="nav-link" href="/Waygook-Teacher/src/views/calendar.php">Calendar</a>
         </li>
         <li class="nav-item">
-          <a id="login-nav-link" class="nav-link" href="#" data-toggle="modal" data-target="#modalLRForm">Login/Register</a>
+          <a id="login-nav-link" class="nav-link" href="#" data-toggle="modal"
+            data-target="#modalLRForm">Login/Register</a>
           <a id="logout-nav-link" class="nav-link" href="/Waygook-Teacher/src/views/logout.php">Logout</a>
         </li>
 
-        <!-- REMOVED: Dropdown -->
-        <!--         <li id="dropdown-nav-link" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">more</a>
-          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          </div>
-        </li> -->
-        <!-- \.REMOVED: Dropdown -->
       </ul>
       <!-- Links -->
     </div>
-    <!-- Collapsible content -->
+
   </nav>
   <!-- /.NAVBAR -->
 </header>

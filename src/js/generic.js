@@ -3,5 +3,5 @@
 // and the value of the parameter (value)
 function updateURL(key, value) {
   let param = `?${key}=${value}`;
-  window.history.pushState('', '', param);
+  window.history.pushState("", "", param);
 }

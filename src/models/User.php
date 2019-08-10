@@ -248,7 +248,7 @@ class User
    */
   public function updateUserDetails($columnName, $columnValue)
   {
-    // TODO: what is a 'DRY' way of validating each columnName?
+    // TOFIX: what is best practice method of validating each columnName?
 
     if (empty($this->errorArray) == true) {
       $sql = "UPDATE Users SET $columnName = ? WHERE userID = ?";

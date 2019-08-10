@@ -66,4 +66,13 @@ if ($isLoggedIn) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/js/mdb.min.js">
   </script>
   <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- BABEL: TODO: this is not for production; see here: https://reactjs.org/docs/add-react-to-a-website.html-->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
 </head>
