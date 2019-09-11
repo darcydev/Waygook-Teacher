@@ -166,7 +166,10 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# All files/folders starting with dot
+.*
 
+!/.gitignore
 
 # End of https://www.gitignore.io/api/node,sublimetext,windows,macos,sass
 
