@@ -1,7 +1,6 @@
 <?php
 class MyPDO
 {
-
     protected static $instance;
     protected $pdo;
 
