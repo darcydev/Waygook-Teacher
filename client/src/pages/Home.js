@@ -104,7 +104,7 @@ export default function Home() {
         </Grid>
       </Container>
 
-      <Container variant="section" style={{ margin: "0 0 40px 0" }}>
+      <Container variant="section">
         <SectionHeading title="how it works" />
         <TabsWithContent content={HOW_IT_WORKS_CONTENT} />
       </Container>

@@ -4,15 +4,22 @@ import styled from "styled-components";
 import { Container, Box, Grid, Tab, Tabs, Typography } from "@material-ui/core";
 // MUI Icons
 
-import H2 from "./H2";
-import H4 from "./H4";
-import SectionHeading from "./SectionHeading";
+export default function TabsWithContent({ content }) {
+  // STATE
+  const [value, setValue] = React.useState(0);
+  const handleChange = (event, newValue) => setValue(newValue);
 
-const TabContent = ({ title, text, value, index }) => {
-  return (
+  // STYLES
+
+  // MARKUP
+  const TAB_BUTTON_MARKUP = content.map((item) => (
+    <Tab label={item.title} icon={item.icon} />
+  ));
+
+  const TAB_TEXT_MARKUP = content.map((e, index) => (
     <Container variant="div">
       <Typography variant="h4" hidden={value !== index} align="center">
-        {title}
+        {content[index].subtitle}
       </Typography>
       <Typography
         id={`tab-content-${index}`}
@@ -22,19 +29,9 @@ const TabContent = ({ title, text, value, index }) => {
         variant="subtitle1"
         hidden={value !== index}
       >
-        {text}
+        {content[index].text}
       </Typography>
     </Container>
-  );
-};
-
-export default function TabsWithContent({ content }) {
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => setValue(newValue);
-
-  const MARKUP = content.map((item) => (
-    <Tab label={item.title} icon={item.icon} />
   ));
 
   return (
@@ -46,27 +43,10 @@ export default function TabsWithContent({ content }) {
         onChange={handleChange}
         aria-label="tabs with clickable content"
       >
-        {MARKUP}
+        {TAB_BUTTON_MARKUP}
       </Tabs>
       <Box maxWidth="70%" marginLeft="20px" alignSelf="center">
-        <TabContent
-          title={content[0].subtitle}
-          text={content[0].text}
-          value={value}
-          index={0}
-        />
-        <TabContent
-          title={content[1].subtitle}
-          text={content[1].text}
-          value={value}
-          index={1}
-        />
-        <TabContent
-          title={content[2].subtitle}
-          text={content[2].text}
-          value={value}
-          index={2}
-        />
+        {TAB_TEXT_MARKUP}
       </Box>
     </Grid>
   );

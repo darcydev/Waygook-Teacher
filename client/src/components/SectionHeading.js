@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import H2 from "./H2";
+import { Box, Container, Grid, Typography } from "@material-ui/core";
 
 export default function SectionHeading({ title, subtitle }) {
   const SectionHeadingWrapper = styled.div`
@@ -16,7 +16,7 @@ export default function SectionHeading({ title, subtitle }) {
 
   return (
     <SectionHeadingWrapper>
-      <H2 title={title} />
+      <Typography variant="h2">{title}</Typography>
       <SectionSubHeading>{subtitle}</SectionSubHeading>
     </SectionHeadingWrapper>
   );

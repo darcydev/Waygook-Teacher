@@ -1,21 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import {
-  Button,
-  Box,
-  Container,
-  Grid,
-  Tab,
-  Tabs,
-  Typography,
-  Link
-} from "@material-ui/core";
-import { sizing } from "@material-ui/system";
-
-import BlockQuote from "./BlockQuote";
-import H4 from "./H4";
-import ListItem from "./ListItem";
+import { Box, Container, Grid, Tab, Tabs, Typography } from "@material-ui/core";
 
 export default function Footer() {
   // MARKUP

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import H4 from "./H4";
+import { Box, Container, Grid, Typography } from "@material-ui/core";
 
 export default function FeatureBox({ title, text, icon, alt }) {
   const Feature = styled.div`
@@ -37,7 +37,7 @@ export default function FeatureBox({ title, text, icon, alt }) {
             style={{ height: "auto", maxWidth: "100%" }}
           ></img>
         </FeatureIcon>
-        <H4 title={title} />
+        <Typography variant="h4">{title}</Typography>
         <FeatureText>{text}</FeatureText>
       </FeatureInner>
     </Feature>
