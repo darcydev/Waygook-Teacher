@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 // MUI
-import { Box, Grid, Tab, Tabs, Typography } from "@material-ui/core";
+import { Container, Box, Grid, Tab, Tabs, Typography } from "@material-ui/core";
 // MUI Icons
 
 import H2 from "./H2";
@@ -10,7 +10,7 @@ import SectionHeading from "./SectionHeading";
 
 const TabContent = ({ title, text, value, index }) => {
   return (
-    <Fragment>
+    <Container variant="div">
       <Typography variant="h4" hidden={value !== index} align="center">
         {title}
       </Typography>
@@ -21,12 +21,10 @@ const TabContent = ({ title, text, value, index }) => {
         role="tabpanel"
         variant="subtitle1"
         hidden={value !== index}
-        label="text"
-        labelStyle={{ fontSize: "20px" }}
       >
         {text}
       </Typography>
-    </Fragment>
+    </Container>
   );
 };
 
@@ -40,7 +38,7 @@ export default function TabsWithContent({ content }) {
   ));
 
   return (
-    <Grid container spacing={4} justify="center">
+    <Grid container justify="center">
       <Tabs
         orientation="vertical"
         indicatorColor="secondary"

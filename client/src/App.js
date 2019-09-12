@@ -8,9 +8,6 @@ import Footer from "./components/Footer";
 // Pages
 import Home from "./pages/Home";
 
-// Styles
-/// import "./App.css";
-
 function App() {
   return (
     <div className="App">

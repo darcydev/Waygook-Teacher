@@ -2,6 +2,10 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 
 export default function BlockQuote({ text, author }) {
+  // STYLES
+  const Wrapper = styled.div`
+    margin: 300px 50px 10px 50px;
+  `;
   const BlockQuote = styled.blockquote`
     color: #889bb0;
     font-style: italic;
@@ -12,16 +16,17 @@ export default function BlockQuote({ text, author }) {
     line-height: 42px;
     letter-spacing: -0.1px;
   `;
-
   const Author = styled.p`
     font-style: italic;
+    font-size: 1.5em;
     text-align: right;
+    margin-right: 10px;
   `;
 
   return (
-    <Fragment>
+    <Wrapper>
       <BlockQuote>"{text}"</BlockQuote>
       <Author> - {author}</Author>
-    </Fragment>
+    </Wrapper>
   );
 }

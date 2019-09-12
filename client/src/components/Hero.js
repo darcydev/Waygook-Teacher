@@ -1,37 +1,44 @@
-import React, { Component } from "react";
+import React from "react";
+import styled from "styled-components";
 
-export default class Hero extends Component {
-  /* TODO: include scroll revleaing JS contained in the original index.js file */
-  render() {
-    return (
-      <section className="hero">
-        <div className="hero-left-decoration is-revealing"></div>
-        <div className="hero-right-decoration is-revealing"></div>
-        <div className="container">
-          <div className="hero-inner">
-            <div className="hero-copy">
-              <h1 className="hero-title mt-0 is-revealing">
-                Welcome to WaygookTeacher
-              </h1>
-              <p className="hero-paragraph is-revealing">
-                The platform to connect Korean students with expert English
-                teachers.
-              </p>
-              <p className="hero-cta mb-0 is-revealing">
-                <a
-                  className="button button-primary button-shadow"
-                  href="#"
-                  data-toggle="modal"
-                  data-target="#modalLRForm"
-                >
-                  Start learning
-                </a>
-              </p>
-            </div>
-            <div className="hero-illustration"></div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+import { Box, Container, Grid, Typography } from "@material-ui/core";
+
+import BlockQuote from "./BlockQuote";
+
+export default function Hero() {
+  // MARKUP
+
+  // STYLES
+  const StyledContainer = styled(Container)`
+    min-height: 60vh;
+    margin: 90px;
+  `;
+  const StyledButton = styled.button`
+    border: none;
+    border-radius: 2px;
+    margin: 12px;
+    background: #3525d3;
+    color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0 8px 16px rgba(53, 37, 211, 0.24);
+  `;
+
+  return (
+    <StyledContainer component="section">
+      <Typography variant="h2" gutterBottom={true}>
+        Welcome to Waygook Teacher
+      </Typography>
+      <Typography variant="h4" gutterBottom={true}>
+        connecting Korean students with expert English teachers
+      </Typography>
+      <StyledButton>
+        <Typography variant="h6">Start learning</Typography>
+      </StyledButton>
+      <BlockQuote
+        text="Through my education, I didn't just develop skills, I didn't just
+        develop the ability to learn, but I developed confidence."
+        author="Michelle Obama"
+      ></BlockQuote>
+    </StyledContainer>
+  );
 }

@@ -1,6 +1,14 @@
 import React from "react";
 // MUI
-import { Button, Grid, Tab, Tabs, Typography } from "@material-ui/core";
+import {
+  Container,
+  Button,
+  Grid,
+  Tab,
+  Tabs,
+  Typography
+} from "@material-ui/core";
+
 // Components
 import BlockQuote from "../components/BlockQuote";
 import FeatureBox from "../components/FeatureBox";
@@ -89,23 +97,17 @@ export default function Home() {
 
   return (
     <main>
-      <section class="container">
-        <BlockQuote
-          text="Through my education, I didn't just develop skills, I didn't just
-            develop the ability to learn, but I developed confidence."
-          author="Michelle Obama"
-        ></BlockQuote>
-      </section>
-      <section className="container">
+      <Container variant="section">
         <SectionHeading title="education broadens the mind" />
-        <Grid container spacing={2} justify="center">
+        <Grid container justify="center">
           {MOTIVATION_MARKUP}
         </Grid>
-      </section>
-      <section className="container">
+      </Container>
+
+      <Container variant="section" style={{ margin: "0 0 40px 0" }}>
         <SectionHeading title="how it works" />
         <TabsWithContent content={HOW_IT_WORKS_CONTENT} />
-      </section>
+      </Container>
     </main>
   );
 }
